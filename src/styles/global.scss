@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Cardo', serif;
+}
+
+span,
+p {
+	font-family: 'Lato', sans-serif;
+}
+
+html,
+body {
+	@apply bg-gray-100;
+}

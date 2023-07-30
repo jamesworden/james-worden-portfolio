@@ -1,7 +1,6 @@
 import * as React from 'react';
 import type { HeadFC, PageProps } from 'gatsby';
 
-import * as indexStyles from '../styles/index.module.scss';
 import headshot from '../images/headshot.jpg';
 import Layout from '../components/layout';
 
@@ -14,9 +13,9 @@ const IndexPage: React.FC<PageProps> = () => {
 			</section>
 
 			<section className='flex justify-between mt-[180px] mb-[180px]'>
-				<div className='pt-32 flex flex-col'>
+				<div className='pt-[50px] flex flex-col'>
 					<div className='pb-16'>
-						<h1>I'm James Worden.</h1>
+						<h1 className='text-4xl'>I'm James Worden.</h1>
 						<span>I strive to build simple and</span>
 						<br />
 						<span>intuitive software.</span>
@@ -25,13 +24,9 @@ const IndexPage: React.FC<PageProps> = () => {
 					<button>See My Work</button>
 				</div>
 
-				<div className='relative'>
-					<img
-						alt='Headshot'
-						src={headshot}
-						className='w-[400px] h-[267px] rounded-3xl'
-					/>
-					<div className='absolute top-[24px] left-[24px] w-[400px] h-[267px] bg-rose-900 rounded-3xl -z-1' />
+				<div className='relative mr-4 w-[360px] h-[240px]'>
+					<img alt='Headshot' src={headshot} className='rounded-3xl absolute z-10' />
+					<div className='absolute top-[20px] left-[20px] w-full h-full bg-rose-900 rounded-3xl z-2 shadow-xl' />
 				</div>
 			</section>
 		</Layout>
