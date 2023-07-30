@@ -4,6 +4,8 @@
 .container {
 	margin: auto;
 	max-width: 1200px;
+	display: flex;
+	flex-direction: column;
 }
 
 .headshot {
@@ -25,4 +27,26 @@
 
 .headshotContainer {
 	position: relative;
+}
+
+.menuSection {
+	display: flex;
+	justify-content: space-between;
+	text-transform: uppercase;
+}
+
+.heroSection {
+	display: flex;
+	justify-content: space-between;
+	padding: 180px 0;
+}
+
+.heroDescriptionContainer {
+	display: flex;
+	flex-direction: column;
+	padding-top: 32px;
+}
+
+.heroDescription {
+	padding-bottom: 16px;
 }
