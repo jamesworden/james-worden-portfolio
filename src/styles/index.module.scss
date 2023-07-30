@@ -1,13 +1,6 @@
 @import 'colors.scss';
 @import 'z-indexes.scss';
 
-.container {
-	margin: auto;
-	max-width: 1200px;
-	display: flex;
-	flex-direction: column;
-}
-
 .headshot {
 	height: 267px;
 	width: 400px;

@@ -3,10 +3,11 @@ import type { HeadFC, PageProps } from 'gatsby';
 
 import * as indexStyles from '../styles/index.module.scss';
 import headshot from '../images/headshot.jpg';
+import Layout from '../components/layout';
 
 const IndexPage: React.FC<PageProps> = () => {
 	return (
-		<main className={indexStyles.container}>
+		<Layout>
 			<section className={indexStyles.menuSection}>
 				<span>James Worden</span>
 				<button>Contact</button>
@@ -29,7 +30,7 @@ const IndexPage: React.FC<PageProps> = () => {
 					<div className={indexStyles.roundedBackground} />
 				</div>
 			</section>
-		</main>
+		</Layout>
 	);
 };
 
