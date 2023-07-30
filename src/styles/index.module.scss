@@ -1,4 +1,28 @@
+@import 'colors.scss';
+@import 'z-indexes.scss';
+
 .container {
 	margin: auto;
 	max-width: 1200px;
+}
+
+.headshot {
+	height: 267px;
+	width: 400px;
+	border-radius: 22px;
+}
+
+.roundedBackground {
+	position: absolute;
+	top: 24px;
+	left: 24px;
+	width: 400px;
+	height: 267px;
+	background-color: $color-maroon;
+	border-radius: 22px;
+	z-index: $headshotColoredRectangleZ;
+}
+
+.headshotContainer {
+	position: relative;
 }
