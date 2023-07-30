@@ -8,14 +8,14 @@ import Layout from '../components/layout';
 const IndexPage: React.FC<PageProps> = () => {
 	return (
 		<Layout>
-			<section className={indexStyles.menuSection}>
-				<span>James Worden</span>
+			<section className='flex justify-between'>
+				<span className='uppercase'>James Worden</span>
 				<button>Contact</button>
 			</section>
 
-			<section className={indexStyles.heroSection}>
-				<div className={indexStyles.heroDescriptionContainer}>
-					<div className={indexStyles.heroDescription}>
+			<section className='flex justify-between mt-[180px] mb-[180px]'>
+				<div className='pt-32 flex flex-col'>
+					<div className='pb-16'>
 						<h1>I'm James Worden.</h1>
 						<span>I strive to build simple and</span>
 						<br />
@@ -25,9 +25,13 @@ const IndexPage: React.FC<PageProps> = () => {
 					<button>See My Work</button>
 				</div>
 
-				<div className={indexStyles.headshotContainer}>
-					<img alt='Headshot' src={headshot} className={indexStyles.headshot} />
-					<div className={indexStyles.roundedBackground} />
+				<div className='relative'>
+					<img
+						alt='Headshot'
+						src={headshot}
+						className='w-[400px] h-[267px] rounded-3xl'
+					/>
+					<div className='absolute top-[24px] left-[24px] w-[400px] h-[267px] bg-rose-900 rounded-3xl -z-1' />
 				</div>
 			</section>
 		</Layout>
