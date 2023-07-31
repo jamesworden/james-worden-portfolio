@@ -8,11 +8,15 @@ const IndexPage: React.FC<PageProps> = () => {
 	return (
 		<Layout>
 			<section className='flex justify-between'>
-				<span className='uppercase p-4 tracking-wider'>James Worden</span>
-				<button>Contact</button>
+				<span className='uppercase p-4 tracking-widest'>James Worden</span>
+				<div className='flex flex-col justify-around'>
+					<button className='uppercase px-8 py-2 tracking-widest bg-white border border-rose-900 text-rose-900 text-sm rounded-md tracking-widest'>
+						Contact
+					</button>
+				</div>
 			</section>
 
-			<section className='flex justify-between mt-[180px] mb-[180px]'>
+			<section className='flex justify-between mt-56 mb-60'>
 				<div className='pt-[50px] flex flex-col'>
 					<div className='pb-8'>
 						<h1 className='text-4xl pb-2'>I'm James Worden.</h1>
@@ -22,8 +26,8 @@ const IndexPage: React.FC<PageProps> = () => {
 					</div>
 
 					<div>
-						<button className='uppercase px-8 py-2 tracking-wider bg-rose-900 text-white text-sm rounded-xl shadow-2xl tracking-wider'>
-							See My Work
+						<button className='uppercase px-8 py-2 tracking-widest bg-rose-900 text-white text-sm rounded-md shadow-2xl tracking-widest'>
+							My Work
 						</button>
 					</div>
 				</div>
@@ -35,9 +39,11 @@ const IndexPage: React.FC<PageProps> = () => {
 			</section>
 
 			<div className='flex w-full'>
-				<span>01</span>
-				<span className='uppercase tracking-wider'>About</span>
-				<hr />
+				<span className='pr-4'>01</span>
+				<span className='uppercase tracking-widest pr-4'>About</span>
+				<div className='flex flex-col justify-around w-full'>
+					<hr className=' border border-black w-full' />
+				</div>
 			</div>
 		</Layout>
 	);
