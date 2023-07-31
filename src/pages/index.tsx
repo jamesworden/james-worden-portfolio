@@ -5,6 +5,7 @@ import headshot from '../images/headshot.jpg';
 import { Layout } from '../components/layout';
 import { SectionDivider } from '../components/section-divider';
 import { ResumeTimeline } from '../components/resume-timeline';
+import { resumeEntries } from '../data/resume-entries';
 
 const IndexPage: React.FC<PageProps> = () => {
 	return (
@@ -66,7 +67,7 @@ const IndexPage: React.FC<PageProps> = () => {
 			<SectionDivider displayName='Resume' displayNumber='02'></SectionDivider>
 
 			<section className='flex justify-around my-16'>
-				<ResumeTimeline></ResumeTimeline>
+				<ResumeTimeline resumeEntries={resumeEntries}></ResumeTimeline>
 			</section>
 		</Layout>
 	);
