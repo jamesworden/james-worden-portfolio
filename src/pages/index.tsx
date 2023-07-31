@@ -69,6 +69,8 @@ const IndexPage: React.FC<PageProps> = () => {
 			<section className='flex justify-around my-16'>
 				<ResumeTimeline resumeEntries={resumeEntries}></ResumeTimeline>
 			</section>
+
+			<SectionDivider displayName='Projects' displayNumber='03'></SectionDivider>
 		</Layout>
 	);
 };
