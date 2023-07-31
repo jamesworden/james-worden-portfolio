@@ -3,6 +3,7 @@ import type { HeadFC, PageProps } from 'gatsby';
 
 import headshot from '../images/headshot.jpg';
 import Layout from '../components/layout';
+import SectionDivider from '../components/section-divider';
 
 const IndexPage: React.FC<PageProps> = () => {
 	return (
@@ -38,13 +39,7 @@ const IndexPage: React.FC<PageProps> = () => {
 				</div>
 			</section>
 
-			<div className='flex w-full'>
-				<span className='pr-4'>01</span>
-				<span className='uppercase tracking-widest pr-4'>About</span>
-				<div className='flex flex-col justify-around w-full'>
-					<hr className=' border border-black w-full' />
-				</div>
-			</div>
+			<SectionDivider displayName='About' displayNumber='01'></SectionDivider>
 
 			<section className='columns-2 my-16'>
 				<p>
