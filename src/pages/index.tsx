@@ -4,6 +4,7 @@ import type { HeadFC, PageProps } from 'gatsby';
 import headshot from '../images/headshot.jpg';
 import { Layout } from '../components/layout';
 import { SectionDivider } from '../components/section-divider';
+import { ResumeTimeline } from '../components/resume-timeline';
 
 const IndexPage: React.FC<PageProps> = () => {
 	return (
@@ -60,6 +61,12 @@ const IndexPage: React.FC<PageProps> = () => {
 					consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing
 					elit.
 				</p>
+			</section>
+
+			<SectionDivider displayName='Resume' displayNumber='02'></SectionDivider>
+
+			<section className='flex justify-around my-16'>
+				<ResumeTimeline></ResumeTimeline>
 			</section>
 		</Layout>
 	);
