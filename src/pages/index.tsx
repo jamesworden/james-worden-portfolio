@@ -2,8 +2,8 @@ import * as React from 'react';
 import type { HeadFC, PageProps } from 'gatsby';
 
 import headshot from '../images/headshot.jpg';
-import Layout from '../components/layout';
-import SectionDivider from '../components/section-divider';
+import { Layout } from '../components/layout';
+import { SectionDivider } from '../components/section-divider';
 
 const IndexPage: React.FC<PageProps> = () => {
 	return (

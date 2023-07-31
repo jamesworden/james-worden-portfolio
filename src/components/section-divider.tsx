@@ -7,7 +7,10 @@ export interface ISectionDividerPageProps {
 	displayName: string;
 }
 
-const Layout: React.FC<ISectionDividerPageProps> = ({ displayNumber, displayName }) => {
+export const SectionDivider: React.FC<ISectionDividerPageProps> = ({
+	displayNumber,
+	displayName,
+}) => {
 	return (
 		<div className='flex w-full'>
 			<span className='pr-4'>{displayNumber}</span>
@@ -18,5 +21,3 @@ const Layout: React.FC<ISectionDividerPageProps> = ({ displayNumber, displayName
 		</div>
 	);
 };
-
-export default Layout;
