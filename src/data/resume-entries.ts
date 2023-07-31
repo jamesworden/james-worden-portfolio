@@ -35,7 +35,7 @@ export const resumeEntries: IResumeEntry[] = [
 		],
 		company: 'Trimble MAPS',
 		dateRange: '06/2021 – 06/2022',
-		jobTitle: 'Software Development Engineer in Test Intern',
+		jobTitle: 'SDET Intern',
 		location: 'Princeton, NJ',
 		placement: ResumeEntryPlacement.Right,
 		startMonthAndYear: 'June 2021',

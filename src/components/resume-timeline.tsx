@@ -46,7 +46,7 @@ const Entry: React.FC<IResumeEntryPageProps> = ({ resumeEntry }) => {
 		>
 			<div
 				className={cx(
-					'flex-[4] mt-12',
+					'flex-[5] mt-12',
 					resumeEntry.placement === ResumeEntryPlacement.Right
 						? 'text-right'
 						: 'text-left'
@@ -59,16 +59,16 @@ const Entry: React.FC<IResumeEntryPageProps> = ({ resumeEntry }) => {
 
 			<div className='flex-1'></div>
 
-			<div className='flex-[4] p-8 my-4'>
+			<div className='flex-[4] p-8 mt-4 mb-8 shadow-xl bg-zinc-100 rounded'>
 				<div className='flex flex-col justify-between'>
-					<div className='flex justify-between'>
+					<div className='flex justify-between pb-4'>
 						<div className='flex flex-col'>
-							<span>{resumeEntry.jobTitle}</span>
-							<span>{resumeEntry.company}</span>
+							<h4 className='font-bold text-lg'>{resumeEntry.jobTitle}</h4>
+							<h5 className='italic'>{resumeEntry.company}</h5>
 						</div>
 						<div className='flex flex-col'>
-							<span>{resumeEntry.location}</span>
-							<span>{resumeEntry.dateRange}</span>
+							<h4 className='text-lg'>{resumeEntry.location}</h4>
+							<h5 className='italic'>{resumeEntry.dateRange}</h5>
 						</div>
 					</div>
 					<div>
@@ -81,20 +81,22 @@ const Entry: React.FC<IResumeEntryPageProps> = ({ resumeEntry }) => {
 					</div>
 				</div>
 			</div>
-
-			<div className='absolute flex justify-around w-full h-full'>
-				<div className='w-px h-full bg-rose-900 m-auto'></div>
-			</div>
 		</div>
 	);
 };
 
 export const ResumeTimeline: React.FC<IResumeTimelinePageProps> = ({ resumeEntries }) => {
 	return (
-		<div className='flex flex-col'>
-			{resumeEntries.map((resumeEntry) => (
-				<Entry resumeEntry={resumeEntry}></Entry>
-			))}
+		<div className='relative w-full h-full'>
+			<div className='flex flex-col w-full h-full'>
+				{resumeEntries.map((resumeEntry) => (
+					<Entry resumeEntry={resumeEntry}></Entry>
+				))}
+			</div>
+
+			<div className='absolute top-0 left-0 flex justify-around w-full h-full'>
+				<div className='w-px h-full bg-rose-900 m-auto'></div>
+			</div>
 		</div>
 	);
 };
