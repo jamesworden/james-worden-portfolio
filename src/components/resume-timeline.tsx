@@ -72,8 +72,8 @@ const Entry: React.FC<IResumeEntryPageProps> = ({ resumeEntry }) => {
 						</div>
 					</div>
 					<div>
-						{resumeEntry.bulletPoints.map((bulletPoint) => (
-							<div>
+						{resumeEntry.bulletPoints.map((bulletPoint, i) => (
+							<div key={i}>
 								{'\n'}
 								<span>• {bulletPoint}</span>
 							</div>
@@ -89,8 +89,8 @@ export const ResumeTimeline: React.FC<IResumeTimelinePageProps> = ({ resumeEntri
 	return (
 		<div className='relative w-full h-full'>
 			<div className='flex flex-col w-full h-full'>
-				{resumeEntries.map((resumeEntry) => (
-					<Entry resumeEntry={resumeEntry}></Entry>
+				{resumeEntries.map((resumeEntry, i) => (
+					<Entry resumeEntry={resumeEntry} key={i}></Entry>
 				))}
 			</div>
 
