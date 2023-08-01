@@ -10,16 +10,16 @@ import { resumeEntries } from '../data/resume-entries';
 const IndexPage: React.FC<PageProps> = () => {
 	return (
 		<Layout>
-			<section className='flex justify-between'>
+			<section className='flex justify-between pt-4'>
 				<span className='uppercase p-4 tracking-widest'>James Worden</span>
 				<div className='flex flex-col justify-around'>
-					<button className='uppercase px-8 py-2 tracking-widest bg-white border border-rose-900 text-rose-900 text-sm rounded-md tracking-widest'>
+					<button className='uppercase px-8 py-2 tracking-widest bg-transparent border border-rose-900 text-rose-900 text-sm rounded-md tracking-widest'>
 						Contact
 					</button>
 				</div>
 			</section>
 
-			<section className='flex justify-between mt-56 mb-60'>
+			<section className='flex justify-between mt-36 mb-40'>
 				<div className='pt-[50px] flex flex-col'>
 					<div className='pb-8'>
 						<h1 className='text-4xl pb-2'>I'm James Worden.</h1>
