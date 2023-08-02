@@ -1,14 +1,37 @@
 import * as React from 'react';
 import type { HeadFC, PageProps } from 'gatsby';
 import scrollTo from 'gatsby-plugin-smoothscroll';
-
 import headshot from '../images/headshot.jpg';
 import { Layout } from '../components/layout';
 import { SectionDivider } from '../components/section-divider';
 import { ResumeTimeline } from '../components/resume-timeline';
 import { resumeEntries } from '../data/resume-entries';
 
+interface IFormData {
+	name: string;
+	email: string;
+	message: string;
+}
+
+const defaultFormData: IFormData = {
+	name: '',
+	email: '',
+	message: '',
+};
+
 const IndexPage: React.FC<PageProps> = () => {
+	const [formData, setFormData] = React.useState(defaultFormData);
+
+	const handleChange = (event: any) => {
+		const { name, value } = event.target as HTMLInputElement;
+		setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+	};
+
+	const handleSubmit = (event: any) => {
+		event.preventDefault();
+		alert(`Name: ${formData.name}, Email: ${formData.email}, Message: ${formData.message}`);
+	};
+
 	return (
 		<Layout>
 			<section className='flex justify-between pt-4'>
@@ -80,17 +103,62 @@ const IndexPage: React.FC<PageProps> = () => {
 				<div>
 					<h2 className='text-2xl'>james@jamesworden.com</h2>
 
-					<div className='py-8'>
-						<h5>Name:</h5>
-						<br />
-						<h5>Email:</h5>
-						<br />
-						<h5>Message:</h5>
-					</div>
+					<form onSubmit={handleSubmit} className='py-8 flex flex-col max-w-sm'>
+						<div className='flex'>
+							<label htmlFor='name' className='mr-4'>
+								<h5>Name:</h5>
+							</label>
+							<input
+								className='bg-transparent outline-none border-b border-slate-800 w-full'
+								type='text'
+								id='name'
+								name='name'
+								value={formData.name}
+								onChange={handleChange}
+							/>
+						</div>
 
-					<button className='uppercase px-8 py-2 tracking-widest bg-rose-900 text-white text-sm rounded-md shadow-2xl tracking-widest'>
-						Send
-					</button>
+						<br />
+
+						<div className='flex'>
+							<label htmlFor='email' className='mr-4'>
+								<h5>Email:</h5>
+							</label>
+							<input
+								className='bg-transparent outline-none border-b border-slate-800 w-full'
+								type='email'
+								id='email'
+								name='email'
+								value={formData.email}
+								onChange={handleChange}
+							/>
+						</div>
+
+						<br />
+
+						<div className='flex'>
+							<label htmlFor='message' className='mr-4'>
+								<h5>Message:</h5>
+							</label>
+							<textarea
+								className='bg-transparent outline-none border-b border-slate-800 resize-none w-full'
+								rows={3}
+								id='message'
+								name='message'
+								value={formData.message}
+								onChange={handleChange}
+							/>
+						</div>
+
+						<div>
+							<button
+								type='submit'
+								className='uppercase px-8 py-2 tracking-widest bg-rose-900 text-white text-sm rounded-md shadow-2xl tracking-widest mt-8'
+							>
+								Send
+							</button>
+						</div>
+					</form>
 				</div>
 			</section>
 		</Layout>
