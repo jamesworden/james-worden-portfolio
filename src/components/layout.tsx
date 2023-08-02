@@ -13,7 +13,11 @@ export const Layout: React.FC<ILayoutPageProps> = ({ children }) => {
 
 			<footer className='w-full bg-slate-800 flex justify-around'>
 				<div className='max-w-screen-lg flex p-4 w-full m-auto'>
-					<div className='pr-8 flex flex-col justify-around'>
+					<a
+						className='mr-8 flex flex-col justify-around'
+						href='https://www.linkedin.com/in/jameswordenny/'
+						target='_blank'
+					>
 						<svg
 							xmlns='http://www.w3.org/2000/svg'
 							width='36'
@@ -27,9 +31,13 @@ export const Layout: React.FC<ILayoutPageProps> = ({ children }) => {
 								fill='#fff'
 							/>
 						</svg>
-					</div>
+					</a>
 
-					<div className='pr-8 flex flex-col justify-around'>
+					<a
+						className='mr-8 flex flex-col justify-around'
+						href='https://github.com/jamesworden'
+						target='_blank'
+					>
 						<svg
 							xmlns='http://www.w3.org/2000/svg'
 							width='36'
@@ -44,9 +52,13 @@ export const Layout: React.FC<ILayoutPageProps> = ({ children }) => {
 								fill='#fff'
 							/>
 						</svg>
-					</div>
+					</a>
 
-					<div className='pr-8 flex flex-col justify-around'>
+					<a
+						className='mr-8 flex flex-col justify-around'
+						href='mailto:james@jamesworden.com'
+						target='_blank'
+					>
 						<svg
 							xmlns='http://www.w3.org/2000/svg'
 							width='37.141'
@@ -74,7 +86,7 @@ export const Layout: React.FC<ILayoutPageProps> = ({ children }) => {
 								/>
 							</g>
 						</svg>
-					</div>
+					</a>
 				</div>
 			</footer>
 		</main>
