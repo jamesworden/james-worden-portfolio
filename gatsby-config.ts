@@ -33,6 +33,7 @@ const config: GatsbyConfig = {
 				],
 			},
 		},
+		'gatsby-plugin-smoothscroll',
 	],
 };
 

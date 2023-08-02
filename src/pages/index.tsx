@@ -1,5 +1,6 @@
 import * as React from 'react';
 import type { HeadFC, PageProps } from 'gatsby';
+import scrollTo from 'gatsby-plugin-smoothscroll';
 
 import headshot from '../images/headshot.jpg';
 import { Layout } from '../components/layout';
@@ -13,7 +14,10 @@ const IndexPage: React.FC<PageProps> = () => {
 			<section className='flex justify-between pt-4'>
 				<span className='uppercase p-4 tracking-widest'>James Worden</span>
 				<div className='flex flex-col justify-around'>
-					<button className='uppercase px-8 py-2 tracking-widest bg-transparent border border-rose-900 text-rose-900 text-sm rounded-md tracking-widest'>
+					<button
+						className='uppercase px-8 py-2 tracking-widest bg-transparent border border-rose-900 text-rose-900 text-sm rounded-md tracking-widest'
+						onClick={() => scrollTo('#contact-section')}
+					>
 						Contact
 					</button>
 				</div>
@@ -72,7 +76,7 @@ const IndexPage: React.FC<PageProps> = () => {
 
 			<SectionDivider displayName='Contact' displayNumber='03'></SectionDivider>
 
-			<section className='flex justify-around flex-col my-16'>
+			<section className='flex justify-around flex-col my-16' id='contact-section'>
 				<div>
 					<h2 className='text-2xl'>james@jamesworden.com</h2>
 
