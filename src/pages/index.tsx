@@ -70,7 +70,25 @@ const IndexPage: React.FC<PageProps> = () => {
 				<ResumeTimeline resumeEntries={resumeEntries}></ResumeTimeline>
 			</section>
 
-			<SectionDivider displayName='Projects' displayNumber='03'></SectionDivider>
+			<SectionDivider displayName='Contact' displayNumber='03'></SectionDivider>
+
+			<section className='flex justify-around flex-col my-16'>
+				<div>
+					<h2 className='text-2xl'>james@jamesworden.com</h2>
+
+					<div className='py-8'>
+						<h5>Name:</h5>
+						<br />
+						<h5>Email:</h5>
+						<br />
+						<h5>Message:</h5>
+					</div>
+
+					<button className='uppercase px-8 py-2 tracking-widest bg-rose-900 text-white text-sm rounded-md shadow-2xl tracking-widest'>
+						Send
+					</button>
+				</div>
+			</section>
 		</Layout>
 	);
 };

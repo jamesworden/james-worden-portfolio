@@ -13,8 +13,8 @@ export const SectionDivider: React.FC<ISectionDividerPageProps> = ({
 }) => {
 	return (
 		<div className='flex w-full'>
-			<span className='pr-4'>{displayNumber}</span>
-			<span className='uppercase tracking-widest pr-4'>{displayName}</span>
+			<span className='pr-4 text-sm italic'>{displayNumber}</span>
+			<span className='uppercase tracking-widest pr-4 text-sm'>{displayName}</span>
 			<div className='flex flex-col justify-around w-full'>
 				<hr className=' border border-black w-full' />
 			</div>
