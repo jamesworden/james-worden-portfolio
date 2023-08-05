@@ -6,6 +6,8 @@ import { Layout } from '../components/layout';
 import { SectionDivider } from '../components/section-divider';
 import { ResumeTimeline } from '../components/resume-timeline';
 import { resumeEntries } from '../data/resume-entries';
+import TextareaAutosize from 'react-textarea-autosize';
+import axios from 'axios';
 
 interface IFormData {
 	name: string;
@@ -19,17 +21,32 @@ const defaultFormData: IFormData = {
 	message: '',
 };
 
+type IInputError = string | null;
+
+const defaultInputError: IInputError = null;
+
 const IndexPage: React.FC<PageProps> = () => {
 	const [formData, setFormData] = React.useState(defaultFormData);
+	const [inputError, setInputError] = React.useState(defaultInputError);
 
-	const handleChange = (event: any) => {
+	const handleFormChange = (event: any) => {
 		const { name, value } = event.target as HTMLInputElement;
 		setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
 	};
 
-	const handleSubmit = (event: any) => {
+	const handleFormSubmit = (event: any) => {
 		event.preventDefault();
-		alert(`Name: ${formData.name}, Email: ${formData.email}, Message: ${formData.message}`);
+
+		// TODO: Validation?
+
+		axios
+			.post('https://ex0av8epzj.execute-api.us-east-1.amazonaws.com/Production', formData)
+			.then((response) => {
+				console.log(response);
+			})
+			.catch((response) => {
+				console.log(response);
+			});
 	};
 
 	return (
@@ -103,7 +120,7 @@ const IndexPage: React.FC<PageProps> = () => {
 				<div>
 					<h2 className='text-2xl'>james@jamesworden.com</h2>
 
-					<form onSubmit={handleSubmit} className='py-8 flex flex-col max-w-sm'>
+					<form onSubmit={handleFormSubmit} className='py-8 flex flex-col max-w-sm'>
 						<div className='flex'>
 							<label htmlFor='name' className='mr-4'>
 								<h5>Name:</h5>
@@ -114,7 +131,7 @@ const IndexPage: React.FC<PageProps> = () => {
 								id='name'
 								name='name'
 								value={formData.name}
-								onChange={handleChange}
+								onChange={handleFormChange}
 							/>
 						</div>
 
@@ -130,7 +147,7 @@ const IndexPage: React.FC<PageProps> = () => {
 								id='email'
 								name='email'
 								value={formData.email}
-								onChange={handleChange}
+								onChange={handleFormChange}
 							/>
 						</div>
 
@@ -140,14 +157,15 @@ const IndexPage: React.FC<PageProps> = () => {
 							<label htmlFor='message' className='mr-4'>
 								<h5>Message:</h5>
 							</label>
-							<textarea
+							<TextareaAutosize
 								className='bg-transparent outline-none border-b border-slate-800 resize-none w-full'
-								rows={3}
-								id='message'
 								name='message'
 								value={formData.message}
-								onChange={handleChange}
-							/>
+								onChange={handleFormChange}
+								id='message'
+								minRows={1}
+								maxRows={5}
+							></TextareaAutosize>
 						</div>
 
 						<div>
