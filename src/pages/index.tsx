@@ -199,11 +199,17 @@ const IndexPage: React.FC<PageProps> = () => {
 						</form>
 					</div>
 				) : messageStatus === MessageStatus.Errored ? (
-					<div>Errored</div>
+					<h3 className='text-xl'>
+						There was an error trying to send your message - try emailing me directly
+						instead. Sorry!
+					</h3>
 				) : messageStatus === MessageStatus.Pending ? (
-					<div>Pending</div>
+					<h3 className='text-xl'>Sending your message...</h3>
 				) : (
-					<div>Sent</div>
+					<div className='flex flex-col'>
+						<h3 className='text-xl mb-2'>Your message was sent.</h3>
+						<span>Thanks for reaching out!</span>
+					</div>
 				)}
 			</section>
 		</Layout>
