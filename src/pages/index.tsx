@@ -209,6 +209,11 @@ const IndexPage: React.FC<PageProps> = () => {
 					<div className='flex flex-col'>
 						<h3 className='text-xl mb-2'>Your message was sent.</h3>
 						<span>Thanks for reaching out!</span>
+						<div>
+							<button className='uppercase px-8 py-2 tracking-widest bg-rose-900 text-white text-sm rounded-md shadow-2xl tracking-widest mt-8'>
+								Send another message
+							</button>
+						</div>
 					</div>
 				)}
 			</section>
