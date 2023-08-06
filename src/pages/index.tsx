@@ -8,6 +8,7 @@ import { ResumeTimeline } from '../components/resume-timeline';
 import { resumeEntries } from '../data/resume-entries';
 import TextareaAutosize from 'react-textarea-autosize';
 import axios from 'axios';
+import { useForm } from 'react-hook-form';
 
 interface IFormData {
 	name: string;
@@ -15,37 +16,21 @@ interface IFormData {
 	message: string;
 }
 
-const defaultFormData: IFormData = {
-	name: '',
-	email: '',
-	message: '',
-};
-
-type IInputError = string | null;
-
-const defaultInputError: IInputError = null;
-
 const IndexPage: React.FC<PageProps> = () => {
-	const [formData, setFormData] = React.useState(defaultFormData);
-	const [inputError, setInputError] = React.useState(defaultInputError);
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<IFormData>();
 
-	const handleFormChange = (event: any) => {
-		const { name, value } = event.target as HTMLInputElement;
-		setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
-	};
-
-	const handleFormSubmit = (event: any) => {
-		event.preventDefault();
-
-		// TODO: Validation?
-
+	const onSubmit = (formData: IFormData) => {
 		axios
 			.post('https://ex0av8epzj.execute-api.us-east-1.amazonaws.com/Production', formData)
 			.then((response) => {
-				console.log(response);
+				console.log(`Success: ${response}`);
 			})
 			.catch((response) => {
-				console.log(response);
+				console.log(`Failure: ${response}`);
 			});
 	};
 
@@ -120,7 +105,7 @@ const IndexPage: React.FC<PageProps> = () => {
 				<div>
 					<h2 className='text-2xl'>james@jamesworden.com</h2>
 
-					<form onSubmit={handleFormSubmit} className='py-8 flex flex-col max-w-sm'>
+					<form onSubmit={handleSubmit(onSubmit)} className='py-8 flex flex-col max-w-sm'>
 						<div className='flex'>
 							<label htmlFor='name' className='mr-4'>
 								<h5>Name:</h5>
@@ -128,12 +113,18 @@ const IndexPage: React.FC<PageProps> = () => {
 							<input
 								className='bg-transparent outline-none border-b border-slate-800 w-full'
 								type='text'
-								id='name'
-								name='name'
-								value={formData.name}
-								onChange={handleFormChange}
+								{...register('name', {
+									required: 'This field is required.',
+									maxLength: 96,
+								})}
 							/>
 						</div>
+
+						{errors.name && (
+							<span className='text-rose-900 text-sm mt-1'>
+								{errors.name?.message}
+							</span>
+						)}
 
 						<br />
 
@@ -143,13 +134,23 @@ const IndexPage: React.FC<PageProps> = () => {
 							</label>
 							<input
 								className='bg-transparent outline-none border-b border-slate-800 w-full'
-								type='email'
-								id='email'
-								name='email'
-								value={formData.email}
-								onChange={handleFormChange}
+								type='text'
+								{...register('email', {
+									required: 'This field is required.',
+									maxLength: 96,
+									pattern: {
+										value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+										message: 'Invalid email address.',
+									},
+								})}
 							/>
 						</div>
+
+						{errors.email?.message && (
+							<span className='text-rose-900 text-sm mt-1'>
+								{errors.email?.message}
+							</span>
+						)}
 
 						<br />
 
@@ -159,14 +160,19 @@ const IndexPage: React.FC<PageProps> = () => {
 							</label>
 							<TextareaAutosize
 								className='bg-transparent outline-none border-b border-slate-800 resize-none w-full'
-								name='message'
-								value={formData.message}
-								onChange={handleFormChange}
-								id='message'
+								{...register('message', {
+									required: 'This field is required.',
+								})}
 								minRows={1}
 								maxRows={5}
 							></TextareaAutosize>
 						</div>
+
+						{errors.message?.message && (
+							<span className='text-rose-900 text-sm mt-1'>
+								{errors.message?.message}
+							</span>
+						)}
 
 						<div>
 							<button
