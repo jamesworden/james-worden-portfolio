@@ -16,14 +16,28 @@ export interface IResumeEntry {
 	company: string;
 	location: string;
 	bulletPoints: string[];
+	image: any;
 }
 
 interface IStartMonthAndYearPageProps {
 	startMonthAndYear: string;
+	resumeEntryPlacement: ResumeEntryPlacement;
 }
 
-const StartMonthAndYear: React.FC<IStartMonthAndYearPageProps> = ({ startMonthAndYear }) => {
-	return <span className='text-rose-900 font-bold'>{startMonthAndYear}</span>;
+const StartMonthAndYear: React.FC<IStartMonthAndYearPageProps> = ({
+	startMonthAndYear,
+	resumeEntryPlacement,
+}) => {
+	return (
+		<span
+			className={cx(
+				'text-rose-900 font-bold absolute top-0',
+				resumeEntryPlacement === ResumeEntryPlacement.Right ? 'right-0' : 'left-0'
+			)}
+		>
+			{startMonthAndYear}
+		</span>
+	);
 };
 
 export interface IResumeTimelinePageProps {
@@ -46,14 +60,21 @@ const Entry: React.FC<IResumeEntryPageProps> = ({ resumeEntry }) => {
 		>
 			<div
 				className={cx(
-					'flex-[5] mt-12',
+					'flex-[5] mt-12 relative',
 					resumeEntry.placement === ResumeEntryPlacement.Right
 						? 'text-right'
 						: 'text-left'
 				)}
 			>
+				<div className='flex justify-around h-full'>
+					<div className='flex justify-around flex-col'>
+						<img src={resumeEntry.image} width={220} />
+					</div>
+				</div>
+
 				<StartMonthAndYear
 					startMonthAndYear={resumeEntry.startMonthAndYear}
+					resumeEntryPlacement={resumeEntry.placement}
 				></StartMonthAndYear>
 			</div>
 

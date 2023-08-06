@@ -1,4 +1,6 @@
 import { IResumeEntry, ResumeEntryPlacement } from '../components/resume-timeline';
+import angularCsharpLogos from '../images/angular-csharp-logos.png';
+import testAutomationLogos from '../images/test-automation-logos.png';
 
 export const resumeEntries: IResumeEntry[] = [
 	{
@@ -13,6 +15,7 @@ export const resumeEntries: IResumeEntry[] = [
 		location: 'Princeton, NJ',
 		placement: ResumeEntryPlacement.Right,
 		startMonthAndYear: 'February 2023',
+		image: angularCsharpLogos,
 	},
 	{
 		bulletPoints: [
@@ -26,6 +29,7 @@ export const resumeEntries: IResumeEntry[] = [
 		location: 'Princeton, NJ',
 		placement: ResumeEntryPlacement.Left,
 		startMonthAndYear: 'June 2022',
+		image: angularCsharpLogos,
 	},
 	{
 		bulletPoints: [
@@ -39,6 +43,7 @@ export const resumeEntries: IResumeEntry[] = [
 		location: 'Princeton, NJ',
 		placement: ResumeEntryPlacement.Right,
 		startMonthAndYear: 'June 2021',
+		image: testAutomationLogos,
 	},
 	{
 		bulletPoints: [
@@ -52,5 +57,6 @@ export const resumeEntries: IResumeEntry[] = [
 		location: 'Queens, NY',
 		placement: ResumeEntryPlacement.Left,
 		startMonthAndYear: 'March 2021',
+		image: angularCsharpLogos,
 	},
 ];
