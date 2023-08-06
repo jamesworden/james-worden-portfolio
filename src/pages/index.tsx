@@ -9,6 +9,14 @@ import { resumeEntries } from '../data/resume-entries';
 import TextareaAutosize from 'react-textarea-autosize';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
+import { useState } from 'react';
+
+enum MessageStatus {
+	NotSent = 'NotSent',
+	Errored = 'Errored',
+	Sent = 'Sent',
+	Pending = 'Pending',
+}
 
 interface IFormData {
 	name: string;
@@ -17,21 +25,23 @@ interface IFormData {
 }
 
 const IndexPage: React.FC<PageProps> = () => {
+	const [messageStatus, setMessageStatus] = useState(MessageStatus.NotSent);
+
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
+		clearErrors,
 	} = useForm<IFormData>();
 
 	const onSubmit = (formData: IFormData) => {
+		clearErrors();
+		setMessageStatus(MessageStatus.Pending);
+
 		axios
 			.post('https://ex0av8epzj.execute-api.us-east-1.amazonaws.com/Production', formData)
-			.then((response) => {
-				console.log(`Success: ${response}`);
-			})
-			.catch((response) => {
-				console.log(`Failure: ${response}`);
-			});
+			.then((_) => setMessageStatus(MessageStatus.Sent))
+			.catch((_) => setMessageStatus(MessageStatus.Errored));
 	};
 
 	return (
@@ -102,88 +112,99 @@ const IndexPage: React.FC<PageProps> = () => {
 			<SectionDivider displayName='Contact' displayNumber='03'></SectionDivider>
 
 			<section className='flex justify-around flex-col my-16' id='contact-section'>
-				<div>
-					<h2 className='text-2xl'>james@jamesworden.com</h2>
+				{messageStatus === MessageStatus.NotSent ? (
+					<div>
+						<h2 className='text-2xl'>james@jamesworden.com</h2>
 
-					<form onSubmit={handleSubmit(onSubmit)} className='py-8 flex flex-col max-w-sm'>
-						<div className='flex'>
-							<label htmlFor='name' className='mr-4'>
-								<h5>Name:</h5>
-							</label>
-							<input
-								className='bg-transparent outline-none border-b border-slate-800 w-full'
-								type='text'
-								{...register('name', {
-									required: 'This field is required.',
-									maxLength: 96,
-								})}
-							/>
-						</div>
+						<form
+							onSubmit={handleSubmit(onSubmit)}
+							className='py-8 flex flex-col max-w-sm'
+						>
+							<div className='flex'>
+								<label htmlFor='name' className='mr-4'>
+									<h5>Name:</h5>
+								</label>
+								<input
+									className='bg-transparent outline-none border-b border-slate-800 w-full'
+									type='text'
+									{...register('name', {
+										required: 'This field is required.',
+										maxLength: 96,
+									})}
+								/>
+							</div>
 
-						{errors.name && (
-							<span className='text-rose-900 text-sm mt-1'>
-								{errors.name?.message}
-							</span>
-						)}
+							{errors.name && (
+								<span className='text-rose-900 text-sm mt-1'>
+									{errors.name?.message}
+								</span>
+							)}
 
-						<br />
+							<br />
 
-						<div className='flex'>
-							<label htmlFor='email' className='mr-4'>
-								<h5>Email:</h5>
-							</label>
-							<input
-								className='bg-transparent outline-none border-b border-slate-800 w-full'
-								type='text'
-								{...register('email', {
-									required: 'This field is required.',
-									maxLength: 96,
-									pattern: {
-										value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-										message: 'Invalid email address.',
-									},
-								})}
-							/>
-						</div>
+							<div className='flex'>
+								<label htmlFor='email' className='mr-4'>
+									<h5>Email:</h5>
+								</label>
+								<input
+									className='bg-transparent outline-none border-b border-slate-800 w-full'
+									type='text'
+									{...register('email', {
+										required: 'This field is required.',
+										maxLength: 96,
+										pattern: {
+											value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+											message: 'Invalid email address.',
+										},
+									})}
+								/>
+							</div>
 
-						{errors.email?.message && (
-							<span className='text-rose-900 text-sm mt-1'>
-								{errors.email?.message}
-							</span>
-						)}
+							{errors.email?.message && (
+								<span className='text-rose-900 text-sm mt-1'>
+									{errors.email?.message}
+								</span>
+							)}
 
-						<br />
+							<br />
 
-						<div className='flex'>
-							<label htmlFor='message' className='mr-4'>
-								<h5>Message:</h5>
-							</label>
-							<TextareaAutosize
-								className='bg-transparent outline-none border-b border-slate-800 resize-none w-full'
-								{...register('message', {
-									required: 'This field is required.',
-								})}
-								minRows={1}
-								maxRows={5}
-							></TextareaAutosize>
-						</div>
+							<div className='flex'>
+								<label htmlFor='message' className='mr-4'>
+									<h5>Message:</h5>
+								</label>
+								<TextareaAutosize
+									className='bg-transparent outline-none border-b border-slate-800 resize-none w-full'
+									{...register('message', {
+										required: 'This field is required.',
+									})}
+									minRows={1}
+									maxRows={5}
+								></TextareaAutosize>
+							</div>
 
-						{errors.message?.message && (
-							<span className='text-rose-900 text-sm mt-1'>
-								{errors.message?.message}
-							</span>
-						)}
+							{errors.message?.message && (
+								<span className='text-rose-900 text-sm mt-1'>
+									{errors.message?.message}
+								</span>
+							)}
 
-						<div>
-							<button
-								type='submit'
-								className='uppercase px-8 py-2 tracking-widest bg-rose-900 text-white text-sm rounded-md shadow-2xl tracking-widest mt-8'
-							>
-								Send
-							</button>
-						</div>
-					</form>
-				</div>
+							<div>
+								<button
+									type='submit'
+									className='uppercase px-8 py-2 tracking-widest bg-rose-900 text-white text-sm rounded-md shadow-2xl tracking-widest mt-8'
+								>
+									Send
+								</button>
+							</div>
+						</form>
+					</div>
+				) : messageStatus === MessageStatus.Errored ? (
+					<div>Errored</div>
+				) : messageStatus === MessageStatus.Pending ? (
+					<div>Pending</div>
+				) : (
+					<div>Sent</div>
+				)}
 			</section>
 		</Layout>
 	);
