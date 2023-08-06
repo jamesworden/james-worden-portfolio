@@ -68,7 +68,11 @@ const Entry: React.FC<IResumeEntryPageProps> = ({ resumeEntry }) => {
 			>
 				<div className='flex justify-around h-full'>
 					<div className='flex justify-around flex-col'>
-						<img src={resumeEntry.image} width={220} />
+						<img
+							src={resumeEntry.image}
+							width={220}
+							className='grayscale hover:grayscale-0 transition opacity-25 hover:opacity-70'
+						/>
 					</div>
 				</div>
 
@@ -115,8 +119,8 @@ export const ResumeTimeline: React.FC<IResumeTimelinePageProps> = ({ resumeEntri
 				))}
 			</div>
 
-			<div className='absolute top-0 left-0 flex justify-around w-full h-full'>
-				<div className='w-px h-full bg-rose-900 m-auto'></div>
+			<div className='absolute flex justify-around h-full m-auto top-0 left-1/2 w-px'>
+				<div className='w-px h-full bg-rose-900'></div>
 			</div>
 		</div>
 	);
