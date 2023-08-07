@@ -103,13 +103,33 @@ const IndexPage: React.FC<PageProps> = () => {
 				</p>
 			</section>
 
-			<SectionDivider displayName='Resume' displayNumber='02'></SectionDivider>
+			<SectionDivider displayName='Skills' displayNumber='02'></SectionDivider>
+
+			<section className='flex flex-wrap justify-between my-16'>
+				<div className='max-w-xs p-2'>
+					<h3 className='text-xl border-b border-slate-700'>Frontend</h3>
+					<p>
+						Angular, React, Gatsby, TypeScript, JavaScript, HTML, CSS, SASS, Bootstrap,
+						Tailwind, NX, RXJS, NPM, Adobe XD
+					</p>
+				</div>
+				<div className='max-w-xs p-2'>
+					<h3 className='text-xl border-b border-slate-700'>Backend</h3>
+					<p>C#, Java, NodeJS, PostgreSQL, MongoDB, Redis, RabbitMQ</p>
+				</div>
+				<div className='max-w-xs p-2'>
+					<h3 className='text-xl border-b border-slate-700'>Testing & Infrastructure</h3>
+					<p>Playwright, Cypress, Jest, Postman, AWS, Docker, Git, Bitbucket, Bamboo</p>
+				</div>
+			</section>
+
+			<SectionDivider displayName='Resume' displayNumber='03'></SectionDivider>
 
 			<section className='flex justify-around my-16'>
 				<ResumeTimeline resumeEntries={resumeEntries}></ResumeTimeline>
 			</section>
 
-			<SectionDivider displayName='Contact' displayNumber='03'></SectionDivider>
+			<SectionDivider displayName='Contact' displayNumber='04'></SectionDivider>
 
 			<section className='flex justify-around flex-col my-16' id='contact-section'>
 				{messageStatus === MessageStatus.NotSent ? (
