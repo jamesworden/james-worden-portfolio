@@ -31,8 +31,8 @@ const StartMonthAndYear: React.FC<IStartMonthAndYearPageProps> = ({
 	return (
 		<span
 			className={cx(
-				'text-rose-900 font-bold absolute top-0',
-				resumeEntryPlacement === ResumeEntryPlacement.Right ? 'right-0' : 'left-0'
+				'text-rose-900 font-bold absolute md:top-0 left-0 -top-4',
+				resumeEntryPlacement === ResumeEntryPlacement.Right ? 'md:right-0' : 'md:left-0'
 			)}
 		>
 			{startMonthAndYear}
@@ -52,10 +52,10 @@ const Entry: React.FC<IResumeEntryPageProps> = ({ resumeEntry }) => {
 	return (
 		<div
 			className={cx(
-				'flex w-full relative',
+				'flex w-full relative m-4 md:m-0 flex-col max-w-xl md:max-w-none',
 				resumeEntry.placement === ResumeEntryPlacement.Right
-					? 'flex-row'
-					: 'flex-row-reverse'
+					? 'md:flex-row'
+					: 'md:flex-row-reverse'
 			)}
 		>
 			<div
@@ -71,7 +71,7 @@ const Entry: React.FC<IResumeEntryPageProps> = ({ resumeEntry }) => {
 						<img
 							src={resumeEntry.image}
 							width={220}
-							className='grayscale hover:grayscale-0 transition opacity-25 hover:opacity-70'
+							className='grayscale hover:grayscale-0 transition opacity-25 hover:opacity-70 hidden md:block'
 						/>
 					</div>
 				</div>
@@ -119,7 +119,7 @@ export const ResumeTimeline: React.FC<IResumeTimelinePageProps> = ({ resumeEntri
 				))}
 			</div>
 
-			<div className='absolute flex justify-around h-full m-auto top-0 left-1/2 w-px'>
+			<div className='absolute flex justify-around h-full top-0 md:left-1/2 left-0 w-px'>
 				<div className='w-px h-full bg-rose-900'></div>
 			</div>
 		</div>
