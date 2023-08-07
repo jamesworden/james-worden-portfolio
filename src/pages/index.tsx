@@ -1,6 +1,5 @@
 import * as React from 'react';
 import type { HeadFC, PageProps } from 'gatsby';
-import scrollTo from 'gatsby-plugin-smoothscroll';
 import headshot from '../images/headshot.jpg';
 import { Layout } from '../components/layout';
 import { SectionDivider } from '../components/section-divider';
@@ -52,18 +51,6 @@ const IndexPage: React.FC<PageProps> = () => {
 
 	return (
 		<Layout>
-			<section className='flex justify-between pt-4'>
-				<span className='uppercase p-4 tracking-widest'>James Worden</span>
-				<div className='flex flex-col justify-around'>
-					<button
-						className='uppercase px-8 py-2 tracking-widest bg-transparent border border-rose-900 text-rose-900 text-sm rounded-md tracking-widest'
-						onClick={() => scrollTo('#contact-section')}
-					>
-						Contact
-					</button>
-				</div>
-			</section>
-
 			<section className='flex justify-between mt-36 mb-40 flex-col md:flex-row flex'>
 				<div className='pt-[50px] flex flex-col mb-8'>
 					<div className='pb-8'>
@@ -115,18 +102,18 @@ const IndexPage: React.FC<PageProps> = () => {
 
 			<section className='flex flex-wrap justify-between my-16'>
 				<div className='max-w-xs p-2'>
-					<h3 className='text-xl border-b border-slate-700'>Frontend</h3>
+					<h3 className='text-xl mb-2 border-b'>Frontend</h3>
 					<p>
 						Angular, React, Gatsby, TypeScript, JavaScript, HTML, CSS, SASS, Bootstrap,
 						TailwindCSS, NX, RXJS, NPM, Adobe XD
 					</p>
 				</div>
 				<div className='max-w-xs p-2'>
-					<h3 className='text-xl border-b border-slate-700'>Backend</h3>
+					<h3 className='text-xl mb-2 border-b'>Backend</h3>
 					<p>C#, Java, NodeJS, PostgreSQL, MongoDB, Redis, RabbitMQ</p>
 				</div>
 				<div className='max-w-xs p-2'>
-					<h3 className='text-xl border-b border-slate-700'>Testing & Infrastructure</h3>
+					<h3 className='text-xl mb-2 border-b'>Testing & Infrastructure</h3>
 					<p>Playwright, Cypress, Jest, Postman, AWS, Docker, Git, Bitbucket, Bamboo</p>
 				</div>
 			</section>
