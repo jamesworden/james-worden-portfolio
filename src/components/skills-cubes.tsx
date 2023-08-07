@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import { Suspense } from 'react';
 import '../styles/global.scss';
 import { Canvas } from '@react-three/fiber';
 import { Physics, usePlane, useBox, Triplet } from '@react-three/cannon';
@@ -44,7 +44,9 @@ export const SkillsCubes: React.FC<ISkillsCubesPageProps> = ({ skillCubes }) => 
 	};
 
 	const Cube = (props: ICubeProps) => {
-		const [colorMap] = useTexture([props.image]);
+		const [colorMap, displacementMap, normalMap, roughnessMap, aoMap] = useTexture([
+			props.image,
+		]);
 
 		const [ref] = useBox(() => ({
 			mass: 1,
@@ -55,7 +57,15 @@ export const SkillsCubes: React.FC<ISkillsCubesPageProps> = ({ skillCubes }) => 
 		return (
 			<mesh ref={ref as React.RefObject<Mesh<BufferGeometry>>}>
 				<RoundedBox castShadow receiveShadow>
-					<meshPhongMaterial attach='material' color={props.color} map={colorMap} />
+					<meshStandardMaterial
+						attach='material'
+						map={colorMap}
+						displacementMap={displacementMap}
+						normalMap={normalMap}
+						roughnessMap={roughnessMap}
+						aoMap={aoMap}
+						displacementScale={0.2}
+					/>
 				</RoundedBox>
 			</mesh>
 		);
@@ -64,30 +74,31 @@ export const SkillsCubes: React.FC<ISkillsCubesPageProps> = ({ skillCubes }) => 
 	return (
 		<div className='h-64 w-full'>
 			<Canvas shadows camera={{ position: [0, 1.5, 1], rotation: [-0.2, 0, 0] }}>
-				<color />
-				<directionalLight
-					castShadow
-					position={[2.5, 8, 5]}
-					intensity={3.5}
-					shadow-mapSize-width={1024}
-					shadow-mapSize-height={1024}
-					shadow-camera-far={50}
-					shadow-camera-left={-10}
-					shadow-camera-right={10}
-					shadow-camera-top={10}
-					shadow-camera-bottom={-10}
-				/>
-				<Physics>
-					<PlaneC />
-					{skillCubes.map((skillCube) => (
-						<Cube
-							position={skillCube.position}
-							color={skillCube.color}
-							rotation={skillCube.rotation}
-							image={skillCube.image}
-						/>
-					))}
-				</Physics>
+				<Suspense fallback={null}>
+					<directionalLight
+						castShadow
+						position={[2.5, 8, 5]}
+						intensity={3.5}
+						shadow-mapSize-width={1024}
+						shadow-mapSize-height={1024}
+						shadow-camera-far={50}
+						shadow-camera-left={-10}
+						shadow-camera-right={10}
+						shadow-camera-top={10}
+						shadow-camera-bottom={-10}
+					/>
+					<Physics>
+						<PlaneC />
+						{skillCubes.map((skillCube) => (
+							<Cube
+								position={skillCube.position}
+								color={skillCube.color}
+								rotation={skillCube.rotation}
+								image={skillCube.image}
+							/>
+						))}
+					</Physics>
+				</Suspense>
 			</Canvas>
 		</div>
 	);
