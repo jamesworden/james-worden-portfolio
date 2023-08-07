@@ -30,7 +30,7 @@ export const Layout: React.FC<ILayoutPageProps> = ({ children, contactSectionId 
 	};
 
 	return (
-		<main className='bg-gray-100 dark:bg-gray-800 transition'>
+		<main className='bg-gray-100 dark:bg-gray-900 transition dark:text-gray-100'>
 			{/* https://github.com/wcBurgess/Huddle-landing-page-with-tailwindCSS/blob/master/index.html */}
 			<svg
 				className='absolute mt-[56px] max-h-24 w-full'
@@ -100,7 +100,7 @@ export const Layout: React.FC<ILayoutPageProps> = ({ children, contactSectionId 
 
 			<div className='m-auto max-w-screen-lg flex flex-col px-4 relative'>{children}</div>
 
-			<footer className='w-full bg-emerald-950 flex justify-around'>
+			<footer className='w-full bg-emerald-950 dark:bg-gray-950 flex justify-around'>
 				<div className='max-w-screen-lg flex p-4 w-full m-auto'>
 					<a
 						className='mr-8 flex flex-col justify-around'

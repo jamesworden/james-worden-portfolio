@@ -16,7 +16,7 @@ export const SectionDivider: React.FC<ISectionDividerPageProps> = ({
 			<span className='pr-4 text-sm italic'>{displayNumber}</span>
 			<span className='uppercase tracking-widest pr-4 text-sm'>{displayName}</span>
 			<div className='flex flex-col justify-around w-full'>
-				<hr className=' border border-black w-full' />
+				<hr className=' border border-black w-full dark:border-gray-100' />
 			</div>
 		</div>
 	);

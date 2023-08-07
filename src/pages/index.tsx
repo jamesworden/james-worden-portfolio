@@ -61,7 +61,7 @@ const IndexPage: React.FC<PageProps> = () => {
 					</div>
 
 					<div>
-						<button className='uppercase px-8 py-2 tracking-widest bg-rose-900 text-white text-sm rounded-md shadow-2xl tracking-widest'>
+						<button className='uppercase px-8 py-2 tracking-widest bg-rose-900 dark:bg-emerald-900 text-white text-sm rounded-md shadow-2xl tracking-widest transition'>
 							My Projects
 						</button>
 					</div>
@@ -70,7 +70,7 @@ const IndexPage: React.FC<PageProps> = () => {
 				<div className='flex justify-end'>
 					<div className='relative mr-4 md:w-[360px] md:h-[240px] w-[320px] h-[213.3px]'>
 						<img alt='Headshot' src={headshot} className='rounded-3xl absolute z-10' />
-						<div className='absolute top-[20px] left-[20px] w-full md:h-full bg-rose-900 rounded-3xl z-2 shadow-2xl h-[213px]' />
+						<div className='absolute top-[20px] left-[20px] w-full md:h-full bg-rose-900 dark:bg-emerald-900 rounded-3xl z-2 shadow-2xl h-[213px] transition' />
 					</div>
 				</div>
 			</section>
@@ -150,7 +150,7 @@ const IndexPage: React.FC<PageProps> = () => {
 							</div>
 
 							{errors.name && (
-								<span className='text-rose-900 text-sm mt-1'>
+								<span className='text-rose-900 dark:text-gray-100 text-sm mt-1 transition'>
 									{errors.name?.message}
 								</span>
 							)}
@@ -176,7 +176,7 @@ const IndexPage: React.FC<PageProps> = () => {
 							</div>
 
 							{errors.email?.message && (
-								<span className='text-rose-900 text-sm mt-1'>
+								<span className='text-rose-900 dark:text-gray-100 text-sm mt-1 transition'>
 									{errors.email?.message}
 								</span>
 							)}
@@ -198,7 +198,7 @@ const IndexPage: React.FC<PageProps> = () => {
 							</div>
 
 							{errors.message?.message && (
-								<span className='text-rose-900 text-sm mt-1'>
+								<span className='text-rose-900 dark:text-gray-100 text-sm mt-1 transition'>
 									{errors.message?.message}
 								</span>
 							)}
@@ -206,7 +206,7 @@ const IndexPage: React.FC<PageProps> = () => {
 							<div>
 								<button
 									type='submit'
-									className='uppercase px-8 py-2 tracking-widest bg-rose-900 text-white text-sm rounded-md shadow-2xl tracking-widest mt-8'
+									className='uppercase px-8 py-2 tracking-widest bg-rose-900 dark:bg-emerald-900 transition text-white text-sm rounded-md shadow-2xl tracking-widest mt-8'
 								>
 									Send
 								</button>
@@ -226,7 +226,7 @@ const IndexPage: React.FC<PageProps> = () => {
 						<span>Thanks for reaching out!</span>
 						<div>
 							<button
-								className='uppercase px-8 py-2 tracking-widest bg-rose-900 text-white text-sm rounded-md shadow-2xl tracking-widest mt-8'
+								className='uppercase px-8 py-2 tracking-widest bg-rose-900 dark:bg-emerald-900 transition text-white text-sm rounded-md shadow-2xl tracking-widest mt-8'
 								onClick={handleSendAnother}
 							>
 								Send another

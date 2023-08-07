@@ -31,7 +31,7 @@ const StartMonthAndYear: React.FC<IStartMonthAndYearPageProps> = ({
 	return (
 		<span
 			className={cx(
-				'text-rose-900 font-bold absolute md:top-0 left-0 -top-4',
+				'text-rose-900 dark:text-gray-100 font-bold absolute md:top-0 left-0 -top-4',
 				resumeEntryPlacement === ResumeEntryPlacement.Right ? 'md:right-0' : 'md:left-0'
 			)}
 		>
@@ -84,7 +84,7 @@ const Entry: React.FC<IResumeEntryPageProps> = ({ resumeEntry }) => {
 
 			<div className='flex-1'></div>
 
-			<div className='flex-[4] p-8 mt-4 mb-8 shadow-xl bg-zinc-100 rounded'>
+			<div className='flex-[4] p-8 mt-4 mb-8 shadow-xl bg-zinc-100 dark:bg-gray-700 rounded'>
 				<div className='flex flex-col justify-between'>
 					<div className='flex justify-between pb-4'>
 						<div className='flex flex-col'>
@@ -120,7 +120,7 @@ export const ResumeTimeline: React.FC<IResumeTimelinePageProps> = ({ resumeEntri
 			</div>
 
 			<div className='absolute flex justify-around h-full top-0 md:left-1/2 left-0 w-px'>
-				<div className='w-px h-full bg-rose-900'></div>
+				<div className='w-px h-full bg-rose-900 dark:bg-gray-100'></div>
 			</div>
 		</div>
 	);
