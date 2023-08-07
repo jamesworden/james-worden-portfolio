@@ -80,15 +80,15 @@ export const Layout: React.FC<ILayoutPageProps> = ({ children, contactSectionId 
 							</button>
 						</div> */}
 
-						<div className='flex flex-col justify-around mr-4'>
+						{/* <div className='flex flex-col justify-around mr-4'>
 							<button className='text-xs md:text-sm uppercase md:px-8 py-2 tracking-widest bg-transparent text-white rounded-md tracking-widest md:bg-emerald-700 transition hover:bg-emerald-600'>
 								Projects
 							</button>
-						</div>
+						</div> */}
 
 						<div className='flex flex-col justify-around mr-4'>
 							<button
-								className='text-xs md:text-sm uppercase md:px-8 py-2 tracking-widest bg-transparent text-white rounded-md tracking-widest md:bg-emerald-600 transition hover:bg-emerald-500'
+								className='text-xs md:text-sm uppercase md:px-8 py-2 tracking-widest bg-transparent text-white rounded-md tracking-widest md:bg-emerald-700 transition hover:bg-emerald-600'
 								onClick={handleContact}
 							>
 								Contact
