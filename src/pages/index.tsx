@@ -62,7 +62,7 @@ const IndexPage: React.FC<PageProps> = () => {
 
 					<div>
 						<button className='uppercase px-8 py-2 tracking-widest bg-rose-900 text-white text-sm rounded-md shadow-2xl tracking-widest'>
-							My Work
+							My Projects
 						</button>
 					</div>
 				</div>
