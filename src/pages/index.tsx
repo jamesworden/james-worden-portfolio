@@ -90,7 +90,7 @@ const IndexPage: React.FC<PageProps> = () => {
 
 			<SectionDivider displayName='About' displayNumber='01'></SectionDivider>
 
-			<section className='columns-2 my-16'>
+			<section className='md:columns-2 my-16'>
 				<p>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
 					incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
