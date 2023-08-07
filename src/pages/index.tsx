@@ -12,7 +12,7 @@ import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 
 enum MessageStatus {
-	NotSent = 'NotSent',
+	Ready = 'Ready',
 	Errored = 'Errored',
 	Sent = 'Sent',
 	Pending = 'Pending',
@@ -25,13 +25,14 @@ interface IFormData {
 }
 
 const IndexPage: React.FC<PageProps> = () => {
-	const [messageStatus, setMessageStatus] = useState(MessageStatus.NotSent);
+	const [messageStatus, setMessageStatus] = useState(MessageStatus.Ready);
 
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 		clearErrors,
+		reset,
 	} = useForm<IFormData>();
 
 	const onSubmit = (formData: IFormData) => {
@@ -42,6 +43,11 @@ const IndexPage: React.FC<PageProps> = () => {
 			.post('https://ex0av8epzj.execute-api.us-east-1.amazonaws.com/Production', formData)
 			.then((_) => setMessageStatus(MessageStatus.Sent))
 			.catch((_) => setMessageStatus(MessageStatus.Errored));
+	};
+
+	const handleSendAnother = () => {
+		setMessageStatus(MessageStatus.Ready);
+		reset();
 	};
 
 	return (
@@ -132,7 +138,7 @@ const IndexPage: React.FC<PageProps> = () => {
 			<SectionDivider displayName='Contact' displayNumber='04'></SectionDivider>
 
 			<section className='flex justify-around flex-col my-16' id='contact-section'>
-				{messageStatus === MessageStatus.NotSent ? (
+				{messageStatus === MessageStatus.Ready ? (
 					<div>
 						<h2 className='text-2xl'>james@jamesworden.com</h2>
 
@@ -230,7 +236,10 @@ const IndexPage: React.FC<PageProps> = () => {
 						<h3 className='text-xl mb-2'>Your message was sent.</h3>
 						<span>Thanks for reaching out!</span>
 						<div>
-							<button className='uppercase px-8 py-2 tracking-widest bg-rose-900 text-white text-sm rounded-md shadow-2xl tracking-widest mt-8'>
+							<button
+								className='uppercase px-8 py-2 tracking-widest bg-rose-900 text-white text-sm rounded-md shadow-2xl tracking-widest mt-8'
+								onClick={handleSendAnother}
+							>
 								Send another
 							</button>
 						</div>
