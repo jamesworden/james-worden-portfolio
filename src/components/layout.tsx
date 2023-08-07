@@ -34,7 +34,7 @@ export const Layout: React.FC<ILayoutPageProps> = ({ children, contactSectionId 
 			<nav className='flex justify-around bg-emerald-950 dark:bg-gray-950 transition sticky top-0 z-50'>
 				{/* https://github.com/wcBurgess/Huddle-landing-page-with-tailwindCSS/blob/master/index.html */}
 				<svg
-					className='absolute mt-[56px] max-h-24 w-full'
+					className='absolute mt-[56px] max-h-4 sm:max-h-8 md:max-h-12 w-full'
 					viewBox='0 0 1439 147'
 					version='1.1'
 					xmlns='http://www.w3.org/2000/svg'
