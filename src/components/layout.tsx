@@ -18,7 +18,7 @@ export const Layout: React.FC<ILayoutPageProps> = ({ children, contactSectionId 
 
 	return (
 		<main>
-			<header className='flex justify-around bg-emerald-950 sticky top-0 z-50 w-screen'>
+			<header className='flex justify-around bg-emerald-950 sticky top-0 z-50'>
 				<nav className='flex justify-between max-w-screen-lg w-full px-4 py-2'>
 					<div className='hidden md:table'>
 						<span className='uppercase tracking-widest text-white table-cell align-middle'>
