@@ -88,7 +88,7 @@ const IndexPage: React.FC<PageProps> = () => {
 				</div>
 			</section>
 
-			{/* <SectionDivider displayName='About' displayNumber='01'></SectionDivider>
+			{/* <SectionDivider displayName='About' displayNumber='00'></SectionDivider>
 
 			<section className='md:columns-2 my-16'>
 				<p>
