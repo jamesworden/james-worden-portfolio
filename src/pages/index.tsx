@@ -50,7 +50,7 @@ const IndexPage: React.FC<PageProps> = () => {
 	};
 
 	return (
-		<Layout>
+		<Layout contactSectionId='#contact-section'>
 			<section className='flex justify-between my-8 md:mt-36 mb-40 flex-col md:flex-row flex'>
 				<div className='pt-[50px] flex flex-col mb-8'>
 					<div className='pb-8'>
