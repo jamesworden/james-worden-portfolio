@@ -118,7 +118,7 @@ const IndexPage: React.FC<PageProps> = () => {
 					<h3 className='text-xl border-b border-slate-700'>Frontend</h3>
 					<p>
 						Angular, React, Gatsby, TypeScript, JavaScript, HTML, CSS, SASS, Bootstrap,
-						Tailwind, NX, RXJS, NPM, Adobe XD
+						TailwindCSS, NX, RXJS, NPM, Adobe XD
 					</p>
 				</div>
 				<div className='max-w-xs p-2'>
