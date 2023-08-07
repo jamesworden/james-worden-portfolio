@@ -88,7 +88,7 @@ const IndexPage: React.FC<PageProps> = () => {
 				</div>
 			</section>
 
-			<SectionDivider displayName='About' displayNumber='01'></SectionDivider>
+			{/* <SectionDivider displayName='About' displayNumber='01'></SectionDivider>
 
 			<section className='md:columns-2 my-16'>
 				<p>
@@ -109,9 +109,9 @@ const IndexPage: React.FC<PageProps> = () => {
 					consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing
 					elit.
 				</p>
-			</section>
+			</section> */}
 
-			<SectionDivider displayName='Skills' displayNumber='02'></SectionDivider>
+			<SectionDivider displayName='Skills' displayNumber='01'></SectionDivider>
 
 			<section className='flex flex-wrap justify-between my-16'>
 				<div className='max-w-xs p-2'>
@@ -131,13 +131,13 @@ const IndexPage: React.FC<PageProps> = () => {
 				</div>
 			</section>
 
-			<SectionDivider displayName='Resume' displayNumber='03'></SectionDivider>
+			<SectionDivider displayName='Resume' displayNumber='02'></SectionDivider>
 
 			<section className='flex justify-around my-16'>
 				<ResumeTimeline resumeEntries={resumeEntries}></ResumeTimeline>
 			</section>
 
-			<SectionDivider displayName='Contact' displayNumber='04'></SectionDivider>
+			<SectionDivider displayName='Contact' displayNumber='03'></SectionDivider>
 
 			<section className='flex justify-around flex-col my-16' id='contact-section'>
 				{messageStatus === MessageStatus.Ready ? (
