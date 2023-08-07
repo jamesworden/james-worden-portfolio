@@ -9,6 +9,8 @@ import TextareaAutosize from 'react-textarea-autosize';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+import { SkillsCubes } from '../components/skills-cubes';
+import { skillCubes } from '../data/skill-cubes';
 
 enum MessageStatus {
 	Ready = 'Ready',
@@ -100,22 +102,28 @@ const IndexPage: React.FC<PageProps> = () => {
 
 			<SectionDivider displayName='Skills' displayNumber='01'></SectionDivider>
 
-			<section className='flex flex-wrap justify-between my-16'>
-				<div className='max-w-xs p-2'>
-					<h3 className='text-xl mb-2 border-b'>Frontend</h3>
-					<p>
-						Angular, React, Gatsby, TypeScript, JavaScript, HTML, CSS, SASS, Bootstrap,
-						TailwindCSS, NX, RXJS, NPM, Adobe XD
-					</p>
+			<section className='flex flex-col mt-16 mb-4'>
+				<div className='flex flex-wrap justify-between'>
+					<div className='max-w-xs p-2'>
+						<h3 className='text-xl mb-2 border-b'>Frontend</h3>
+						<p>
+							Angular, React, Gatsby, TypeScript, JavaScript, HTML, CSS, SASS,
+							Bootstrap, TailwindCSS, NX, RXJS, NPM, Adobe XD
+						</p>
+					</div>
+					<div className='max-w-xs p-2'>
+						<h3 className='text-xl mb-2 border-b'>Backend</h3>
+						<p>C#, Java, NodeJS, PostgreSQL, MongoDB, Redis, RabbitMQ</p>
+					</div>
+					<div className='max-w-xs p-2'>
+						<h3 className='text-xl mb-2 border-b'>Testing & Infrastructure</h3>
+						<p>
+							Playwright, Cypress, Jest, Postman, AWS, Docker, Git, Bitbucket, Bamboo
+						</p>
+					</div>
 				</div>
-				<div className='max-w-xs p-2'>
-					<h3 className='text-xl mb-2 border-b'>Backend</h3>
-					<p>C#, Java, NodeJS, PostgreSQL, MongoDB, Redis, RabbitMQ</p>
-				</div>
-				<div className='max-w-xs p-2'>
-					<h3 className='text-xl mb-2 border-b'>Testing & Infrastructure</h3>
-					<p>Playwright, Cypress, Jest, Postman, AWS, Docker, Git, Bitbucket, Bamboo</p>
-				</div>
+
+				<SkillsCubes skillCubes={skillCubes}></SkillsCubes>
 			</section>
 
 			<SectionDivider displayName='Resume' displayNumber='02'></SectionDivider>
