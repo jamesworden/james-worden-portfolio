@@ -64,8 +64,8 @@ const IndexPage: React.FC<PageProps> = () => {
 				</div>
 			</section>
 
-			<section className='flex justify-between mt-36 mb-40'>
-				<div className='pt-[50px] flex flex-col'>
+			<section className='flex justify-between mt-36 mb-40 flex-col md:flex-row flex'>
+				<div className='pt-[50px] flex flex-col mb-8'>
 					<div className='pb-8'>
 						<h1 className='text-4xl pb-2'>I'm James Worden.</h1>
 						<span>I strive to build simple and</span>
@@ -80,9 +80,11 @@ const IndexPage: React.FC<PageProps> = () => {
 					</div>
 				</div>
 
-				<div className='relative mr-4 w-[360px] h-[240px]'>
-					<img alt='Headshot' src={headshot} className='rounded-3xl absolute z-10' />
-					<div className='absolute top-[20px] left-[20px] w-full h-full bg-rose-900 rounded-3xl z-2 shadow-2xl' />
+				<div className='flex justify-end'>
+					<div className='relative mr-4 w-[360px] h-[240px]'>
+						<img alt='Headshot' src={headshot} className='rounded-3xl absolute z-10' />
+						<div className='absolute top-[20px] left-[20px] w-full h-full bg-rose-900 rounded-3xl z-2 shadow-2xl' />
+					</div>
 				</div>
 			</section>
 
