@@ -51,7 +51,7 @@ const IndexPage: React.FC<PageProps> = () => {
 
 	return (
 		<Layout>
-			<section className='flex justify-between md:mt-36 mb-40 flex-col md:flex-row flex'>
+			<section className='flex justify-between my-8 md:mt-36 mb-40 flex-col md:flex-row flex'>
 				<div className='pt-[50px] flex flex-col mb-8'>
 					<div className='pb-8'>
 						<h1 className='text-4xl pb-2'>I'm James Worden.</h1>
@@ -70,7 +70,7 @@ const IndexPage: React.FC<PageProps> = () => {
 				<div className='flex justify-end'>
 					<div className='relative mr-4 md:w-[360px] md:h-[240px] w-[320px] h-[213.3px]'>
 						<img alt='Headshot' src={headshot} className='rounded-3xl absolute z-10' />
-						<div className='absolute top-[20px] left-[20px] w-full md:h-full bg-rose-900 rounded-3xl z-2 shadow-2xl h-[190px]' />
+						<div className='absolute top-[20px] left-[20px] w-full md:h-full bg-rose-900 rounded-3xl z-2 shadow-2xl h-[213px]' />
 					</div>
 				</div>
 			</section>

@@ -19,27 +19,29 @@ export const Layout: React.FC<ILayoutPageProps> = ({ children, contactSectionId 
 	return (
 		<main>
 			<header className='flex justify-around bg-emerald-950 sticky top-0 z-50 w-screen'>
-				<nav className='flex justify-between max-w-screen-lg w-full'>
-					<span className='uppercase p-4 tracking-widest text-white text-xs md:text-md'>
-						James Worden
-					</span>
+				<nav className='flex justify-between max-w-screen-lg w-full px-4 py-2'>
+					<div className='hidden md:table'>
+						<span className='uppercase tracking-widest text-white table-cell align-middle'>
+							James Worden
+						</span>
+					</div>
 
 					<div className='flex'>
 						<div className='flex flex-col justify-around mr-4'>
-							<button className='uppercase px-8 py-2 tracking-widest bg-transparent text-white text-sm rounded-md tracking-widest bg-emerald-700 transition hover:bg-emerald-600'>
+							<button className='text-xs md:text-sm uppercase md:px-8 py-2 tracking-widest bg-transparent text-white rounded-md tracking-widest md:bg-emerald-700 transition hover:bg-emerald-600'>
 								Blog
 							</button>
 						</div>
 
 						<div className='flex flex-col justify-around mr-4'>
-							<button className='uppercase px-8 py-2 tracking-widest bg-transparent text-white text-sm rounded-md tracking-widest bg-emerald-600 transition hover:bg-emerald-500'>
+							<button className='text-xs md:text-sm uppercase md:px-8 py-2 tracking-widest bg-transparent text-white rounded-md tracking-widest md:bg-emerald-600 transition hover:bg-emerald-500'>
 								Projects
 							</button>
 						</div>
 
 						<div className='flex flex-col justify-around mr-4'>
 							<button
-								className='uppercase px-8 py-2 tracking-widest bg-transparent text-white text-sm rounded-md tracking-widest bg-emerald-500 transition hover:bg-emerald-400'
+								className='text-xs md:text-sm uppercase md:px-8 py-2 tracking-widest bg-transparent text-white rounded-md tracking-widest md:bg-emerald-500 transition hover:bg-emerald-400'
 								onClick={handleContact}
 							>
 								Contact
