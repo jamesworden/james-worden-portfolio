@@ -3,13 +3,11 @@ import { Suspense } from 'react';
 import '../styles/global.scss';
 import { Canvas } from '@react-three/fiber';
 import { Physics, usePlane, useBox, Triplet } from '@react-three/cannon';
-import { Plane, RoundedBox, SoftShadows, useTexture } from '@react-three/drei';
+import { Box, Plane, RoundedBox, SoftShadows, useTexture } from '@react-three/drei';
 import { BufferGeometry, Mesh } from 'three';
 
 export interface ISkillCube {
 	rotation: Triplet;
-	color: string;
-	name: string;
 	position: Triplet;
 	image: any;
 }
@@ -21,7 +19,6 @@ export interface ISkillsCubesPageProps {
 interface ICubeProps {
 	position: Triplet;
 	rotation: Triplet;
-	color: string;
 	image: any;
 }
 
@@ -56,9 +53,10 @@ export const SkillsCubes: React.FC<ISkillsCubesPageProps> = ({ skillCubes }) => 
 
 		return (
 			<mesh ref={ref as React.RefObject<Mesh<BufferGeometry>>}>
-				<RoundedBox castShadow receiveShadow>
+				<Box castShadow receiveShadow>
 					<meshStandardMaterial
-						attach='material'
+						metalness={3}
+						toneMapped
 						map={colorMap}
 						displacementMap={displacementMap}
 						normalMap={normalMap}
@@ -66,7 +64,7 @@ export const SkillsCubes: React.FC<ISkillsCubesPageProps> = ({ skillCubes }) => 
 						aoMap={aoMap}
 						displacementScale={0.2}
 					/>
-				</RoundedBox>
+				</Box>
 			</mesh>
 		);
 	};
@@ -92,7 +90,6 @@ export const SkillsCubes: React.FC<ISkillsCubesPageProps> = ({ skillCubes }) => 
 						{skillCubes.map((skillCube) => (
 							<Cube
 								position={skillCube.position}
-								color={skillCube.color}
 								rotation={skillCube.rotation}
 								image={skillCube.image}
 							/>
