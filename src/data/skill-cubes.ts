@@ -7,7 +7,7 @@ import reactLogo from '../images/react-logo.png';
 export const skillCubes: ISkillCube[] = [
 	{
 		rotation: [1.2, 1, 1],
-		position: [-4, 1, -2],
+		position: [-2, 1, -2],
 		image: javascriptLogo,
 	},
 	{
