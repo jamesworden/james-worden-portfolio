@@ -1,7 +1,8 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import { Suspense } from 'react';
 import '../styles/global.scss';
-import { Canvas } from '@react-three/fiber';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { Physics, usePlane, useBox, Triplet } from '@react-three/cannon';
 import { Box, Plane, SoftShadows, useTexture } from '@react-three/drei';
 import { BufferGeometry, Mesh } from 'three';
@@ -24,7 +25,24 @@ interface ICubeProps {
 
 export const SkillsCubes: React.FC<ISkillsCubesPageProps> = ({ skillCubes }) => {
 	const PlaneC = () => {
-		const [ref] = usePlane(() => ({ rotation: [-Math.PI / 2, 0, 0] }));
+		const [ref, api] = usePlane<Mesh>(() => ({ rotation: [-Math.PI / 2, -scrollY / 1000, 0] }));
+
+		const [scrollY, setScrollY] = useState(window.scrollY);
+
+		useEffect(() => {
+			const onScroll = () => setScrollY(window.scrollY);
+			window.removeEventListener('scroll', onScroll);
+			window.addEventListener('scroll', onScroll, { passive: true });
+			return () => window.removeEventListener('scroll', onScroll);
+		}, []);
+
+		useFrame(() => {
+			api.rotation.set(
+				ref.current!.rotation.x,
+				ref.current!.rotation.y - scrollY / 1000,
+				ref.current!.rotation.z
+			);
+		});
 
 		SoftShadows({
 			focus: 5,
@@ -32,7 +50,7 @@ export const SkillsCubes: React.FC<ISkillsCubesPageProps> = ({ skillCubes }) => 
 		});
 
 		return (
-			<mesh ref={ref as React.RefObject<Mesh<BufferGeometry>>}>
+			<mesh ref={ref}>
 				<Plane receiveShadow args={[1009, 1000]}>
 					<shadowMaterial attach='material' color='#171717' />
 				</Plane>
@@ -85,6 +103,7 @@ export const SkillsCubes: React.FC<ISkillsCubesPageProps> = ({ skillCubes }) => 
 						shadow-camera-top={10}
 						shadow-camera-bottom={-10}
 					/>
+					<ambientLight intensity={0.2} />
 					<Physics>
 						<PlaneC />
 						{skillCubes.map((skillCube) => (
