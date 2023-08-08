@@ -32,7 +32,7 @@ export const Layout: React.FC<ILayoutPageProps> = ({ children, contactSectionId 
 
 	return (
 		<main className='bg-gray-100 dark:bg-gray-900 transition dark:text-gray-100'>
-			<nav className='flex justify-around bg-emerald-950 dark:bg-gray-950 transition sticky top-0 z-50'>
+			<nav className='flex justify-around bg-rose-950 dark:bg-gray-950 transition sticky top-0 z-50'>
 				{/* https://github.com/wcBurgess/Huddle-landing-page-with-tailwindCSS/blob/master/index.html */}
 				<svg
 					className='absolute mt-[56px] max-h-4 sm:max-h-8 md:max-h-12 w-full'
@@ -43,12 +43,12 @@ export const Layout: React.FC<ILayoutPageProps> = ({ children, contactSectionId 
 				>
 					<g fill='none'>
 						<g transform='translate(-1.000000, -14.000000)'>
-							<g className='fill-emerald-950 dark:fill-gray-950 transition'>
+							<g className='fill-rose-950 dark:fill-gray-950 transition'>
 								<path d='M1440,84 C1383.555,64.3 1342.555,51.3 1317,45 C1259.5,30.824 1206.707,25.526 1169,22 C1129.711,18.326 1044.426,18.475 980,22 C954.25,23.409 922.25,26.742 884,32 C845.122,37.787 818.455,42.121 804,45 C776.833,50.41 728.136,61.77 713,65 C660.023,76.309 621.544,87.729 584,94 C517.525,105.104 484.525,106.438 429,108 C379.49,106.484 342.823,104.484 319,102 C278.571,97.783 231.737,88.736 205,84 C154.629,75.076 86.296,57.743 0,32 L0,0 L1440,0 L1440,84 Z'></path>
 							</g>
 							<g
 								transform='translate(1.000000, 15.000000)'
-								className='fill-emerald-600 dark:fill-gray-600 transition'
+								className='fill-rose-600 dark:fill-gray-600 transition'
 							>
 								<g transform='translate(719.500000, 68.500000) rotate(-180.000000) translate(-719.500000, -68.500000) '>
 									<path
@@ -108,20 +108,20 @@ export const Layout: React.FC<ILayoutPageProps> = ({ children, contactSectionId 
 
 					<div className='flex'>
 						{/* <div className='flex flex-col justify-around mr-4'>
-							<button className='text-xs md:text-sm uppercase md:px-8 py-2 tracking-widest bg-transparent text-white rounded-md tracking-widest md:bg-emerald-700 transition hover:bg-emerald-600'>
+							<button className='text-xs md:text-sm uppercase md:px-8 py-2 tracking-widest bg-transparent text-white rounded-md tracking-widest md:bg-rose-700 transition hover:bg-rose-600'>
 								Blog
 							</button>
 						</div> */}
 
 						{/* <div className='flex flex-col justify-around mr-4'>
-							<button className='text-xs md:text-sm uppercase md:px-8 py-2 tracking-widest bg-transparent text-white rounded-md tracking-widest md:bg-emerald-700 transition hover:bg-emerald-600'>
+							<button className='text-xs md:text-sm uppercase md:px-8 py-2 tracking-widest bg-transparent text-white rounded-md tracking-widest md:bg-rose-700 transition hover:bg-rose-600'>
 								Projects
 							</button>
 						</div> */}
 
 						<div className='flex flex-col justify-around mr-4'>
 							<button
-								className='text-xs md:text-sm uppercase md:px-8 py-2 tracking-widest bg-transparent text-white rounded-md tracking-widest md:bg-emerald-700 transition hover:bg-emerald-600'
+								className='text-xs md:text-sm uppercase md:px-8 py-2 tracking-widest bg-transparent text-white rounded-md tracking-widest md:bg-rose-700 transition hover:bg-rose-600'
 								onClick={handleContact}
 							>
 								Contact
@@ -133,7 +133,7 @@ export const Layout: React.FC<ILayoutPageProps> = ({ children, contactSectionId 
 
 			<div className='m-auto max-w-screen-lg flex flex-col px-4 relative'>{children}</div>
 
-			<footer className='w-full bg-emerald-950 dark:bg-gray-950 flex justify-around'>
+			<footer className='w-full bg-rose-950 dark:bg-gray-950 flex justify-around'>
 				<div className='max-w-screen-lg flex p-4 w-full m-auto'>
 					<a
 						className='mr-8 flex flex-col justify-around'
