@@ -3,7 +3,7 @@ import { Suspense } from 'react';
 import '../styles/global.scss';
 import { Canvas } from '@react-three/fiber';
 import { Physics, usePlane, useBox, Triplet } from '@react-three/cannon';
-import { Box, Plane, RoundedBox, SoftShadows, useTexture } from '@react-three/drei';
+import { Box, Plane, SoftShadows, useTexture } from '@react-three/drei';
 import { BufferGeometry, Mesh } from 'three';
 
 export interface ISkillCube {
