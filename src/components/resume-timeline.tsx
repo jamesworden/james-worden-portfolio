@@ -84,7 +84,7 @@ const Entry: React.FC<IResumeEntryPageProps> = ({ resumeEntry }) => {
 
 			<div className='flex-1'></div>
 
-			<div className='flex-[4] p-8 mt-4 mb-8 shadow-xl bg-gray-100 dark:bg-gray-700 rounded'>
+			<div className='flex-[4] p-8 mt-4 mb-8 shadow-xl bg-slate-200 dark:bg-gray-700 rounded'>
 				<div className='flex flex-col justify-between'>
 					<div className='flex justify-between pb-4'>
 						<div className='flex flex-col'>
