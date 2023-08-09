@@ -29,6 +29,8 @@ export const Layout: React.FC<ILayoutPageProps> = ({ children, contactSectionId 
 			: document.documentElement.classList.remove('dark');
 	};
 
+	const handleProjects = () => {};
+
 	return (
 		<main className='bg-gray-100 dark:bg-gray-900 transition dark:text-gray-100'>
 			<nav className='flex justify-around bg-rose-950 dark:bg-gray-950 transition sticky top-0 z-50'>
@@ -112,15 +114,18 @@ export const Layout: React.FC<ILayoutPageProps> = ({ children, contactSectionId 
 							</button>
 						</div> */}
 
-						{/* <div className='flex flex-col justify-around mr-4'>
-							<button className='text-xs md:text-sm uppercase md:px-8 py-2 tracking-widest bg-transparent text-white rounded-md tracking-widest md:bg-rose-700 transition hover:bg-rose-600'>
+						<div className='flex flex-col justify-around mr-4'>
+							<button
+								className='text-xs md:text-sm uppercase md:px-8 py-2 tracking-widest bg-transparent text-white rounded-md tracking-widest transition hover:bg-rose-900 dark:hover:bg-gray-900'
+								onClick={handleProjects}
+							>
 								Projects
 							</button>
-						</div> */}
+						</div>
 
 						<div className='flex flex-col justify-around'>
 							<button
-								className='text-xs md:text-sm uppercase md:px-8 py-2 tracking-widest bg-transparent text-white rounded-md tracking-widest md:bg-rose-700 transition hover:bg-rose-600'
+								className='text-xs md:text-sm uppercase md:px-8 py-2 tracking-widest bg-transparent text-white rounded-md tracking-widest bg-rose-700 transition hover:bg-rose-600'
 								onClick={handleContact}
 							>
 								Contact
