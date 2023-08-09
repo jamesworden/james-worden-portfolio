@@ -91,7 +91,7 @@ export const SkillsCubes: React.FC<ISkillsCubesPageProps> = ({ skillCubes }) => 
 
 	return (
 		<div className='h-96 w-full'>
-			<Canvas shadows camera={{ position: [0, 1.5, 1], rotation: [-0.2, 0, 0], fov: 25 }}>
+			<Canvas shadows camera={{ position: [0, 1.5, 1], rotation: [-0.2, 0, 0], fov: 50 }}>
 				<Suspense fallback={null}>
 					<directionalLight
 						castShadow
