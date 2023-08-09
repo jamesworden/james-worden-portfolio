@@ -21,10 +21,11 @@ export const SkillsCubes: React.FC<SkillsCubesProps> = ({ skillCubes }) => {
 	const Floor = () => {
 		const [scrollY, setScrollY] = useState(window.scrollY);
 
+		const initialRotationX = -Math.PI / 2;
 		const initialRotationY = -scrollY / 1000 + 0.075;
 
 		const [ref, api] = usePlane<Mesh>(() => ({
-			rotation: [-Math.PI / 2, initialRotationY, 0],
+			rotation: [initialRotationX, initialRotationY, 0],
 		}));
 
 		useEffect(() => {
