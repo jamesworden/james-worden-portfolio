@@ -108,8 +108,9 @@ export const SkillsCubes: React.FC<ISkillsCubesPageProps> = ({ skillCubes }) => 
 					<ambientLight intensity={0.2} />
 					<Physics>
 						<PlaneC />
-						{skillCubes.map((skillCube) => (
+						{skillCubes.map((skillCube, i) => (
 							<Cube
+								key={i}
 								position={skillCube.position}
 								rotation={skillCube.rotation}
 								image={skillCube.image}

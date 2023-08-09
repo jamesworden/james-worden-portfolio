@@ -1,6 +1,5 @@
 import * as React from 'react';
 import cx from 'classnames';
-
 import '../styles/global.scss';
 
 export enum ResumeEntryPlacement {
@@ -8,7 +7,7 @@ export enum ResumeEntryPlacement {
 	Left = 'Left',
 }
 
-export interface IResumeEntry {
+export interface ResumeEntry {
 	placement: ResumeEntryPlacement;
 	dateRange: string;
 	startMonthAndYear: string;
@@ -19,12 +18,12 @@ export interface IResumeEntry {
 	image: any;
 }
 
-interface IStartMonthAndYearPageProps {
+interface StartMonthAndYearProps {
 	startMonthAndYear: string;
 	resumeEntryPlacement: ResumeEntryPlacement;
 }
 
-const StartMonthAndYear: React.FC<IStartMonthAndYearPageProps> = ({
+const StartMonthAndYear: React.FC<StartMonthAndYearProps> = ({
 	startMonthAndYear,
 	resumeEntryPlacement,
 }) => {
@@ -40,15 +39,15 @@ const StartMonthAndYear: React.FC<IStartMonthAndYearPageProps> = ({
 	);
 };
 
-export interface IResumeTimelinePageProps {
-	resumeEntries: IResumeEntry[];
+export interface ResumeTimelineProps {
+	resumeEntries: ResumeEntry[];
 }
 
-interface IResumeEntryPageProps {
-	resumeEntry: IResumeEntry;
+interface ResumeEntryProps {
+	resumeEntry: ResumeEntry;
 }
 
-const Entry: React.FC<IResumeEntryPageProps> = ({ resumeEntry }) => {
+const ResumeEntry: React.FC<ResumeEntryProps> = ({ resumeEntry }) => {
 	return (
 		<div
 			className={cx(
@@ -110,12 +109,12 @@ const Entry: React.FC<IResumeEntryPageProps> = ({ resumeEntry }) => {
 	);
 };
 
-export const ResumeTimeline: React.FC<IResumeTimelinePageProps> = ({ resumeEntries }) => {
+export const ResumeTimeline: React.FC<ResumeTimelineProps> = ({ resumeEntries }) => {
 	return (
 		<div className='relative w-full h-full'>
 			<div className='flex flex-col w-full h-full'>
 				{resumeEntries.map((resumeEntry, i) => (
-					<Entry resumeEntry={resumeEntry} key={i}></Entry>
+					<ResumeEntry resumeEntry={resumeEntry} key={i}></ResumeEntry>
 				))}
 			</div>
 

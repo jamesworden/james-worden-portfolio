@@ -1,9 +1,9 @@
-import { IResumeEntry, ResumeEntryPlacement } from '../components/resume-timeline';
+import { ResumeEntry, ResumeEntryPlacement } from '../components/resume-timeline';
 import angularCsharpLogos from '../images/angular-csharp-logos.png';
 import testAutomationLogos from '../images/test-automation-logos.png';
 import undergradResearcher from '../images/undergrad-researcher.png';
 
-export const resumeEntries: IResumeEntry[] = [
+export const resumeEntries: ResumeEntry[] = [
 	{
 		bulletPoints: [
 			'Architected the user interface portion of a dashboard that displays charts relying on web socket updates.',
