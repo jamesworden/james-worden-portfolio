@@ -1,16 +1,12 @@
 import * as React from 'react';
-
 import '../styles/global.scss';
 
-export interface ISectionDividerPageProps {
+export interface SectionDividerProps {
 	displayNumber: string;
 	displayName: string;
 }
 
-export const SectionDivider: React.FC<ISectionDividerPageProps> = ({
-	displayNumber,
-	displayName,
-}) => {
+export const SectionDivider: React.FC<SectionDividerProps> = ({ displayNumber, displayName }) => {
 	return (
 		<div className='flex w-full'>
 			<span className='pr-4 text-sm italic'>{displayNumber}</span>

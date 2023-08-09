@@ -1,12 +1,11 @@
 import * as React from 'react';
-
 import '../styles/global.scss';
 
-export interface IToggleSwitchPageProps {
+export interface ToggleSwitchProps {
 	toggled: () => void;
 }
 
-export const ToggleSwitch: React.FC<IToggleSwitchPageProps> = ({ toggled }) => {
+export const ToggleSwitch: React.FC<ToggleSwitchProps> = ({ toggled }) => {
 	return (
 		<label className='relative inline-flex items-center cursor-pointer'>
 			<input type='checkbox' value='' className='sr-only peer' onChange={toggled} />
