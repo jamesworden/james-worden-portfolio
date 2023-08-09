@@ -3,7 +3,6 @@ import '../styles/global.scss';
 import scrollTo from 'gatsby-plugin-smoothscroll';
 import { ToggleSwitch } from './toggle-switch';
 import { useState } from 'react';
-import darkModeIcon from '../images/dark-mode-icon.png';
 
 export interface ILayoutPageProps {
 	children: JSX.Element | JSX.Element[];
@@ -119,7 +118,7 @@ export const Layout: React.FC<ILayoutPageProps> = ({ children, contactSectionId 
 							</button>
 						</div> */}
 
-						<div className='flex flex-col justify-around mr-4'>
+						<div className='flex flex-col justify-around'>
 							<button
 								className='text-xs md:text-sm uppercase md:px-8 py-2 tracking-widest bg-transparent text-white rounded-md tracking-widest md:bg-rose-700 transition hover:bg-rose-600'
 								onClick={handleContact}
