@@ -103,7 +103,7 @@ const IndexPage: React.FC<PageProps> = () => {
 			<SectionDivider displayName='Skills' displayNumber='01'></SectionDivider>
 
 			<section className='flex flex-col mt-16 mb-4'>
-				<div className='flex flex-wrap justify-between'>
+				<div className='flex flex-wrap justify-between absolute'>
 					<div className='max-w-xs p-2'>
 						<h3 className='text-xl mb-2 border-b'>Frontend</h3>
 						<p>

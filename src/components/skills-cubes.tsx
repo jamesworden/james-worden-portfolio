@@ -25,7 +25,9 @@ interface ICubeProps {
 
 export const SkillsCubes: React.FC<ISkillsCubesPageProps> = ({ skillCubes }) => {
 	const PlaneC = () => {
-		const [ref, api] = usePlane<Mesh>(() => ({ rotation: [-Math.PI / 2, -scrollY / 1000, 0] }));
+		const [ref, api] = usePlane<Mesh>(() => ({
+			rotation: [-Math.PI / 2, -scrollY / 1000 + 0.075, 0],
+		}));
 
 		const [scrollY, setScrollY] = useState(window.scrollY);
 
@@ -39,7 +41,7 @@ export const SkillsCubes: React.FC<ISkillsCubesPageProps> = ({ skillCubes }) => 
 		useFrame(() => {
 			api.rotation.set(
 				ref.current!.rotation.x,
-				ref.current!.rotation.y - scrollY / 1000,
+				ref.current!.rotation.y - scrollY / 1000 + 0.075,
 				ref.current!.rotation.z
 			);
 		});
@@ -88,7 +90,7 @@ export const SkillsCubes: React.FC<ISkillsCubesPageProps> = ({ skillCubes }) => 
 	};
 
 	return (
-		<div className='h-64 w-full'>
+		<div className='h-96 w-full'>
 			<Canvas shadows camera={{ position: [0, 1.5, 1], rotation: [-0.2, 0, 0], fov: 25 }}>
 				<Suspense fallback={null}>
 					<directionalLight
