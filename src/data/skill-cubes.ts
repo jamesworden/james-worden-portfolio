@@ -1,10 +1,10 @@
-import { ISkillCube } from '../components/skills-cubes';
+import { SkillCube } from '../components/skills-cubes';
 import javascriptLogo from '../images/javascript-logo.png';
 import typescriptLogo from '../images/typescript-logo.png';
 import angularLogo from '../images/angular-logo.jpg';
 import reactLogo from '../images/react-logo.png';
 
-export const skillCubes: ISkillCube[] = [
+export const skillCubes: SkillCube[] = [
 	{
 		rotation: [1.2, 1, 1],
 		position: [-2, 10, -2],

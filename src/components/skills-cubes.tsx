@@ -7,41 +7,37 @@ import { Physics, usePlane, useBox, Triplet } from '@react-three/cannon';
 import { Box, Plane, SoftShadows, useTexture } from '@react-three/drei';
 import { BufferGeometry, Mesh } from 'three';
 
-export interface ISkillCube {
+export interface SkillCube {
 	rotation: Triplet;
 	position: Triplet;
 	image: any;
 }
 
-export interface ISkillsCubesPageProps {
-	skillCubes: ISkillCube[];
+export interface SkillsCubesProps {
+	skillCubes: SkillCube[];
 }
 
-interface ICubeProps {
-	position: Triplet;
-	rotation: Triplet;
-	image: any;
-}
-
-export const SkillsCubes: React.FC<ISkillsCubesPageProps> = ({ skillCubes }) => {
-	const PlaneC = () => {
-		const [ref, api] = usePlane<Mesh>(() => ({
-			rotation: [-Math.PI / 2, -scrollY / 1000 + 0.075, 0],
-		}));
-
+export const SkillsCubes: React.FC<SkillsCubesProps> = ({ skillCubes }) => {
+	const Floor = () => {
 		const [scrollY, setScrollY] = useState(window.scrollY);
+
+		const initialRotationY = -scrollY / 1000 + 0.075;
+
+		const [ref, api] = usePlane<Mesh>(() => ({
+			rotation: [-Math.PI / 2, initialRotationY, 0],
+		}));
 
 		useEffect(() => {
 			const onScroll = () => setScrollY(window.scrollY);
 			window.removeEventListener('scroll', onScroll);
 			window.addEventListener('scroll', onScroll, { passive: true });
 			return () => window.removeEventListener('scroll', onScroll);
-		}, []);
+		});
 
 		useFrame(() => {
 			api.rotation.set(
 				ref.current!.rotation.x,
-				ref.current!.rotation.y - scrollY / 1000 + 0.075,
+				ref.current!.rotation.y + initialRotationY,
 				ref.current!.rotation.z
 			);
 		});
@@ -60,7 +56,7 @@ export const SkillsCubes: React.FC<ISkillsCubesPageProps> = ({ skillCubes }) => 
 		);
 	};
 
-	const Cube = (props: ICubeProps) => {
+	const SkillCube = (props: SkillCube) => {
 		const [colorMap, displacementMap, normalMap, roughnessMap, aoMap] = useTexture([
 			props.image,
 		]);
@@ -107,9 +103,9 @@ export const SkillsCubes: React.FC<ISkillsCubesPageProps> = ({ skillCubes }) => 
 					/>
 					<ambientLight intensity={0.2} />
 					<Physics>
-						<PlaneC />
+						<Floor />
 						{skillCubes.map((skillCube, i) => (
-							<Cube
+							<SkillCube
 								key={i}
 								position={skillCube.position}
 								rotation={skillCube.rotation}
