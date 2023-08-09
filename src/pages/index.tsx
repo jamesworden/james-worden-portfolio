@@ -63,7 +63,7 @@ const IndexPage: React.FC<PageProps> = () => {
 					</div>
 
 					<div>
-						<button className='uppercase px-8 py-2 tracking-widest bg-rose-900 dark:bg-rose-900 text-white text-sm rounded-md shadow-2xl tracking-widest transition'>
+						<button className='uppercase px-8 py-2 tracking-widest bg-rose-900 hover:bg-rose-800 text-white text-sm rounded-md shadow-2xl tracking-widest transition'>
 							My Projects
 						</button>
 					</div>
@@ -72,7 +72,7 @@ const IndexPage: React.FC<PageProps> = () => {
 				<div className='flex justify-end'>
 					<div className='relative mr-4 md:w-[360px] md:h-[240px] w-[320px] h-[213.3px]'>
 						<img alt='Headshot' src={headshot} className='rounded-3xl absolute z-10' />
-						<div className='absolute top-[20px] left-[20px] w-full md:h-full bg-rose-900 dark:bg-rose-900 rounded-3xl z-2 shadow-2xl h-[213px] transition' />
+						<div className='absolute top-[20px] left-[20px] w-full md:h-full bg-rose-900 rounded-3xl z-2 shadow-2xl h-[213px] transition' />
 					</div>
 				</div>
 			</section>
