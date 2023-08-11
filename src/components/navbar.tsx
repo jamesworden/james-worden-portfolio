@@ -3,6 +3,7 @@ import '../styles/global.scss';
 import { ToggleSwitch } from './toggle-switch';
 import { useState } from 'react';
 import scrollTo from 'gatsby-plugin-smoothscroll';
+import { Link, navigate } from 'gatsby';
 
 export interface NavbarProps {
 	contactSectionId?: string;
@@ -92,7 +93,8 @@ export const Navbar: React.FC<NavbarProps> = ({ contactSectionId }) => {
 		if (contactSectionId) {
 			scrollTo(contactSectionId);
 		} else {
-			// TODO: Switch to main page and then execute the function?
+			navigate('/');
+			// TODO: Then find a way to scroll?
 		}
 	};
 
@@ -104,8 +106,6 @@ export const Navbar: React.FC<NavbarProps> = ({ contactSectionId }) => {
 			? document.documentElement.classList.add('dark')
 			: document.documentElement.classList.remove('dark');
 	};
-
-	const handleProjects = () => {};
 
 	return (
 		<div className='flex flex-col sticky top-0 z-50'>
@@ -121,17 +121,26 @@ export const Navbar: React.FC<NavbarProps> = ({ contactSectionId }) => {
 
 					<div className='flex'>
 						<div className='flex flex-col justify-around mr-4'>
-							<button
+							<Link
+								to='/'
 								className='text-xs md:text-sm uppercase px-3 md:px-6 py-2 tracking-widest bg-transparent text-white rounded-md tracking-widest transition hover:bg-rose-900 dark:hover:bg-gray-900'
-								onClick={handleProjects}
+							>
+								Home
+							</Link>
+						</div>
+
+						<div className='flex flex-col justify-around mr-4'>
+							<Link
+								to='/projects'
+								className='text-xs md:text-sm uppercase px-3 md:px-6 py-2 tracking-widest bg-transparent text-white rounded-md tracking-widest transition hover:bg-rose-900 dark:hover:bg-gray-900'
 							>
 								Projects
-							</button>
+							</Link>
 						</div>
 
 						<div className='flex flex-col justify-around'>
 							<button
-								className='text-xs md:text-sm uppercase px-3 md:px-6 py-2 tracking-widest bg-transparent text-white rounded-md tracking-widest bg-rose-700 transition hover:bg-rose-600'
+								className='text-xs md:text-sm uppercase px-3 md:px-6 py-2 tracking-widest bg-transparent text-white rounded-md tracking-widest transition hover:bg-rose-900 dark:hover:bg-gray-900'
 								onClick={handleContact}
 							>
 								Contact

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import '../styles/global.scss';
 import { Navbar } from './navbar';
+import { motion } from 'framer-motion';
 
 export interface ILayoutPageProps {
 	children: JSX.Element | JSX.Element[];
@@ -12,7 +13,18 @@ export const Layout: React.FC<ILayoutPageProps> = ({ children, contactSectionId 
 		<main className='bg-gray-100 dark:bg-gray-900 transition dark:text-gray-100'>
 			<Navbar contactSectionId={contactSectionId}></Navbar>
 
-			<div className='m-auto max-w-screen-lg flex flex-col px-4 relative'>{children}</div>
+			<motion.main
+				initial={{ opacity: 0, x: -100 }}
+				animate={{ opacity: 1, x: 0 }}
+				exit={{ opacity: 0, x: 100 }}
+				transition={{
+					type: 'spring',
+					mass: 0.35,
+					stiffness: 20,
+				}}
+			>
+				<div className='m-auto max-w-screen-lg flex flex-col px-4 relative'>{children}</div>
+			</motion.main>
 
 			<footer className='w-full bg-rose-950 dark:bg-gray-950 flex justify-around'>
 				<div className='max-w-screen-lg flex p-4 w-full m-auto'>
