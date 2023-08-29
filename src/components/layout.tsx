@@ -2,6 +2,7 @@ import * as React from 'react';
 import '../styles/global.scss';
 import { Navbar } from './navbar';
 import { motion } from 'framer-motion';
+import { TRANSITION_DURATION_MS } from '../constants';
 
 export interface ILayoutPageProps {
 	children: JSX.Element | JSX.Element[];
@@ -26,7 +27,7 @@ export const Layout: React.FC<ILayoutPageProps> = ({
 				transition={{
 					type: 'spring',
 					mass: 0.35,
-					stiffness: 50,
+					duration: TRANSITION_DURATION_MS,
 				}}
 			>
 				<div className='m-auto max-w-screen-lg flex flex-col px-4 relative grow-1'>
