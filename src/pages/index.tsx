@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import type { HeadFC, PageProps } from 'gatsby';
+import { navigate, type HeadFC, type PageProps } from 'gatsby';
 import headshot from '../images/headshot.jpg';
 import { Layout } from '../components/layout';
 import { SectionDivider } from '../components/section-divider';
@@ -36,7 +36,10 @@ const IndexPage: React.FC<PageProps> = ({ location }) => {
 					</div>
 
 					<div>
-						<button className='uppercase px-8 py-2 tracking-widest bg-rose-900 hover:bg-rose-800 text-white text-sm rounded-md shadow-2xl tracking-widest transition'>
+						<button
+							className='uppercase px-8 py-2 tracking-widest bg-rose-900 hover:bg-rose-800 text-white text-sm rounded-md shadow-2xl tracking-widest transition'
+							onClick={() => navigate('/projects')}
+						>
 							My Projects
 						</button>
 					</div>
