@@ -15,7 +15,7 @@ export const Layout: React.FC<ILayoutPageProps> = ({
 	onAnimationComplete,
 }) => {
 	return (
-		<main className='bg-gray-100 dark:bg-gray-900 transition dark:text-gray-100 h-full justify-between flex flex-col'>
+		<main className='bg-gray-100 dark:bg-gray-900 transition dark:text-gray-100 h-full min-h-screen justify-between flex flex-col'>
 			<Navbar contactSectionId={contactSectionId}></Navbar>
 
 			<motion.main
@@ -26,7 +26,7 @@ export const Layout: React.FC<ILayoutPageProps> = ({
 				transition={{
 					type: 'spring',
 					mass: 0.35,
-					stiffness: 20,
+					stiffness: 50,
 				}}
 			>
 				<div className='m-auto max-w-screen-lg flex flex-col px-4 relative grow-1'>
