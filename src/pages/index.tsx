@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import type { HeadFC, PageProps } from 'gatsby';
 import headshot from '../images/headshot.jpg';
 import { Layout } from '../components/layout';
@@ -10,8 +11,13 @@ import { skillCubes } from '../data/skill-cubes';
 import { ContactForm } from '../components/contact-form';
 
 const IndexPage: React.FC<PageProps> = () => {
+	const [layoutAnimationCompleted, setLayoutAnimationCompleted] = useState(false);
+
 	return (
-		<Layout contactSectionId='#contact-section'>
+		<Layout
+			contactSectionId='#contact-section'
+			onAnimationComplete={() => setLayoutAnimationCompleted(true)}
+		>
 			<section className='flex justify-between my-8 md:mt-36 mb-40 flex-col md:flex-row flex'>
 				<div className='pt-[50px] flex flex-col mb-8'>
 					<div className='pb-8'>
@@ -82,7 +88,10 @@ const IndexPage: React.FC<PageProps> = () => {
 					</div>
 				</div>
 
-				<SkillsCubes skillCubes={skillCubes}></SkillsCubes>
+				<SkillsCubes
+					skillCubes={skillCubes}
+					renderCanvas={layoutAnimationCompleted}
+				></SkillsCubes>
 			</section>
 
 			<SectionDivider displayName='Resume' displayNumber='02'></SectionDivider>

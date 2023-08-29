@@ -6,14 +6,20 @@ import { motion } from 'framer-motion';
 export interface ILayoutPageProps {
 	children: JSX.Element | JSX.Element[];
 	contactSectionId?: string;
+	onAnimationComplete?: () => void;
 }
 
-export const Layout: React.FC<ILayoutPageProps> = ({ children, contactSectionId }) => {
+export const Layout: React.FC<ILayoutPageProps> = ({
+	children,
+	contactSectionId,
+	onAnimationComplete,
+}) => {
 	return (
-		<main className='bg-gray-100 dark:bg-gray-900 transition dark:text-gray-100'>
+		<main className='bg-gray-100 dark:bg-gray-900 transition dark:text-gray-100 h-full justify-between flex flex-col'>
 			<Navbar contactSectionId={contactSectionId}></Navbar>
 
 			<motion.main
+				onAnimationComplete={onAnimationComplete}
 				initial={{ opacity: 0, x: -100 }}
 				animate={{ opacity: 1, x: 0 }}
 				exit={{ opacity: 0, x: 100 }}
@@ -23,7 +29,9 @@ export const Layout: React.FC<ILayoutPageProps> = ({ children, contactSectionId 
 					stiffness: 20,
 				}}
 			>
-				<div className='m-auto max-w-screen-lg flex flex-col px-4 relative'>{children}</div>
+				<div className='m-auto max-w-screen-lg flex flex-col px-4 relative grow-1'>
+					{children}
+				</div>
 			</motion.main>
 
 			<footer className='w-full bg-rose-950 dark:bg-gray-950 flex justify-around'>

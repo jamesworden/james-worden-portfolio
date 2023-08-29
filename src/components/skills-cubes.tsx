@@ -15,11 +15,10 @@ export interface SkillCube {
 
 export interface SkillsCubesProps {
 	skillCubes: SkillCube[];
+	renderCanvas: boolean;
 }
 
-export const SkillsCubes: React.FC<SkillsCubesProps> = ({ skillCubes }) => {
-	const [delayFinished, setDelayFinished] = useState(false);
-
+export const SkillsCubes: React.FC<SkillsCubesProps> = ({ skillCubes, renderCanvas }) => {
 	const Floor = () => {
 		const [scrollY, setScrollY] = useState(window.scrollY);
 
@@ -88,14 +87,9 @@ export const SkillsCubes: React.FC<SkillsCubesProps> = ({ skillCubes }) => {
 		);
 	};
 
-	const delay = window.setTimeout(() => {
-		setDelayFinished(true);
-		window.clearTimeout(delay);
-	}, 2000);
-
 	return (
 		<div className='h-96 w-full'>
-			{delayFinished && (
+			{renderCanvas && (
 				<Canvas shadows camera={{ position: [0, 1.5, 0], rotation: [-0.2, 0, 0], fov: 50 }}>
 					<Suspense fallback={null}>
 						<directionalLight
