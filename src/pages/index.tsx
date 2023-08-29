@@ -9,13 +9,21 @@ import { resumeEntries } from '../data/resume-entries';
 import { SkillsCubes } from '../components/skills-cubes';
 import { skillCubes } from '../data/skill-cubes';
 import { ContactForm } from '../components/contact-form';
+import scrollTo from 'gatsby-plugin-smoothscroll';
+import { PageState } from '../page-state';
 
-const IndexPage: React.FC<PageProps> = () => {
+const CONTACT_SECTION_ID = '#contact-section';
+
+const IndexPage: React.FC<PageProps> = ({ location }) => {
 	const [layoutAnimationCompleted, setLayoutAnimationCompleted] = useState(false);
+
+	if ((location.state as PageState)?.scrollToContact) {
+		scrollTo(CONTACT_SECTION_ID);
+	}
 
 	return (
 		<Layout
-			contactSectionId='#contact-section'
+			contactSectionId={CONTACT_SECTION_ID}
 			onAnimationComplete={() => setLayoutAnimationCompleted(true)}
 		>
 			<section className='flex justify-between my-8 md:mt-36 mb-40 flex-col md:flex-row flex'>

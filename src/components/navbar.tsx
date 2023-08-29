@@ -4,6 +4,7 @@ import { ToggleSwitch } from './toggle-switch';
 import { useState } from 'react';
 import scrollTo from 'gatsby-plugin-smoothscroll';
 import { Link, navigate } from 'gatsby';
+import { PageState } from '../page-state';
 
 export interface NavbarProps {
 	contactSectionId?: string;
@@ -93,8 +94,13 @@ export const Navbar: React.FC<NavbarProps> = ({ contactSectionId }) => {
 		if (contactSectionId) {
 			scrollTo(contactSectionId);
 		} else {
-			navigate('/');
-			// TODO: Then find a way to scroll?
+			const pageState: PageState = {
+				scrollToContact: true,
+			};
+
+			navigate('/', {
+				state: pageState,
+			});
 		}
 	};
 
