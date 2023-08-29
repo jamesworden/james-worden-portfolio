@@ -24,8 +24,6 @@ const DarkModeSvg = () => {
 					d='M31.5,19.185A13.5,13.5,0,1,1,16.815,4.5,10.5,10.5,0,0,0,31.5,19.185Z'
 					transform='translate(-3.056 -3)'
 					className='stroke-white fill-none stroke-2'
-					stroke-linecap='round'
-					stroke-linejoin='round'
 				/>
 			</svg>
 
