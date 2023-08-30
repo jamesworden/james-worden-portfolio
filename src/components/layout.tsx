@@ -4,13 +4,13 @@ import { Navbar } from './navbar';
 import { motion } from 'framer-motion';
 import { TRANSITION_DURATION_MS } from '../constants';
 
-export interface ILayoutPageProps {
+export interface LayoutProps {
 	children: JSX.Element | JSX.Element[];
 	contactSectionId?: string;
 	onAnimationComplete?: () => void;
 }
 
-export const Layout: React.FC<ILayoutPageProps> = ({
+export const Layout: React.FC<LayoutProps> = ({
 	children,
 	contactSectionId,
 	onAnimationComplete,
@@ -20,6 +20,7 @@ export const Layout: React.FC<ILayoutPageProps> = ({
 			<Navbar contactSectionId={contactSectionId}></Navbar>
 
 			<motion.main
+				className='h-full w-full grow flex flex-col justify-between'
 				onAnimationComplete={onAnimationComplete}
 				initial={{ opacity: 0, x: -100 }}
 				animate={{ opacity: 1, x: 0 }}
@@ -30,7 +31,7 @@ export const Layout: React.FC<ILayoutPageProps> = ({
 					duration: TRANSITION_DURATION_MS,
 				}}
 			>
-				<div className='m-auto max-w-screen-lg flex flex-col px-4 relative grow-1'>
+				<div className='m-auto max-w-screen-lg flex flex-col px-4 relative grow'>
 					{children}
 				</div>
 
