@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+	Transitioning between pages with different heights using framer motion may cause the scrollbar
+ 	to continuously appear and disappear. This always keeps the right bar visible and always keeps the
+ 	bottom bar hidden so the transition is always smooth.
+*/
+html {
+	overflow: -moz-scrollbars-vertical;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
 h1,
 h2,
 h3,
