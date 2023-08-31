@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { IProjectCard } from '../data/project-cards';
 import cx from 'classnames';
-import { navigate } from 'gatsby';
 
 export interface ProjectCardProps {
 	projectCard: IProjectCard;
