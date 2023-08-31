@@ -3,6 +3,30 @@ import jamesWordenResearchThumbnail from '../images/james-worden-research-thumbn
 import harvardOfQueensThumbnail from '../images/harvard-of-queens-thumbnail.png';
 import chessOfCardsThumbnail from '../images/chess-of-cards-thumbnail.png';
 
+enum Technology {
+	GoogleCloudVision = 'Google Cloud Vision',
+	GoogleStreetView = 'Google Street View',
+	Netlify = 'Netlify',
+	TypeScript = 'TypeScript',
+	JavaScript = 'JavaScript',
+	RXJS = 'RXJS',
+	React = 'React',
+	Angular = 'Angular',
+	Gatsby = 'Gatsby',
+	Wordpress = 'Wordpress',
+	Plesk = 'Plesk',
+	DigitalOcean = 'Digital Ocean',
+	ServerlessFramework = 'Serverless Framework',
+	Webpack = 'Webpack',
+	CSS = 'CSS',
+	TailwindCSS = 'TailwindCSS',
+	HTML = 'HTML',
+	AWSLambda = 'AWS Lambda',
+	AWSS3 = 'AWS S3',
+	AWSCodeDeploy = 'AWS Code Deploy',
+	CSharp = 'C#',
+}
+
 interface ProjectCardButton {
 	websiteUrl: string;
 	displayText: string;
@@ -11,7 +35,7 @@ interface ProjectCardButton {
 
 export interface IProjectCard {
 	displayNumber: string;
-	technologyBadges: string[];
+	technologyBadges: Technology[];
 	displayWebsiteUrl: string;
 	displayDate: string;
 	description: string;
@@ -29,14 +53,14 @@ export const projectCards: IProjectCard[] = [
 		displayWebsiteUrl: 'bobworden.com',
 		image: bobWordenThumbnail,
 		technologyBadges: [
-			'React',
-			'Gatsby',
-			'TypeScript',
-			'CSS',
-			'Wordpress',
-			'Plesk',
-			'Digital Ocean',
-			'Netlify',
+			Technology.React,
+			Technology.Gatsby,
+			Technology.TypeScript,
+			Technology.CSS,
+			Technology.Wordpress,
+			Technology.Plesk,
+			Technology.DigitalOcean,
+			Technology.Netlify,
 		],
 		buttons: [
 			{
@@ -54,7 +78,16 @@ export const projectCards: IProjectCard[] = [
 		displayDate: 'March 2021',
 		displayWebsiteUrl: 'research.jamesworden.com',
 		image: jamesWordenResearchThumbnail,
-		technologyBadges: ['React', 'TypeScript', 'CSS', 'Webpack', 'GCP', 'AWS', 'Serverless'],
+		technologyBadges: [
+			Technology.React,
+			Technology.TypeScript,
+			Technology.CSS,
+			Technology.Webpack,
+			Technology.GoogleCloudVision,
+			Technology.GoogleStreetView,
+			Technology.AWSLambda,
+			Technology.ServerlessFramework,
+		],
 		buttons: [
 			{
 				websiteUrl: 'https://research.jamesworden.com/',
@@ -77,7 +110,14 @@ export const projectCards: IProjectCard[] = [
 			"Students of St. John's University often refer to their school as the Harvard of Queens. This wordle clone uses a list of bars, buildings, phrases, that many students are familiar with.",
 		displayDate: 'March 2022',
 		image: harvardOfQueensThumbnail,
-		technologyBadges: ['JavaScript', 'HTML', 'CSS', 'Webpack', 'AWS'],
+		technologyBadges: [
+			Technology.JavaScript,
+			Technology.HTML,
+			Technology.CSS,
+			Technology.Webpack,
+			Technology.AWSS3,
+			Technology.AWSLambda,
+		],
 		buttons: [
 			{
 				websiteUrl: 'https://harvardofqueens.com/',
@@ -93,7 +133,15 @@ export const projectCards: IProjectCard[] = [
 		description:
 			'A two player game requiring the strategy of chess and the luck of playing cards. A timer forces players to make moves quickly and effectively.',
 		displayDate: 'October 2022',
-		technologyBadges: ['C#', 'Angular', 'RXJS', 'CSS', 'TypeScript', 'AWS'],
+		technologyBadges: [
+			Technology.CSharp,
+			Technology.Angular,
+			Technology.RXJS,
+			Technology.CSS,
+			Technology.TypeScript,
+			Technology.AWSCodeDeploy,
+			Technology.AWSS3,
+		],
 		image: chessOfCardsThumbnail,
 		buttons: [
 			{
