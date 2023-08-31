@@ -41,7 +41,7 @@ export const projectCards: IProjectCard[] = [
 		buttons: [
 			{
 				websiteUrl: 'https://www.bobworden.com/',
-				buttonClassName: '',
+				buttonClassName: 'bg-rose-900 hover:bg-rose-800 text-white',
 				displayText: 'Show Me',
 			},
 		],
@@ -58,13 +58,13 @@ export const projectCards: IProjectCard[] = [
 		buttons: [
 			{
 				websiteUrl: 'https://research.jamesworden.com/',
-				buttonClassName: '',
+				buttonClassName: 'bg-rose-900 hover:bg-rose-800 text-white',
 				displayText: 'Show Me',
 			},
 			{
 				websiteUrl:
 					'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=hwqevicAAAAJ&citation_for_view=hwqevicAAAAJ:_kc_bZDykSQC',
-				buttonClassName: '',
+				buttonClassName: 'text-rose-900 border border-rose-900',
 				displayText: 'Research Paper',
 			},
 		],
@@ -81,7 +81,7 @@ export const projectCards: IProjectCard[] = [
 		buttons: [
 			{
 				websiteUrl: 'https://harvardofqueens.com/',
-				buttonClassName: '',
+				buttonClassName: 'bg-rose-900 hover:bg-rose-800 text-white',
 				displayText: 'Show Me',
 			},
 		],
@@ -98,7 +98,7 @@ export const projectCards: IProjectCard[] = [
 		buttons: [
 			{
 				displayText: 'Show Me',
-				buttonClassName: '',
+				buttonClassName: 'bg-rose-900 hover:bg-rose-800 text-white',
 				websiteUrl: 'https://chessofcards.com/',
 			},
 		],

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IProjectCard } from '../data/project-cards';
+import cx from 'classnames';
 
 export interface ProjectCardProps {
 	projectCard: IProjectCard;
@@ -33,7 +34,22 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ projectCard }) => {
 							<h6 className='italic'>{projectCard.displayDate}</h6>
 						</div>
 
-						<div className='text-wrap'>{projectCard.description}</div>
+						<div className='text-wrap mb-4'>{projectCard.description}</div>
+
+						<div className='flex flex-wrap gap-2'>
+							{projectCard.buttons.map((button) => (
+								<a
+									href={button.websiteUrl}
+									target='_blank'
+									className={cx(
+										button.buttonClassName,
+										'uppercase px-8 py-2 tracking-widest text-sm rounded-md shadow-2xl tracking-widest transition'
+									)}
+								>
+									{button.displayText}
+								</a>
+							))}
+						</div>
 					</div>
 				</div>
 
