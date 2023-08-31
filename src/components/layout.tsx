@@ -31,7 +31,7 @@ export const Layout: React.FC<LayoutProps> = ({
 					duration: TRANSITION_DURATION_MS,
 				}}
 			>
-				<div className='m-auto max-w-screen-lg flex flex-col px-4 relative grow'>
+				<div className='m-auto max-w-screen-lg flex flex-col px-4 relative grow w-full'>
 					{children}
 				</div>
 
