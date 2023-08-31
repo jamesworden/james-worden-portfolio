@@ -8,9 +8,11 @@ export interface ProjectCardProps {
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ projectCard }) => {
 	return (
-		<div className='w-full shadow-2xl bg-gray-200 my-8 flex justify-between p-4 md:p-6 dark:bg-slate-800'>
+		<div className='w-full shadow-2xl bg-gray-200 my-8 flex justify-between p-4 md:p-6 dark:bg-slate-800 transition'>
 			<div className='flex flex-col mr-4 md:mr-6'>
-				<div className='text-gray-500 italic mb-2'>{projectCard.displayNumber}</div>
+				<div className='text-gray-500 italic mb-2 dark:text-gray-300'>
+					{projectCard.displayNumber}
+				</div>
 
 				<div className='flex grow justify-around'>
 					<div className='max-w-[1px] grow h-full bg-gray-400'></div>
@@ -42,8 +44,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ projectCard }) => {
 									href={button.websiteUrl}
 									target='_blank'
 									className={cx(
-										button.buttonClassName,
-										'uppercase px-8 py-2 tracking-widest text-sm rounded-md shadow-2xl tracking-widest transition'
+										'uppercase px-8 py-2 tracking-widest text-sm rounded-md shadow-2xl tracking-widest transition',
+										button.buttonClassName
 									)}
 								>
 									{button.displayText}

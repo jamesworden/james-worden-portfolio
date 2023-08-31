@@ -7,9 +7,12 @@ import { ProjectCard } from '../components/project-card';
 const projectsPage: React.FC<{}> = () => {
 	return (
 		<Layout>
-			{projectCards.map((projectCard) => (
-				<ProjectCard projectCard={projectCard}></ProjectCard>
-			))}
+			<React.Fragment>
+				<h1 className='text-3xl mt-12 mb-8'>Projects</h1>
+				{projectCards.map((projectCard, i) => (
+					<ProjectCard projectCard={projectCard} key={i}></ProjectCard>
+				))}
+			</React.Fragment>
 		</Layout>
 	);
 };
