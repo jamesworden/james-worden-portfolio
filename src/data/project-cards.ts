@@ -28,6 +28,7 @@ enum Technology {
 	CSharp = 'C#',
 	ReactThreeFiber = 'React Three Fiber',
 	AWSEC2 = 'AWS EC2',
+	StyledComponents = 'Styled Components',
 }
 
 interface ProjectCardButton {
@@ -59,8 +60,8 @@ export const projectCards: IProjectCard[] = [
 		technologyBadges: [
 			Technology.React,
 			Technology.Gatsby,
-			Technology.TypeScript,
-			Technology.CSS,
+			Technology.JavaScript,
+			Technology.StyledComponents,
 			Technology.Wordpress,
 			Technology.Plesk,
 			Technology.DigitalOcean,
