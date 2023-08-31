@@ -2,6 +2,7 @@ import bobWordenThumbnail from '../images/bob-worden-thumbnail.png';
 import jamesWordenResearchThumbnail from '../images/james-worden-research-thumbnail.png';
 import harvardOfQueensThumbnail from '../images/harvard-of-queens-thumbnail.png';
 import chessOfCardsThumbnail from '../images/chess-of-cards-thumbnail.png';
+import jamesWordenPortfolioThumbnail from '../images/james-worden-portfolio-thumbnail.png';
 
 enum Technology {
 	GoogleCloudVision = 'Google Cloud Vision',
@@ -25,6 +26,7 @@ enum Technology {
 	AWSS3 = 'AWS S3',
 	AWSCodeDeploy = 'AWS Code Deploy',
 	CSharp = 'C#',
+	ReactThreeFiber = 'React Three Fiber',
 }
 
 interface ProjectCardButton {
@@ -150,5 +152,20 @@ export const projectCards: IProjectCard[] = [
 				websiteUrl: 'https://chessofcards.com/',
 			},
 		],
+	},
+	{
+		displayNumber: '05',
+		description: 'Welcome to my updated portfolio.',
+		displayDate: 'September 2023',
+		image: jamesWordenPortfolioThumbnail,
+		displayWebsiteUrl: 'jamesworden.com',
+		technologyBadges: [
+			Technology.React,
+			Technology.Gatsby,
+			Technology.TailwindCSS,
+			Technology.AWSS3,
+			Technology.ReactThreeFiber,
+		],
+		buttons: [],
 	},
 ];
