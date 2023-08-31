@@ -18,7 +18,14 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ projectCard }) => {
 
 			<div className='flex flex-col grow'>
 				<div className='flex flex-wrap gap-x-8 mb-8'>
-					<div className='bg-rose-950 h-48 w-72 mb-8'></div>
+					<div className='relative mr-4 md:w-[360px] md:h-[240px] w-[320px] h-[213.3px] mb-8'>
+						<img
+							alt='Headshot'
+							src={projectCard.image}
+							className='rounded-3xl absolute z-10'
+						/>
+						<div className='absolute top-[20px] left-[20px] w-full md:h-full bg-rose-900 rounded-3xl z-2 shadow-2xl h-[213px] transition' />
+					</div>
 
 					<div className='flex flex-col max-w-md'>
 						<div className='mb-4'>

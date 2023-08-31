@@ -24,7 +24,7 @@ export const projectCards: IProjectCard[] = [
 	{
 		displayNumber: '01',
 		description:
-			"A website I made for my father who is an attorney; I made use of gatsby's dynamic page rendering to output blog posts using data from his external wordpress instance.",
+			"A website I created for my father who is an attorney; I made use of gatsby's dynamic page rendering to output blog posts using data from an external wordpress instance.",
 		displayDate: 'December 2020',
 		displayWebsiteUrl: 'bobworden.com',
 		image: bobWordenThumbnail,
