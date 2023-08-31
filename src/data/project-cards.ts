@@ -64,7 +64,7 @@ export const projectCards: IProjectCard[] = [
 			{
 				websiteUrl:
 					'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=hwqevicAAAAJ&citation_for_view=hwqevicAAAAJ:_kc_bZDykSQC',
-				buttonClassName: 'text-rose-900 border border-rose-900',
+				buttonClassName: 'text-rose-900 border border-rose-900 dark:bg-gray-200',
 				displayText: 'Research Paper',
 			},
 		],

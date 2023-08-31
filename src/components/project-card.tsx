@@ -8,7 +8,7 @@ export interface ProjectCardProps {
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ projectCard }) => {
 	return (
-		<div className='w-full shadow-2xl bg-gray-200 my-8 flex justify-between p-4 md:p-6'>
+		<div className='w-full shadow-2xl bg-gray-200 my-8 flex justify-between p-4 md:p-6 dark:bg-slate-800'>
 			<div className='flex flex-col mr-4 md:mr-6'>
 				<div className='text-gray-500 italic mb-2'>{projectCard.displayNumber}</div>
 
