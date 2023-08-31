@@ -27,6 +27,7 @@ enum Technology {
 	AWSCodeDeploy = 'AWS Code Deploy',
 	CSharp = 'C#',
 	ReactThreeFiber = 'React Three Fiber',
+	AWSEC2 = 'AWS EC2',
 }
 
 interface ProjectCardButton {
@@ -147,6 +148,7 @@ export const projectCards: IProjectCard[] = [
 			Technology.TypeScript,
 			Technology.AWSCodeDeploy,
 			Technology.AWSS3,
+			Technology.AWSEC2,
 		],
 		image: chessOfCardsThumbnail,
 		buttons: [
