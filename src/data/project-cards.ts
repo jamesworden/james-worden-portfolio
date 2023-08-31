@@ -44,6 +44,7 @@ export interface IProjectCard {
 	image: any;
 	buttons: ProjectCardButton[];
 	githubUrl?: string;
+	imageUrl?: string;
 }
 
 export const projectCards: IProjectCard[] = [
@@ -72,6 +73,7 @@ export const projectCards: IProjectCard[] = [
 			},
 		],
 		githubUrl: 'https://github.com/jamesworden/bob-worden',
+		imageUrl: 'https://www.bobworden.com/',
 	},
 	{
 		displayNumber: '02',
@@ -104,6 +106,7 @@ export const projectCards: IProjectCard[] = [
 			},
 		],
 		githubUrl: 'https://github.com/jamesworden/jamesworden-research',
+		imageUrl: 'https://research.jamesworden.com/',
 	},
 	{
 		displayNumber: '03',
@@ -128,6 +131,7 @@ export const projectCards: IProjectCard[] = [
 			},
 		],
 		githubUrl: 'https://github.com/jamesworden/harvard-of-queens-wordle',
+		imageUrl: 'https://harvardofqueens.com/',
 	},
 	{
 		displayNumber: '04',
@@ -152,6 +156,7 @@ export const projectCards: IProjectCard[] = [
 				websiteUrl: 'https://chessofcards.com/',
 			},
 		],
+		imageUrl: 'https://chessofcards.com/',
 	},
 	{
 		displayNumber: '05',
@@ -167,5 +172,6 @@ export const projectCards: IProjectCard[] = [
 			Technology.ReactThreeFiber,
 		],
 		buttons: [],
+		imageUrl: 'https://www.jamesworden.com/',
 	},
 ];

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IProjectCard } from '../data/project-cards';
 import cx from 'classnames';
+import { navigate } from 'gatsby';
 
 export interface ProjectCardProps {
 	projectCard: IProjectCard;
@@ -22,11 +23,19 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ projectCard }) => {
 			<div className='flex flex-col grow'>
 				<div className='flex flex-wrap gap-x-8 mb-8'>
 					<div className='relative mr-4 sm:w-[320px] sm:h-[213.3px] w-[216px] h-[144px] mb-12'>
-						<img
-							alt='Headshot'
-							src={projectCard.image}
-							className='rounded-3xl absolute z-10'
-						/>
+						<a
+							href={projectCard.imageUrl}
+							target='_blank'
+							className={cx(
+								'absolute z-10',
+								projectCard.imageUrl
+									? 'hover:scale-105 transition cursor-pointer'
+									: ''
+							)}
+						>
+							<img alt='Headshot' src={projectCard.image} className='rounded-3xl' />
+						</a>
+
 						<div className='absolute top-[20px] left-[20px] w-full md:h-full bg-rose-900 rounded-3xl z-2 shadow-2xl sm:w-[320px] sm:h-[213.3px] w-[216px] h-[144px] transition' />
 					</div>
 
