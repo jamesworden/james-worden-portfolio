@@ -4,6 +4,8 @@ import { Layout } from '../components/layout';
 import { projectCards } from '../data/project-cards';
 import { ProjectCard } from '../components/project-card';
 
+export { Head } from '../components/head';
+
 const projectsPage: React.FC<{}> = () => {
 	return (
 		<Layout>
