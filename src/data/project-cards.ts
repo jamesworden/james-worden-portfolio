@@ -176,5 +176,6 @@ export const projectCards: IProjectCard[] = [
 		],
 		buttons: [],
 		imageUrl: 'https://www.jamesworden.com/',
+		githubUrl: 'https://github.com/jamesworden/james-worden-portfolio',
 	},
 ];
