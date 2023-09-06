@@ -51,7 +51,7 @@ const ResumeEntry: React.FC<ResumeEntryProps> = ({ resumeEntry }) => {
 	return (
 		<div
 			className={cx(
-				'flex w-full relative m-4 md:m-0 flex-col max-w-xl md:max-w-none',
+				'flex md:w-full mt-4 ml-4 relative m-4 md:m-0 flex-col max-w-xl md:max-w-none',
 				resumeEntry.placement === ResumeEntryPlacement.Right
 					? 'md:flex-row'
 					: 'md:flex-row-reverse'
@@ -83,7 +83,7 @@ const ResumeEntry: React.FC<ResumeEntryProps> = ({ resumeEntry }) => {
 
 			<div className='flex-1'></div>
 
-			<div className='flex-[4] p-8 mt-4 mb-8 shadow-xl bg-slate-200 dark:bg-gray-700 rounded'>
+			<div className='flex-[4] xs:px-4 xs:py-8 p-8 mt-4 mb-8 shadow-xl bg-slate-200 dark:bg-gray-700 rounded'>
 				<div className='flex flex-col justify-between'>
 					<div className='flex justify-between pb-4'>
 						<div className='flex flex-col'>
