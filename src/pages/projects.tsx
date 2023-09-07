@@ -1,9 +1,9 @@
 import * as React from 'react';
-import '../styles/global.scss';
 import { Layout } from '../components/layout';
 import { projectCards } from '../data/project-cards';
 import { ProjectCard } from '../components/project-card';
 
+import '../styles/global.scss';
 export { Head } from '../components/head';
 
 const projectsPage: React.FC<{}> = () => {

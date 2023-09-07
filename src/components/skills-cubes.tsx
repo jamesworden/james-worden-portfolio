@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { Suspense } from 'react';
-import '../styles/global.scss';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Physics, usePlane, useBox, Triplet } from '@react-three/cannon';
 import { Box, Plane, SoftShadows, useTexture } from '@react-three/drei';

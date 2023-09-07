@@ -1,6 +1,5 @@
 import * as React from 'react';
-import '../styles/global.scss';
-import { Navbar } from './navbar';
+import { Navbar } from './navbar/navbar';
 import { motion } from 'framer-motion';
 import { TRANSITION_DURATION_MS } from '../constants';
 

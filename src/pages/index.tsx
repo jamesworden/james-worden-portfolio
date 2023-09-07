@@ -12,6 +12,7 @@ import { ContactForm } from '../components/contact-form';
 import scrollTo from 'gatsby-plugin-smoothscroll';
 import { PageState } from '../page-state';
 
+import '../styles/global.scss';
 export { Head } from '../components/head';
 
 const CONTACT_SECTION_ID = '#contact-section';
