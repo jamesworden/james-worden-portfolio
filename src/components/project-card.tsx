@@ -47,8 +47,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ projectCard }) => {
 						<div className='text-wrap mb-4'>{projectCard.description}</div>
 
 						<div className='flex flex-wrap gap-2'>
-							{projectCard.buttons.map((button) => (
+							{projectCard.buttons.map((button, i) => (
 								<a
+									key={i}
 									href={button.websiteUrl}
 									target='_blank'
 									className={cx(

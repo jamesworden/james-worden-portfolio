@@ -6,7 +6,7 @@ import scrollTo from 'gatsby-plugin-smoothscroll';
 import { Link, navigate } from 'gatsby';
 import { PageState } from '../page-state';
 import { WEBKIT_THEME_COLOR } from '../constants';
-import { updateWebkitThemeColor } from '../util/webkit-theme-color';
+import { isDarkModeEnabled, updateWebkitThemeColor } from '../util/theme-utils';
 
 export interface NavbarProps {
 	contactSectionId?: string;
@@ -88,7 +88,7 @@ const WavyNavbarSvg = () => {
 };
 
 export const Navbar: React.FC<NavbarProps> = ({ contactSectionId }) => {
-	const [darkModeEnabled, setDarkModeEnabled] = useState(false);
+	const [darkModeEnabled, setDarkModeEnabled] = useState(isDarkModeEnabled());
 
 	const handleContact = () => {
 		if (contactSectionId) {
@@ -123,7 +123,10 @@ export const Navbar: React.FC<NavbarProps> = ({ contactSectionId }) => {
 						<DarkModeSvg></DarkModeSvg>
 
 						<div className='flex flex-col justify-around'>
-							<ToggleSwitch toggled={handleToggle}></ToggleSwitch>
+							<ToggleSwitch
+								value={darkModeEnabled}
+								toggled={handleToggle}
+							></ToggleSwitch>
 						</div>
 					</div>
 
