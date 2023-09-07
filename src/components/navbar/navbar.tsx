@@ -2,18 +2,15 @@ import * as React from 'react';
 import { useEffect } from 'react';
 import { ToggleSwitch } from '../toggle-switch';
 import { useState } from 'react';
-import scrollTo from 'gatsby-plugin-smoothscroll';
 import { Link, navigate } from 'gatsby';
 import { PageState } from '../../page-state';
 import { DarkModeSvg } from './dark-mode-svg';
 import { WavyNavbarSvg } from './wavy-navbar-svg';
 import { THEME_UTILS } from '../../util/theme-utils';
 
-export interface NavbarProps {
-	contactSectionId?: string;
-}
+export interface NavbarProps {}
 
-export const Navbar: React.FC<NavbarProps> = ({ contactSectionId }) => {
+export const Navbar: React.FC<NavbarProps> = () => {
 	const [darkModeEnabled, setDarkModeEnabled] = useState(false);
 
 	useEffect(() => {
@@ -21,17 +18,12 @@ export const Navbar: React.FC<NavbarProps> = ({ contactSectionId }) => {
 	});
 
 	const handleContact = () => {
-		if (contactSectionId) {
-			scrollTo(contactSectionId);
-		} else {
-			const pageState: PageState = {
-				scrollToContact: true,
-			};
-
-			navigate('/', {
-				state: pageState,
-			});
-		}
+		const pageState: PageState = {
+			scrollToContact: true,
+		};
+		navigate('/', {
+			state: pageState,
+		});
 	};
 
 	const handleToggle = () => {

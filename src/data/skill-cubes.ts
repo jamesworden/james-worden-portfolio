@@ -1,4 +1,4 @@
-import { SkillCube } from '../components/skills-cubes';
+import { SkillCube } from '../components/skill-cubes/skills-cubes';
 import javascriptLogo from '../images/javascript-logo.png';
 import typescriptLogo from '../images/typescript-logo.png';
 import angularLogo from '../images/angular-logo.jpg';
