@@ -6,6 +6,7 @@ import scrollTo from 'gatsby-plugin-smoothscroll';
 import { Link, navigate } from 'gatsby';
 import { PageState } from '../page-state';
 import { WEBKIT_THEME_COLOR } from '../constants';
+import { updateWebkitThemeColor } from '../util/webkit-theme-color';
 
 export interface NavbarProps {
 	contactSectionId?: string;
@@ -111,9 +112,7 @@ export const Navbar: React.FC<NavbarProps> = ({ contactSectionId }) => {
 			? document.documentElement.classList.add('dark')
 			: document.documentElement.classList.remove('dark');
 
-		const themeColorMetaTag = document.head.querySelector('meta[name="theme-color"]')!;
-		const themeColor = isDarkModeEnabled ? WEBKIT_THEME_COLOR.Dark : WEBKIT_THEME_COLOR.Default;
-		themeColorMetaTag.setAttribute('content', themeColor);
+		updateWebkitThemeColor();
 	};
 
 	return (
