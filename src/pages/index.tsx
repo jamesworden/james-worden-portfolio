@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { navigate, type HeadFC, type PageProps } from 'gatsby';
+import { navigate, type PageProps } from 'gatsby';
 import headshot from '../images/headshot.jpg';
 import { Layout } from '../components/layout';
 import { SectionDivider } from '../components/section-divider';
@@ -11,6 +11,8 @@ import { skillCubes } from '../data/skill-cubes';
 import { ContactForm } from '../components/contact-form';
 import scrollTo from 'gatsby-plugin-smoothscroll';
 import { PageState } from '../page-state';
+
+export { Head } from '../components/head';
 
 const CONTACT_SECTION_ID = '#contact-section';
 
@@ -121,5 +123,3 @@ const IndexPage: React.FC<PageProps> = ({ location }) => {
 };
 
 export default IndexPage;
-
-export const Head: HeadFC = () => <title>Home Page</title>;

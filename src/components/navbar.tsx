@@ -5,6 +5,8 @@ import { useState } from 'react';
 import scrollTo from 'gatsby-plugin-smoothscroll';
 import { Link, navigate } from 'gatsby';
 import { PageState } from '../page-state';
+import { WEBKIT_THEME_COLOR } from '../constants';
+import { updateWebkitThemeColor } from '../util/webkit-theme-color';
 
 export interface NavbarProps {
 	contactSectionId?: string;
@@ -109,12 +111,14 @@ export const Navbar: React.FC<NavbarProps> = ({ contactSectionId }) => {
 		isDarkModeEnabled
 			? document.documentElement.classList.add('dark')
 			: document.documentElement.classList.remove('dark');
+
+		updateWebkitThemeColor();
 	};
 
 	return (
 		<div className='flex flex-col sticky top-0 z-50'>
 			<nav className='flex justify-around bg-rose-950 dark:bg-gray-950 transition'>
-				<div className='flex justify-between max-w-screen-lg w-full px-4 py-3'>
+				<div className='flex justify-between max-w-screen-lg w-full px-safe-or-2 py-3'>
 					<div className='flex'>
 						<DarkModeSvg></DarkModeSvg>
 

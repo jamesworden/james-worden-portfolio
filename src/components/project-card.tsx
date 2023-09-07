@@ -89,8 +89,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ projectCard }) => {
 				</div>
 
 				<div className='flex gap-2 flex-wrap'>
-					{projectCard.technologyBadges.map((technologyBadge) => (
-						<div className='bg-gray-300 text-gray-600 font-bold p-4 rounded-md'>
+					{projectCard.technologyBadges.map((technologyBadge, i) => (
+						<div key={i} className='bg-gray-300 text-gray-600 font-bold p-4 rounded-md'>
 							{technologyBadge}
 						</div>
 					))}

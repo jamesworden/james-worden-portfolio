@@ -31,12 +31,12 @@ export const Layout: React.FC<LayoutProps> = ({
 					duration: TRANSITION_DURATION_MS,
 				}}
 			>
-				<div className='m-auto max-w-screen-lg flex flex-col px-4 relative grow w-full'>
+				<div className='m-auto max-w-screen-lg flex flex-col px-safe-or-2 relative grow w-full'>
 					{children}
 				</div>
 
 				<footer className='w-full flex justify-around'>
-					<div className='max-w-screen-lg flex pb-8 pt-2 px-4 w-full m-auto'>
+					<div className='max-w-screen-lg flex pb-8 pt-2 px-safe-or-2 w-full m-auto'>
 						<a
 							className='mr-8 flex flex-col justify-around'
 							href='https://www.linkedin.com/in/jameswordenny/'
