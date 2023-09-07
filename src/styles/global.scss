@@ -26,3 +26,10 @@ span,
 p {
 	font-family: 'Lato', sans-serif;
 }
+
+@layer utilities {
+	.px-safe-or-2 {
+		padding-right: max(16px, env(safe-area-inset-right));
+		padding-left: max(16px, env(safe-area-inset-left));
+	}
+}
