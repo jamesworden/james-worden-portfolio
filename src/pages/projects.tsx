@@ -10,11 +10,9 @@ const projectsPage: React.FC<{}> = () => {
 	return (
 		<PageContent>
 			<h1 className='text-3xl mt-12 mb-8'>Projects</h1>
-			<>
-				{projectCards.map((projectCard, i) => (
-					<ProjectCard projectCard={projectCard} key={i}></ProjectCard>
-				))}
-			</>
+			{projectCards.map((projectCard, i) => (
+				<ProjectCard projectCard={projectCard} key={i}></ProjectCard>
+			))}
 		</PageContent>
 	);
 };
