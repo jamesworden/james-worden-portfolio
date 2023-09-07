@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { HeadProps } from 'gatsby';
-import { getWebkitThemeColor } from '../util/webkit-theme-color';
+import { getWebkitThemeColor } from '../util/theme-utils';
 
 export const Head: React.FC<HeadProps> = () => (
 	<>
