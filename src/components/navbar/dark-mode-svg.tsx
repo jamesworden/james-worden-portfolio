@@ -2,7 +2,7 @@ import * as React from 'react';
 
 export const DarkModeSvg = () => {
 	return (
-		<div className='flex mr-8 hidden xs:block flex relative'>
+		<div className='flex mr-6 md:mr-8 flex relative'>
 			<svg
 				xmlns='http://www.w3.org/2000/svg'
 				className='h-4 w-4 mt-2'

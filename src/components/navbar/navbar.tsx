@@ -64,7 +64,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
 
 						<div className='flex flex-col justify-around mr-2 md:mr-4'>
 							<button
-								className='text-xs md:text-sm uppercase px-2 md:px-6 py-2 tracking-widest text-white rounded-md tracking-widest transition bg-rose-600 dark:bg-gray-600 hover:bg-rose-500 dark:hover:bg-gray-500'
+								className='text-xs md:text-sm uppercase px-2 md:px-6 py-2 tracking-widest text-white rounded-md tracking-widest transition bg-rose-800 dark:bg-gray-800 hover:bg-rose-700 dark:hover:bg-gray-700'
 								onClick={scrollToContact}
 							>
 								Contact

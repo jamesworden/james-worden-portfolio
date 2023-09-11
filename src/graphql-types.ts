@@ -9,6 +9,10 @@ export interface MarkdownRemarkQueryResult {
 	allMarkdownRemark: {
 		edges: MarkdownRemarkNode[];
 	};
+	markdownRemark: {
+		frontmatter: BlogPostFrontmatter;
+		html: string;
+	};
 }
 
 export type MarkdownRemarkEdge = {
