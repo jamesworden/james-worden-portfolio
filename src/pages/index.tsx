@@ -13,7 +13,7 @@ import { PageState } from '../page-state';
 import { PageContent } from '../components/page-content';
 
 import '../styles/global.scss';
-export { Head } from '../components/head';
+export { GlobalHead as Head } from '../components/global-head';
 
 const IndexPage: React.FC<PageProps> = ({ location }) => {
 	const [layoutAnimationCompleted, setLayoutAnimationCompleted] = useState(false);

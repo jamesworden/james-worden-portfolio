@@ -1,35 +1,25 @@
 import * as React from 'react';
-import { useEffect } from 'react';
 import { ToggleSwitch } from '../toggle-switch';
-import { useState } from 'react';
 import { Link, navigate } from 'gatsby';
 import { PageState } from '../../page-state';
 import { DarkModeSvg } from './dark-mode-svg';
 import { WavyNavbarSvg } from './wavy-navbar-svg';
-import { THEME_UTILS } from '../../util/theme-utils';
+import { DarkTheme, useTheme, useThemeUpdate } from '../../contexts/theme-context';
 
 export interface NavbarProps {}
 
 export const Navbar: React.FC<NavbarProps> = () => {
-	const [darkModeEnabled, setDarkModeEnabled] = useState(false);
+	const theme = useTheme();
+	const toggleTheme = useThemeUpdate();
+	const isDarkModeOn = theme === DarkTheme;
 
-	useEffect(() => {
-		setDarkModeEnabled(THEME_UTILS.isDarkModeEnabled);
-	});
-
-	const handleContact = () => {
+	const scrollToContact = () => {
 		const pageState: PageState = {
 			scrollToContact: true,
 		};
 		navigate('/', {
 			state: pageState,
 		});
-	};
-
-	const handleToggle = () => {
-		setDarkModeEnabled(!darkModeEnabled);
-		THEME_UTILS.setDarkModeEnabled(!darkModeEnabled);
-		THEME_UTILS.updateWebkitThemeColor();
 	};
 
 	return (
@@ -40,10 +30,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
 						<DarkModeSvg></DarkModeSvg>
 
 						<div className='flex flex-col justify-around'>
-							<ToggleSwitch
-								value={darkModeEnabled}
-								toggled={handleToggle}
-							></ToggleSwitch>
+							<ToggleSwitch value={isDarkModeOn} toggled={toggleTheme}></ToggleSwitch>
 						</div>
 					</div>
 
@@ -69,7 +56,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
 						<div className='flex flex-col justify-around'>
 							<button
 								className='text-xs md:text-sm uppercase px-3 md:px-6 py-2 tracking-widest text-white rounded-md tracking-widest transition bg-rose-700 dark:bg-gray-700 hover:bg-rose-600 dark:hover:bg-gray-600'
-								onClick={handleContact}
+								onClick={scrollToContact}
 							>
 								Contact
 							</button>

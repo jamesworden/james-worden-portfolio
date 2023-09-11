@@ -4,7 +4,7 @@ import { ProjectCard } from '../components/project-card';
 import { PageContent } from '../components/page-content';
 
 import '../styles/global.scss';
-export { Head } from '../components/head';
+export { GlobalHead as Head } from '../components/global-head';
 
 const projectsPage: React.FC<{}> = () => {
 	return (
