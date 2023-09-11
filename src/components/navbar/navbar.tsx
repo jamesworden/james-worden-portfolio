@@ -35,19 +35,19 @@ export const Navbar: React.FC<NavbarProps> = () => {
 					</div>
 
 					<div className='flex'>
-						<div className='flex flex-col justify-around mr-4'>
+						<div className='flex flex-col justify-around mr-2 md:mr-4'>
 							<Link
 								to='/'
-								className='text-xs md:text-sm uppercase px-3 md:px-6 py-2 tracking-widest text-white rounded-md tracking-widest transition bg-rose-900 dark:bg-gray-900 hover:bg-rose-800 dark:hover:bg-gray-800'
+								className='text-xs md:text-sm uppercase px-2 md:px-6 py-2 tracking-widest text-white rounded-md tracking-widest transition bg-rose-900 dark:bg-gray-900 hover:bg-rose-800 dark:hover:bg-gray-800'
 							>
 								Home
 							</Link>
 						</div>
 
-						<div className='flex flex-col justify-around mr-4'>
+						<div className='flex flex-col justify-around mr-2 md:mr-4'>
 							<Link
 								to='/projects'
-								className='text-xs md:text-sm uppercase px-3 md:px-6 py-2 tracking-widest text-white rounded-md tracking-widest transition bg-rose-800 dark:bg-gray-800 hover:bg-rose-700 dark:hover:bg-gray-700'
+								className='text-xs md:text-sm uppercase px-2 md:px-6 py-2 tracking-widest text-white rounded-md tracking-widest transition bg-rose-800 dark:bg-gray-800 hover:bg-rose-700 dark:hover:bg-gray-700'
 							>
 								Projects
 							</Link>
@@ -55,7 +55,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
 
 						<div className='flex flex-col justify-around'>
 							<button
-								className='text-xs md:text-sm uppercase px-3 md:px-6 py-2 tracking-widest text-white rounded-md tracking-widest transition bg-rose-700 dark:bg-gray-700 hover:bg-rose-600 dark:hover:bg-gray-600'
+								className='text-xs md:text-sm uppercase px-2 md:px-6 py-2 tracking-widest text-white rounded-md tracking-widest transition bg-rose-700 dark:bg-gray-700 hover:bg-rose-600 dark:hover:bg-gray-600'
 								onClick={scrollToContact}
 							>
 								Contact
