@@ -28,4 +28,5 @@ export interface BlogPostFrontmatter {
 	date: string;
 	slug: string;
 	title: string;
+	subtitle: string;
 }
