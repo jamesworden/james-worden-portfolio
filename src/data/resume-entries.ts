@@ -50,7 +50,7 @@ export const resumeEntries: ResumeEntry[] = [
 		bulletPoints: [
 			'Independently developed an API to retrieve incremental GPS coordinates between a given origin and destination address using Amazon Web Services, NodeJS, and Google Maps.',
 			'Extracted text from Google Street View images using Google Cloud Vision to validate GPS locations.',
-			'Continuously searching for innovative methods to prevent location spoofing.',
+			'Workshopped different ideas and methods to prevent location spoofing.',
 		],
 		company: "St. John's University",
 		dateRange: '03/2021 – 09/2021',
