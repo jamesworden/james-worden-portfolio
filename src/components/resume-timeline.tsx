@@ -1,6 +1,5 @@
 import * as React from 'react';
 import cx from 'classnames';
-import '../styles/global.scss';
 
 export enum ResumeEntryPlacement {
 	Right = 'Right',

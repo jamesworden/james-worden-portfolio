@@ -2,32 +2,29 @@ import * as React from 'react';
 import { useState } from 'react';
 import { navigate, type PageProps } from 'gatsby';
 import headshot from '../images/headshot.jpg';
-import { Layout } from '../components/layout';
 import { SectionDivider } from '../components/section-divider';
 import { ResumeTimeline } from '../components/resume-timeline';
 import { resumeEntries } from '../data/resume-entries';
-import { SkillsCubes } from '../components/skills-cubes';
+import { SkillsCubes } from '../components/skill-cubes/skills-cubes';
 import { skillCubes } from '../data/skill-cubes';
 import { ContactForm } from '../components/contact-form';
 import scrollTo from 'gatsby-plugin-smoothscroll';
 import { PageState } from '../page-state';
+import { PageContent } from '../components/page-content';
 
-export { Head } from '../components/head';
-
-const CONTACT_SECTION_ID = '#contact-section';
+import '../styles/global.scss';
+export { GlobalHead as Head } from '../components/global-head';
 
 const IndexPage: React.FC<PageProps> = ({ location }) => {
 	const [layoutAnimationCompleted, setLayoutAnimationCompleted] = useState(false);
+	const pageState = location.state as PageState | undefined;
 
-	if ((location.state as PageState)?.scrollToContact) {
-		scrollTo(CONTACT_SECTION_ID);
+	if (pageState?.scrollToContact) {
+		scrollTo('#contact-section');
 	}
 
 	return (
-		<Layout
-			contactSectionId={CONTACT_SECTION_ID}
-			onAnimationComplete={() => setLayoutAnimationCompleted(true)}
-		>
+		<PageContent onAnimationComplete={() => setLayoutAnimationCompleted(true)}>
 			<section className='flex justify-between my-8 md:mt-36 mb-40 flex-col md:flex-row flex'>
 				<div className='pt-[50px] flex flex-col mb-8'>
 					<div className='pb-8'>
@@ -57,26 +54,26 @@ const IndexPage: React.FC<PageProps> = ({ location }) => {
 
 			{/* <SectionDivider displayName='About' displayNumber='00'></SectionDivider>
 
-			<section className='md:columns-2 my-16'>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-					incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-					nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-					Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-					fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit
-					amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur
-					adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem
-					ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet,
-					consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing
-					elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor
-					sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur
-					adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem
-					ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet,
-					consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing
-					elit.
-				</p>
-			</section> */}
+	<section className='md:columns-2 my-16'>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+			incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+			nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+			Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+			fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit
+			amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur
+			adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem
+			ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet,
+			consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing
+			elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor
+			sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur
+			adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem
+			ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet,
+			consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing
+			elit.
+		</p>
+	</section> */}
 
 			<SectionDivider displayName='Skills' displayNumber='01'></SectionDivider>
 
@@ -118,7 +115,7 @@ const IndexPage: React.FC<PageProps> = ({ location }) => {
 			<section className='flex justify-around flex-col my-16' id='contact-section'>
 				<ContactForm></ContactForm>
 			</section>
-		</Layout>
+		</PageContent>
 	);
 };
 

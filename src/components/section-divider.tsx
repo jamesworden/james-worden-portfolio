@@ -1,5 +1,4 @@
 import * as React from 'react';
-import '../styles/global.scss';
 
 export interface SectionDividerProps {
 	displayNumber: string;
