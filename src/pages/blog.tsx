@@ -25,7 +25,9 @@ const projectsPage: React.FC<ProjectPageProps> = ({
 
 	return (
 		<PageContent>
-			<h1 className='text-3xl mt-12 mb-8'>Blog</h1>
+			<div className='prose lg:prose-lg dark:prose-invert mt-16 mb-8'>
+				<h1 className=' mt-12 mb-8'>Blog</h1>
+			</div>
 
 			{Posts.map((post) => post)}
 		</PageContent>
