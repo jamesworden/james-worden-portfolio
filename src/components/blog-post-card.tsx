@@ -18,7 +18,7 @@ export const BlogPostCard: React.FC<BlogCardProps> = ({ blogPostCard }) => {
 			/>
 
 			<div className='px-2'>
-				<div className='flex'>
+				<div className='flex gap-x-2'>
 					{blogPostCard.featured && (
 						<div className='bg-rose-600 dark:bg-emerald-600 rounded-lg py-1 px-2 text-white text-xs'>
 							Featured

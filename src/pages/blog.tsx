@@ -48,19 +48,52 @@ const projectsPage: React.FC<ProjectPageProps> = ({
 				<h1 className='mt-12 mb-8'>Blog</h1>
 			</div>
 
-			<div className='flex gap-x-4 justify-between mb-6'>
+			<div className='flex gap-x-6 justify-between mb-6'>
 				<div className='flex flex-col gap-y-8'>
 					{blogPostCards.map((blogPostCard) => (
 						<BlogPostCard blogPostCard={blogPostCard}></BlogPostCard>
 					))}
 				</div>
 
+				<div className='min-h-full w-px bg-rose-900 dark:bg-emerald-900'></div>
+
 				<div className='grow hidden lg:block'>
 					<div className='p-4 max-w-xs flex flex-col gap-y-8'>
-						<div>
+						<div className='flex flex-col'>
 							<div className='text-xl font-semibold mb-2'>Search</div>
 
-							<div className='flex gap-x-4 mb-2'>
+							<div className='flex gap-x-2'>
+								<div className='flex flex-col justify-around'>
+									<input
+										id='title-search'
+										type='checkbox'
+										className='appearance-none h-4 w-4 border-2 rounded cursor-pointer transition-all checked:bg-rose-500 checked:border-rose-500 checked:text-white focus:outline-none focus:ring focus:ring-rose-300 border-gray-500 dark:focus:ring-emerald-300 dark:bg-gray-700 dark:border-emerald-400 dark:checked:bg-emerald-400 dark:checked:border-emerald-400 dark:checked:text-white'
+									/>
+								</div>
+								<label htmlFor='title-search'>Title</label>
+							</div>
+
+							<div className='flex gap-x-2'>
+								<div className='flex flex-col justify-around'>
+									<input
+										id='keyword-search'
+										type='checkbox'
+										className='appearance-none h-4 w-4 border-2 rounded cursor-pointer transition-all checked:bg-rose-500 checked:border-rose-500 checked:text-white focus:outline-none focus:ring focus:ring-rose-300 border-gray-500 dark:focus:ring-emerald-300 dark:bg-gray-700 dark:border-emerald-400 dark:checked:bg-emerald-400 dark:checked:border-emerald-400 dark:checked:text-white'
+									/>
+								</div>
+								<label htmlFor='keyword-search'>Keyword</label>
+							</div>
+
+							<input
+								className='mt-3 block w-full rounded border border-gray-300 bg-white py-1.5 px-2 text-base font-normal text-gray-700 focus:border-[#365CCE] focus:bg-white focus:text-gray-700 focus:outline-none'
+								placeholder='Basic Input'
+							/>
+						</div>
+
+						<div>
+							<div className='text-xl font-semibold mb-2'>Sort</div>
+
+							<div className='flex flex-col mb-3'>
 								<div className='flex gap-x-2'>
 									<input id='search-by-title' type='radio' checked={true} />
 									<label htmlFor='search-by-title'>Date</label>
@@ -74,27 +107,6 @@ const projectsPage: React.FC<ProjectPageProps> = ({
 								<div className='flex gap-x-2'>
 									<input id='search-by-keywords' type='radio' checked={false} />
 									<label htmlFor='search-by-title'>Category</label>
-								</div>
-							</div>
-
-							<input
-								className='block w-full rounded border border-gray-300 bg-white py-1.5 px-2 text-base font-normal text-gray-700 focus:border-[#365CCE] focus:bg-white focus:text-gray-700 focus:outline-none'
-								placeholder='Basic Input'
-							/>
-						</div>
-
-						<div>
-							<div className='text-xl font-semibold mb-2'>Sort</div>
-
-							<div className='flex flex-col mb-3'>
-								<div className='flex gap-x-2'>
-									<input id='search-by-title' type='radio' checked={true} />
-									<label htmlFor='search-by-title'>Title</label>
-								</div>
-
-								<div className='flex gap-x-2'>
-									<input id='search-by-keywords' type='radio' checked={false} />
-									<label htmlFor='search-by-title'>Keywords</label>
 								</div>
 							</div>
 						</div>
