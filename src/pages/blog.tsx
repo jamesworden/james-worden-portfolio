@@ -14,6 +14,7 @@ export interface IBlogPostCard {
 	date: string;
 	thumbnailId: string;
 	githubUrl?: string;
+	category?: string;
 }
 
 interface ProjectPageProps extends PageProps {
@@ -32,6 +33,7 @@ const projectsPage: React.FC<ProjectPageProps> = ({
 		slug: edge.node.frontmatter.slug,
 		thumbnailId: edge.node.frontmatter.thumbnailId,
 		githubUrl: edge.node.frontmatter.githubUrl,
+		category: edge.node.frontmatter.category,
 	}));
 
 	// TODO: Dynamically filter blog posts.
@@ -65,6 +67,7 @@ export const pageQuery = graphql`
 						description
 						thumbnailId
 						githubUrl
+						category
 					}
 				}
 			}

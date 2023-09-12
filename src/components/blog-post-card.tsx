@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IBlogPostCard } from '../pages/blog';
 import { blogPostThumbnails } from '../data/blog-post-thumbnails';
+import { Link } from 'gatsby';
 
 export interface BlogCardProps {
 	blogPostCard: IBlogPostCard;
@@ -17,17 +18,20 @@ export const BlogPostCard: React.FC<BlogCardProps> = ({ blogPostCard }) => {
 			/>
 
 			<div>
-				<div>
-					<span className='bg-rose-700 rounded-3xl py-1 px-2 text-white text-xs'>
-						Automation
-					</span>
-				</div>
+				{blogPostCard.category && (
+					<div>
+						<span className='bg-rose-700 rounded-3xl py-1 px-2 text-white text-xs'>
+							{blogPostCard.category}
+						</span>
+					</div>
+				)}
 
 				<div className='my-4'>
 					<span className='font-semibold font-regular text-lg'>{blogPostCard.title}</span>
+					<div className='text-sm'>{blogPostCard.date}</div>
 				</div>
 
-				<p className='mb-6 max-w-md'>{blogPostCard.description}</p>
+				<p className='mb-4 max-w-md'>{blogPostCard.description}</p>
 
 				<div className='flex gap-4'>
 					{blogPostCard.githubUrl && (
@@ -55,9 +59,8 @@ export const BlogPostCard: React.FC<BlogCardProps> = ({ blogPostCard }) => {
 						</div>
 					)}
 
-					<div className='flex flex-col'>
-						<span className='font-bold'>James Worden</span>
-						<h5 className='-mt-1'>{blogPostCard.date}</h5>
+					<div className='flex flex-col justify-around'>
+						<Link to={`/blog/${blogPostCard.slug}`}>See post »</Link>
 					</div>
 				</div>
 			</div>

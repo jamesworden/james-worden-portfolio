@@ -29,7 +29,7 @@ const IndexPage: React.FC<PageProps> = ({ location }) => {
 				<div className='max-w-5xl w-full'>
 					<section className='flex justify-between my-8 md:mt-36 mb-40 flex-col md:flex-row flex'>
 						<div className='flex flex-col gap-8 mb-16'>
-							<div className='prose lg:prose-lg dark:prose-invert lg:mb-6'>
+							<div className='prose dark:prose-invert lg:mb-6'>
 								<h1>I'm James Worden.</h1>
 
 								<div className='-mt-6'>
