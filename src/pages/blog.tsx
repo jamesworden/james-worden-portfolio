@@ -15,6 +15,8 @@ export interface IBlogPostCard {
 	thumbnailId: string;
 	githubUrl?: string;
 	category?: string;
+	keywords: string[];
+	featured: boolean;
 }
 
 interface ProjectPageProps extends PageProps {
@@ -34,6 +36,8 @@ const projectsPage: React.FC<ProjectPageProps> = ({
 		thumbnailId: edge.node.frontmatter.thumbnailId,
 		githubUrl: edge.node.frontmatter.githubUrl,
 		category: edge.node.frontmatter.category,
+		keywords: getBlogPostCardKeywords(edge.node.frontmatter.keywords),
+		featured: getBlogPostCardFeaturedStatus(edge.node.frontmatter.featured),
 	}));
 
 	// TODO: Dynamically filter blog posts.
@@ -68,11 +72,33 @@ export const pageQuery = graphql`
 						thumbnailId
 						githubUrl
 						category
+						keywords
+						featured
 					}
 				}
 			}
 		}
 	}
 `;
+
+function getBlogPostCardKeywords(keywordsString?: string) {
+	const stringIsEmpty = !keywordsString || keywordsString.length === 0;
+
+	if (stringIsEmpty) {
+		return [];
+	}
+
+	return keywordsString.split(',');
+}
+
+function getBlogPostCardFeaturedStatus(featuredString?: string) {
+	const stringIsEmpty = !featuredString || featuredString.length === 0;
+
+	if (stringIsEmpty) {
+		return false;
+	}
+
+	return featuredString.trim().toLocaleLowerCase() === 'true';
+}
 
 export default projectsPage;

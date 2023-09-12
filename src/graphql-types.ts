@@ -33,4 +33,6 @@ export interface BlogPostFrontmatter {
 	thumbnailId: string;
 	githubUrl?: string;
 	category?: string;
+	keywords?: string;
+	featured?: string;
 }

@@ -11,20 +11,30 @@ export const BlogPostCard: React.FC<BlogCardProps> = ({ blogPostCard }) => {
 	const image = blogPostThumbnails[blogPostCard.thumbnailId];
 
 	return (
-		<div className='rounded-3xl shadow-2xl md:ml-16 mt-16 md:mt-0 bg-gray-200 flex gap-8 py-6 dark:bg-slate-800 transition flex-col md:flex-row px-4 md:px-0 max-w-sm md:max-w-none'>
+		<div className='rounded-lg shadow-2xl md:ml-16 mt-16 md:mt-0 bg-gray-200 flex gap-8 py-6 dark:bg-slate-800 transition flex-col md:flex-row px-4 md:px-0 max-w-sm md:max-w-none'>
 			<img
 				src={image}
-				className='w-[320px] h-[213.3px] md:-ml-16 -mt-16 md:mt-0 rounded-3xl z-2 shadow-2xl h-[213px] transition'
+				className='w-[320px] h-[213.3px] md:-ml-16 -mt-16 md:mt-0 rounded-lg z-2 shadow-2xl h-[213px] transition'
 			/>
 
 			<div>
-				{blogPostCard.category && (
-					<div>
-						<span className='bg-rose-700 rounded-3xl py-1 px-2 text-white text-xs'>
-							{blogPostCard.category}
-						</span>
-					</div>
-				)}
+				<div className='flex gap-2'>
+					{blogPostCard.featured && (
+						<div>
+							<span className='bg-rose-600 dark:bg-emerald-600 rounded-lg py-1 px-2 text-white text-xs'>
+								Featured
+							</span>
+						</div>
+					)}
+
+					{blogPostCard.category && (
+						<div>
+							<span className='bg-rose-700 dark:bg-emerald-700 rounded-lg py-1 px-2 text-white text-xs'>
+								{blogPostCard.category}
+							</span>
+						</div>
+					)}
+				</div>
 
 				<div className='my-4'>
 					<span className='font-semibold font-regular text-lg'>{blogPostCard.title}</span>
@@ -63,6 +73,26 @@ export const BlogPostCard: React.FC<BlogCardProps> = ({ blogPostCard }) => {
 						<Link to={`/blog/${blogPostCard.slug}`}>See post »</Link>
 					</div>
 				</div>
+
+				{blogPostCard.keywords.length > 0 && (
+					<>
+						<div className='mt-12 flex gap-x-2 max-w-sm flex-wrap text-gray-600 dark:text-gray-300'>
+							{blogPostCard.keywords.map((keyword, i) => (
+								<>
+									<span key={i} className='text-sm'>
+										{keyword}
+									</span>
+
+									{i < blogPostCard.keywords.length - 1 ? (
+										<span className='flex items-center'>•</span>
+									) : (
+										''
+									)}
+								</>
+							))}
+						</div>
+					</>
+				)}
 			</div>
 		</div>
 	);
