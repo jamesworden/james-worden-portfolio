@@ -20,7 +20,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data }) => {
 				<h3 className='text-lg lg:text-2xl mt-4'>{frontmatter.subtitle}</h3>
 			</section>
 
-			<div className='flex flex-row justify-between gap-8'>
+			<div className='flex flex-row justify-between gap-8 mb-6'>
 				<article
 					className='prose lg:prose-lg dark:prose-invert mr-0'
 					dangerouslySetInnerHTML={{ __html: html }}
