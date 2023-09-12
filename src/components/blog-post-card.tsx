@@ -20,18 +20,14 @@ export const BlogPostCard: React.FC<BlogCardProps> = ({ blogPostCard }) => {
 			<div>
 				<div className='flex gap-2'>
 					{blogPostCard.featured && (
-						<div>
-							<span className='bg-rose-600 dark:bg-emerald-600 rounded-lg py-1 px-2 text-white text-xs'>
-								Featured
-							</span>
+						<div className='bg-rose-600 dark:bg-emerald-600 rounded-lg py-1 px-2 text-white text-xs'>
+							Featured
 						</div>
 					)}
 
 					{blogPostCard.category && (
-						<div>
-							<span className='bg-rose-700 dark:bg-emerald-700 rounded-lg py-1 px-2 text-white text-xs'>
-								{blogPostCard.category}
-							</span>
+						<div className='bg-rose-700 dark:bg-emerald-700 rounded-lg py-1 px-2 text-white text-xs'>
+							{blogPostCard.category}
 						</div>
 					)}
 				</div>
@@ -76,19 +72,14 @@ export const BlogPostCard: React.FC<BlogCardProps> = ({ blogPostCard }) => {
 
 				{blogPostCard.keywords.length > 0 && (
 					<>
-						<div className='mt-12 flex gap-x-2 max-w-sm flex-wrap text-gray-600 dark:text-gray-300'>
+						<div className='mt-6 flex gap-2 max-w-sm flex-wrap text-gray-600 dark:text-gray-300'>
 							{blogPostCard.keywords.map((keyword, i) => (
-								<>
-									<span key={i} className='text-sm'>
-										{keyword}
-									</span>
-
-									{i < blogPostCard.keywords.length - 1 ? (
-										<span className='flex items-center'>•</span>
-									) : (
-										''
-									)}
-								</>
+								<span
+									key={i}
+									className='bg-gray-300 rounded-lg py-1 px-2 text-xs text-gray-500'
+								>
+									{keyword}
+								</span>
 							))}
 						</div>
 					</>
