@@ -4,7 +4,15 @@ import { Link, PageProps, graphql } from 'gatsby';
 
 import '../styles/global.scss';
 import { MarkdownRemarkQueryResult } from '../graphql-types';
+import { BlogPostCard } from '../components/blog-post-card';
 export { GlobalHead as Head } from '../components/global-head';
+
+export interface IBlogPostCard {
+	slug: string;
+	title: string;
+	description: string;
+	date: string;
+}
 
 interface ProjectPageProps extends PageProps {
 	data: MarkdownRemarkQueryResult;
@@ -15,21 +23,26 @@ const projectsPage: React.FC<ProjectPageProps> = ({
 		allMarkdownRemark: { edges },
 	},
 }) => {
-	const Posts = edges
-		.filter((edge) => !!edge.node.frontmatter.date) // Filter displayed post links
-		.map((edge) => (
-			<Link key={edge.node.id} to={`/blog/${edge.node.frontmatter.slug}`}>
-				{edge.node.frontmatter.slug}
-			</Link>
-		));
+	const blogPostCards: IBlogPostCard[] = edges.map((edge) => ({
+		date: edge.node.frontmatter.date,
+		description: edge.node.frontmatter.description,
+		title: edge.node.frontmatter.title,
+		slug: edge.node.frontmatter.slug,
+	}));
+
+	// TODO: Dynamically filter blog posts.
 
 	return (
 		<PageContent>
 			<div className='prose lg:prose-lg dark:prose-invert mt-16 mb-8'>
-				<h1 className=' mt-12 mb-8'>Blog</h1>
+				<h1 className='mt-12 mb-8'>Blog</h1>
 			</div>
 
-			{Posts.map((post) => post)}
+			<div className='mb-12'>
+				{blogPostCards.map((blogPostCard) => (
+					<BlogPostCard blogPostCard={blogPostCard}></BlogPostCard>
+				))}
+			</div>
 		</PageContent>
 	);
 };
@@ -45,6 +58,7 @@ export const pageQuery = graphql`
 						date(formatString: "MMMM DD, YYYY")
 						slug
 						title
+						description
 					}
 				}
 			}

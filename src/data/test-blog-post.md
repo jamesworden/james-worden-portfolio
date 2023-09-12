@@ -3,6 +3,7 @@ slug: 'my-first-blog-post'
 date: '2022-11-24'
 title: ' Automating Form Filling with Puppeteer'
 subtitle: 'This is a post about things.'
+description: 'This is the description for what is written about the blog post from a blog card perspective'
 ---
 
 ![Puppeteer Logo](https://user-images.githubusercontent.com/10379601/29446482-04f7036a-841f-11e7-9872-91d1fc2ea683.png)
