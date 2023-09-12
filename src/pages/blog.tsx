@@ -48,10 +48,58 @@ const projectsPage: React.FC<ProjectPageProps> = ({
 				<h1 className='mt-12 mb-8'>Blog</h1>
 			</div>
 
-			<div className='mb-6'>
-				{blogPostCards.map((blogPostCard) => (
-					<BlogPostCard blogPostCard={blogPostCard}></BlogPostCard>
-				))}
+			<div className='flex gap-x-4 justify-between mb-6'>
+				<div className='flex flex-col gap-y-8'>
+					{blogPostCards.map((blogPostCard) => (
+						<BlogPostCard blogPostCard={blogPostCard}></BlogPostCard>
+					))}
+				</div>
+
+				<div className='grow hidden lg:block'>
+					<div className='p-4 max-w-xs flex flex-col gap-y-8'>
+						<div>
+							<div className='text-xl font-semibold mb-2'>Search</div>
+
+							<div className='flex gap-x-4 mb-2'>
+								<div className='flex gap-x-2'>
+									<input id='search-by-title' type='radio' checked={true} />
+									<label htmlFor='search-by-title'>Date</label>
+								</div>
+
+								<div className='flex gap-x-2'>
+									<input id='search-by-keywords' type='radio' checked={false} />
+									<label htmlFor='search-by-title'>Category</label>
+								</div>
+
+								<div className='flex gap-x-2'>
+									<input id='search-by-keywords' type='radio' checked={false} />
+									<label htmlFor='search-by-title'>Category</label>
+								</div>
+							</div>
+
+							<input
+								className='block w-full rounded border border-gray-300 bg-white py-1.5 px-2 text-base font-normal text-gray-700 focus:border-[#365CCE] focus:bg-white focus:text-gray-700 focus:outline-none'
+								placeholder='Basic Input'
+							/>
+						</div>
+
+						<div>
+							<div className='text-xl font-semibold mb-2'>Sort</div>
+
+							<div className='flex flex-col mb-3'>
+								<div className='flex gap-x-2'>
+									<input id='search-by-title' type='radio' checked={true} />
+									<label htmlFor='search-by-title'>Title</label>
+								</div>
+
+								<div className='flex gap-x-2'>
+									<input id='search-by-keywords' type='radio' checked={false} />
+									<label htmlFor='search-by-title'>Keywords</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</PageContent>
 	);

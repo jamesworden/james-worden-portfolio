@@ -11,14 +11,14 @@ export const BlogPostCard: React.FC<BlogCardProps> = ({ blogPostCard }) => {
 	const image = blogPostThumbnails[blogPostCard.thumbnailId];
 
 	return (
-		<div className='rounded-lg shadow-2xl md:ml-16 mt-16 md:mt-0 bg-gray-200 flex gap-8 py-6 dark:bg-slate-800 transition flex-col md:flex-row px-4 md:px-0 max-w-sm md:max-w-none'>
+		<div className='rounded-lg shadow-xl md:ml-16 mt-16 md:mt-0 bg-gray-200 flex gap-8 py-6 dark:bg-slate-800 transition flex-col md:flex-row px-4 md:px-0 max-w-sm md:max-w-none'>
 			<img
 				src={image}
-				className='w-[320px] h-[213.3px] md:-ml-16 -mt-16 md:mt-0 rounded-lg z-2 shadow-2xl h-[213px] transition'
+				className='w-[320px] h-[213.3px] md:-ml-16 -mt-16 md:mt-0 rounded-lg z-2 shadow-xl h-[213px] transition'
 			/>
 
-			<div>
-				<div className='flex gap-2'>
+			<div className='px-2'>
+				<div className='flex'>
 					{blogPostCard.featured && (
 						<div className='bg-rose-600 dark:bg-emerald-600 rounded-lg py-1 px-2 text-white text-xs'>
 							Featured
