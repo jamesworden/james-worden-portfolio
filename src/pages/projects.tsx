@@ -9,8 +9,8 @@ export { GlobalHead as Head } from '../components/global-head';
 const projectsPage: React.FC<{}> = () => {
 	return (
 		<PageContent>
-			<div className='prose lg:prose-lg dark:prose-invert mt-16 mb-8'>
-				<h1 className=' mt-12 mb-8'>Projects</h1>
+			<div className='prose lg:prose-lg dark:prose-invert mt-16 mb-8 lg:my-16'>
+				<h1 className='mt-12 mb-8'>Projects</h1>
 			</div>
 
 			{projectCards.map((projectCard, i) => (
