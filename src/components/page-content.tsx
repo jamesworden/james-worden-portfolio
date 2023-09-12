@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { TRANSITION_DURATION_MS } from '../constants';
+import { Footer } from './footer';
 
 export interface PageContentProps {
 	children: ReactNode;
@@ -24,5 +25,7 @@ export const PageContent: React.FC<PageContentProps> = ({ onAnimationComplete, c
 		<div className='m-auto max-w-screen-xl flex flex-col px-safe-or-2 relative grow w-full'>
 			{children}
 		</div>
+
+		<Footer></Footer>
 	</motion.main>
 );

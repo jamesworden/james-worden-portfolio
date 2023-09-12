@@ -44,7 +44,7 @@ const projectsPage: React.FC<ProjectPageProps> = ({
 				<h1 className='mt-12 mb-8'>Blog</h1>
 			</div>
 
-			<div className='mb-12'>
+			<div className='mb-6'>
 				{blogPostCards.map((blogPostCard) => (
 					<BlogPostCard blogPostCard={blogPostCard}></BlogPostCard>
 				))}

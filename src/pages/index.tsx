@@ -123,7 +123,7 @@ const IndexPage: React.FC<PageProps> = ({ location }) => {
 
 			<SectionDivider displayName='Contact' displayNumber='03'></SectionDivider>
 
-			<section className='flex justify-around flex-col mt-16 mb-8' id='contact-section'>
+			<section className='flex justify-around flex-col mt-16 mb-6' id='contact-section'>
 				<ContactForm></ContactForm>
 			</section>
 		</PageContent>
