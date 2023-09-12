@@ -22,11 +22,13 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data }) => {
 
 			<div className='flex flex-row justify-between gap-8'>
 				<article
-					className='prose lg:prose-lg mr-0'
+					className='prose lg:prose-lg dark:prose-invert mr-0'
 					dangerouslySetInnerHTML={{ __html: html }}
 				></article>
 
-				<div className='bg-rose-300 flex-grow'>Test</div>
+				<div className='bg-rose-300 flex-grow hidden lg:block max-w-md'>
+					<h3>Table of Contents</h3>
+				</div>
 			</div>
 		</PageContent>
 	);

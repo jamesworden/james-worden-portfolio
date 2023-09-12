@@ -2,7 +2,7 @@ import * as React from 'react';
 
 export const Footer = () => (
 	<footer className='w-full flex justify-around'>
-		<div className='max-w-screen-lg flex pb-8 pt-2 px-safe-or-2 w-full m-auto'>
+		<div className='max-w-screen-xl flex pb-8 pt-2 px-safe-or-2 w-full m-auto'>
 			<a
 				className='mr-8 flex flex-col justify-around'
 				href='https://www.linkedin.com/in/jameswordenny/'
