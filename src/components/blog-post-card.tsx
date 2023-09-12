@@ -27,7 +27,7 @@ export const BlogPostCard: React.FC<BlogCardProps> = ({ blogPostCard }) => {
 					<span className='font-semibold font-regular text-lg'>{blogPostCard.title}</span>
 				</div>
 
-				<p className='prose mb-6'>{blogPostCard.description}</p>
+				<p className='mb-6 max-w-md'>{blogPostCard.description}</p>
 
 				<div className='flex gap-4'>
 					{blogPostCard.githubUrl && (
