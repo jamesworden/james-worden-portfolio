@@ -25,7 +25,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
 	return (
 		<div className='flex flex-col sticky top-0 z-50'>
 			<nav className='flex justify-around bg-rose-950 dark:bg-gray-950 transition'>
-				<div className='flex justify-between max-w-screen-lg w-full px-safe-or-2 py-3'>
+				<div className='flex justify-between max-w-screen-xl w-full px-safe-or-2 py-3'>
 					<div className='flex'>
 						<DarkModeSvg></DarkModeSvg>
 

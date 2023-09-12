@@ -2,6 +2,7 @@
 module.exports = {
 	darkMode: 'class',
 	content: ['./src/pages/**/*.{js,jsx,ts,tsx}', './src/components/**/*.{js,jsx,ts,tsx}'],
+	plugins: [require('@tailwindcss/typography')],
 	theme: {
 		extend: {
 			zIndex: {
@@ -28,5 +29,4 @@ module.exports = {
 			// => @media (min-width: 1536px) { ... }
 		},
 	},
-	plugins: [],
 };

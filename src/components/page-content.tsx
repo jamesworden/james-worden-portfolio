@@ -21,7 +21,7 @@ export const PageContent: React.FC<PageContentProps> = ({ onAnimationComplete, c
 			duration: TRANSITION_DURATION_MS,
 		}}
 	>
-		<div className='m-auto max-w-screen-lg flex flex-col px-safe-or-2 relative grow w-full'>
+		<div className='m-auto max-w-screen-xl flex flex-col px-safe-or-2 relative grow w-full'>
 			{children}
 		</div>
 	</motion.main>

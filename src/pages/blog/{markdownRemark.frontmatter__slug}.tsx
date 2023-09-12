@@ -12,16 +12,22 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data }) => {
 
 	return (
 		<PageContent>
-			<section className='mt-20 mb-4'>
-				<h1 className='text-3xl'>{frontmatter.title}</h1>
-				<span className='text-sm'>{frontmatter.date}</span>
+			<section className='my-20'>
+				<h1 className='text-3xl lg:text-5xl lg:font-semibold lg:mb-2'>
+					{frontmatter.title}
+				</h1>
+				<span className='text-sm lg:text-md'>{frontmatter.date}</span>
+				<h3 className='text-lg lg:text-2xl mt-4'>{frontmatter.subtitle}</h3>
 			</section>
 
-			<h3 className='text-lg mb-16'>{frontmatter.subtitle}</h3>
+			<div className='flex flex-row justify-between gap-8'>
+				<article
+					className='prose lg:prose-lg mr-0'
+					dangerouslySetInnerHTML={{ __html: html }}
+				></article>
 
-			<section>
-				<div dangerouslySetInnerHTML={{ __html: html }} />
-			</section>
+				<div className='bg-rose-300 flex-grow'>Test</div>
+			</div>
 		</PageContent>
 	);
 };
