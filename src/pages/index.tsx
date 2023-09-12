@@ -26,14 +26,17 @@ const IndexPage: React.FC<PageProps> = ({ location }) => {
 	return (
 		<PageContent onAnimationComplete={() => setLayoutAnimationCompleted(true)}>
 			<div className='flex justify-around w-100'>
-				<div className='max-w-4xl w-full'>
+				<div className='max-w-5xl w-full'>
 					<section className='flex justify-between my-8 md:mt-36 mb-40 flex-col md:flex-row flex'>
-						<div className='pt-8 flex flex-col mb-16 justify-between'>
-							<div className='pb-12 prose prose:lg dark:prose-invert'>
-								<h1 className='mb-4'>I'm James Worden.</h1>
-								<span>I strive to build simple and</span>
-								<br />
-								<span>intuitive software.</span>
+						<div className='flex flex-col gap-8 mb-16'>
+							<div className='prose lg:prose-lg dark:prose-invert lg:mb-6'>
+								<h1>I'm James Worden.</h1>
+
+								<div className='-mt-6'>
+									<span>I strive to build simple and</span>
+									<br />
+									<span>intuitive software.</span>
+								</div>
 							</div>
 
 							<div>
