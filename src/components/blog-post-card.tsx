@@ -76,7 +76,7 @@ export const BlogPostCard: React.FC<BlogCardProps> = ({ blogPostCard }) => {
 							{blogPostCard.keywords.map((keyword, i) => (
 								<span
 									key={i}
-									className='bg-gray-300 rounded-lg py-1 px-2 text-xs text-gray-500'
+									className='bg-gray-300 rounded-lg py-1 px-2 text-xs text-gray-600'
 								>
 									{keyword}
 								</span>
