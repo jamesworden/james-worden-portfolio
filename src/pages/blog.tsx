@@ -1,10 +1,12 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { PageContent } from '../components/page-content';
 import { Link, PageProps, graphql } from 'gatsby';
 
 import '../styles/global.scss';
-import { MarkdownRemarkQueryResult } from '../graphql-types';
+import { MarkdownRemarkNode, MarkdownRemarkQueryResult } from '../graphql-types';
 import { BlogPostCard } from '../components/blog-post-card';
+import Checkbox from '../components/checkbox';
 export { GlobalHead as Head } from '../components/global-head';
 
 export interface IBlogPostCard {
@@ -28,19 +30,56 @@ const projectsPage: React.FC<ProjectPageProps> = ({
 		allMarkdownRemark: { edges },
 	},
 }) => {
-	const blogPostCards: IBlogPostCard[] = edges.map((edge) => ({
-		date: edge.node.frontmatter.date,
-		description: edge.node.frontmatter.description,
-		title: edge.node.frontmatter.title,
-		slug: edge.node.frontmatter.slug,
-		thumbnailId: edge.node.frontmatter.thumbnailId,
-		githubUrl: edge.node.frontmatter.githubUrl,
-		category: edge.node.frontmatter.category,
-		keywords: getBlogPostCardKeywords(edge.node.frontmatter.keywords),
-		featured: getBlogPostCardFeaturedStatus(edge.node.frontmatter.featured),
-	}));
+	const [searchingByTitle, setSearchingByTitle] = useState(true);
+	const [searchingByKeyword, setSearchingByKeyword] = useState(false);
+	const [sortingByDate, setSortingByDate] = useState(true);
+	const [sortingByCategory, setSortingByCategory] = useState(false);
+	const [sortingByFeatured, setSortingByFeatured] = useState(false);
+	const [orderByAscending, setOrderByAscending] = useState(true);
 
-	// TODO: Dynamically filter blog posts.
+	const handleSearchByTitleChange = (checked: boolean) => {
+		if (checked || searchingByKeyword) {
+			setSearchingByTitle(checked);
+		}
+	};
+
+	const handleSearchByKeywordChange = (checked: boolean) => {
+		if (checked || searchingByTitle) {
+			setSearchingByKeyword(checked);
+		}
+	};
+
+	const handleSortByDateChange = (checked: boolean) => {
+		if (checked || sortingByCategory || sortingByFeatured) {
+			setSortingByDate(checked);
+		}
+	};
+
+	const handleSortByCategoryChange = (checked: boolean) => {
+		if (checked || sortingByFeatured || sortingByDate) {
+			setSortingByCategory(checked);
+		}
+	};
+
+	const handleSortByFeaturedChange = (checked: boolean) => {
+		if (checked || sortingByCategory || sortingByDate) {
+			setSortingByFeatured(checked);
+		}
+	};
+
+	const handleOrderByAscendingChange = (_: boolean) => {
+		if (!orderByAscending) {
+			setOrderByAscending(true);
+		}
+	};
+
+	const handleOrderByDescendingChange = (_: boolean) => {
+		if (orderByAscending) {
+			setOrderByAscending(false);
+		}
+	};
+
+	const blogPostCards = getBlogPostCardsFromEdges(edges);
 
 	return (
 		<PageContent>
@@ -59,56 +98,81 @@ const projectsPage: React.FC<ProjectPageProps> = ({
 
 				<div className='grow hidden lg:block'>
 					<div className='p-4 max-w-xs flex flex-col gap-y-8'>
-						<div className='flex flex-col'>
-							<div className='text-xl font-semibold mb-2'>Search</div>
-
-							<div className='flex gap-x-2'>
-								<div className='flex flex-col justify-around'>
-									<input
-										id='title-search'
-										type='checkbox'
-										className='appearance-none h-4 w-4 border-2 rounded cursor-pointer transition-all checked:bg-rose-500 checked:border-rose-500 checked:text-white focus:outline-none focus:ring focus:ring-rose-300 border-gray-500 dark:focus:ring-emerald-300 dark:bg-gray-700 dark:border-emerald-400 dark:checked:bg-emerald-400 dark:checked:border-emerald-400 dark:checked:text-white'
+						<div className='flex items-center rounded-full shadow-md bg-gray-200'>
+							<svg
+								className='w-4 h-4 fill-gray-500 ml-4'
+								version='1.1'
+								id='Capa_1'
+								xmlns='http://www.w3.org/2000/svg'
+								viewBox='0 0 490.4 490.4'
+							>
+								<g>
+									<path
+										d='M484.1,454.796l-110.5-110.6c29.8-36.3,47.6-82.8,47.6-133.4c0-116.3-94.3-210.6-210.6-210.6S0,94.496,0,210.796
+		s94.3,210.6,210.6,210.6c50.8,0,97.4-18,133.8-48l110.5,110.5c12.9,11.8,25,4.2,29.2,0C492.5,475.596,492.5,463.096,484.1,454.796z
+		 M41.1,210.796c0-93.6,75.9-169.5,169.5-169.5s169.6,75.9,169.6,169.5s-75.9,169.5-169.5,169.5S41.1,304.396,41.1,210.796z'
 									/>
-								</div>
-								<label htmlFor='title-search'>Title</label>
-							</div>
-
-							<div className='flex gap-x-2'>
-								<div className='flex flex-col justify-around'>
-									<input
-										id='keyword-search'
-										type='checkbox'
-										className='appearance-none h-4 w-4 border-2 rounded cursor-pointer transition-all checked:bg-rose-500 checked:border-rose-500 checked:text-white focus:outline-none focus:ring focus:ring-rose-300 border-gray-500 dark:focus:ring-emerald-300 dark:bg-gray-700 dark:border-emerald-400 dark:checked:bg-emerald-400 dark:checked:border-emerald-400 dark:checked:text-white'
-									/>
-								</div>
-								<label htmlFor='keyword-search'>Keyword</label>
-							</div>
-
+								</g>
+							</svg>
 							<input
-								className='mt-3 block w-full rounded border border-gray-300 bg-white py-1.5 px-2 text-base font-normal text-gray-700 focus:border-[#365CCE] focus:bg-white focus:text-gray-700 focus:outline-none'
-								placeholder='Basic Input'
+								className='py-2 px-4 rounded-full focus:outline-none bg-gray-200 text-black'
+								type='text'
+								placeholder='Search'
 							/>
 						</div>
 
 						<div>
-							<div className='text-xl font-semibold mb-2'>Sort</div>
+							<div className='text-xl font-semibold mb-2'>Search by</div>
 
-							<div className='flex flex-col mb-3'>
-								<div className='flex gap-x-2'>
-									<input id='search-by-title' type='radio' checked={true} />
-									<label htmlFor='search-by-title'>Date</label>
-								</div>
+							<Checkbox
+								label='Title'
+								checked={searchingByTitle}
+								onChange={handleSearchByTitleChange}
+							/>
 
-								<div className='flex gap-x-2'>
-									<input id='search-by-keywords' type='radio' checked={false} />
-									<label htmlFor='search-by-title'>Category</label>
-								</div>
+							<Checkbox
+								label='Keyword'
+								checked={searchingByKeyword}
+								onChange={handleSearchByKeywordChange}
+							/>
+						</div>
 
-								<div className='flex gap-x-2'>
-									<input id='search-by-keywords' type='radio' checked={false} />
-									<label htmlFor='search-by-title'>Category</label>
-								</div>
-							</div>
+						<div>
+							<div className='text-xl font-semibold mb-2'>Sort by</div>
+
+							<Checkbox
+								label='Date'
+								checked={sortingByDate}
+								onChange={handleSortByDateChange}
+							/>
+
+							<Checkbox
+								label='Category'
+								checked={sortingByCategory}
+								onChange={handleSortByCategoryChange}
+							/>
+
+							<Checkbox
+								label='Featured'
+								checked={sortingByFeatured}
+								onChange={handleSortByFeaturedChange}
+							/>
+						</div>
+
+						<div>
+							<div className='text-xl font-semibold mb-2'>Order by</div>
+
+							<Checkbox
+								label='Ascending'
+								checked={orderByAscending}
+								onChange={handleOrderByAscendingChange}
+							/>
+
+							<Checkbox
+								label='Descending'
+								checked={!orderByAscending}
+								onChange={handleOrderByDescendingChange}
+							/>
 						</div>
 					</div>
 				</div>
@@ -140,6 +204,20 @@ export const pageQuery = graphql`
 		}
 	}
 `;
+
+function getBlogPostCardsFromEdges(edges: MarkdownRemarkNode[]): IBlogPostCard[] {
+	return edges.map((edge) => ({
+		date: edge.node.frontmatter.date,
+		description: edge.node.frontmatter.description,
+		title: edge.node.frontmatter.title,
+		slug: edge.node.frontmatter.slug,
+		thumbnailId: edge.node.frontmatter.thumbnailId,
+		githubUrl: edge.node.frontmatter.githubUrl,
+		category: edge.node.frontmatter.category,
+		keywords: getBlogPostCardKeywords(edge.node.frontmatter.keywords),
+		featured: getBlogPostCardFeaturedStatus(edge.node.frontmatter.featured),
+	}));
+}
 
 function getBlogPostCardKeywords(keywordsString?: string) {
 	const stringIsEmpty = !keywordsString || keywordsString.length === 0;
