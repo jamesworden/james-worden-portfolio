@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { PageContent } from '../components/page-content';
-import { Link, PageProps, graphql } from 'gatsby';
+import { PageProps, graphql } from 'gatsby';
 
 import '../styles/global.scss';
 import { MarkdownRemarkNode, MarkdownRemarkQueryResult } from '../graphql-types';
 import { BlogPostCard } from '../components/blog-post-card';
-import Checkbox from '../components/checkbox';
+import { Checkbox } from '../components/checkbox';
 export { GlobalHead as Head } from '../components/global-head';
 
 export interface IBlogPostCard {

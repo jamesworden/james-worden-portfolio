@@ -65,4 +65,4 @@ const Checkbox: React.FC<CheckboxProps> = ({ label, checked, onChange }) => {
 	);
 };
 
-export default Checkbox;
+export { Checkbox };
