@@ -32,7 +32,7 @@ const projectsPage: React.FC<ProjectPageProps> = ({
 }) => {
 	const [searchingByTitle, setSearchingByTitle] = useState(true);
 	const [searchingByKeyword, setSearchingByKeyword] = useState(false);
-	const [sortingByDate, setSortingByDate] = useState(true);
+	const [sortingByRecent, setSortingByDate] = useState(true);
 	const [sortingByCategory, setSortingByCategory] = useState(false);
 	const [sortingByFeatured, setSortingByFeatured] = useState(false);
 	const [orderByAscending, setOrderByAscending] = useState(true);
@@ -49,20 +49,20 @@ const projectsPage: React.FC<ProjectPageProps> = ({
 		}
 	};
 
-	const handleSortByDateChange = (checked: boolean) => {
+	const handleSortByRecentChange = (checked: boolean) => {
 		if (checked || sortingByCategory || sortingByFeatured) {
 			setSortingByDate(checked);
 		}
 	};
 
 	const handleSortByCategoryChange = (checked: boolean) => {
-		if (checked || sortingByFeatured || sortingByDate) {
+		if (checked || sortingByFeatured || sortingByRecent) {
 			setSortingByCategory(checked);
 		}
 	};
 
 	const handleSortByFeaturedChange = (checked: boolean) => {
-		if (checked || sortingByCategory || sortingByDate) {
+		if (checked || sortingByCategory || sortingByRecent) {
 			setSortingByFeatured(checked);
 		}
 	};
@@ -122,7 +122,7 @@ const projectsPage: React.FC<ProjectPageProps> = ({
 						</div>
 
 						<div>
-							<div className='text-xl font-semibold mb-2'>Search by</div>
+							<div className='text-lg font-semibold mb-2'>Search by</div>
 
 							<Checkbox
 								label='Title'
@@ -138,12 +138,18 @@ const projectsPage: React.FC<ProjectPageProps> = ({
 						</div>
 
 						<div>
-							<div className='text-xl font-semibold mb-2'>Sort by</div>
+							<div className='text-lg font-semibold mb-2'>Sort by</div>
 
 							<Checkbox
-								label='Date'
-								checked={sortingByDate}
-								onChange={handleSortByDateChange}
+								label='Featured'
+								checked={sortingByFeatured}
+								onChange={handleSortByFeaturedChange}
+							/>
+
+							<Checkbox
+								label='Recent'
+								checked={sortingByRecent}
+								onChange={handleSortByRecentChange}
 							/>
 
 							<Checkbox
@@ -151,16 +157,10 @@ const projectsPage: React.FC<ProjectPageProps> = ({
 								checked={sortingByCategory}
 								onChange={handleSortByCategoryChange}
 							/>
-
-							<Checkbox
-								label='Featured'
-								checked={sortingByFeatured}
-								onChange={handleSortByFeaturedChange}
-							/>
 						</div>
 
 						<div>
-							<div className='text-xl font-semibold mb-2'>Order by</div>
+							<div className='text-lg font-semibold mb-2'>Order by</div>
 
 							<Checkbox
 								label='Ascending'
