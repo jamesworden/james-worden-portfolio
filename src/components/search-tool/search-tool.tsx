@@ -12,6 +12,7 @@ const SearchTool: React.FC<SearchToolProps> = ({}) => {
 	const [sortingByCategory, setSortingByCategory] = useState(true);
 	const [sortingByFeatured, setSortingByFeatured] = useState(true);
 	const [orderByAscending, setOrderByAscending] = useState(true);
+	const [searchBarInput, setSearchBarInput] = useState('');
 
 	const handleSearchByTitleChange = (checked: boolean) => {
 		if (checked || searchingByKeyword) {
@@ -59,16 +60,23 @@ const SearchTool: React.FC<SearchToolProps> = ({}) => {
 		setShowingSearchOptions(!showingSearchOptions);
 	};
 
+	const handleSearchBarInputChange = (value: string) => {
+		setSearchBarInput(value);
+	};
+
 	return (
 		<div>
 			<div>
 				<div className='flex gap-x-4 justify-between'>
-					<SearchBar></SearchBar>
+					<SearchBar
+						value={searchBarInput}
+						onChange={handleSearchBarInputChange}
+					></SearchBar>
 
 					<div>
 						<div className='flex flex-col justify-around h-full'>
 							<svg
-								onClick={() => handleShowingSearchOptionsChange()}
+								onClick={handleShowingSearchOptionsChange}
 								className='h-8 w-8 cursor-pointer'
 								viewBox='0 0 24 24'
 								fill='none'
