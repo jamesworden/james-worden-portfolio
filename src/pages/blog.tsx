@@ -133,7 +133,7 @@ const projectsPage: React.FC<ProjectPageProps> = ({
 								<div className='flex flex-col justify-around h-full'>
 									<svg
 										onClick={() => handleShowingSearchOptionsChange()}
-										className='h-8 w-8'
+										className='h-8 w-8 cursor-pointer'
 										viewBox='0 0 24 24'
 										fill='none'
 										xmlns='http://www.w3.org/2000/svg'
@@ -166,7 +166,7 @@ const projectsPage: React.FC<ProjectPageProps> = ({
 						<div className='grow mt-4'>
 							<div className='p-4 max-w-xs flex flex-col gap-y-8'>
 								<div>
-									<div className='text-lg font-semibold mb-2'>Search by</div>
+									<div className='text-lg mb-2'>Search by</div>
 
 									<Checkbox
 										label='Title'
@@ -182,7 +182,7 @@ const projectsPage: React.FC<ProjectPageProps> = ({
 								</div>
 
 								<div>
-									<div className='text-lg font-semibold mb-2'>Sort by</div>
+									<div className='text-lg mb-2'>Sort by</div>
 
 									<Checkbox
 										label='Featured'
@@ -204,7 +204,7 @@ const projectsPage: React.FC<ProjectPageProps> = ({
 								</div>
 
 								<div>
-									<div className='text-lg font-semibold mb-2'>Order by</div>
+									<div className='text-lg mb-2'>Order by</div>
 
 									<Checkbox
 										label='Ascending'
