@@ -7,7 +7,7 @@ import '../styles/global.scss';
 import { MarkdownRemarkNode, MarkdownRemarkQueryResult } from '../graphql-types';
 import { BlogPostCard } from '../components/blog-post-card';
 import { Checkbox } from '../components/checkbox';
-import { SearchTool } from '../components/search-tool';
+import { SearchTool } from '../components/search-tool/search-tool';
 export { GlobalHead as Head } from '../components/global-head';
 
 export interface IBlogPostCard {
