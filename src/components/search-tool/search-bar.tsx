@@ -8,7 +8,7 @@ interface SearchBarProps {
 const SearchBar: React.FC<SearchBarProps> = ({ value, onChange }) => {
 	return (
 		<div>
-			<div className='flex items-center rounded-full shadow-md bg-gray-200'>
+			<div className='flex items-center rounded-full shadow-md bg-white'>
 				<svg
 					className='w-4 h-4 fill-gray-500 ml-4'
 					version='1.1'
@@ -25,7 +25,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ value, onChange }) => {
 					</g>
 				</svg>
 				<input
-					className='py-2 px-4 rounded-full focus:outline-none bg-gray-200 text-black'
+					className='py-2 px-4 rounded-full focus:outline-none bg-white text-black'
 					type='text'
 					placeholder='Search'
 					value={value}
