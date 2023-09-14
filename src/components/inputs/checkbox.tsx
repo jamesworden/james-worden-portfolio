@@ -1,12 +1,14 @@
 import React from 'react';
+import cx from 'classnames';
 
 interface CheckboxProps {
 	label: string;
 	checked: boolean;
+	uncheckedLabelClass?: string;
 	onChange: (isChecked: boolean) => void;
 }
 
-const Checkbox: React.FC<CheckboxProps> = ({ label, checked, onChange }) => {
+const Checkbox: React.FC<CheckboxProps> = ({ label, checked, onChange, uncheckedLabelClass }) => {
 	const handleCheckboxClick = () => {
 		const newChecked = !checked;
 		onChange(newChecked);
@@ -25,19 +27,17 @@ const Checkbox: React.FC<CheckboxProps> = ({ label, checked, onChange }) => {
 			/>
 			<label
 				htmlFor={inputId}
-				className={`flex items-center cursor-pointer transition ${
-					checked
-						? 'dark:text-emerald-400 text-rose-500'
-						: 'dark:text-gray-200 text-gray-700'
-				}`}
+				className={`flex items-center cursor-pointer transition`}
 				onClick={handleCheckboxClick}
 			>
 				<div
-					className={`transition w-4 h-4 bg-transparent rounded border-2 ${
+					className={cx(
+						'transition w-4 h-4 bg-transparent rounded border-2',
 						checked
 							? 'dark:border-emerald-400 border-rose-500'
-							: 'dark:border-gray-400 border-gray-500'
-					} relative`}
+							: 'dark:border-gray-400 border-gray-500',
+						'relative'
+					)}
 				>
 					{checked && (
 						<div
@@ -59,7 +59,17 @@ const Checkbox: React.FC<CheckboxProps> = ({ label, checked, onChange }) => {
 						</div>
 					)}
 				</div>
-				<span className='ml-2'>{label}</span>
+				<span
+					className={cx(
+						'ml-2 transition',
+						checked
+							? 'dark:text-emerald-400 text-rose-500'
+							: 'dark:text-gray-200 text-gray-700',
+						checked ? '' : uncheckedLabelClass ? uncheckedLabelClass : ''
+					)}
+				>
+					{label}
+				</span>
 			</label>
 		</div>
 	);

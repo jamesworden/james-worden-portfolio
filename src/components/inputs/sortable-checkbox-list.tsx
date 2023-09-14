@@ -119,6 +119,7 @@ const SortableCheckboxList: React.FC<SortableCheckboxListProps> = ({ sortByOptio
 
 							<Checkbox
 								label={option.label}
+								uncheckedLabelClass='dark:text-black'
 								checked={isChecked}
 								onChange={() => handleCheckboxChange(option.id)}
 							/>
