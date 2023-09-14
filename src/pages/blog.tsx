@@ -6,8 +6,13 @@ import { PageProps, graphql } from 'gatsby';
 import '../styles/global.scss';
 import { MarkdownRemarkNode, MarkdownRemarkQueryResult } from '../graphql-types';
 import { BlogPostCard, IBlogPostCard } from '../components/blog-post-card';
-import { SearchTool, SearchToolSettings } from '../components/search-tool/search-tool';
-import { defaultBlogSearchSettings } from '../data/default-blog-search-settings';
+import {
+	SearchTool,
+	SearchToolSettings,
+	SortByOption,
+} from '../components/search-tool/search-tool';
+import { defaultBlogSearchSettings } from '../data/default-search-settings';
+
 export { GlobalHead as Head } from '../components/global-head';
 
 interface ProjectPageProps extends PageProps {
@@ -20,7 +25,7 @@ const projectsPage: React.FC<ProjectPageProps> = ({
 	},
 }) => {
 	const [searchSettings, setSearchSettings] = useState(defaultBlogSearchSettings);
-	const blogPostCards = getBlogPostCardsFromEdges(edges);
+	const blogPostCards = sortBlogPostCards(getBlogPostCardsFromEdges(edges), searchSettings);
 
 	const handleSearchSettingsChange = (searchSettings: SearchToolSettings) => {
 		setSearchSettings({ ...searchSettings });
@@ -32,7 +37,7 @@ const projectsPage: React.FC<ProjectPageProps> = ({
 				<h1 className='mt-12 mb-8'>Blog</h1>
 			</div>
 
-			<div className='flex gap-x-6 justify-between mb-6'>
+			<div className='flex gap-x-6 mb-6'>
 				<div className='flex flex-col gap-y-8'>
 					{blogPostCards.map((blogPostCard, i) => (
 						<BlogPostCard key={i} blogPostCard={blogPostCard}></BlogPostCard>
@@ -108,6 +113,42 @@ function getBlogPostCardFeaturedStatus(featuredString?: string) {
 	}
 
 	return featuredString.trim().toLocaleLowerCase() === 'true';
+}
+
+function compareBySortOptions(
+	a: IBlogPostCard,
+	b: IBlogPostCard,
+	sortByOptions: SortByOption[],
+	orderByAscending: boolean
+): number {
+	for (const sortByOption of sortByOptions) {
+		if (sortByOption.checked) {
+			const propA = a[sortByOption.id as keyof IBlogPostCard]!;
+			const propB = b[sortByOption.id as keyof IBlogPostCard]!;
+
+			// Compare based on the selected sortByOption
+			if (propA < propB) {
+				return orderByAscending ? -1 : 1;
+			} else if (propA > propB) {
+				return orderByAscending ? 1 : -1;
+			}
+		}
+	}
+
+	// If no sortByOption applied, maintain the original order
+	return 0;
+}
+
+function sortBlogPostCards(
+	blogPostCards: IBlogPostCard[],
+	searchToolSettings: SearchToolSettings
+): IBlogPostCard[] {
+	const { sortByOptions, orderByAscending } = searchToolSettings;
+
+	// Sort the blogPostCards array using the custom compare function
+	return blogPostCards
+		.slice()
+		.sort((a, b) => compareBySortOptions(a, b, sortByOptions, orderByAscending));
 }
 
 export default projectsPage;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Checkbox } from '../checkbox';
+import { Checkbox } from '../inputs/checkbox';
 import { SearchBar } from './search-bar';
-import { SortableCheckboxList } from '../sortable-checkbox-list';
+import { SortableCheckboxList } from '../inputs/sortable-checkbox-list';
 
 export interface SearchByOption {
 	label: string;

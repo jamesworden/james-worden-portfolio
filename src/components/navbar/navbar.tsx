@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ToggleSwitch } from '../toggle-switch';
+import { ToggleSwitch } from '../inputs/toggle-switch';
 import { Link, navigate } from 'gatsby';
 import { PageState } from '../../page-state';
 import { DarkModeSvg } from './dark-mode-svg';

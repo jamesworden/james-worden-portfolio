@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import cx from 'classnames';
-import { Checkbox } from '../components/checkbox';
-import { DragIndicatorSvg } from './drag-indicator-svg';
-import { SortByOption } from '../components/search-tool/search-tool';
+import { Checkbox } from './checkbox';
+import { DragIndicatorSvg } from '../drag-indicator-svg';
+import { SortByOption } from '../search-tool/search-tool';
 
 interface SortableCheckboxListProps {
 	sortByOptions: SortByOption[];
