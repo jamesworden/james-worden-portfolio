@@ -3,54 +3,70 @@ import { Checkbox } from '../checkbox';
 import { SearchBar } from './search-bar';
 import { SortableCheckboxList } from '../sortable-checkbox-list';
 
-export interface SearchSettings {}
-
-enum SortByOption {
-	Recent,
-	Featured,
-	Category,
+interface SearchByOption {
+	label: string;
+	checked: boolean;
+	id: string;
 }
 
-interface SearchToolProps {}
+export interface SortByOption {
+	label: string;
+	checked: boolean;
+	id: string;
+}
 
-const SearchTool: React.FC<SearchToolProps> = ({}) => {
-	const [showingSearchOptions, setShowingSearchOptions] = useState(false);
-	const [searchingByTitle, setSearchingByTitle] = useState(true);
-	const [searchingByKeyword, setSearchingByKeyword] = useState(false);
-	const [sortBy, setSortBy] = useState([SortByOption.Featured, SortByOption.Recent]);
-	const [orderByAscending, setOrderByAscending] = useState(true);
+export interface SearchToolSettings {
+	searchByOptions: SearchByOption[];
+	sortByOptions: SortByOption[];
+	orderByAscending: boolean;
+}
+
+interface SearchToolProps {
+	settings: SearchToolSettings;
+	onChange: (settings: SearchToolSettings) => void;
+}
+
+const SearchTool: React.FC<SearchToolProps> = ({ settings, onChange }) => {
+	const [showingSearchSettings, setShowingSearchSettings] = useState(false);
 	const [searchBarInput, setSearchBarInput] = useState('');
 
-	const handleSearchByTitleChange = (checked: boolean) => {
-		if (checked || searchingByKeyword) {
-			setSearchingByTitle(checked);
-		}
-	};
-
-	const handleSearchByKeywordChange = (checked: boolean) => {
-		if (checked || searchingByTitle) {
-			setSearchingByKeyword(checked);
-		}
-	};
-
-	const handleOrderByAscendingChange = (_: boolean) => {
-		if (!orderByAscending) {
-			setOrderByAscending(true);
-		}
-	};
-
-	const handleOrderByDescendingChange = (_: boolean) => {
-		if (orderByAscending) {
-			setOrderByAscending(false);
-		}
-	};
-
 	const handleShowingSearchOptionsChange = () => {
-		setShowingSearchOptions(!showingSearchOptions);
+		setShowingSearchSettings(!showingSearchSettings);
 	};
 
 	const handleSearchBarInputChange = (value: string) => {
 		setSearchBarInput(value);
+	};
+
+	const handleSearchByOptionChange = (checked: boolean, id: string) => {
+		const numSelectedOptions = settings.searchByOptions.filter(
+			(option) => option.checked
+		).length;
+		settings.searchByOptions.forEach((option) => {
+			if (option.id === id && (checked || numSelectedOptions > 1)) {
+				option.checked = checked;
+			}
+		});
+		onChange({ ...settings });
+	};
+
+	const handleOrderByAscendingChange = (_: boolean) => {
+		if (!settings.orderByAscending) {
+			settings.orderByAscending = true;
+		}
+		onChange({ ...settings });
+	};
+
+	const handleOrderByDescendingChange = (_: boolean) => {
+		if (settings.orderByAscending) {
+			settings.orderByAscending = false;
+		}
+		onChange({ ...settings });
+	};
+
+	const handleSortByOptionsChange = (sortByOptions: SortByOption[]) => {
+		settings.sortByOptions = sortByOptions;
+		onChange({ ...settings });
 	};
 
 	return (
@@ -85,34 +101,30 @@ const SearchTool: React.FC<SearchToolProps> = ({}) => {
 				</div>
 			</div>
 
-			{showingSearchOptions && (
+			{showingSearchSettings && (
 				<div className='grow mt-4'>
 					<div className='p-4 max-w-xs flex flex-col gap-y-8'>
 						<div>
 							<div className='text-lg mb-2'>Search by</div>
 
-							<Checkbox
-								label='Title'
-								checked={searchingByTitle}
-								onChange={handleSearchByTitleChange}
-							/>
-
-							<Checkbox
-								label='Keyword'
-								checked={searchingByKeyword}
-								onChange={handleSearchByKeywordChange}
-							/>
+							{settings.searchByOptions.map((searchByOption, i) => (
+								<Checkbox
+									key={i}
+									label={searchByOption.label}
+									checked={searchByOption.checked}
+									onChange={(checked) =>
+										handleSearchByOptionChange(checked, searchByOption.id)
+									}
+								/>
+							))}
 						</div>
 
 						<div>
 							<div className='text-lg mb-2'>Sort by</div>
 
 							<SortableCheckboxList
-								items={[
-									{ id: 'featured', label: 'Featured' },
-									{ id: 'recent', label: 'Recent' },
-									{ id: 'category', label: 'Category' },
-								]}
+								sortByOptions={settings.sortByOptions}
+								onChange={handleSortByOptionsChange}
 							></SortableCheckboxList>
 						</div>
 
@@ -121,13 +133,13 @@ const SearchTool: React.FC<SearchToolProps> = ({}) => {
 
 							<Checkbox
 								label='Ascending'
-								checked={orderByAscending}
+								checked={settings.orderByAscending}
 								onChange={handleOrderByAscendingChange}
 							/>
 
 							<Checkbox
 								label='Descending'
-								checked={!orderByAscending}
+								checked={!settings.orderByAscending}
 								onChange={handleOrderByDescendingChange}
 							/>
 						</div>

@@ -2,92 +2,115 @@ import React, { useState } from 'react';
 import cx from 'classnames';
 import { Checkbox } from '../components/checkbox';
 import { DragIndicatorSvg } from './drag-indicator-svg';
+import { SortByOption } from '../components/search-tool/search-tool';
 
-interface ListItem {
-	id: string;
-	label: string;
+interface SortableCheckboxListProps {
+	sortByOptions: SortByOption[];
+	onChange: (sortByOptions: SortByOption[]) => void;
 }
 
-const SortableCheckboxList: React.FC<{ items: ListItem[] }> = ({ items }) => {
-	const [selectedItemIds, setSelectedItemIds] = useState<string[]>(items.map((item) => item.id));
-	const [draggedItem, setDraggedItem] = useState<string | null>(null);
+const SortableCheckboxList: React.FC<SortableCheckboxListProps> = ({ sortByOptions, onChange }) => {
+	const [draggedOptionId, setDraggedOptionId] = useState<string | null>(null);
 
-	const handleCheckboxChange = (itemId: string) => {
-		const isLastSelectedCheckbox =
-			selectedItemIds.length === 1 && selectedItemIds.includes(itemId);
-		if (isLastSelectedCheckbox) {
+	const handleCheckboxChange = (optionId: string) => {
+		const option = sortByOptions.find((option) => option.id === optionId)!;
+		const checkedOptions = sortByOptions.filter((option) => option.checked);
+
+		if (option.checked && checkedOptions.length === 1) {
 			return;
 		}
 
-		setSelectedItemIds((prevSelectedItems) => {
-			if (prevSelectedItems.includes(itemId)) {
-				return prevSelectedItems.filter((id) => id !== itemId);
-			} else {
-				return [...prevSelectedItems, itemId];
+		sortByOptions.forEach((option) => {
+			if (option.id === optionId) {
+				option.checked = !option.checked;
 			}
 		});
+
+		onChange(sortByOptions);
 	};
 
-	const handleDragStart = (itemId: string) => {
-		setDraggedItem(itemId);
+	const handleDragStart = (optionId: string) => {
+		setDraggedOptionId(optionId);
 	};
 
 	const handleDragOver = (e: React.DragEvent<HTMLLIElement>) => {
 		e.preventDefault();
 	};
 
-	const handleDrop = (targetItemId: string) => {
-		if (draggedItem) {
-			const newSelectedItems = [...selectedItemIds];
-			const sourceItemIndex = newSelectedItems.indexOf(draggedItem);
-			const targetItemIndex = newSelectedItems.indexOf(targetItemId);
+	const handleDrop = (targetOptionId: string) => {
+		if (!draggedOptionId) {
+			return;
+		}
 
-			if (sourceItemIndex !== -1 && targetItemIndex !== -1) {
-				newSelectedItems.splice(sourceItemIndex, 1);
-				newSelectedItems.splice(targetItemIndex, 0, draggedItem);
-				setSelectedItemIds(newSelectedItems);
+		const newCheckedOptionIds = [
+			...sortByOptions.filter((option) => option.checked).map((option) => option.id),
+		];
+		const sourceOptionIndex = newCheckedOptionIds.indexOf(draggedOptionId);
+		const targetOptionIndex = newCheckedOptionIds.indexOf(targetOptionId);
+
+		if (sourceOptionIndex !== -1 && targetOptionIndex !== -1) {
+			newCheckedOptionIds.splice(sourceOptionIndex, 1);
+			newCheckedOptionIds.splice(targetOptionIndex, 0, draggedOptionId);
+
+			const newSortByOptions = newCheckedOptionIds.map((optionId) => {
+				return sortByOptions.find((option) => option.id === optionId)!;
+			});
+
+			for (const option of sortByOptions) {
+				if (!newSortByOptions.includes(option)) {
+					newSortByOptions.push(option);
+				}
 			}
 
-			setDraggedItem(null);
+			onChange(newSortByOptions);
 		}
+
+		setDraggedOptionId(null);
 	};
 
-	const sortedItems = items.sort((a, b) => {
-		const indexA = selectedItemIds.indexOf(a.id);
-		const indexB = selectedItemIds.indexOf(b.id);
+	const sortedOptions = sortByOptions.sort((a, b) => {
+		const checkedOptionIds = sortByOptions
+			.filter((option) => option.checked)
+			.map((option) => option.id);
+		const indexA = checkedOptionIds.indexOf(a.id);
+		const indexB = checkedOptionIds.indexOf(b.id);
 
-		// Handle cases where one of the items is not in selectedItemIds
+		// Handle cases where one of the options is not in checkedOptionIds
 		if (indexA === -1 && indexB === -1) {
-			return 0; // Both items are not in selectedItemIds, preserve the order
+			return 0; // Both options are not in checkedOptionIds, preserve the order
 		} else if (indexA === -1) {
-			return 1; // 'b' is in selectedItemIds, so it comes first
+			return 1; // 'b' is in checkedOptionIds, so it comes first
 		} else if (indexB === -1) {
-			return -1; // 'a' is in selectedItemIds, so it comes first
+			return -1; // 'a' is in checkedOptionIds, so it comes first
 		}
 
-		// Compare based on their positions in selectedItemIds
+		// Compare based on their positions in checkedOptionIds
 		return indexA - indexB;
 	});
 
 	return (
 		<ul className='space-y-2'>
-			{sortedItems.map((item) => {
-				const isSelected = selectedItemIds.includes(item.id);
+			{sortedOptions.map((option) => {
+				const checkedOptionIds = sortByOptions
+					.filter((option) => option.checked)
+					.map((option) => option.id);
+
+				const isChecked = checkedOptionIds.includes(option.id);
 
 				return (
 					<li
-						key={item.id}
+						key={option.id}
 						className={cx(
 							'flex justify-between items-center p-2 bg-white border rounded shadow cursor-move',
 							{
-								'bg-blue-100': isSelected,
+								'bg-blue-100': isChecked,
 							}
 						)}
 						draggable
-						onDragStart={() => handleDragStart(item.id)}
+						onDragStart={() => handleDragStart(option.id)}
 						onDragOver={handleDragOver}
-						onDrop={() => handleDrop(item.id)}
-						data-item-id={item.id}
+						onDrop={() => handleDrop(option.id)}
+						data-item-id={option.id}
 					>
 						<div className='flex gap-x-3'>
 							<div className='flex flex-col justify-around'>
@@ -95,14 +118,14 @@ const SortableCheckboxList: React.FC<{ items: ListItem[] }> = ({ items }) => {
 							</div>
 
 							<Checkbox
-								label={item.label}
-								checked={isSelected}
-								onChange={() => handleCheckboxChange(item.id)}
+								label={option.label}
+								checked={isChecked}
+								onChange={() => handleCheckboxChange(option.id)}
 							/>
 						</div>
 
 						<span className='text-gray-400'>
-							{isSelected ? selectedItemIds.indexOf(item.id) + 1 : ''}
+							{isChecked ? checkedOptionIds.indexOf(option.id) + 1 : ''}
 						</span>
 					</li>
 				);

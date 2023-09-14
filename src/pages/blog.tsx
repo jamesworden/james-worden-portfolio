@@ -6,8 +6,7 @@ import { PageProps, graphql } from 'gatsby';
 import '../styles/global.scss';
 import { MarkdownRemarkNode, MarkdownRemarkQueryResult } from '../graphql-types';
 import { BlogPostCard } from '../components/blog-post-card';
-import { Checkbox } from '../components/checkbox';
-import { SearchTool } from '../components/search-tool/search-tool';
+import { SearchTool, SearchToolSettings } from '../components/search-tool/search-tool';
 export { GlobalHead as Head } from '../components/global-head';
 
 export interface IBlogPostCard {
@@ -31,7 +30,43 @@ const projectsPage: React.FC<ProjectPageProps> = ({
 		allMarkdownRemark: { edges },
 	},
 }) => {
+	const [searchSettings, setSearchSettings] = useState<SearchToolSettings>({
+		orderByAscending: true,
+		searchByOptions: [
+			{
+				checked: true,
+				id: 'title',
+				label: 'Title',
+			},
+			{
+				checked: false,
+				id: 'keywords',
+				label: 'Keywords',
+			},
+		],
+		sortByOptions: [
+			{
+				checked: true,
+				id: 'featured',
+				label: 'Featured',
+			},
+			{
+				checked: true,
+				id: 'recent',
+				label: 'Recent',
+			},
+			{
+				checked: true,
+				id: 'category',
+				label: 'Category',
+			},
+		],
+	});
 	const blogPostCards = getBlogPostCardsFromEdges(edges);
+
+	const handleSearchSettingsChange = (searchSettings: SearchToolSettings) => {
+		setSearchSettings({ ...searchSettings });
+	};
 
 	return (
 		<PageContent>
@@ -49,7 +84,10 @@ const projectsPage: React.FC<ProjectPageProps> = ({
 				<div className='min-h-full w-px bg-rose-900 dark:bg-emerald-900 hidden lg:block'></div>
 
 				<div className='hidden lg:block'>
-					<SearchTool></SearchTool>
+					<SearchTool
+						settings={searchSettings}
+						onChange={handleSearchSettingsChange}
+					></SearchTool>
 				</div>
 			</div>
 		</PageContent>
