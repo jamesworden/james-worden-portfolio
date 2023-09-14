@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export interface ToggleSwitchProps {
+interface ToggleSwitchProps {
 	value: boolean;
 	toggled: () => void;
 }

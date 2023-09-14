@@ -1,9 +1,20 @@
 import * as React from 'react';
-import { IBlogPostCard } from '../pages/blog';
 import { blogPostThumbnails } from '../data/blog-post-thumbnails';
 import { Link } from 'gatsby';
 
-export interface BlogCardProps {
+export interface IBlogPostCard {
+	slug: string;
+	title: string;
+	description: string;
+	date: string;
+	thumbnailId: string;
+	githubUrl?: string;
+	category?: string;
+	keywords: string[];
+	featured: boolean;
+}
+
+interface BlogCardProps {
 	blogPostCard: IBlogPostCard;
 }
 

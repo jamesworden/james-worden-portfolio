@@ -3,7 +3,7 @@ import { Checkbox } from '../checkbox';
 import { SearchBar } from './search-bar';
 import { SortableCheckboxList } from '../sortable-checkbox-list';
 
-interface SearchByOption {
+export interface SearchByOption {
 	label: string;
 	checked: boolean;
 	id: string;

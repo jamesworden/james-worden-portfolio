@@ -5,21 +5,10 @@ import { PageProps, graphql } from 'gatsby';
 
 import '../styles/global.scss';
 import { MarkdownRemarkNode, MarkdownRemarkQueryResult } from '../graphql-types';
-import { BlogPostCard } from '../components/blog-post-card';
+import { BlogPostCard, IBlogPostCard } from '../components/blog-post-card';
 import { SearchTool, SearchToolSettings } from '../components/search-tool/search-tool';
+import { defaultBlogSearchSettings } from '../data/default-blog-search-settings';
 export { GlobalHead as Head } from '../components/global-head';
-
-export interface IBlogPostCard {
-	slug: string;
-	title: string;
-	description: string;
-	date: string;
-	thumbnailId: string;
-	githubUrl?: string;
-	category?: string;
-	keywords: string[];
-	featured: boolean;
-}
 
 interface ProjectPageProps extends PageProps {
 	data: MarkdownRemarkQueryResult;
@@ -30,38 +19,7 @@ const projectsPage: React.FC<ProjectPageProps> = ({
 		allMarkdownRemark: { edges },
 	},
 }) => {
-	const [searchSettings, setSearchSettings] = useState<SearchToolSettings>({
-		orderByAscending: true,
-		searchByOptions: [
-			{
-				checked: true,
-				id: 'title',
-				label: 'Title',
-			},
-			{
-				checked: false,
-				id: 'keywords',
-				label: 'Keywords',
-			},
-		],
-		sortByOptions: [
-			{
-				checked: true,
-				id: 'featured',
-				label: 'Featured',
-			},
-			{
-				checked: true,
-				id: 'recent',
-				label: 'Recent',
-			},
-			{
-				checked: true,
-				id: 'category',
-				label: 'Category',
-			},
-		],
-	});
+	const [searchSettings, setSearchSettings] = useState(defaultBlogSearchSettings);
 	const blogPostCards = getBlogPostCardsFromEdges(edges);
 
 	const handleSearchSettingsChange = (searchSettings: SearchToolSettings) => {
