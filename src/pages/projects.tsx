@@ -8,6 +8,7 @@ import { SearchSettings } from '../components/models/search-settings';
 
 export { GlobalHead as Head } from '../components/global-head';
 import '../styles/global.scss';
+import { searchAndSort } from '../components/search-tool/search-and-sort';
 
 const projectsPage: React.FC<{}> = () => {
 	const [searchSettings, setSearchSettings] = useState(defaultProjectSearchSettings);
@@ -15,6 +16,8 @@ const projectsPage: React.FC<{}> = () => {
 	const handleSearchSettingsChange = (searchSettings: SearchSettings<IProjectCard>) => {
 		setSearchSettings({ ...searchSettings });
 	};
+
+	const sortedProjectCards = searchAndSort(projectCards, searchSettings);
 
 	return (
 		<PageContent>
@@ -25,7 +28,7 @@ const projectsPage: React.FC<{}> = () => {
 			<div className='flex gap-x-6'>
 				<div className='flex gap-x-6 flex-col'>
 					<div className='mb-6 flex flex-col gap-y-8'>
-						{projectCards.map((projectCard, i) => (
+						{sortedProjectCards.map((projectCard, i) => (
 							<ProjectCard projectCard={projectCard} key={i}></ProjectCard>
 						))}
 					</div>

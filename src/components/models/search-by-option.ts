@@ -1,8 +1,12 @@
-import { SortableMetric } from './sortable-metric';
-
 export interface SearchByOption<T> {
 	label: string;
 	checked: boolean;
 	id: string;
-	getValue: (item: T) => SortableMetric;
+	getSortableMetrics: (
+		item: T,
+		searchQuery: string
+	) => {
+		sortBy: number;
+		orderBy: string;
+	};
 }
