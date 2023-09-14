@@ -2,40 +2,27 @@ import React, { useState } from 'react';
 import { Checkbox } from '../inputs/checkbox';
 import { SearchBar } from './search-bar';
 import { SortableCheckboxList } from '../inputs/sortable-checkbox-list';
+import { SearchSettings } from '../models/search-settings';
+import { SortByOption } from '../models/sort-by-option';
 
-export interface SearchByOption {
-	label: string;
-	checked: boolean;
-	id: string;
+interface SearchToolProps<T> {
+	settings: SearchSettings<T>;
+	onChange: (settings: SearchSettings<T>) => void;
 }
 
-export interface SortByOption {
-	label: string;
-	checked: boolean;
-	id: string;
-}
-
-export interface SearchToolSettings {
-	searchByOptions: SearchByOption[];
-	sortByOptions: SortByOption[];
-	orderByAscending: boolean;
-}
-
-interface SearchToolProps {
-	settings: SearchToolSettings;
-	onChange: (settings: SearchToolSettings) => void;
-}
-
-const SearchTool: React.FC<SearchToolProps> = ({ settings, onChange }) => {
+const SearchTool: React.FC<SearchToolProps<any>> = <T extends unknown>({
+	settings,
+	onChange,
+}: SearchToolProps<T>) => {
 	const [showingSearchSettings, setShowingSearchSettings] = useState(false);
-	const [searchBarInput, setSearchBarInput] = useState('');
 
 	const handleShowingSearchOptionsChange = () => {
 		setShowingSearchSettings(!showingSearchSettings);
 	};
 
 	const handleSearchBarInputChange = (value: string) => {
-		setSearchBarInput(value);
+		settings.searchQuery = value;
+		onChange({ ...settings });
 	};
 
 	const handleSearchByOptionChange = (checked: boolean, id: string) => {
@@ -64,7 +51,7 @@ const SearchTool: React.FC<SearchToolProps> = ({ settings, onChange }) => {
 		onChange({ ...settings });
 	};
 
-	const handleSortByOptionsChange = (sortByOptions: SortByOption[]) => {
+	const handleSortByOptionsChange = (sortByOptions: SortByOption<T>[]) => {
 		settings.sortByOptions = sortByOptions;
 		onChange({ ...settings });
 	};
@@ -74,7 +61,7 @@ const SearchTool: React.FC<SearchToolProps> = ({ settings, onChange }) => {
 			<div>
 				<div className='flex gap-x-4 justify-between'>
 					<SearchBar
-						value={searchBarInput}
+						value={settings.searchQuery}
 						onChange={handleSearchBarInputChange}
 					></SearchBar>
 

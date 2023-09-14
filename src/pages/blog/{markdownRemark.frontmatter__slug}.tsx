@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { graphql, PageProps } from 'gatsby';
 import { MarkdownRemarkQueryResult } from '../../graphql-types';
 import { PageContent } from '../../components/page-content';

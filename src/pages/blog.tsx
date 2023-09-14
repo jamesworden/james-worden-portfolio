@@ -1,14 +1,16 @@
-import * as React from 'react';
+import React from 'react';
 import { useState } from 'react';
 import { PageContent } from '../components/page-content';
 import { PageProps, graphql } from 'gatsby';
 import { MarkdownRemarkQueryResult } from '../graphql-types';
-import { BlogPostCard } from '../components/blog-post-card';
-import { SearchTool, SearchToolSettings } from '../components/search-tool/search-tool';
+import { BlogPostCard, IBlogPostCard } from '../components/blog-post-card';
+import { SearchTool } from '../components/search-tool/search-tool';
 import { defaultBlogSearchSettings } from '../data/default-search-settings';
-import { getBlogPostCardsFromEdges, sortBlogPostCards } from '../util/blog/blog-utils';
+import { getBlogPostCardsFromEdges } from '../util/blog/blog-utils';
 
 import '../styles/global.scss';
+import { SearchSettings } from '../components/models/search-settings';
+import { searchAndSort } from '../components/search-tool/search-and-sort';
 export { GlobalHead as Head } from '../components/global-head';
 
 interface ProjectPageProps extends PageProps {
@@ -21,9 +23,9 @@ const projectsPage: React.FC<ProjectPageProps> = ({
 	},
 }) => {
 	const [searchSettings, setSearchSettings] = useState(defaultBlogSearchSettings);
-	const blogPostCards = sortBlogPostCards(getBlogPostCardsFromEdges(edges), searchSettings);
+	const blogPostCards = searchAndSort(getBlogPostCardsFromEdges(edges), searchSettings);
 
-	const handleSearchSettingsChange = (searchSettings: SearchToolSettings) => {
+	const handleSearchSettingsChange = (searchSettings: SearchSettings<IBlogPostCard>) => {
 		setSearchSettings({ ...searchSettings });
 	};
 

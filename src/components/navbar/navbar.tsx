@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { ToggleSwitch } from '../inputs/toggle-switch';
 import { Link, navigate } from 'gatsby';
 import { PageState } from '../../page-state';

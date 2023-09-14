@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { IProjectCard } from '../data/project-cards';
 import cx from 'classnames';
 

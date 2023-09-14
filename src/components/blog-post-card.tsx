@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { blogPostThumbnails } from '../data/blog-post-thumbnails';
 import { Link } from 'gatsby';
 

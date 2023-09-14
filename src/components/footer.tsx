@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 export const Footer = () => (
 	<footer className='w-full flex justify-around'>

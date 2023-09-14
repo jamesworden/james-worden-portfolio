@@ -1,7 +1,7 @@
-import { IBlogPostCard } from '../components/blog-post-card';
 import { SearchSettings } from '../components/models/search-settings';
+import { IProjectCard } from './project-cards';
 
-export const defaultBlogSearchSettings: SearchSettings<IBlogPostCard> = {
+export const defaultProjectSearchSettings: SearchSettings<IProjectCard> = {
 	orderByAscending: true,
 	searchByOptions: [
 		// {
@@ -11,8 +11,8 @@ export const defaultBlogSearchSettings: SearchSettings<IBlogPostCard> = {
 		// },
 		// {
 		// 	checked: false,
-		// 	id: 'keywords',
-		// 	label: 'Keywords',
+		// 	id: 'technologies',
+		// 	label: 'Technologies',
 		// },
 	],
 	sortByOptions: [
@@ -25,11 +25,6 @@ export const defaultBlogSearchSettings: SearchSettings<IBlogPostCard> = {
 		// 	checked: true,
 		// 	id: 'recent',
 		// 	label: 'Recent',
-		// },
-		// {
-		// 	checked: true,
-		// 	id: 'category',
-		// 	label: 'Category',
 		// },
 	],
 	searchQuery: '',

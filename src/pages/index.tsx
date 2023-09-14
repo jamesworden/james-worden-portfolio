@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { useState } from 'react';
 import { navigate, type PageProps } from 'gatsby';
 import headshot from '../images/headshot.jpg';

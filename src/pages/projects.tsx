@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
-import { projectCards } from '../data/project-cards';
+import { IProjectCard, projectCards } from '../data/project-cards';
 import { ProjectCard } from '../components/project-card';
 import { PageContent } from '../components/page-content';
+import { SearchTool } from '../components/search-tool/search-tool';
+import { defaultProjectSearchSettings } from '../data/default-project-search-settings';
+import { SearchSettings } from '../components/models/search-settings';
 
-import '../styles/global.scss';
-import { SearchTool, SearchToolSettings } from '../components/search-tool/search-tool';
-import { defaultProjectSearchSettings } from '../data/default-search-settings';
 export { GlobalHead as Head } from '../components/global-head';
+import '../styles/global.scss';
 
 const projectsPage: React.FC<{}> = () => {
 	const [searchSettings, setSearchSettings] = useState(defaultProjectSearchSettings);
 
-	const handleSearchSettingsChange = (searchSettings: SearchToolSettings) => {
+	const handleSearchSettingsChange = (searchSettings: SearchSettings<IProjectCard>) => {
 		setSearchSettings({ ...searchSettings });
 	};
 

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { HeadFC, Link, PageProps } from 'gatsby';
 import { PageContent } from '../components/page-content';
 

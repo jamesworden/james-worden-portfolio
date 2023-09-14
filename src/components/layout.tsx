@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { ReactElement } from 'react';
 import { Navbar } from './navbar/navbar';
 import { PageContentProps } from './page-content';

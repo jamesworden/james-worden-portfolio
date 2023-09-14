@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { TRANSITION_DURATION_MS } from '../constants';

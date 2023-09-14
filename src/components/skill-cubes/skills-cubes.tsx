@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Physics } from '@react-three/cannon';
