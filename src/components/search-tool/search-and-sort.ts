@@ -22,7 +22,7 @@ export function searchAndSort<T extends SearchableAndSortable>(
 	const itemsToMetrics = getItemsToMetrics<T>(items, searchSettings);
 	const sortedItemsToMetrics = getSortedItemsToMetrics(itemsToMetrics);
 	const sortedItems = getItemsSortedByItemsToMetrics<T>(items, sortedItemsToMetrics);
-	return sortedItems;
+	return searchSettings.orderByAscending ? sortedItems : sortedItems.reverse();
 }
 
 function getItemsSortedByItemsToMetrics<T extends SearchableAndSortable>(
