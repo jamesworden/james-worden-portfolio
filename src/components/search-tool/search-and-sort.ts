@@ -56,8 +56,12 @@ function getItemsToMetrics<T extends SearchableAndSortable>(
 		for (const option of searchSettings.searchByOptions) {
 			if (option.checked) {
 				for (const item of items) {
-					const { sortBy } = option.getSortableMetrics(item, searchSettings.searchQuery);
+					const { sortBy, orderBy } = option.getSortableMetrics(
+						item,
+						searchSettings.searchQuery
+					);
 					itemIdsToItemMetrics[item.searchAndSortId].sortBy.push(sortBy);
+					itemIdsToItemMetrics[item.searchAndSortId].orderBy.push(orderBy);
 				}
 			}
 		}
@@ -71,6 +75,7 @@ function getSortedItemsToMetrics(itemsToMetrics: ItemsToMetrics, sortByMetricInd
 
 	for (let [itemId, itemMetrics] of Object.entries(itemsToMetrics)) {
 		const currentMetric = itemMetrics.sortBy[sortByMetricIndex];
+		const currentOrderByMetric = itemMetrics.orderBy[sortByMetricIndex];
 
 		if (currentMetric === null || currentMetric === undefined) {
 			return itemsToMetrics;
@@ -86,7 +91,8 @@ function getSortedItemsToMetrics(itemsToMetrics: ItemsToMetrics, sortByMetricInd
 			itemsToMetrics,
 			sortByMetricIndex,
 			currentMetric,
-			itemId
+			itemId,
+			currentOrderByMetric
 		);
 	}
 
@@ -105,7 +111,8 @@ function insertItemIdAtCorrectPosition(
 	itemsToMetrics: ItemsToMetrics,
 	sortByMetricIndex: number,
 	currentMetric: number,
-	itemId: string
+	itemId: string,
+	currentOrderByMetric: string
 ) {
 	const originalSortedItemIdLength = sortedItemIds.length;
 
@@ -119,6 +126,16 @@ function insertItemIdAtCorrectPosition(
 			// Insert before
 			sortedItemIds.splice(i, 0, itemId);
 			break;
+		} else if (currentMetric === metric) {
+			const orderByMetric = itemMetrics.orderBy[sortByMetricIndex];
+			const orderMetrics = [currentOrderByMetric, orderByMetric];
+			const [firstOrderByMetric] = orderMetrics.sort((a, b) => a.localeCompare(b));
+
+			if (firstOrderByMetric === currentOrderByMetric) {
+				// Insert before
+				sortedItemIds.splice(i, 0, itemId);
+				break;
+			}
 		}
 	}
 
