@@ -2,6 +2,9 @@ export function findLongestSubstringLengthWithRestOfString(
 	searchQuery: string,
 	strArray: string[]
 ) {
+	searchQuery = searchQuery.toLowerCase();
+	strArray = strArray.map((str) => str.toLowerCase());
+
 	let longestSubstringBelongsToWord = '';
 	let longestSubstring = '';
 	let currentSubstring = '';

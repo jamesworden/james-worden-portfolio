@@ -15,6 +15,34 @@ export function searchAndSort<T extends SearchableAndSortable>(
 	items: T[],
 	searchSettings: SearchSettings<T>
 ) {
+	if (items.length <= 1) {
+		return items;
+	}
+
+	const itemsToMetrics = getItemsToMetrics<T>(items, searchSettings);
+	const sortedItemsToMetrics = getSortedItemsToMetrics(itemsToMetrics);
+	const sortedItems = getItemsSortedByItemsToMetrics<T>(items, sortedItemsToMetrics);
+	return sortedItems;
+}
+
+function getItemsSortedByItemsToMetrics<T extends SearchableAndSortable>(
+	items: T[],
+	itemsToMetrics: ItemsToMetrics
+) {
+	const sortedItems: T[] = [];
+
+	for (const [itemId] of Object.entries(itemsToMetrics)) {
+		const item = items.find((item) => item.searchAndSortId === itemId)!;
+		sortedItems.push(item);
+	}
+
+	return sortedItems;
+}
+
+function getItemsToMetrics<T extends SearchableAndSortable>(
+	items: T[],
+	searchSettings: SearchSettings<T>
+) {
 	const itemIdsToItemMetrics: ItemsToMetrics = {};
 
 	for (const item of items) {
@@ -28,30 +56,14 @@ export function searchAndSort<T extends SearchableAndSortable>(
 		for (const option of searchSettings.searchByOptions) {
 			if (option.checked) {
 				for (const item of items) {
-					const { sortBy, orderBy } = option.getSortableMetrics(
-						item,
-						searchSettings.searchQuery
-					);
+					const { sortBy } = option.getSortableMetrics(item, searchSettings.searchQuery);
 					itemIdsToItemMetrics[item.searchAndSortId].sortBy.push(sortBy);
 				}
 			}
 		}
 	}
 
-	const itemIdsToItemMetricsEntries = Object.entries(itemIdsToItemMetrics);
-	if (itemIdsToItemMetricsEntries.length <= 1) {
-		return items;
-	}
-
-	const sortedItemsToMetrics = getSortedItemsToMetrics(itemIdsToItemMetrics);
-	const sortedItems: T[] = [];
-
-	for (const [itemId] of Object.entries(sortedItemsToMetrics)) {
-		const item = items.find((item) => item.searchAndSortId === itemId)!;
-		sortedItems.push(item);
-	}
-
-	return sortedItems;
+	return itemIdsToItemMetrics;
 }
 
 function getSortedItemsToMetrics(itemsToMetrics: ItemsToMetrics, sortByMetricIndex = 0) {
