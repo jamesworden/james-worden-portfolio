@@ -71,6 +71,7 @@ function getSortedItemsToMetrics(itemsToMetrics: ItemsToMetrics, sortByMetricInd
 
 	for (let [itemId, itemMetrics] of Object.entries(itemsToMetrics)) {
 		const currentMetric = itemMetrics.sortBy[sortByMetricIndex];
+
 		if (currentMetric === null || currentMetric === undefined) {
 			return itemsToMetrics;
 		}
@@ -80,25 +81,13 @@ function getSortedItemsToMetrics(itemsToMetrics: ItemsToMetrics, sortByMetricInd
 			continue;
 		}
 
-		const originalSortedItemIdLength = sortedItemIds.length;
-
-		// Go through each sorted item id and see if the current one belongs before any of them
-		for (let i = 0; i < sortedItemIds.length; i++) {
-			const sortedItemId = sortedItemIds[i];
-			const itemMetrics = itemsToMetrics[sortedItemId];
-			const metric = itemMetrics.sortBy[sortByMetricIndex];
-
-			if (currentMetric < metric) {
-				// Insert before
-				sortedItemIds.splice(i, 0, itemId);
-				break;
-			}
-		}
-
-		// If the above for loop doesn't add the id before any other value
-		if (sortedItemIds.length === originalSortedItemIdLength) {
-			sortedItemIds.push(itemId);
-		}
+		insertItemIdAtCorrectPosition(
+			sortedItemIds,
+			itemsToMetrics,
+			sortByMetricIndex,
+			currentMetric,
+			itemId
+		);
 	}
 
 	const sortedItemsToMetrics: ItemsToMetrics = {};
@@ -109,4 +98,32 @@ function getSortedItemsToMetrics(itemsToMetrics: ItemsToMetrics, sortByMetricInd
 
 	sortByMetricIndex++;
 	return getSortedItemsToMetrics(sortedItemsToMetrics, sortByMetricIndex);
+}
+
+function insertItemIdAtCorrectPosition(
+	sortedItemIds: string[],
+	itemsToMetrics: ItemsToMetrics,
+	sortByMetricIndex: number,
+	currentMetric: number,
+	itemId: string
+) {
+	const originalSortedItemIdLength = sortedItemIds.length;
+
+	// Go through each sorted item id and see if the current one belongs before any of them
+	for (let i = 0; i < sortedItemIds.length; i++) {
+		const sortedItemId = sortedItemIds[i];
+		const itemMetrics = itemsToMetrics[sortedItemId];
+		const metric = itemMetrics.sortBy[sortByMetricIndex];
+
+		if (currentMetric < metric) {
+			// Insert before
+			sortedItemIds.splice(i, 0, itemId);
+			break;
+		}
+	}
+
+	// If the above for loop doesn't add the id before any other value
+	if (sortedItemIds.length === originalSortedItemIdLength) {
+		sortedItemIds.push(itemId);
+	}
 }
