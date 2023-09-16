@@ -2,11 +2,11 @@ export interface SearchByOption<T> {
 	label: string;
 	checked: boolean;
 	id: string;
-	getSortableMetrics: (
+	getSortableMetric: (
 		item: T,
 		searchQuery: string
 	) => {
 		sortBy: number;
-		orderBy: string;
+		alphabetizeBy: string;
 	};
 }

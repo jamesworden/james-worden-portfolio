@@ -9,15 +9,15 @@ export const defaultProjectSearchSettings: SearchSettings<IProjectCard> = {
 			checked: true,
 			id: 'title',
 			label: 'Title',
-			getSortableMetrics: (item, searchQuery) => {
+			getSortableMetric: (item, searchQuery) => {
 				const { longestSubstring, longestSubstringWithRestOfWord } =
 					findLongestSubstringLengthWithRestOfString(searchQuery, [
 						item.displayWebsiteUrl,
 					]);
 
 				return {
-					sortBy: -longestSubstring.length,
-					orderBy: longestSubstringWithRestOfWord,
+					sortBy: longestSubstring.length,
+					alphabetizeBy: longestSubstringWithRestOfWord,
 				};
 			},
 		},
@@ -25,13 +25,13 @@ export const defaultProjectSearchSettings: SearchSettings<IProjectCard> = {
 			checked: false,
 			id: 'technologies',
 			label: 'Technologies',
-			getSortableMetrics: (item, searchQuery) => {
+			getSortableMetric: (item, searchQuery) => {
 				const { longestSubstring, longestSubstringWithRestOfWord } =
 					findLongestSubstringLengthWithRestOfString(searchQuery, item.technologyBadges);
 
 				return {
-					sortBy: -longestSubstring.length,
-					orderBy: longestSubstringWithRestOfWord,
+					sortBy: longestSubstring.length,
+					alphabetizeBy: longestSubstringWithRestOfWord,
 				};
 			},
 		},

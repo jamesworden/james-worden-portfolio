@@ -1,1 +1,4 @@
-export type SortableMetric = number | string;
+export type SortableMetric = {
+	sortBy: number;
+	alphabetizeBy: string;
+};

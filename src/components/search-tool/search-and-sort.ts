@@ -1,146 +1,76 @@
 import _ from 'lodash';
 import { SearchSettings } from '../models/search-settings';
 import { SearchableAndSortable } from '../models/searchable-and-sortable';
-
-interface ItemMetrics {
-	sortBy: number[];
-	orderBy: string[];
-}
-
-interface ItemsToMetrics {
-	[itemId: string]: ItemMetrics;
-}
+import { SortableMetric } from '../models/sortable-metric';
 
 export function searchAndSort<T extends SearchableAndSortable>(
 	items: T[],
 	searchSettings: SearchSettings<T>
-) {
+): T[] {
 	if (items.length <= 1) {
 		return items;
 	}
 
-	const itemsToMetrics = getItemsToMetrics<T>(items, searchSettings);
-	const sortedItemsToMetrics = getSortedItemsToMetrics(itemsToMetrics);
-	const sortedItems = getItemsSortedByItemsToMetrics<T>(items, sortedItemsToMetrics);
-	return searchSettings.orderByAscending ? sortedItems : sortedItems.reverse();
-}
+	const sortableMetrics: {
+		[itemIndex: number]: SortableMetric[];
+	} = {};
 
-function getItemsSortedByItemsToMetrics<T extends SearchableAndSortable>(
-	items: T[],
-	itemsToMetrics: ItemsToMetrics
-) {
-	const sortedItems: T[] = [];
-
-	for (const [itemId] of Object.entries(itemsToMetrics)) {
-		const item = items.find((item) => item.searchAndSortId === itemId)!;
-		sortedItems.push(item);
+	// Initialize
+	for (let i = 0; i < items.length; i++) {
+		sortableMetrics[i] = [];
 	}
 
-	return sortedItems;
-}
-
-function getItemsToMetrics<T extends SearchableAndSortable>(
-	items: T[],
-	searchSettings: SearchSettings<T>
-) {
-	const itemIdsToItemMetrics: ItemsToMetrics = {};
-
-	for (const item of items) {
-		itemIdsToItemMetrics[item.searchAndSortId] = {
-			orderBy: [],
-			sortBy: [],
-		};
-	}
-
-	if (searchSettings.searchQuery.length > 0) {
-		for (const option of searchSettings.searchByOptions) {
-			if (option.checked) {
-				for (const item of items) {
-					const { sortBy, orderBy } = option.getSortableMetrics(
-						item,
-						searchSettings.searchQuery
-					);
-					itemIdsToItemMetrics[item.searchAndSortId].sortBy.push(sortBy);
-					itemIdsToItemMetrics[item.searchAndSortId].orderBy.push(orderBy);
-				}
+	// Calculate and push search setting metrics
+	for (const option of searchSettings.searchByOptions) {
+		if (option.checked) {
+			for (let i = 0; i < items.length; i++) {
+				const sortableMetric = option.getSortableMetric(
+					items[i],
+					searchSettings.searchQuery
+				);
+				sortableMetrics[i].push(sortableMetric);
 			}
 		}
 	}
 
-	return itemIdsToItemMetrics;
-}
-
-function getSortedItemsToMetrics(itemsToMetrics: ItemsToMetrics, sortByMetricIndex = 0) {
-	const sortedItemIds: string[] = [];
-
-	for (let [itemId, itemMetrics] of Object.entries(itemsToMetrics)) {
-		const currentMetric = itemMetrics.sortBy[sortByMetricIndex];
-		const currentOrderByMetric = itemMetrics.orderBy[sortByMetricIndex];
-
-		if (currentMetric === null || currentMetric === undefined) {
-			return itemsToMetrics;
-		}
-
-		if (sortedItemIds.length === 0) {
-			sortedItemIds.push(itemId);
-			continue;
-		}
-
-		insertItemIdAtCorrectPosition(
-			sortedItemIds,
-			itemsToMetrics,
-			sortByMetricIndex,
-			currentMetric,
-			itemId,
-			currentOrderByMetric
-		);
-	}
-
-	const sortedItemsToMetrics: ItemsToMetrics = {};
-
-	for (const sortedItemId of sortedItemIds) {
-		sortedItemsToMetrics[sortedItemId] = itemsToMetrics[sortedItemId];
-	}
-
-	sortByMetricIndex++;
-	return getSortedItemsToMetrics(sortedItemsToMetrics, sortByMetricIndex);
-}
-
-function insertItemIdAtCorrectPosition(
-	sortedItemIds: string[],
-	itemsToMetrics: ItemsToMetrics,
-	sortByMetricIndex: number,
-	currentMetric: number,
-	itemId: string,
-	currentOrderByMetric: string
-) {
-	const originalSortedItemIdLength = sortedItemIds.length;
-
-	// Go through each sorted item id and see if the current one belongs before any of them
-	for (let i = 0; i < sortedItemIds.length; i++) {
-		const sortedItemId = sortedItemIds[i];
-		const itemMetrics = itemsToMetrics[sortedItemId];
-		const metric = itemMetrics.sortBy[sortByMetricIndex];
-
-		if (currentMetric < metric) {
-			// Insert before
-			sortedItemIds.splice(i, 0, itemId);
-			break;
-		} else if (currentMetric === metric) {
-			const orderByMetric = itemMetrics.orderBy[sortByMetricIndex];
-			const orderMetrics = [currentOrderByMetric, orderByMetric];
-			const [firstOrderByMetric] = orderMetrics.sort((a, b) => a.localeCompare(b));
-
-			if (firstOrderByMetric === currentOrderByMetric) {
-				// Insert before
-				sortedItemIds.splice(i, 0, itemId);
-				break;
+	// Calculate and push sort setting metrics
+	for (const option of searchSettings.sortByOptions) {
+		if (option.checked) {
+			for (let i = 0; i < items.length; i++) {
+				const sortableMetric = option.getSortableMetric(items[i]);
+				sortableMetrics[i].push(sortableMetric);
 			}
 		}
 	}
 
-	// If the above for loop doesn't add the id before any other value
-	if (sortedItemIds.length === originalSortedItemIdLength) {
-		sortedItemIds.push(itemId);
+	// Associate items with their metrics
+	const itemsWithMetrics: {
+		item: T;
+		sortableMetrics: SortableMetric[];
+	}[] = [];
+
+	for (let i = 0; i < items.length; i++) {
+		itemsWithMetrics.push({
+			item: items[i],
+			sortableMetrics: sortableMetrics[i],
+		});
 	}
+
+	// Sort items with their metrics or alphebetize if same metric
+	itemsWithMetrics.sort((a, b) => {
+		for (let i = 0; i < a.sortableMetrics.length; i++) {
+			if (a.sortableMetrics[i].sortBy > b.sortableMetrics[i].sortBy) {
+				return -1;
+			} else if (a.sortableMetrics[i].sortBy === b.sortableMetrics[i].sortBy) {
+				return a.sortableMetrics[i].alphabetizeBy.localeCompare(
+					b.sortableMetrics[i].alphabetizeBy
+				);
+			} else {
+				return 1;
+			}
+		}
+		return 0;
+	});
+
+	return itemsWithMetrics.map(({ item }) => item);
 }
