@@ -62,14 +62,17 @@ export function searchAndSort<T extends SearchableAndSortable>(
 			if (a.sortableMetrics[i].sortBy > b.sortableMetrics[i].sortBy) {
 				return -1;
 			} else if (a.sortableMetrics[i].sortBy === b.sortableMetrics[i].sortBy) {
-				return a.sortableMetrics[i].alphabetizeBy.localeCompare(
-					b.sortableMetrics[i].alphabetizeBy
-				);
+				continue;
 			} else {
 				return 1;
 			}
 		}
-		return 0;
+
+		// If down to last metric and both items are of equal sort value, alphabetize them.
+		const lastItemIndex = a.sortableMetrics.length - 1;
+		return a.sortableMetrics[lastItemIndex].alphabetizeBy.localeCompare(
+			b.sortableMetrics[lastItemIndex].alphabetizeBy
+		);
 	});
 
 	return itemsWithMetrics.map(({ item }) => item);
