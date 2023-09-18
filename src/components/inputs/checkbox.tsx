@@ -5,10 +5,17 @@ interface CheckboxProps {
 	label: string;
 	checked: boolean;
 	uncheckedLabelClass?: string;
+	checkedLabelClass?: string;
 	onChange: (isChecked: boolean) => void;
 }
 
-const Checkbox: React.FC<CheckboxProps> = ({ label, checked, onChange, uncheckedLabelClass }) => {
+const Checkbox: React.FC<CheckboxProps> = ({
+	label,
+	checked,
+	onChange,
+	uncheckedLabelClass,
+	checkedLabelClass,
+}) => {
 	const handleCheckboxClick = () => {
 		const newChecked = !checked;
 		onChange(newChecked);
@@ -65,7 +72,7 @@ const Checkbox: React.FC<CheckboxProps> = ({ label, checked, onChange, unchecked
 						checked
 							? 'dark:text-emerald-400 text-rose-500'
 							: 'dark:text-gray-200 text-gray-700',
-						!checked && uncheckedLabelClass ? uncheckedLabelClass : ''
+						checked ? checkedLabelClass ?? '' : uncheckedLabelClass ?? ''
 					)}
 				>
 					{label}
