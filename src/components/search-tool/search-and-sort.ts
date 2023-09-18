@@ -10,14 +10,10 @@ export function searchAndSort<T>(items: T[], searchSettings: SearchSettings<T>):
 	const itemsWithMetrics: {
 		item: T;
 		sortableMetrics: SortableMetric[];
-	}[] = [];
-
-	for (let i = 0; i < items.length; i++) {
-		itemsWithMetrics.push({
-			item: items[i],
-			sortableMetrics: [],
-		});
-	}
+	}[] = items.map((item) => ({
+		item,
+		sortableMetrics: [],
+	}));
 
 	for (const option of searchSettings.searchByOptions) {
 		if (option.checked) {
