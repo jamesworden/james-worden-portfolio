@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import cx from 'classnames';
 import { Checkbox } from './checkbox';
 import { DragIndicatorSvg } from '../drag-indicator-svg';
-import { SortByOption } from '../search-tool/search-tool';
+import { SortByOption } from '../models/sort-by-option';
 
-interface SortableCheckboxListProps {
-	sortByOptions: SortByOption[];
-	onChange: (sortByOptions: SortByOption[]) => void;
+interface SortableCheckboxListProps<T> {
+	sortByOptions: SortByOption<T>[];
+	onChange: (sortByOptions: SortByOption<T>[]) => void;
 }
 
-const SortableCheckboxList: React.FC<SortableCheckboxListProps> = ({ sortByOptions, onChange }) => {
+const SortableCheckboxList: React.FC<SortableCheckboxListProps<any>> = <T extends unknown>({
+	sortByOptions,
+	onChange,
+}: SortableCheckboxListProps<T>) => {
 	const [draggedOptionId, setDraggedOptionId] = useState<string | null>(null);
 
 	const handleCheckboxChange = (optionId: string) => {
@@ -119,7 +122,7 @@ const SortableCheckboxList: React.FC<SortableCheckboxListProps> = ({ sortByOptio
 
 							<Checkbox
 								label={option.label}
-								uncheckedLabelClass='dark:text-black'
+								uncheckedLabelClass='dark:text-gray-800'
 								checked={isChecked}
 								onChange={() => handleCheckboxChange(option.id)}
 							/>

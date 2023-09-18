@@ -65,7 +65,7 @@ const Checkbox: React.FC<CheckboxProps> = ({ label, checked, onChange, unchecked
 						checked
 							? 'dark:text-emerald-400 text-rose-500'
 							: 'dark:text-gray-200 text-gray-700',
-						checked ? '' : uncheckedLabelClass ? uncheckedLabelClass : ''
+						!checked && uncheckedLabelClass ? uncheckedLabelClass : ''
 					)}
 				>
 					{label}
