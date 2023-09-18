@@ -35,7 +35,7 @@ const projectsPage: React.FC<ProjectPageProps> = ({
 				<h1 className='mt-12 mb-8'>Blog</h1>
 			</div>
 
-			<div className='flex gap-x-6 mb-6'>
+			<div className='flex gap-x-6 mb-6 justify-between'>
 				<div className='flex flex-col gap-y-8'>
 					{blogPostCards.map((blogPostCard, i) => (
 						<BlogPostCard key={i} blogPostCard={blogPostCard}></BlogPostCard>
