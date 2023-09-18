@@ -63,10 +63,10 @@ export const ResumeEntry: React.FC<ResumeEntryProps> = ({ resumeEntry }) => {
 							viewport={{ once: true, amount: 0.8 }}
 							variants={{
 								offscreen: {
-									rotate: 5,
+									rotate: -15,
 								},
 								onscreen: {
-									rotate: -5,
+									rotate: 0,
 									transition: {
 										type: 'spring',
 										duration: 1.6,
