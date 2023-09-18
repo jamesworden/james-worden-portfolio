@@ -8,20 +8,13 @@ import { resumeEntries } from '../data/resume-entries';
 import { SkillsCubes } from '../components/skill-cubes/skills-cubes';
 import { skillCubes } from '../data/skill-cubes';
 import { ContactForm } from '../components/contact-form';
-import scrollTo from 'gatsby-plugin-smoothscroll';
-import { PageState } from '../page-state';
 import { PageContent } from '../components/page-content';
 
 import '../styles/global.scss';
 export { GlobalHead as Head } from '../components/global-head';
 
-const IndexPage: React.FC<PageProps> = ({ location }) => {
+const IndexPage: React.FC<PageProps> = ({}) => {
 	const [layoutAnimationCompleted, setLayoutAnimationCompleted] = useState(false);
-	const pageState = location.state as PageState | undefined;
-
-	if (pageState?.scrollToContact) {
-		scrollTo('#contact-section');
-	}
 
 	return (
 		<PageContent onAnimationComplete={() => setLayoutAnimationCompleted(true)}>

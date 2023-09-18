@@ -30,7 +30,6 @@ const config: GatsbyConfig = {
 				],
 			},
 		},
-		'gatsby-plugin-smoothscroll',
 		{
 			resolve: `gatsby-source-filesystem`,
 			options: {

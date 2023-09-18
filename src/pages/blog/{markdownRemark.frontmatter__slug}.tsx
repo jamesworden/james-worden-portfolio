@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql, PageProps } from 'gatsby';
 import { MarkdownRemarkQueryResult } from '../../graphql-types';
 import { PageContent } from '../../components/page-content';
-import scrollTo from 'gatsby-plugin-smoothscroll';
+import { scrollTo } from '../../util/scroll-to';
 
 interface BlogPostTemplateProps extends PageProps {
 	data: MarkdownRemarkQueryResult;
@@ -31,7 +31,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data }) => {
 					<h3>Table of Contents</h3>
 					{headings.map((heading, index) => (
 						<li key={index}>
-							<a onClick={() => scrollTo(`#${heading.id}`)}>{heading.value}</a>
+							<a onClick={() => scrollTo(heading.id)}>{heading.value}</a>
 						</li>
 					))}
 				</div>

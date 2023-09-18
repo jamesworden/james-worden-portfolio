@@ -1,25 +1,29 @@
 import React from 'react';
 import { ToggleSwitch } from '../inputs/toggle-switch';
 import { Link, navigate } from 'gatsby';
-import { PageState } from '../../page-state';
 import { DarkModeSvg } from './dark-mode-svg';
 import { WavyNavbarSvg } from './wavy-navbar-svg';
 import { DarkTheme, useTheme, useThemeUpdate } from '../../contexts/theme-context';
+import { scrollTo } from '../../util/scroll-to';
+import { TRANSITION_DURATION_MS } from '../../constants';
 
-export interface NavbarProps {}
+export interface NavbarProps {
+	currentPath: string;
+}
 
-export const Navbar: React.FC<NavbarProps> = () => {
+export const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
 	const theme = useTheme();
 	const toggleTheme = useThemeUpdate();
 	const isDarkModeOn = theme === DarkTheme;
 
 	const scrollToContact = () => {
-		const pageState: PageState = {
-			scrollToContact: true,
-		};
-		navigate('/', {
-			state: pageState,
-		});
+		if (currentPath !== '/') {
+			navigate('/');
+
+			setTimeout(() => {
+				scrollTo('contact-section');
+			}, TRANSITION_DURATION_MS * 1.2);
+		}
 	};
 
 	return (

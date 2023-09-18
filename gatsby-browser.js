@@ -3,9 +3,9 @@ import { AnimatePresence } from 'framer-motion';
 import { Layout } from './src/components/layout';
 import { ThemeProvider } from './src/contexts/theme-context';
 
-export const wrapPageElement = ({ element }) => {
+export const wrapPageElement = ({ element, props }) => {
 	return (
-		<Layout>
+		<Layout currentPath={props.path}>
 			<AnimatePresence
 				mode='wait'
 				initial={false}
