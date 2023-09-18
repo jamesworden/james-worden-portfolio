@@ -40,7 +40,12 @@ const config: GatsbyConfig = {
 				fastHash: true,
 			},
 		},
-		`gatsby-transformer-remark`,
+		{
+			resolve: `gatsby-transformer-remark`,
+			options: {
+				plugins: [`gatsby-remark-autolink-headers`],
+			},
+		},
 	],
 };
 

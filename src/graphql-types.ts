@@ -12,6 +12,10 @@ export interface MarkdownRemarkQueryResult {
 	markdownRemark: {
 		frontmatter: BlogPostFrontmatter;
 		html: string;
+		headings: {
+			id: string;
+			value: string;
+		}[];
 	};
 }
 
