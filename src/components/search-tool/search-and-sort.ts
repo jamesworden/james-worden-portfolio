@@ -1,12 +1,8 @@
 import _ from 'lodash';
 import { SearchSettings } from '../models/search-settings';
-import { SearchableAndSortable } from '../models/searchable-and-sortable';
 import { SortableMetric } from '../models/sortable-metric';
 
-export function searchAndSort<T extends SearchableAndSortable>(
-	items: T[],
-	searchSettings: SearchSettings<T>
-): T[] {
+export function searchAndSort<T>(items: T[], searchSettings: SearchSettings<T>): T[] {
 	if (items.length <= 1) {
 		return items;
 	}

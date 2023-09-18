@@ -3,7 +3,6 @@ import jamesWordenResearchThumbnail from '../images/james-worden-research-thumbn
 import harvardOfQueensThumbnail from '../images/harvard-of-queens-thumbnail.png';
 import chessOfCardsThumbnail from '../images/chess-of-cards-thumbnail.png';
 import jamesWordenPortfolioThumbnail from '../images/james-worden-portfolio-thumbnail.png';
-import { SearchableAndSortable } from '../components/models/searchable-and-sortable';
 
 enum Technology {
 	GoogleCloudVision = 'Google Cloud Vision',
@@ -38,7 +37,7 @@ interface ProjectCardButton {
 	buttonClassName: string;
 }
 
-export interface IProjectCard extends SearchableAndSortable {
+export interface IProjectCard {
 	displayNumber: string;
 	technologyBadges: Technology[];
 	displayWebsiteUrl: string;
@@ -78,7 +77,6 @@ export const projectCards: IProjectCard[] = [
 		],
 		githubUrl: 'https://github.com/jamesworden/bob-worden',
 		imageUrl: 'https://www.bobworden.com/',
-		searchAndSortId: 'bob-worden-project-id',
 	},
 	{
 		displayNumber: '02',
@@ -113,7 +111,6 @@ export const projectCards: IProjectCard[] = [
 		],
 		githubUrl: 'https://github.com/jamesworden/jamesworden-research',
 		imageUrl: 'https://research.jamesworden.com/',
-		searchAndSortId: 'james-worden-research-project-id',
 	},
 	{
 		displayNumber: '03',
@@ -140,7 +137,6 @@ export const projectCards: IProjectCard[] = [
 		],
 		githubUrl: 'https://github.com/jamesworden/harvard-of-queens-wordle',
 		imageUrl: 'https://harvardofqueens.com/',
-		searchAndSortId: 'harvard-of-queens-project-id',
 	},
 	{
 		displayNumber: '04',
@@ -168,7 +164,6 @@ export const projectCards: IProjectCard[] = [
 			},
 		],
 		imageUrl: 'https://chessofcards.com/',
-		searchAndSortId: 'chess-of-cards-project-id',
 	},
 	{
 		displayNumber: '05',
@@ -186,6 +181,5 @@ export const projectCards: IProjectCard[] = [
 		buttons: [],
 		imageUrl: 'https://www.jamesworden.com/',
 		githubUrl: 'https://github.com/jamesworden/james-worden-portfolio',
-		searchAndSortId: 'james-worden-portfolio-project.id',
 	},
 ];
