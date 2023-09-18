@@ -57,5 +57,7 @@ export function searchAndSort<T>(items: T[], searchSettings: SearchSettings<T>):
 		);
 	});
 
-	return itemsWithMetrics.map(({ item }) => item);
+	const sortedItems = itemsWithMetrics.map(({ item }) => item);
+
+	return searchSettings.orderByAscending ? sortedItems : sortedItems.reverse();
 }

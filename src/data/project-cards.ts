@@ -38,7 +38,6 @@ interface ProjectCardButton {
 }
 
 export interface IProjectCard {
-	displayNumber: string;
 	technologyBadges: Technology[];
 	displayWebsiteUrl: string;
 	displayDate: string;
@@ -51,7 +50,6 @@ export interface IProjectCard {
 
 export const projectCards: IProjectCard[] = [
 	{
-		displayNumber: '01',
 		description:
 			"A website I created for my father who is an attorney; I made use of gatsby's dynamic page rendering to output blog posts using data from an external wordpress instance.",
 		displayDate: 'December 2020',
@@ -79,7 +77,6 @@ export const projectCards: IProjectCard[] = [
 		imageUrl: 'https://www.bobworden.com/',
 	},
 	{
-		displayNumber: '02',
 		description:
 			"A tool that I created to assist myself in completing research with Dr. Erald Troja from St. John's University; I was able to aggregate data and statistics using my own API's that were featured in our collaborative research paper.",
 		displayDate: 'March 2021',
@@ -113,7 +110,6 @@ export const projectCards: IProjectCard[] = [
 		imageUrl: 'https://research.jamesworden.com/',
 	},
 	{
-		displayNumber: '03',
 		displayWebsiteUrl: 'harvardofqueens.com',
 		description:
 			"Students of St. John's University often refer to their school as the Harvard of Queens. This wordle clone uses a list of bars, buildings, phrases, that many students are familiar with.",
@@ -139,7 +135,6 @@ export const projectCards: IProjectCard[] = [
 		imageUrl: 'https://harvardofqueens.com/',
 	},
 	{
-		displayNumber: '04',
 		displayWebsiteUrl: 'chessofcards.com',
 		description:
 			'A two player game requiring the strategy of chess and the luck of playing cards. A timer forces players to make moves quickly and effectively.',
@@ -166,7 +161,6 @@ export const projectCards: IProjectCard[] = [
 		imageUrl: 'https://chessofcards.com/',
 	},
 	{
-		displayNumber: '05',
 		description: 'Welcome to my updated portfolio.',
 		displayDate: 'September 2023',
 		image: jamesWordenPortfolioThumbnail,

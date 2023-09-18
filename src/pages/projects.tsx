@@ -29,7 +29,7 @@ const projectsPage: React.FC<{}> = () => {
 				<div className='flex gap-x-6 flex-col'>
 					<div className='mb-6 flex flex-col gap-y-8'>
 						{sortedProjectCards.map((projectCard, i) => (
-							<ProjectCard projectCard={projectCard} key={i}></ProjectCard>
+							<ProjectCard projectCard={projectCard} key={i} index={i}></ProjectCard>
 						))}
 					</div>
 				</div>

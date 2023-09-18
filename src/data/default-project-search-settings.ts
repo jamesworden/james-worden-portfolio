@@ -37,16 +37,15 @@ export const defaultProjectSearchSettings: SearchSettings<IProjectCard> = {
 		},
 	],
 	sortByOptions: [
-		// {
-		// 	checked: true,
-		// 	id: 'featured',
-		// 	label: 'Featured',
-		// },
-		// {
-		// 	checked: true,
-		// 	id: 'recent',
-		// 	label: 'Recent',
-		// },
+		{
+			checked: true,
+			id: 'recent',
+			label: 'Recent',
+			getSortableMetric: (item) => ({
+				sortBy: new Date(item.displayDate).getTime(),
+				alphabetizeBy: item.displayDate,
+			}),
+		},
 	],
 	searchQuery: '',
 };

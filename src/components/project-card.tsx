@@ -4,15 +4,16 @@ import cx from 'classnames';
 
 export interface ProjectCardProps {
 	projectCard: IProjectCard;
+	index: number;
 }
 
-export const ProjectCard: React.FC<ProjectCardProps> = ({ projectCard }) => {
+export const ProjectCard: React.FC<ProjectCardProps> = ({ projectCard, index }) => {
+	const displayIndex = index + 1 < 10 ? `0${index + 1}` : index + 1;
+
 	return (
 		<div className='w-full shadow-xl bg-gray-200 flex justify-between p-4 md:p-6 dark:bg-slate-800 transition rounded-lg'>
 			<div className='flex flex-col mr-4 md:mr-6'>
-				<div className='text-gray-500 italic mb-2 dark:text-gray-300'>
-					{projectCard.displayNumber}
-				</div>
+				<div className='text-gray-500 italic mb-2 dark:text-gray-300'>{displayIndex}</div>
 
 				<div className='flex grow justify-around'>
 					<div className='max-w-[1px] grow h-full bg-gray-400'></div>
