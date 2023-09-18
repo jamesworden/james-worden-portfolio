@@ -23,10 +23,12 @@ export const BlogPostCard: React.FC<BlogCardProps> = ({ blogPostCard }) => {
 
 	return (
 		<div className='rounded-lg shadow-xl md:ml-16 mt-16 md:mt-0 bg-gray-200 flex gap-8 py-6 dark:bg-slate-800 transition flex-col md:flex-row px-4 md:px-0 max-w-sm md:max-w-none'>
-			<img
-				src={image}
-				className='w-[320px] h-[213.3px] md:-ml-16 -mt-16 md:mt-0 rounded-lg z-2 shadow-xl h-[213px] transition'
-			/>
+			<Link
+				to={`/blog/${blogPostCard.slug}`}
+				className='w-[320px] h-[213.3px] md:-ml-16 -mt-16 md:mt-0 z-2 h-[213px]'
+			>
+				<img src={image} className='rounded-lg shadow-xl hover:scale-105 transition' />
+			</Link>
 
 			<div className='px-2'>
 				<div className='flex gap-x-2'>
