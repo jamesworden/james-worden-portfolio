@@ -13,13 +13,13 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data }) => {
 
 	return (
 		<PageContent>
-			<section className='my-20'>
+			<header className='my-20'>
 				<h1 className='text-3xl lg:text-5xl lg:font-semibold lg:mb-2'>
 					{frontmatter.title}
 				</h1>
 				<span className='text-sm lg:text-md'>{frontmatter.date}</span>
 				<h3 className='text-lg lg:text-2xl mt-4'>{frontmatter.subtitle}</h3>
-			</section>
+			</header>
 
 			<div className='flex flex-row justify-between gap-8 mb-6'>
 				<article

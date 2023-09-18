@@ -25,7 +25,7 @@ const IndexPage: React.FC<PageProps> = ({ location }) => {
 
 	return (
 		<PageContent onAnimationComplete={() => setLayoutAnimationCompleted(true)}>
-			<div className='flex justify-around w-100'>
+			<header className='flex justify-around w-100'>
 				<div className='max-w-5xl w-full'>
 					<section className='flex justify-between my-8 md:mt-36 mb-40 flex-col md:flex-row flex'>
 						<div className='flex flex-col gap-8 mb-16'>
@@ -61,7 +61,7 @@ const IndexPage: React.FC<PageProps> = ({ location }) => {
 						</div>
 					</section>
 				</div>
-			</div>
+			</header>
 
 			{/* <SectionDivider displayName='About' displayNumber='00'></SectionDivider>
 
