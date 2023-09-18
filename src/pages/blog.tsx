@@ -5,7 +5,7 @@ import { PageProps, graphql } from 'gatsby';
 import { MarkdownRemarkQueryResult } from '../graphql-types';
 import { BlogPostCard, IBlogPostCard } from '../components/blog-post-card';
 import { SearchTool } from '../components/search-tool/search-tool';
-import { defaultBlogSearchSettings } from '../data/default-search-settings';
+import { defaultBlogSearchSettings } from '../data/default-blog-search-settings';
 import { getBlogPostCardsFromEdges } from '../util/blog/blog-utils';
 
 import '../styles/global.scss';
