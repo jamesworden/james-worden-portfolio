@@ -4,6 +4,7 @@ import { SearchBar } from './search-bar';
 import { SortableCheckboxList } from '../inputs/sortable-checkbox-list';
 import { SearchSettings } from '../models/search-settings';
 import { SortByOption } from '../models/sort-by-option';
+import { motion } from 'framer-motion';
 
 interface SearchToolProps<T> {
 	settings: SearchSettings<T>;
@@ -66,9 +67,12 @@ const SearchTool: React.FC<SearchToolProps<any>> = <T extends unknown>({
 					></SearchBar>
 
 					<div>
-						<div className='flex flex-col justify-around h-full'>
+						<motion.button
+							onClick={handleShowingSearchOptionsChange}
+							className='flex flex-col justify-around h-full'
+							whileTap={{ scale: 1.1, rotate: 90 }}
+						>
 							<svg
-								onClick={handleShowingSearchOptionsChange}
 								className='h-8 w-8 cursor-pointer'
 								viewBox='0 0 24 24'
 								fill='none'
@@ -83,7 +87,7 @@ const SearchTool: React.FC<SearchToolProps<any>> = <T extends unknown>({
 									className='stroke-gray-500 stroke-[1.5px]'
 								/>
 							</svg>
-						</div>
+						</motion.button>
 					</div>
 				</div>
 			</div>
