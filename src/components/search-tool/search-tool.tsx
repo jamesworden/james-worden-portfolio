@@ -4,7 +4,7 @@ import { SearchBar } from './search-bar';
 import { SortableCheckboxList } from '../inputs/sortable-checkbox-list';
 import { SearchSettings } from '../models/search-settings';
 import { SortByOption } from '../models/sort-by-option';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 interface SearchToolProps<T> {
 	settings: SearchSettings<T>;
@@ -92,51 +92,60 @@ const SearchTool: React.FC<SearchToolProps<any>> = <T extends unknown>({
 				</div>
 			</div>
 
-			{showingSearchSettings && (
-				<div className='grow mt-4'>
-					<div className='p-4 max-w-xs flex flex-col gap-y-8'>
-						<div>
-							<div className='text-lg mb-2'>Search by</div>
+			<AnimatePresence mode='wait'>
+				<motion.div
+					key={showingSearchSettings ? 'search-settings' : 'empty'}
+					initial={{ y: 10, opacity: 0 }}
+					animate={{ y: 0, opacity: 1 }}
+					exit={{ y: -10, opacity: 0 }}
+					transition={{ duration: 0.1 }}
+					className='grow mt-4'
+				>
+					{showingSearchSettings && (
+						<div className='p-4 max-w-xs flex flex-col gap-y-8'>
+							<div>
+								<div className='text-lg mb-2'>Search by</div>
 
-							{settings.searchByOptions.map((searchByOption, i) => (
+								{settings.searchByOptions.map((searchByOption, i) => (
+									<Checkbox
+										key={i}
+										label={searchByOption.label}
+										checked={searchByOption.checked}
+										onChange={(checked) =>
+											handleSearchByOptionChange(checked, searchByOption.id)
+										}
+									/>
+								))}
+							</div>
+
+							<div>
+								<div className='text-lg mb-2'>Sort by</div>
+
+								<SortableCheckboxList
+									sortByOptions={settings.sortByOptions}
+									onChange={handleSortByOptionsChange}
+								></SortableCheckboxList>
+							</div>
+
+							<div>
+								<div className='text-lg mb-2'>Order by</div>
+
 								<Checkbox
-									key={i}
-									label={searchByOption.label}
-									checked={searchByOption.checked}
-									onChange={(checked) =>
-										handleSearchByOptionChange(checked, searchByOption.id)
-									}
+									label='Ascending'
+									checked={settings.orderByAscending}
+									onChange={handleOrderByAscendingChange}
 								/>
-							))}
+
+								<Checkbox
+									label='Descending'
+									checked={!settings.orderByAscending}
+									onChange={handleOrderByDescendingChange}
+								/>
+							</div>
 						</div>
-
-						<div>
-							<div className='text-lg mb-2'>Sort by</div>
-
-							<SortableCheckboxList
-								sortByOptions={settings.sortByOptions}
-								onChange={handleSortByOptionsChange}
-							></SortableCheckboxList>
-						</div>
-
-						<div>
-							<div className='text-lg mb-2'>Order by</div>
-
-							<Checkbox
-								label='Ascending'
-								checked={settings.orderByAscending}
-								onChange={handleOrderByAscendingChange}
-							/>
-
-							<Checkbox
-								label='Descending'
-								checked={!settings.orderByAscending}
-								onChange={handleOrderByDescendingChange}
-							/>
-						</div>
-					</div>
-				</div>
-			)}
+					)}
+				</motion.div>
+			</AnimatePresence>
 		</div>
 	);
 };
