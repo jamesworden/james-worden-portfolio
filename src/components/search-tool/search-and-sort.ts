@@ -7,52 +7,39 @@ export function searchAndSort<T>(items: T[], searchSettings: SearchSettings<T>):
 		return items;
 	}
 
-	const sortableMetrics: {
-		[itemIndex: number]: SortableMetric[];
-	} = {};
-
-	// Initialize
-	for (let i = 0; i < items.length; i++) {
-		sortableMetrics[i] = [];
-	}
-
-	// Calculate and push search setting metrics
-	for (const option of searchSettings.searchByOptions) {
-		if (option.checked) {
-			for (let i = 0; i < items.length; i++) {
-				const sortableMetric = option.getSortableMetric(
-					items[i],
-					searchSettings.searchQuery
-				);
-				sortableMetrics[i].push(sortableMetric);
-			}
-		}
-	}
-
-	// Calculate and push sort setting metrics
-	for (const option of searchSettings.sortByOptions) {
-		if (option.checked) {
-			for (let i = 0; i < items.length; i++) {
-				const sortableMetric = option.getSortableMetric(items[i]);
-				sortableMetrics[i].push(sortableMetric);
-			}
-		}
-	}
-
-	// Associate items with their metrics
 	const itemsWithMetrics: {
 		item: T;
 		sortableMetrics: SortableMetric[];
 	}[] = [];
 
+	// Initialize
 	for (let i = 0; i < items.length; i++) {
 		itemsWithMetrics.push({
 			item: items[i],
-			sortableMetrics: sortableMetrics[i],
+			sortableMetrics: [],
 		});
 	}
 
-	// Sort items with their metrics or alphebetize if same metric
+	for (const option of searchSettings.searchByOptions) {
+		if (option.checked) {
+			for (const itemWithMetrics of itemsWithMetrics) {
+				itemWithMetrics.sortableMetrics.push(
+					option.getSortableMetric(itemWithMetrics.item, searchSettings.searchQuery)
+				);
+			}
+		}
+	}
+
+	for (const option of searchSettings.sortByOptions) {
+		if (option.checked) {
+			for (const itemWithMetrics of itemsWithMetrics) {
+				itemWithMetrics.sortableMetrics.push(
+					option.getSortableMetric(itemWithMetrics.item)
+				);
+			}
+		}
+	}
+
 	itemsWithMetrics.sort((a, b) => {
 		for (let i = 0; i < a.sortableMetrics.length; i++) {
 			if (a.sortableMetrics[i].sortBy > b.sortableMetrics[i].sortBy) {
