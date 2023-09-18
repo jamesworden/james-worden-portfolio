@@ -103,12 +103,7 @@ const SortableCheckboxList: React.FC<SortableCheckboxListProps<any>> = <T extend
 				return (
 					<li
 						key={option.id}
-						className={cx(
-							'flex justify-between items-center p-2 bg-white border rounded shadow cursor-move',
-							{
-								'bg-blue-100': isChecked,
-							}
-						)}
+						className='flex justify-between items-center p-2 bg-white border rounded shadow cursor-move'
 						draggable
 						onDragStart={() => handleDragStart(option.id)}
 						onDragOver={handleDragOver}
