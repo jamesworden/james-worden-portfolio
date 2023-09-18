@@ -46,6 +46,15 @@ export const defaultProjectSearchSettings: SearchSettings<IProjectCard> = {
 				alphabetizeBy: item.displayDate,
 			}),
 		},
+		{
+			checked: false,
+			id: 'includes-github-repository',
+			label: 'Includes Github Repo',
+			getSortableMetric: (item) => ({
+				sortBy: item.githubUrl ? 1 : -1,
+				alphabetizeBy: item.displayWebsiteUrl,
+			}),
+		},
 	],
 	searchQuery: '',
 };
