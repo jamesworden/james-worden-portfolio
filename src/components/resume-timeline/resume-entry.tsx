@@ -57,7 +57,22 @@ export const ResumeEntry: React.FC<ResumeEntryProps> = ({ resumeEntry }) => {
 			>
 				<div className='flex justify-around h-full'>
 					<div className='flex justify-around flex-col'>
-						<img
+						<motion.img
+							initial='offscreen'
+							whileInView='onscreen'
+							viewport={{ once: true, amount: 0.8 }}
+							variants={{
+								offscreen: {
+									rotate: 5,
+								},
+								onscreen: {
+									rotate: -5,
+									transition: {
+										type: 'spring',
+										duration: 1.6,
+									},
+								},
+							}}
 							src={resumeEntry.image}
 							width={220}
 							className='opacity-80 hidden md:block'
