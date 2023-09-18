@@ -12,7 +12,6 @@ export function searchAndSort<T>(items: T[], searchSettings: SearchSettings<T>):
 		sortableMetrics: SortableMetric[];
 	}[] = [];
 
-	// Initialize
 	for (let i = 0; i < items.length; i++) {
 		itemsWithMetrics.push({
 			item: items[i],
@@ -51,8 +50,8 @@ export function searchAndSort<T>(items: T[], searchSettings: SearchSettings<T>):
 			}
 		}
 
-		// If down to last metric and both items are of equal sort value, alphabetize them.
 		const lastItemIndex = a.sortableMetrics.length - 1;
+
 		return a.sortableMetrics[lastItemIndex].alphabetizeBy.localeCompare(
 			b.sortableMetrics[lastItemIndex].alphabetizeBy
 		);
