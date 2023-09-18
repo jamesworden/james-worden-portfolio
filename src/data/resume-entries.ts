@@ -1,4 +1,5 @@
-import { ResumeEntry, ResumeEntryPlacement } from '../components/resume-timeline';
+import { ResumeEntry } from '../components/resume-timeline/resume-entry';
+import { ResumeEntryPlacement } from '../components/resume-timeline/resume-entry-placement';
 import angularCsharpLogos from '../images/angular-csharp-logos.png';
 import testAutomationLogos from '../images/test-automation-logos.png';
 import undergradResearcher from '../images/undergrad-researcher.png';

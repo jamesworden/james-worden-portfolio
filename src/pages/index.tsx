@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { navigate, type PageProps } from 'gatsby';
 import headshot from '../images/headshot.jpg';
 import { SectionDivider } from '../components/section-divider';
-import { ResumeTimeline } from '../components/resume-timeline';
+import { ResumeTimeline } from '../components/resume-timeline/resume-timeline';
 import { resumeEntries } from '../data/resume-entries';
 import { SkillsCubes } from '../components/skill-cubes/skills-cubes';
 import { skillCubes } from '../data/skill-cubes';
