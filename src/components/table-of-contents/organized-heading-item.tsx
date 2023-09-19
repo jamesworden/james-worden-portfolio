@@ -46,7 +46,6 @@ export const OrganizedHeadingItem: React.FC<OrganizedHeadingItemProps> = ({
 				<motion.h5
 					initial={{ scale: 0, rotate: 180 }}
 					animate={{ scale: 1, rotate: 0 }}
-					whileHover={{ rotate: 30 }}
 					transition={{
 						delay: index * 0.25,
 						type: 'spring',
