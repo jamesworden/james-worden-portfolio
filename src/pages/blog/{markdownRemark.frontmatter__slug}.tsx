@@ -4,7 +4,7 @@ import { MarkdownRemarkQueryResult } from '../../graphql-types';
 import { PageContent } from '../../components/page-content';
 import { scrollTo } from '../../util/scroll-to';
 import { getOrganizedHeadings } from '../../util/blog/blog-utils';
-import { TableOfContents } from '../../components/table-of-contents';
+import { TableOfContents } from '../../components/table-of-contents/table-of-contents';
 
 interface BlogPostTemplateProps extends PageProps {
 	data: MarkdownRemarkQueryResult;
