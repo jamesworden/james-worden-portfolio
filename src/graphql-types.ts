@@ -15,6 +15,7 @@ export interface MarkdownRemarkQueryResult {
 		headings: {
 			id: string;
 			value: string;
+			depth: number;
 		}[];
 	};
 }
