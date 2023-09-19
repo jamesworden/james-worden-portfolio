@@ -35,13 +35,13 @@ function getBlogPostCardFeaturedStatus(featuredString?: string) {
 	return featuredString.trim().toLocaleLowerCase() === 'true';
 }
 
-export interface OrganizedHeadings {
+export interface OrganizedHeading {
 	parentHeading: MarkdownRemarkHeading;
 	subHeadings: MarkdownRemarkHeading[];
 }
 
 export function getOrganizedHeadings(headings: MarkdownRemarkHeading[], parentHeadingDepth = 2) {
-	const organizedHeadings: OrganizedHeadings[] = [];
+	const organizedHeadings: OrganizedHeading[] = [];
 
 	for (let i = 0; i < headings.length; i++) {
 		const heading = headings[i];

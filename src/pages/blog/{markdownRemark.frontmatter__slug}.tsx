@@ -3,10 +3,8 @@ import { graphql, PageProps } from 'gatsby';
 import { MarkdownRemarkQueryResult } from '../../graphql-types';
 import { PageContent } from '../../components/page-content';
 import { scrollTo } from '../../util/scroll-to';
-import { AnimatePresence, motion } from 'framer-motion';
 import { getOrganizedHeadings } from '../../util/blog/blog-utils';
-
-const SPACES_PER_INDENT = 2;
+import { TableOfContents } from '../../components/table-of-contents';
 
 interface BlogPostTemplateProps extends PageProps {
 	data: MarkdownRemarkQueryResult;
@@ -38,124 +36,11 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data }) => {
 
 				<div className='min-h-full w-px bg-rose-900 dark:bg-emerald-500 hidden lg:block'></div>
 
-				<div className='hidden lg:block lg:sticky top-48 max-w-xs w-full overflow-y-visible max-h-[calc(100vh-16rem)] '>
-					<AnimatePresence>
-						<div className='mb-6'>
-							<span className='text-xs font-semibold uppercase text-rose-900 dark:text-emerald-500'>
-								Table of Contents
-							</span>
-						</div>
-
-						<ul>
-							{organizedHeadings.map(
-								({ parentHeading, subHeadings }, organizedHeadingIndex) => {
-									const displayIndex =
-										organizedHeadingIndex + 1 < 10
-											? `0${organizedHeadingIndex + 1}`
-											: organizedHeadingIndex + 1;
-
-									return (
-										<motion.div
-											key={`organizedHeadingIndex:${organizedHeadingIndex}`}
-											initial='offscreen'
-											whileInView='onscreen'
-											viewport={{ once: true, amount: 0.8 }}
-											variants={{
-												offscreen: {
-													y: 50,
-													opacity: 0,
-												},
-												onscreen: {
-													y: 0,
-													opacity: 1,
-													transition: {
-														delay: organizedHeadingIndex * 0.25,
-														type: 'spring',
-														bounce: 0.4,
-														duration: 0.8,
-													},
-												},
-											}}
-										>
-											<div className='w-full bg-rose-900 dark:bg-emerald-500 h-px'></div>
-
-											<div className='w-full flex gap-x-12'>
-												<motion.h5
-													initial={{ scale: 0, rotate: 180 }}
-													animate={{ scale: 1, rotate: 0 }}
-													whileHover={{ rotate: 30 }}
-													transition={{
-														delay: organizedHeadingIndex * 0.25,
-														type: 'spring',
-														stiffness: 260,
-														damping: 20,
-													}}
-													className='text-2xl text-rose-900 dark:text-emerald-500 underline mt-1'
-												>
-													{displayIndex}
-												</motion.h5>
-
-												<div className='flex flex-col py-6 pr-6'>
-													<motion.li
-														whileTap={{ scale: 0.9 }}
-														whileHover={{ scale: 1.05 }}
-														className='tracking-wide d-flex flex-col justify-around list-none text-sm leading-loose cursor-pointer font-bold uppercase text-rose-900 dark:text-emerald-500'
-													>
-														<a
-															onClick={() =>
-																scrollTo(parentHeading.id)
-															}
-														>
-															{parentHeading.value}
-														</a>
-													</motion.li>
-
-													{subHeadings.map(
-														(subHeading, subHeadingIndex) => {
-															let spacesBeforeItem = '';
-
-															for (
-																let i = parentHeading.depth;
-																i < subHeading.depth;
-																i++
-															) {
-																for (
-																	let i = 0;
-																	i < SPACES_PER_INDENT;
-																	i++
-																) {
-																	spacesBeforeItem +=
-																		String.fromCharCode(160);
-																}
-															}
-
-															return (
-																<motion.li
-																	key={`subHeadingIndex:${subHeadingIndex}`}
-																	whileTap={{ scale: 0.9 }}
-																	whileHover={{ scale: 1.05 }}
-																	className='tracking-wide d-flex flex-col justify-around list-none text-sm cursor-pointer uppercase text-rose-900 dark:bg-emerald-500 dark:text-gray-800 dark:rounded'
-																>
-																	<a
-																		onClick={() =>
-																			scrollTo(subHeading.id)
-																		}
-																	>
-																		{spacesBeforeItem +
-																			subHeading.value}
-																	</a>
-																</motion.li>
-															);
-														}
-													)}
-												</div>
-											</div>
-										</motion.div>
-									);
-								}
-							)}
-						</ul>
-					</AnimatePresence>
+				<div className='hidden lg:block lg:sticky top-48 max-w-xs w-full overflow-y-visible max-h-[calc(100vh-16rem)]'>
+					<TableOfContents
+						organizedHeadings={organizedHeadings}
+						onHeadingClicked={(headingId) => scrollTo(headingId)}
+					></TableOfContents>
 				</div>
 			</div>
 		</PageContent>
