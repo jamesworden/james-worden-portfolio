@@ -27,7 +27,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data }) => {
 					dangerouslySetInnerHTML={{ __html: html }}
 				></article>
 
-				<div className='bg-rose-300 flex-grow hidden lg:block max-w-md'>
+				<div className='lg:sticky top-32 max-w-md overflow-y-visible max-h-[calc(100vh-16rem)]'>
 					<h3>Table of Contents</h3>
 					{headings.map((heading, index) => (
 						<li key={index}>
