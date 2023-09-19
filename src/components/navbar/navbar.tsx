@@ -6,7 +6,7 @@ import { WavyNavbarSvg } from './wavy-navbar-svg';
 import { DarkTheme, useTheme, useThemeUpdate } from '../../contexts/theme-context';
 import { scrollTo } from '../../util/scroll-to';
 import { TRANSITION_DURATION_MS } from '../../constants';
-import { HamburgerToggle } from './hamburger-menu/hamburger-toggle';
+import { HamburgerMenu } from './hamburger-menu/hamburger-menu';
 
 export interface NavbarProps {
 	currentPath: string;
@@ -37,7 +37,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
 			<nav className='flex justify-around bg-rose-950 dark:bg-gray-950 transition'>
 				<div className='flex justify-between max-w-screen-xl w-full px-safe-or-2 py-3'>
 					<div className='md:hidden flex flex-col justify-around'>
-						<HamburgerToggle toggled={() => handleHamburgerToggle()}></HamburgerToggle>
+						<HamburgerMenu toggled={() => handleHamburgerToggle()}></HamburgerMenu>
 					</div>
 
 					<div className='flex'>

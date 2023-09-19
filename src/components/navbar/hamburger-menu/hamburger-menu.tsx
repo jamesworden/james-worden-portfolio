@@ -4,7 +4,7 @@ import { useDimensions } from '../../../hooks/use-dimensions';
 import { HamburgerToggleButton } from './hamburger-toggle-button';
 import { SidebarNavigation } from './sidebar-navigation';
 
-interface HamburgerToggleProps {
+interface HamburgerMenuProps {
 	toggled: () => void;
 }
 
@@ -28,7 +28,7 @@ const sidebarVariants: Variants = {
 	},
 };
 
-export const HamburgerToggle: React.FC<HamburgerToggleProps> = ({ toggled }) => {
+export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ toggled }) => {
 	const [isOpen, toggleOpen] = useCycle(false, true);
 	const containerRef = useRef(null);
 	const height = useDimensions(containerRef);
