@@ -31,7 +31,7 @@ const projectsPage: React.FC<ProjectPageProps> = ({
 
 	return (
 		<PageContent>
-			<header className='prose lg:prose-lg dark:prose-invert mt-16 mb-8 lg:my-16'>
+			<header className='prose lg:prose-lg dark:prose-invert mt-16 mb-6 lg:my-16'>
 				<h1 className='mt-12 mb-8'>Blog</h1>
 			</header>
 
@@ -44,7 +44,7 @@ const projectsPage: React.FC<ProjectPageProps> = ({
 
 				<div className='min-h-full w-px bg-rose-900 dark:bg-emerald-900 hidden lg:block'></div>
 
-				<div className='hidden lg:block'>
+				<div className='hidden lg:block lg:sticky top-48 max-h-16 overflow-y-visible'>
 					<SearchTool
 						settings={searchSettings}
 						onChange={handleSearchSettingsChange}

@@ -36,7 +36,7 @@ const projectsPage: React.FC<{}> = () => {
 
 				<div className='min-h-full w-px bg-rose-900 dark:bg-emerald-900 hidden lg:block'></div>
 
-				<div className='hidden lg:block'>
+				<div className='hidden lg:block lg:sticky top-48 max-h-16 overflow-y-visible'>
 					<SearchTool
 						settings={searchSettings}
 						onChange={handleSearchSettingsChange}

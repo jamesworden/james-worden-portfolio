@@ -36,7 +36,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data }) => {
 
 				<div className='min-h-full w-px bg-rose-900 dark:bg-emerald-900 hidden lg:block'></div>
 
-				<div className='lg:sticky top-32 max-w-md overflow-y-visible max-h-[calc(100vh-16rem)] '>
+				<div className='hidden lg:sticky top-32 max-w-md overflow-y-visible max-h-[calc(100vh-16rem)]'>
 					<AnimatePresence>
 						<span className='text-2xl'>Table of Contents</span>
 
