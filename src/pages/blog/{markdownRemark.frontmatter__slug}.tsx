@@ -52,7 +52,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data }) => {
 
 								return (
 									<motion.li
-										className='list-none text-lg leading-loose pointer-cursor'
+										className='list-none text-lg leading-loose cursor-pointer'
 										initial='offscreen'
 										whileInView='onscreen'
 										viewport={{ once: true, amount: 0.8 }}
