@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ToggleSwitch } from '../inputs/toggle-switch';
 import { Link, navigate } from 'gatsby';
 import { DarkModeSvg } from './dark-mode-svg';
@@ -6,12 +6,14 @@ import { WavyNavbarSvg } from './wavy-navbar-svg';
 import { DarkTheme, useTheme, useThemeUpdate } from '../../contexts/theme-context';
 import { scrollTo } from '../../util/scroll-to';
 import { TRANSITION_DURATION_MS } from '../../constants';
+import { HamburgerToggle } from './hamburger-toggle';
 
 export interface NavbarProps {
 	currentPath: string;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
+	const [hamburgerOpen, setHamburgerOpen] = useState(false);
 	const theme = useTheme();
 	const toggleTheme = useThemeUpdate();
 	const isDarkModeOn = theme === DarkTheme;
@@ -26,10 +28,18 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
 		}
 	};
 
+	const handleHamburgerToggle = () => {
+		setHamburgerOpen(!hamburgerOpen);
+	};
+
 	return (
 		<div className='flex flex-col sticky top-0 z-50'>
 			<nav className='flex justify-around bg-rose-950 dark:bg-gray-950 transition'>
 				<div className='flex justify-between max-w-screen-xl w-full px-safe-or-2 py-3'>
+					<div className='md:hidden flex flex-col justify-around'>
+						<HamburgerToggle toggled={() => handleHamburgerToggle()}></HamburgerToggle>
+					</div>
+
 					<div className='flex'>
 						<DarkModeSvg></DarkModeSvg>
 
@@ -38,7 +48,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
 						</div>
 					</div>
 
-					<div className='flex'>
+					<div className='hidden md:flex'>
 						<div className='flex flex-col justify-around mr-2 md:mr-4'>
 							<Link
 								to='/'

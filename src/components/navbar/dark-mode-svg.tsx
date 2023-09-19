@@ -20,7 +20,7 @@ export const DarkModeSvg = () => {
 			<svg
 				xmlns='http://www.w3.org/2000/svg'
 				viewBox='0 0 23.112 22.908'
-				className='h-4 w-4 stroke-white fill-none absolute left-4 bottom-4'
+				className='h-4 w-4 stroke-white fill-none absolute left-4 bottom-4 -mb-2 md:mb-1'
 			>
 				<path
 					id='Icon_weather-stars'
