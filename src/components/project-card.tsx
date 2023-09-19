@@ -1,6 +1,7 @@
 import React from 'react';
 import { IProjectCard } from '../data/project-cards';
 import cx from 'classnames';
+import { getDisplayIndex } from '../util/get-display-index';
 
 export interface ProjectCardProps {
 	projectCard: IProjectCard;
@@ -8,7 +9,7 @@ export interface ProjectCardProps {
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ projectCard, index }) => {
-	const displayIndex = index + 1 < 10 ? `0${index + 1}` : index + 1;
+	const displayIndex = getDisplayIndex(index);
 
 	return (
 		<div className='w-full shadow-xl bg-gray-200 flex justify-between p-4 md:p-6 dark:bg-slate-800 transition rounded-lg'>

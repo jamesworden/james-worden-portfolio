@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import React from 'react';
 import { OrganizedHeading } from '../util/blog/blog-utils';
+import { getDisplayIndex } from '../util/get-display-index';
 
 interface TableOfContentsProps {
 	organizedHeadings: OrganizedHeading[];
@@ -22,11 +23,8 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({
 			</div>
 
 			<ul>
-				{organizedHeadings.map(({ parentHeading, subHeadings }, organizedHeadingIndex) => {
-					const displayIndex =
-						organizedHeadingIndex + 1 < 10
-							? `0${organizedHeadingIndex + 1}`
-							: organizedHeadingIndex + 1;
+				{organizedHeadings.map((organizedHeading, organizedHeadingIndex) => {
+					const displayIndex = getDisplayIndex(organizedHeadingIndex);
 
 					return (
 						<motion.div
@@ -75,37 +73,47 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({
 										whileHover={{ scale: 1.05 }}
 										className='tracking-wide d-flex flex-col justify-around list-none text-sm leading-loose cursor-pointer font-bold uppercase text-rose-900 dark:text-emerald-500'
 									>
-										<a onClick={() => onHeadingClicked(parentHeading.id)}>
-											{parentHeading.value}
+										<a
+											onClick={() =>
+												onHeadingClicked(organizedHeading.parentHeading.id)
+											}
+										>
+											{organizedHeading.parentHeading.value}
 										</a>
 									</motion.li>
 
-									{subHeadings.map((subHeading, subHeadingIndex) => {
-										let spacesBeforeItem = '';
+									{organizedHeading.subHeadings.map(
+										(subHeading, subHeadingIndex) => {
+											let spacesBeforeItem = '';
 
-										for (
-											let i = parentHeading.depth;
-											i < subHeading.depth;
-											i++
-										) {
-											for (let i = 0; i < SPACES_PER_INDENT; i++) {
-												spacesBeforeItem += String.fromCharCode(160);
+											for (
+												let i = organizedHeading.parentHeading.depth;
+												i < subHeading.depth;
+												i++
+											) {
+												for (let i = 0; i < SPACES_PER_INDENT; i++) {
+													spacesBeforeItem += String.fromCharCode(160);
+												}
 											}
-										}
 
-										return (
-											<motion.li
-												key={`subHeadingIndex:${subHeadingIndex}`}
-												whileTap={{ scale: 0.9 }}
-												whileHover={{ scale: 1.05 }}
-												className='tracking-wide d-flex flex-col justify-around list-none text-sm cursor-pointer uppercase text-rose-900 dark:bg-emerald-500 dark:text-gray-800 dark:rounded'
-											>
-												<a onClick={() => onHeadingClicked(subHeading.id)}>
-													{spacesBeforeItem + subHeading.value}
-												</a>
-											</motion.li>
-										);
-									})}
+											return (
+												<motion.li
+													key={`subHeadingIndex:${subHeadingIndex}`}
+													whileTap={{ scale: 0.9 }}
+													whileHover={{ scale: 1.05 }}
+													className='tracking-wide d-flex flex-col justify-around list-none text-sm cursor-pointer uppercase text-rose-900 dark:bg-emerald-500 dark:text-gray-800 dark:rounded'
+												>
+													<a
+														onClick={() =>
+															onHeadingClicked(subHeading.id)
+														}
+													>
+														{spacesBeforeItem + subHeading.value}
+													</a>
+												</motion.li>
+											);
+										}
+									)}
 								</div>
 							</div>
 						</motion.div>
