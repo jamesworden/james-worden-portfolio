@@ -1,6 +1,5 @@
 import { Variants, motion } from 'framer-motion';
 import React from 'react';
-import { SidebarNavigationItem } from './sidebar-navigation-item';
 
 interface SidebarNavigationProps {}
 

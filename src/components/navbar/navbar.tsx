@@ -6,7 +6,7 @@ import { WavyNavbarSvg } from './wavy-navbar-svg';
 import { DarkTheme, useTheme, useThemeUpdate } from '../../contexts/theme-context';
 import { scrollTo } from '../../util/scroll-to';
 import { TRANSITION_DURATION_MS } from '../../constants';
-import { HamburgerToggle } from './hamburger-toggle';
+import { HamburgerToggle } from './hamburger-menu/hamburger-toggle';
 
 export interface NavbarProps {
 	currentPath: string;

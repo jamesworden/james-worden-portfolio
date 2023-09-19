@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { Variants, motion, useCycle } from 'framer-motion';
-import { useDimensions } from '../../hooks/use-dimensions';
+import { useDimensions } from '../../../hooks/use-dimensions';
 import { HamburgerToggleButton } from './hamburger-toggle-button';
 import { SidebarNavigation } from './sidebar-navigation';
 
