@@ -56,6 +56,9 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data }) => {
 										initial='offscreen'
 										whileInView='onscreen'
 										viewport={{ once: true, amount: 0.8 }}
+										whileHover={{
+											scale: 1.075,
+										}}
 										variants={{
 											offscreen: {
 												y: 50,
