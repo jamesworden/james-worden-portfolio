@@ -1,5 +1,5 @@
 import { IBlogPostCard } from '../../components/blog-post-card';
-import { MarkdownRemarkNode } from '../../graphql-types';
+import { MarkdownRemarkHeading, MarkdownRemarkNode } from '../../graphql-types';
 
 export function getBlogPostCardsFromEdges(edges: MarkdownRemarkNode[]): IBlogPostCard[] {
 	return edges.map((edge) => ({
@@ -33,4 +33,25 @@ function getBlogPostCardFeaturedStatus(featuredString?: string) {
 	}
 
 	return featuredString.trim().toLocaleLowerCase() === 'true';
+}
+
+export interface OrganizedHeadings {
+	parentHeading: MarkdownRemarkHeading;
+	subHeadings: MarkdownRemarkHeading[];
+}
+
+export function getOrganizedHeadings(headings: MarkdownRemarkHeading[], parentHeadingDepth = 2) {
+	const organizedHeadings: OrganizedHeadings[] = [];
+
+	for (let i = 0; i < headings.length; i++) {
+		const heading = headings[i];
+
+		if (heading.depth === parentHeadingDepth) {
+			organizedHeadings.push({ parentHeading: heading, subHeadings: [] });
+		} else if (heading.depth >= parentHeadingDepth) {
+			organizedHeadings[organizedHeadings.length - 1].subHeadings.push(heading);
+		}
+	}
+
+	return organizedHeadings;
 }

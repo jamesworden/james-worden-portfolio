@@ -12,7 +12,7 @@ export const ResumeTimeline: React.FC<ResumeTimelineProps> = ({ resumeEntries })
 			<div className='flex flex-col w-full h-full'>
 				<AnimatePresence>
 					{resumeEntries.map((resumeEntry, i) => (
-						<ResumeEntry resumeEntry={resumeEntry} key={i}></ResumeEntry>
+						<ResumeEntry key={i} resumeEntry={resumeEntry}></ResumeEntry>
 					))}
 				</AnimatePresence>
 			</div>

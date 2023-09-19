@@ -12,11 +12,7 @@ export interface MarkdownRemarkQueryResult {
 	markdownRemark: {
 		frontmatter: BlogPostFrontmatter;
 		html: string;
-		headings: {
-			id: string;
-			value: string;
-			depth: number;
-		}[];
+		headings: MarkdownRemarkHeading[];
 	};
 }
 
@@ -40,4 +36,10 @@ export interface BlogPostFrontmatter {
 	category?: string;
 	keywords?: string;
 	featured?: string;
+}
+
+export interface MarkdownRemarkHeading {
+	id: string;
+	value: string;
+	depth: number;
 }
