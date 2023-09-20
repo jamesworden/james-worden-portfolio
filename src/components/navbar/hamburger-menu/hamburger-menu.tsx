@@ -44,7 +44,7 @@ export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ toggled }) => {
 			animate={isOpen ? 'open' : 'closed'}
 		>
 			<motion.div
-				className='transition top-0 right-0 bottom-0 absolute bg-rose-950 dark:bg-gray-950 w-full h-screen z-2 max-w-sm'
+				className='transition top-12 right-0 bottom-0 absolute bg-rose-950 dark:bg-gray-950 w-full h-screen max-w-xs'
 				custom={dimensions}
 				variants={sidebarVariants}
 			></motion.div>

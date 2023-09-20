@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { ToggleSwitch } from '../inputs/toggle-switch';
 import { Link, navigate } from 'gatsby';
-import { DarkModeSvg } from './dark-mode-svg';
 import { WavyNavbarSvg } from './wavy-navbar-svg';
 import { DarkTheme, useTheme, useThemeUpdate } from '../../contexts/theme-context';
 import { scrollTo } from '../../util/scroll-to';
@@ -36,12 +35,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
 		<div className='flex flex-col sticky top-0 z-50'>
 			<nav className='flex justify-around bg-rose-950 dark:bg-gray-950 transition'>
 				<div className='flex justify-between max-w-screen-xl w-full px-safe-or-2 py-3'>
-					<div className='flex'>
-						<DarkModeSvg></DarkModeSvg>
-
-						<div className='flex flex-col justify-around'>
-							<ToggleSwitch value={isDarkModeOn} toggled={toggleTheme}></ToggleSwitch>
-						</div>
+					<div className='flex flex-col justify-around'>
+						<ToggleSwitch value={isDarkModeOn} toggled={toggleTheme}></ToggleSwitch>
 					</div>
 
 					<div className='md:hidden flex flex-col justify-around'>
