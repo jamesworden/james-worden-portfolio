@@ -4,7 +4,7 @@ import { useDimensions } from '../../../hooks/use-dimensions';
 import { HamburgerToggleButton } from './hamburger-toggle-button';
 import headshot from '../../../images/headshot.jpg';
 import { navbarLinks } from '../../../data/navbar-links/navbar-links';
-import { Footer } from '../../footer';
+import { Footer } from '../../footer/footer';
 
 const MD_BREAKPOINT_IN_PIXELS = 768;
 
@@ -101,7 +101,7 @@ export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ currentPath }) => 
 					</ul>
 				</div>
 
-				<Footer svgClass='fill-white'></Footer>
+				<Footer pathClass='fill-white'></Footer>
 			</motion.div>
 
 			<HamburgerToggleButton toggled={() => toggleOpen()} />
