@@ -25,7 +25,7 @@ const sidebarVariants: Variants = {
 	closed: (dimensions: Dimensions) => ({
 		clipPath: `circle(18px at ${dimensions.width - 27}px -18px)`,
 		transition: {
-			delay: 0.5,
+			delay: 0.2,
 			type: 'spring',
 			stiffness: 400,
 			damping: 40,
