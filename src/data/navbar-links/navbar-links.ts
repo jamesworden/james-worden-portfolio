@@ -41,11 +41,11 @@ export const navbarLinks: NavbarLink[] = [
 		label: 'Contact',
 		svgElement: HandshakeSvg,
 		onClick: (currentPath: string) => {
-			let timeoutDuration = 0.25;
+			let timeoutDuration = 0.5;
 
 			if (currentPath !== '/') {
 				navigate('/');
-				timeoutDuration = TRANSITION_DURATION_MS * 1.2;
+				timeoutDuration += TRANSITION_DURATION_MS * 1.2;
 			}
 
 			setTimeout(() => {
