@@ -36,16 +36,16 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
 		<div className='flex flex-col sticky top-0 z-50'>
 			<nav className='flex justify-around bg-rose-950 dark:bg-gray-950 transition'>
 				<div className='flex justify-between max-w-screen-xl w-full px-safe-or-2 py-3'>
-					<div className='md:hidden flex flex-col justify-around'>
-						<HamburgerMenu toggled={() => handleHamburgerToggle()}></HamburgerMenu>
-					</div>
-
 					<div className='flex'>
 						<DarkModeSvg></DarkModeSvg>
 
 						<div className='flex flex-col justify-around'>
 							<ToggleSwitch value={isDarkModeOn} toggled={toggleTheme}></ToggleSwitch>
 						</div>
+					</div>
+
+					<div className='md:hidden flex flex-col justify-around'>
+						<HamburgerMenu toggled={() => handleHamburgerToggle()}></HamburgerMenu>
 					</div>
 
 					<div className='hidden md:flex'>
