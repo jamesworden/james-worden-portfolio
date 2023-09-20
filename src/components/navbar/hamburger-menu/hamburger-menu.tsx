@@ -80,10 +80,24 @@ export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ currentPath }) => 
 								{navbarLinks.map((navbarLink, i) => (
 									<div key={i}>
 										<div className='flex gap-x-6'>
-											{navbarLink.svgElement}
+											<motion.div
+												animate={
+													isOpen
+														? { scale: 1, rotate: 0 }
+														: { scale: 1 / 3, rotate: 180 }
+												}
+												transition={{
+													delay: isOpen ? (i + 1) * 0.25 : 0.5,
+													type: 'spring',
+													stiffness: 260,
+													damping: 20,
+												}}
+											>
+												{navbarLink.svgElement}
+											</motion.div>
 
 											<button
-												className='font-semibold'
+												className='font-semibold hover:scale-110 transition'
 												onClick={() => {
 													toggleOpen();
 													navbarLink.onClick(currentPath);
