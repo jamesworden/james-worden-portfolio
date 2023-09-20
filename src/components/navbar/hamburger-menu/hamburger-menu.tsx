@@ -2,13 +2,13 @@ import React from 'react';
 import { Variants, motion, useCycle } from 'framer-motion';
 import { useDimensions } from '../../../hooks/use-dimensions';
 import { HamburgerToggleButton } from './hamburger-toggle-button';
-import { Link } from 'gatsby';
 import headshot from '../../../images/headshot.jpg';
+import { navbarLinks } from '../../../data/navbar-links/navbar-links';
 
 const MD_BREAKPOINT_IN_PIXELS = 768;
 
 interface HamburgerMenuProps {
-	toggled: () => void;
+	currentPath: string;
 }
 
 interface Dimensions {
@@ -36,7 +36,7 @@ const sidebarVariants: Variants = {
 	}),
 };
 
-export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ toggled }) => {
+export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ currentPath }) => {
 	const [isOpen, toggleOpen] = useCycle(false, true);
 	const dimensions = useDimensions();
 
@@ -74,13 +74,27 @@ export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ toggled }) => {
 
 				<ul className='w-full px-6 mt-8'>
 					<li className='text-gray-200 list-none'>
-						<div className='flex gap-x-6'>
-							<Link className='font-semibold' onClick={() => toggleOpen()} to='/'>
-								Home
-							</Link>
-						</div>
+						<div className='flex flex-col gap-y-6'>
+							{navbarLinks.map((navbarLink, i) => (
+								<div key={i}>
+									<div className='flex gap-x-6'>
+										{navbarLink.svgElement}
 
-						<div className='mt-2 h-px bg-white opacity-40 w-full'></div>
+										<button
+											className='font-semibold'
+											onClick={() => {
+												toggleOpen();
+												navbarLink.onClick(currentPath);
+											}}
+										>
+											{navbarLink.label}
+										</button>
+									</div>
+
+									<div className='mt-2 h-px bg-white opacity-40 w-full'></div>
+								</div>
+							))}
+						</div>
 					</li>
 				</ul>
 			</motion.div>

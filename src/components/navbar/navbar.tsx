@@ -10,14 +10,9 @@ export interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
-	const [hamburgerOpen, setHamburgerOpen] = useState(false);
 	const theme = useTheme();
 	const toggleTheme = useThemeUpdate();
 	const isDarkModeOn = theme === DarkTheme;
-
-	const handleHamburgerToggle = () => {
-		setHamburgerOpen(!hamburgerOpen);
-	};
 
 	return (
 		<div className='flex flex-col sticky top-0 z-50'>
@@ -28,7 +23,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
 					</div>
 
 					<div className='md:hidden flex flex-col justify-around'>
-						<HamburgerMenu toggled={() => handleHamburgerToggle()}></HamburgerMenu>
+						<HamburgerMenu currentPath={currentPath}></HamburgerMenu>
 					</div>
 
 					<div className='hidden md:flex gap-x-4'>
