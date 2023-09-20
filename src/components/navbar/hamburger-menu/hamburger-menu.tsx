@@ -3,13 +3,14 @@ import { Variants, motion, useCycle } from 'framer-motion';
 import { useDimensions } from '../../../hooks/use-dimensions';
 import { HamburgerToggleButton } from './hamburger-toggle-button';
 import headshot from '../../../images/headshot.jpg';
-import { navbarLinks } from '../../../data/navbar-links/navbar-links';
 import { Footer } from '../../footer/footer';
+import { NavbarLink } from '../../../data/navbar-links/navbar-links';
 
 const MD_BREAKPOINT_IN_PIXELS = 768;
 
 interface HamburgerMenuProps {
 	currentPath: string;
+	navbarLinks: NavbarLink[];
 }
 
 interface Dimensions {
@@ -37,7 +38,7 @@ const sidebarVariants: Variants = {
 	}),
 };
 
-export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ currentPath }) => {
+export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ currentPath, navbarLinks }) => {
 	const [isOpen, toggleOpen] = useCycle(false, true);
 	const dimensions = useDimensions();
 

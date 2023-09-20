@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ToggleSwitch } from '../inputs/toggle-switch';
 import { WavyNavbarSvg } from './wavy-navbar-svg';
 import { DarkTheme, useTheme, useThemeUpdate } from '../../contexts/theme-context';
 import { HamburgerMenu } from './hamburger-menu/hamburger-menu';
-import { navbarLinks } from '../../data/navbar-links/navbar-links';
+import { NavbarLink } from '../../data/navbar-links/navbar-links';
 
 export interface NavbarProps {
 	currentPath: string;
+	navbarLinks: NavbarLink[];
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
+export const Navbar: React.FC<NavbarProps> = ({ currentPath, navbarLinks }) => {
 	const theme = useTheme();
 	const toggleTheme = useThemeUpdate();
 	const isDarkModeOn = theme === DarkTheme;
@@ -23,7 +24,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
 					</div>
 
 					<div className='md:hidden flex flex-col justify-around'>
-						<HamburgerMenu currentPath={currentPath}></HamburgerMenu>
+						<HamburgerMenu
+							currentPath={currentPath}
+							navbarLinks={navbarLinks}
+						></HamburgerMenu>
 					</div>
 
 					<div className='hidden md:flex gap-x-4'>
