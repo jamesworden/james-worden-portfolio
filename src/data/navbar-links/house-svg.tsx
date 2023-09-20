@@ -2,7 +2,7 @@ import React from 'react';
 
 export const HouseSvg = (
 	<svg
-		className='h-6 w-6 fill-gray-200'
+		className='h-6 w-6 fill-white opacity-80'
 		version='1.1'
 		id='Capa_1'
 		xmlns='http://www.w3.org/2000/svg'
