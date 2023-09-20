@@ -35,7 +35,7 @@ const projectsPage: React.FC<ProjectPageProps> = ({
 				<h1 className='mt-12 mb-8'>Blog</h1>
 			</header>
 
-			<div className='flex gap-x-6 flex-col-reverse lg:flex-row'>
+			<div className='flex gap-x-6 flex-col-reverse lg:flex-row mb-6'>
 				<div className='flex flex-col gap-y-8'>
 					{blogPostCards.map((blogPostCard, i) => (
 						<BlogPostCard key={i} blogPostCard={blogPostCard}></BlogPostCard>
@@ -44,7 +44,7 @@ const projectsPage: React.FC<ProjectPageProps> = ({
 
 				<div className='min-h-full w-px bg-rose-900 dark:bg-emerald-900 hidden lg:block'></div>
 
-				<div className='lg:sticky lg:top-48 lg:max-h-16 lg:overflow-y-visible mb-6'>
+				<div className='lg:sticky lg:top-48 lg:max-h-16 lg:overflow-y-visible'>
 					<SearchTool
 						settings={searchSettings}
 						onChange={handleSearchSettingsChange}
