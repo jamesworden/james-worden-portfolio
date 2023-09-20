@@ -16,16 +16,14 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data }) => {
 
 	return (
 		<PageContent>
-			<header className='my-24'>
-				<div className='mb-12'>
-					<h1 className='text-3xl lg:text-5xl lg:font-semibold lg:mb-2'>
-						{frontmatter.title}
-					</h1>
+			<header className='my-20'>
+				<div className='mb-20'>
+					<h1 className='text-5xl mb-6'>{frontmatter.title}</h1>
 
 					<span className='text-md lg:text-lg'>{frontmatter.date}</span>
 				</div>
 
-				<h3 className='text-lg lg:text-2xl mt-4'>{frontmatter.subtitle}</h3>
+				<h3 className='text-3xl lg:text-2xl mt-4'>{frontmatter.subtitle}</h3>
 			</header>
 
 			<div className='flex flex-row gap-x-24 mb-8'>

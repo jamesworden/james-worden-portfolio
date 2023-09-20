@@ -55,7 +55,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ projectCard, index }) 
 									href={button.websiteUrl}
 									target='_blank'
 									className={cx(
-										'uppercase px-8 py-2 tracking-widest text-sm rounded-md shadow-xl tracking-widest transition',
+										'uppercase px-4 py-2 tracking-widest text-sm rounded-md shadow-xl tracking-widest transition',
 										button.buttonClassName
 									)}
 								>
