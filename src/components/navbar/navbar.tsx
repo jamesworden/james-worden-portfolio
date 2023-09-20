@@ -6,6 +6,7 @@ import { DarkTheme, useTheme, useThemeUpdate } from '../../contexts/theme-contex
 import { scrollTo } from '../../util/scroll-to';
 import { TRANSITION_DURATION_MS } from '../../constants';
 import { HamburgerMenu } from './hamburger-menu/hamburger-menu';
+import { navbarLinks } from '../../data/navbar-links/navbar-links';
 
 export interface NavbarProps {
 	currentPath: string;
@@ -16,16 +17,6 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
 	const theme = useTheme();
 	const toggleTheme = useThemeUpdate();
 	const isDarkModeOn = theme === DarkTheme;
-
-	const scrollToContact = () => {
-		if (currentPath !== '/') {
-			navigate('/');
-
-			setTimeout(() => {
-				scrollTo('contact-section');
-			}, TRANSITION_DURATION_MS * 1.2);
-		}
-	};
 
 	const handleHamburgerToggle = () => {
 		setHamburgerOpen(!hamburgerOpen);
@@ -43,42 +34,17 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
 						<HamburgerMenu toggled={() => handleHamburgerToggle()}></HamburgerMenu>
 					</div>
 
-					<div className='hidden md:flex'>
-						<div className='flex flex-col justify-around mr-2 md:mr-4'>
-							<Link
-								to='/'
-								className='text-xs md:text-sm uppercase px-2 md:px-6 py-2 tracking-widest text-white rounded-md tracking-widest transition bg-rose-900 dark:bg-gray-900 hover:bg-rose-800 dark:hover:bg-gray-800'
-							>
-								Home
-							</Link>
-						</div>
-
-						<div className='flex flex-col justify-around mr-2 md:mr-4'>
-							<Link
-								to='/blog'
-								className='text-xs md:text-sm uppercase px-2 md:px-6 py-2 tracking-widest text-white rounded-md tracking-widest transition bg-rose-800 dark:bg-gray-800 hover:bg-rose-700 dark:hover:bg-gray-700'
-							>
-								Blog
-							</Link>
-						</div>
-
-						<div className='flex flex-col justify-around mr-2 md:mr-4'>
-							<Link
-								to='/projects'
-								className='text-xs md:text-sm uppercase px-2 md:px-6 py-2 tracking-widest text-white rounded-md tracking-widest transition bg-rose-700 dark:bg-gray-700 hover:bg-rose-600 dark:hover:bg-gray-600'
-							>
-								Projects
-							</Link>
-						</div>
-
-						<div className='flex flex-col justify-around mr-2 md:mr-4'>
-							<button
-								className='text-xs md:text-sm uppercase px-2 md:px-6 py-2 tracking-widest text-white rounded-md tracking-widest transition bg-rose-800 dark:bg-gray-800 hover:bg-rose-700 dark:hover:bg-gray-700'
-								onClick={scrollToContact}
-							>
-								Contact
-							</button>
-						</div>
+					<div className='hidden md:flex gap-x-4'>
+						{navbarLinks.map((navbarLink, i) => (
+							<div key={i} className='flex flex-col justify-around'>
+								<button
+									className={navbarLink.hotdogButtonClass}
+									onClick={() => navbarLink.onClick(currentPath)}
+								>
+									{navbarLink.label}
+								</button>
+							</div>
+						))}
 					</div>
 				</div>
 			</nav>
