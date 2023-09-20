@@ -2,13 +2,20 @@ import React from 'react';
 import { LinkedInSvg } from './linkedin-svg';
 import { GithubSvg } from './github-svg';
 import { EnvelopeSvg } from './envelope-svg';
+import cx from 'classnames';
 
 interface FooterProps {
 	pathClass?: string;
+	hidden: boolean;
 }
 
-export const Footer: React.FC<FooterProps> = ({ pathClass }) => (
-	<footer className='w-full flex justify-around'>
+export const Footer: React.FC<FooterProps> = ({ pathClass, hidden }) => (
+	<footer
+		className={cx(
+			'w-full flex justify-around transition',
+			hidden ? 'opacity-0' : 'opacity-100'
+		)}
+	>
 		<div className='max-w-screen-xl flex pb-8 pt-2 px-safe-or-2 w-full m-auto'>
 			<a
 				className='mr-8 flex flex-col justify-around'

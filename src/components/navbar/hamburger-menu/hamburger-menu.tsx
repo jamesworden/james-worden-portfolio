@@ -1,10 +1,11 @@
 import React from 'react';
-import { Variants, motion, useCycle } from 'framer-motion';
+import { Variants, motion } from 'framer-motion';
 import { useDimensions } from '../../../hooks/use-dimensions';
 import { HamburgerToggleButton } from './hamburger-toggle-button';
 import headshot from '../../../images/headshot.jpg';
 import { Footer } from '../../footer/footer';
 import { NavbarLink } from '../../../data/navbar-links/navbar-links';
+import { useHamburgerMenu, useHamburgerMenuUpdate } from '../../../contexts/hamburger-menu-context';
 
 const MD_BREAKPOINT_IN_PIXELS = 768;
 
@@ -39,11 +40,12 @@ const sidebarVariants: Variants = {
 };
 
 export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ currentPath, navbarLinks }) => {
-	const [isOpen, toggleOpen] = useCycle(false, true);
+	const { isOpen } = useHamburgerMenu();
+	const toggleHamburgerMenu = useHamburgerMenuUpdate();
 	const dimensions = useDimensions();
 
 	if (dimensions.width > MD_BREAKPOINT_IN_PIXELS && isOpen) {
-		toggleOpen();
+		toggleHamburgerMenu();
 	}
 
 	return (
@@ -100,7 +102,7 @@ export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ currentPath, navba
 											<button
 												className='font-semibold hover:scale-110 transition'
 												onClick={() => {
-													toggleOpen();
+													toggleHamburgerMenu();
 													navbarLink.onClick(currentPath);
 												}}
 											>
@@ -116,10 +118,10 @@ export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ currentPath, navba
 					</ul>
 				</div>
 
-				<Footer pathClass='fill-white'></Footer>
+				<Footer pathClass='fill-white' hidden={false}></Footer>
 			</motion.div>
 
-			<HamburgerToggleButton toggled={() => toggleOpen()} />
+			<HamburgerToggleButton toggled={() => toggleHamburgerMenu()} />
 		</motion.nav>
 	);
 };
