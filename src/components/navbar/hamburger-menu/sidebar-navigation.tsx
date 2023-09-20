@@ -1,5 +1,6 @@
 import { Variants, motion } from 'framer-motion';
 import React from 'react';
+import { SidebarNavigationItem } from './sidebar-navigation-item';
 
 interface SidebarNavigationProps {}
 
@@ -15,9 +16,14 @@ const variants: Variants = {
 export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({}) => {
 	return (
 		<motion.ul variants={variants} className='absolute z-2'>
-			{/* {[0, 1, 2, 3].map((i) => (
-				<SidebarNavigationItem key={i} />
-			))} */}
+			<li>Test</li>
+			<li>Test</li>
+			<li>Test</li>
+			<li>Test</li>
+			<li>Test</li>
+			<li>Test</li>
+			<li>Test</li>
+			<li>Test</li>
 		</motion.ul>
 	);
 };

@@ -15,7 +15,7 @@ interface Dimensions {
 
 const sidebarVariants: Variants = {
 	open: (dimensions: Dimensions) => ({
-		clipPath: `circle(${dimensions.height * 2 + 200}px at 40px ${dimensions.width - 40}px)`,
+		clipPath: `circle(${dimensions.height * 2 + 200}px at 40px 0px)`,
 		transition: {
 			type: 'spring',
 			stiffness: 20,
@@ -23,7 +23,7 @@ const sidebarVariants: Variants = {
 		},
 	}),
 	closed: (dimensions: Dimensions) => ({
-		clipPath: `circle(18px at ${dimensions.width - 27}px 23px)`,
+		clipPath: `circle(18px at ${dimensions.width - 27}px -18px)`,
 		transition: {
 			delay: 0.5,
 			type: 'spring',
