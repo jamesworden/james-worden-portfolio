@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import { ToggleSwitch } from '../inputs/toggle-switch';
-import { Link, navigate } from 'gatsby';
 import { WavyNavbarSvg } from './wavy-navbar-svg';
 import { DarkTheme, useTheme, useThemeUpdate } from '../../contexts/theme-context';
-import { scrollTo } from '../../util/scroll-to';
-import { TRANSITION_DURATION_MS } from '../../constants';
 import { HamburgerMenu } from './hamburger-menu/hamburger-menu';
 import { navbarLinks } from '../../data/navbar-links/navbar-links';
 
