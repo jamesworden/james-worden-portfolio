@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 /**
  * SVG Source: https://github.com/wcBurgess/Huddle-landing-page-with-tailwindCSS/blob/master/index.html

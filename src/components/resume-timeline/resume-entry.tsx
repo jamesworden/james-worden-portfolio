@@ -1,10 +1,8 @@
-import * as React from 'react';
+import React from 'react';
+import { ResumeEntryPlacement } from './resume-entry-placement';
 import cx from 'classnames';
-
-export enum ResumeEntryPlacement {
-	Right = 'Right',
-	Left = 'Left',
-}
+import { StartMonthAndYear } from './start-month-and-year';
+import { motion } from 'framer-motion';
 
 export interface ResumeEntry {
 	placement: ResumeEntryPlacement;
@@ -17,38 +15,31 @@ export interface ResumeEntry {
 	image: any;
 }
 
-interface StartMonthAndYearProps {
-	startMonthAndYear: string;
-	resumeEntryPlacement: ResumeEntryPlacement;
-}
-
-const StartMonthAndYear: React.FC<StartMonthAndYearProps> = ({
-	startMonthAndYear,
-	resumeEntryPlacement,
-}) => {
-	return (
-		<span
-			className={cx(
-				'text-rose-900 dark:text-gray-100 font-bold absolute md:top-0 left-0 -top-4',
-				resumeEntryPlacement === ResumeEntryPlacement.Right ? 'md:right-0' : 'md:left-0'
-			)}
-		>
-			{startMonthAndYear}
-		</span>
-	);
-};
-
-export interface ResumeTimelineProps {
-	resumeEntries: ResumeEntry[];
-}
-
 interface ResumeEntryProps {
 	resumeEntry: ResumeEntry;
 }
 
-const ResumeEntry: React.FC<ResumeEntryProps> = ({ resumeEntry }) => {
+export const ResumeEntry: React.FC<ResumeEntryProps> = ({ resumeEntry }) => {
 	return (
-		<div
+		<motion.div
+			initial='offscreen'
+			whileInView='onscreen'
+			viewport={{ once: true, amount: 0.8 }}
+			variants={{
+				offscreen: {
+					y: 50,
+					opacity: 0,
+				},
+				onscreen: {
+					y: 0,
+					opacity: 1,
+					transition: {
+						type: 'spring',
+						bounce: 0.4,
+						duration: 0.8,
+					},
+				},
+			}}
 			className={cx(
 				'flex md:w-full mt-4 ml-4 relative m-4 md:m-0 flex-col max-w-xl md:max-w-none',
 				resumeEntry.placement === ResumeEntryPlacement.Right
@@ -66,7 +57,22 @@ const ResumeEntry: React.FC<ResumeEntryProps> = ({ resumeEntry }) => {
 			>
 				<div className='flex justify-around h-full'>
 					<div className='flex justify-around flex-col'>
-						<img
+						<motion.img
+							initial='offscreen'
+							whileInView='onscreen'
+							viewport={{ once: true, amount: 0.8 }}
+							variants={{
+								offscreen: {
+									rotate: -15,
+								},
+								onscreen: {
+									rotate: 0,
+									transition: {
+										type: 'spring',
+										duration: 1.6,
+									},
+								},
+							}}
 							src={resumeEntry.image}
 							width={220}
 							className='opacity-80 hidden md:block'
@@ -104,22 +110,6 @@ const ResumeEntry: React.FC<ResumeEntryProps> = ({ resumeEntry }) => {
 					</div>
 				</div>
 			</div>
-		</div>
-	);
-};
-
-export const ResumeTimeline: React.FC<ResumeTimelineProps> = ({ resumeEntries }) => {
-	return (
-		<div className='relative w-full h-full'>
-			<div className='flex flex-col w-full h-full'>
-				{resumeEntries.map((resumeEntry, i) => (
-					<ResumeEntry resumeEntry={resumeEntry} key={i}></ResumeEntry>
-				))}
-			</div>
-
-			<div className='absolute flex justify-around h-full top-0 md:left-1/2 left-0 w-px'>
-				<div className='w-px h-full bg-rose-900 dark:bg-gray-100'></div>
-			</div>
-		</div>
+		</motion.div>
 	);
 };

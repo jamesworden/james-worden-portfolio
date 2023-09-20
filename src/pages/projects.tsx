@@ -1,18 +1,48 @@
-import * as React from 'react';
-import { projectCards } from '../data/project-cards';
+import React, { useState } from 'react';
+import { IProjectCard, projectCards } from '../data/project-cards';
 import { ProjectCard } from '../components/project-card';
 import { PageContent } from '../components/page-content';
+import { SearchTool } from '../components/search-tool/search-tool';
+import { defaultProjectSearchSettings } from '../data/default-project-search-settings';
+import { SearchSettings } from '../components/models/search-settings';
 
-import '../styles/global.scss';
 export { GlobalHead as Head } from '../components/global-head';
+import '../styles/global.scss';
+import { searchAndSort } from '../components/search-tool/search-and-sort';
 
 const projectsPage: React.FC<{}> = () => {
+	const [searchSettings, setSearchSettings] = useState(defaultProjectSearchSettings);
+
+	const handleSearchSettingsChange = (searchSettings: SearchSettings<IProjectCard>) => {
+		setSearchSettings({ ...searchSettings });
+	};
+
+	const sortedProjectCards = searchAndSort(projectCards, searchSettings);
+
 	return (
 		<PageContent>
-			<h1 className='text-3xl mt-12 mb-8'>Projects</h1>
-			{projectCards.map((projectCard, i) => (
-				<ProjectCard projectCard={projectCard} key={i}></ProjectCard>
-			))}
+			<header className='prose lg:prose-lg dark:prose-invert mt-16 mb-8 lg:my-16'>
+				<h1 className='mt-12 mb-8'>Projects</h1>
+			</header>
+
+			<div className='flex gap-x-6 flex-col-reverse lg:flex-row mb-6'>
+				<div className='flex gap-x-6 flex-col'>
+					<div className='mb-6 flex flex-col gap-y-8'>
+						{sortedProjectCards.map((projectCard, i) => (
+							<ProjectCard key={i} projectCard={projectCard} index={i}></ProjectCard>
+						))}
+					</div>
+				</div>
+
+				<div className='min-h-full w-px bg-rose-900 dark:bg-emerald-900 hidden lg:block'></div>
+
+				<div className='lg:sticky lg:top-48 lg:max-h-16 lg:overflow-y-visible'>
+					<SearchTool
+						settings={searchSettings}
+						onChange={handleSearchSettingsChange}
+					></SearchTool>
+				</div>
+			</div>
 		</PageContent>
 	);
 };

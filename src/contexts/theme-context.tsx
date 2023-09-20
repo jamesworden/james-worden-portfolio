@@ -12,8 +12,6 @@ export const DarkTheme: Theme = {
 	htmlElementClassName: 'dark',
 };
 
-const themes = [DefaultTheme, DarkTheme];
-
 const ThemeContext = createContext(DefaultTheme);
 const ThemeUpdateContext = createContext(() => {});
 

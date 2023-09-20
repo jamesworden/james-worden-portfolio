@@ -1,5 +1,5 @@
 import { HeadProps } from 'gatsby';
-import * as React from 'react';
+import React from 'react';
 
 export const GlobalHead: React.FC<HeadProps> = () => {
 	return (

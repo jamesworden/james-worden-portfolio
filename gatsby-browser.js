@@ -2,10 +2,11 @@ import React from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { Layout } from './src/components/layout';
 import { ThemeProvider } from './src/contexts/theme-context';
+import { HamburgerMenuProvider } from './src/contexts/hamburger-menu-context';
 
-export const wrapPageElement = ({ element }) => {
+export const wrapPageElement = ({ element, props }) => {
 	return (
-		<Layout>
+		<Layout currentPath={props.path}>
 			<AnimatePresence
 				mode='wait'
 				initial={false}
@@ -21,6 +22,10 @@ export const wrapPageElement = ({ element }) => {
 	);
 };
 
-export const wrapRootElement = ({ element }) => <ThemeProvider>{element}</ThemeProvider>;
+export const wrapRootElement = ({ element }) => (
+	<ThemeProvider>
+		<HamburgerMenuProvider>{element}</HamburgerMenuProvider>
+	</ThemeProvider>
+);
 
 export const shouldUpdateScroll = () => false;

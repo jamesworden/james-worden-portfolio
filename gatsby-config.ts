@@ -30,7 +30,21 @@ const config: GatsbyConfig = {
 				],
 			},
 		},
-		'gatsby-plugin-smoothscroll',
+		{
+			resolve: `gatsby-source-filesystem`,
+			options: {
+				name: `data`,
+				path: `${__dirname}/src/data/`,
+				ignore: [`**/\.*`, `**\.ts`],
+				fastHash: true,
+			},
+		},
+		{
+			resolve: `gatsby-transformer-remark`,
+			options: {
+				plugins: [`gatsby-remark-autolink-headers`],
+			},
+		},
 	],
 };
 

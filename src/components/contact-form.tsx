@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
@@ -125,7 +125,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({}) => {
 						<div>
 							<button
 								type='submit'
-								className='uppercase px-8 py-2 tracking-widest bg-rose-900 dark:bg-rose-900 transition text-white text-sm rounded-md shadow-2xl tracking-widest mt-8'
+								className='uppercase px-8 py-2 tracking-widest dark:bg-emerald-900 bg-rose-900 transition text-white text-sm rounded-md shadow-xl tracking-widest mt-8'
 							>
 								Send
 							</button>
@@ -145,7 +145,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({}) => {
 					<span>Thanks for reaching out!</span>
 					<div>
 						<button
-							className='uppercase px-8 py-2 tracking-widest bg-rose-900 dark:bg-rose-900 transition text-white text-sm rounded-md shadow-2xl tracking-widest mt-8'
+							className='uppercase px-8 py-2 tracking-widest bg-rose-900 dark:bg-rose-900 transition text-white text-sm rounded-md shadow-xl tracking-widest mt-8'
 							onClick={handleSendAnother}
 						>
 							Send another

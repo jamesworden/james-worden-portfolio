@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Box, useTexture } from '@react-three/drei';
 import { Triplet, useBox } from '@react-three/cannon';
 import { BufferGeometry, Mesh } from 'three';

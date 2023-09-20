@@ -1,7 +1,7 @@
 import { usePlane } from '@react-three/cannon';
 import { Plane, SoftShadows } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
-import * as React from 'react';
+import React from 'react';
 import { useState, useEffect } from 'react';
 import { Mesh } from 'three';
 
