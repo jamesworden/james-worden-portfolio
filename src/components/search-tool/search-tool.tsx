@@ -102,7 +102,7 @@ const SearchTool: React.FC<SearchToolProps<any>> = <T extends unknown>({
 					className='grow mt-4'
 				>
 					{showingSearchSettings && (
-						<div className='p-4 max-w-xs flex flex-col gap-y-8'>
+						<div className='py-4 max-w-xs flex flex-col gap-y-8'>
 							<div>
 								<div className='text-lg mb-2'>Search by</div>
 
