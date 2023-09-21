@@ -20,10 +20,10 @@ const IndexPage: React.FC<PageProps> = ({}) => {
 		<PageContent onAnimationComplete={() => setLayoutAnimationCompleted(true)}>
 			<header className='flex justify-around w-100'>
 				<div className='max-w-5xl w-full'>
-					<section className='flex justify-between my-8 md:mt-36 mb-40 flex-col md:flex-row flex'>
+					<section className='flex justify-between my-8 md:mt-36 mb-40 flex-col flex'>
 						<div className='flex flex-col gap-8 mb-20'>
 							<div className=' mt-12 md:mt-0 lg:mb-6'>
-								<h1 className='text-5xl'>I'm James Worden.</h1>
+								<h1 className='text-6xl md:text-7xl'>I'm James Worden.</h1>
 
 								<div className='mt-6'>
 									<span>I strive to build simple and</span>
@@ -42,7 +42,7 @@ const IndexPage: React.FC<PageProps> = ({}) => {
 							</div>
 						</div>
 
-						<div className='flex justify-end'>
+						<div className='flex justify-end md:-mt-32'>
 							<div className='relative mr-4 md:w-[360px] md:h-[240px] w-[320px] h-[213.3px]'>
 								<img
 									alt='Headshot'
