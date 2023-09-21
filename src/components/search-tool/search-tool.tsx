@@ -95,14 +95,30 @@ const SearchTool: React.FC<SearchToolProps<any>> = <T extends unknown>({
 			<AnimatePresence mode='wait'>
 				<motion.div
 					key={showingSearchSettings ? 'search-settings' : 'empty'}
-					initial={{ y: 10, opacity: 0 }}
-					animate={{ y: 0, opacity: 1 }}
-					exit={{ y: -10, opacity: 0 }}
-					transition={{ duration: 0.1 }}
-					className='grow mt-4'
+					initial={{ height: 0, opacity: 0 }}
+					animate={
+						showingSearchSettings
+							? {
+									height: 'auto',
+									opacity: 1,
+									transition: {
+										type: 'tween',
+									},
+							  }
+							: {
+									height: 0,
+									opacity: 0,
+									transition: {
+										type: 'tween',
+									},
+							  }
+					}
+					exit={{ height: 0, opacity: 0 }}
+					transition={{ duration: 0.15, delay: 0 }}
+					className='mt-4 overflow-hidden'
 				>
 					{showingSearchSettings && (
-						<div className='py-4 max-w-xs flex flex-col gap-y-8'>
+						<div className='pb-12 pt-4 max-w-xs flex flex-col gap-y-8'>
 							<div>
 								<div className='text-lg mb-2'>Search by</div>
 

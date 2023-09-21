@@ -20,12 +20,17 @@ const IndexPage: React.FC<PageProps> = ({}) => {
 		<PageContent onAnimationComplete={() => setLayoutAnimationCompleted(true)}>
 			<header className='flex justify-around w-100'>
 				<div className='max-w-5xl w-full'>
-					<section className='flex justify-between my-8 md:mt-36 mb-40 flex-col md:flex-row flex'>
-						<div className='flex flex-col gap-8 mb-16'>
-							<div className='prose dark:prose-invert lg:mb-6'>
-								<h1>I'm James Worden.</h1>
+					<section className='flex justify-between my-8 md:mt-36 mb-40 flex-col flex'>
+						<div className='flex flex-col gap-8 mb-20'>
+							<div className=' mt-12 md:mt-0 lg:mb-6'>
+								<h1 className='text-6xl md:text-7xl'>
+									<span className='text-3xl xs:text-5xl md:text-6xl serif text-black dark:text-white'>
+										I'm
+									</span>{' '}
+									James Worden.
+								</h1>
 
-								<div className='-mt-6'>
+								<div className='mt-6'>
 									<span>I strive to build simple and</span>
 									<br />
 									<span>intuitive software.</span>
@@ -34,7 +39,7 @@ const IndexPage: React.FC<PageProps> = ({}) => {
 
 							<div>
 								<button
-									className='uppercase px-8 py-2 tracking-widest bg-rose-900 dark:bg-emerald-900 dark:hover:bg-emerald-800 hover:bg-rose-800 text-white text-sm rounded-md shadow-2xl tracking-widest transition'
+									className='uppercase px-4 py-2 tracking-widest bg-rose-900 dark:bg-emerald-900 dark:hover:bg-emerald-800 hover:bg-rose-800 text-white text-sm rounded-md shadow-2xl tracking-widest transition'
 									onClick={() => navigate('/projects')}
 								>
 									My Projects
@@ -42,7 +47,7 @@ const IndexPage: React.FC<PageProps> = ({}) => {
 							</div>
 						</div>
 
-						<div className='flex justify-end'>
+						<div className='flex justify-end md:-mt-32'>
 							<div className='relative mr-4 md:w-[360px] md:h-[240px] w-[320px] h-[213.3px]'>
 								<img
 									alt='Headshot'

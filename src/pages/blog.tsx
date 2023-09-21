@@ -31,7 +31,7 @@ const projectsPage: React.FC<ProjectPageProps> = ({
 
 	return (
 		<PageContent>
-			<header className='prose lg:prose-lg dark:prose-invert mt-16 mb-6 lg:my-16'>
+			<header className='text-5xl my-20'>
 				<h1 className='mt-12 mb-8'>Blog</h1>
 			</header>
 

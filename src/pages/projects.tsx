@@ -21,7 +21,7 @@ const projectsPage: React.FC<{}> = () => {
 
 	return (
 		<PageContent>
-			<header className='prose lg:prose-lg dark:prose-invert mt-16 mb-8 lg:my-16'>
+			<header className='text-5xl my-20'>
 				<h1 className='mt-12 mb-8'>Projects</h1>
 			</header>
 
