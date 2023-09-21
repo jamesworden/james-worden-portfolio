@@ -23,7 +23,12 @@ const IndexPage: React.FC<PageProps> = ({}) => {
 					<section className='flex justify-between my-8 md:mt-36 mb-40 flex-col flex'>
 						<div className='flex flex-col gap-8 mb-20'>
 							<div className=' mt-12 md:mt-0 lg:mb-6'>
-								<h1 className='text-6xl md:text-7xl'>I'm James Worden.</h1>
+								<h1 className='text-6xl md:text-7xl'>
+									<span className='text-3xl xs:text-5xl md:text-6xl serif text-black dark:text-white'>
+										I'm
+									</span>{' '}
+									James Worden.
+								</h1>
 
 								<div className='mt-6'>
 									<span>I strive to build simple and</span>
