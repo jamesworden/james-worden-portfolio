@@ -52,5 +52,13 @@ module.exports = {
 	},
 	// TailwindCSS classes that are maintained in TypeScript aren't automatically loaded.
 	// into the browser. This safelist ensures classes are loaded even if they aren't detected.
-	safelist: ['bg-rose-800', 'dark:bg-gray-800'],
+	safelist: [
+		'bg-rose-800',
+		'bg-gray-800',
+		'dark:bg-gray-800',
+		'text-gray-800',
+		'text-gray-400',
+		'text-lg',
+		'text-xs',
+	],
 };

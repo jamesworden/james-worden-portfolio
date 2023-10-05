@@ -5,6 +5,9 @@ import { PageContent } from '../../components/page-content';
 import { scrollTo } from '../../util/scroll-to';
 import { getOrganizedHeadings } from '../../util/blog/blog-utils';
 import { TableOfContents } from '../../components/table-of-contents/table-of-contents';
+import { Biography } from '../../components/biography';
+import { useHamburgerMenu } from '../../contexts/hamburger-menu-context';
+import cx from 'classnames';
 
 interface BlogPostTemplateProps extends PageProps {
 	data: MarkdownRemarkQueryResult;
@@ -13,17 +16,34 @@ interface BlogPostTemplateProps extends PageProps {
 const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data }) => {
 	const { frontmatter, html, headings } = data.markdownRemark;
 	const organizedHeadings = getOrganizedHeadings(headings);
+	const hamburgerMenu = useHamburgerMenu();
 
 	return (
 		<PageContent>
-			<header className='my-20'>
-				<div className='mb-20'>
-					<h1 className='text-5xl mb-6'>{frontmatter.title}</h1>
+			<header className='my-24'>
+				<div className='mb-24'>
+					<div className='text-sm lg:text-md text-gray-700 dark:text-gray-400'>
+						{frontmatter.date}
+					</div>
 
-					<span className='text-md lg:text-lg'>{frontmatter.date}</span>
+					<h1 className='text-5xl my-8'>{frontmatter.title}</h1>
+
+					<div
+						className={cx(
+							'transition',
+							hamburgerMenu.isOpen ? 'opacity-0' : 'opacity-100'
+						)}
+					>
+						<Biography
+							nameClass='text-gray-800 dark:text-gray-100 text-lg'
+							occupationClass='text-gray-500 dark:text-gray-300 text-xs'
+						></Biography>
+					</div>
 				</div>
 
-				<h3 className='text-3xl lg:text-2xl mt-4'>{frontmatter.subtitle}</h3>
+				<h3 className='prose dark:prose-invert text-3xl lg:text-2xl mt-4'>
+					{frontmatter.subtitle}
+				</h3>
 			</header>
 
 			<div className='flex flex-row gap-x-24 mb-8'>

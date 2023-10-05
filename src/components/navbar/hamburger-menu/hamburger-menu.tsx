@@ -2,10 +2,10 @@ import React from 'react';
 import { Variants, motion } from 'framer-motion';
 import { useDimensions } from '../../../hooks/use-dimensions';
 import { HamburgerToggleButton } from './hamburger-toggle-button';
-import headshot from '../../../images/headshot.jpg';
 import { Footer } from '../../footer/footer';
 import { NavbarLink } from '../../../data/navbar-links/navbar-links';
 import { useHamburgerMenu, useHamburgerMenuUpdate } from '../../../contexts/hamburger-menu-context';
+import { Biography } from '../../biography';
 
 const MD_BREAKPOINT_IN_PIXELS = 768;
 
@@ -60,21 +60,8 @@ export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ currentPath, navba
 				variants={sidebarVariants}
 			>
 				<div>
-					<div className='p-6 flex'>
-						<div className='flex justify-end'>
-							<div className='relative mr-4'>
-								<img
-									alt='Headshot'
-									src={headshot}
-									className='h-16 w-16 rounded-full overflow-hidden object-cover'
-								/>
-							</div>
-						</div>
-
-						<div className='flex flex-col mt-2'>
-							<span className='text-white text-lg'>James Worden</span>
-							<span className='text-gray-300 text-xs'>Software Engineer</span>
-						</div>
+					<div className='p-6'>
+						<Biography></Biography>
 					</div>
 
 					<ul className='w-full px-6 mt-8 mb-6'>
