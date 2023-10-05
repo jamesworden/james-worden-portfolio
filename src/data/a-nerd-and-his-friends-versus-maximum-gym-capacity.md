@@ -636,7 +636,7 @@ The state machine also put the results of each invocation as a row in a DynamoDB
 
 <sub>Table of stored results</sub>
 
-### Testing
+## Testing
 
 The second column in the table that was just displayed contains a Boolean value, `is_test_run`. The function understands whether this was a test run or not based on a Boolean input. Notice the following chunk of code at the beginning of `signUpMember` that also depends on this value:
 
@@ -692,7 +692,7 @@ The line of code to dispatch the aforementioned button click was almost always c
 
 Taking a look at the table of stored results in the previous section reveals that about half of the lambda invocations were test runs. This was because I defined a second AWS EventBridge rule to kick of the state machine, designated for nightly automated testing.
 
-### Logging
+## Logging
 
 Screenshots were captured and uploaded at each page in the process so I could remotely debug my program for errors once hosted on AWS Lambda. I initially had the misconception that the headless `chrome-aws-lambda` NPM package would be unable to take screenshots of the website that Puppeteer has navigated to. Headless simply means that there is no interactive browser like the one you have on your PC's desktop. These remote screenshots are interpretations of what a URL's HTML, CSS, and JavaScript would look like.
 

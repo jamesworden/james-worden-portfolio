@@ -2,8 +2,7 @@ import React from 'react';
 import { OrganizedHeading } from '../../util/blog/blog-utils';
 import { getDisplayIndex } from '../../util/get-display-index';
 import { motion } from 'framer-motion';
-
-const SPACES_PER_INDENT = 2;
+import cx from 'classnames';
 
 interface OrganizedHeadingItemProps {
 	organizedHeading: OrganizedHeading;
@@ -57,7 +56,7 @@ export const OrganizedHeadingItem: React.FC<OrganizedHeadingItemProps> = ({
 					{displayIndex}
 				</motion.h5>
 
-				<div className='flex flex-col py-6 pr-6'>
+				<div className='flex flex-col py-4 pr-4'>
 					<motion.li
 						whileTap={{ scale: 0.9 }}
 						whileHover={{ scale: 1.05 }}
@@ -68,32 +67,23 @@ export const OrganizedHeadingItem: React.FC<OrganizedHeadingItemProps> = ({
 						</a>
 					</motion.li>
 
-					{organizedHeading.subHeadings.map((subHeading, subHeadingIndex) => {
-						let spacesBeforeItem = '';
-
-						for (
-							let i = organizedHeading.parentHeading.depth;
-							i < subHeading.depth;
-							i++
-						) {
-							for (let i = 0; i < SPACES_PER_INDENT; i++) {
-								spacesBeforeItem += String.fromCharCode(160);
-							}
-						}
-
-						return (
-							<motion.li
-								key={`subHeadingIndex:${subHeadingIndex}`}
-								whileTap={{ scale: 0.9 }}
-								whileHover={{ scale: 1.05 }}
-								className='tracking-wide d-flex flex-col justify-around list-none text-sm cursor-pointer uppercase text-rose-900 dark:bg-emerald-500 dark:text-gray-800 dark:rounded'
-							>
-								<a onClick={() => onHeadingClicked(subHeading.id)}>
-									{spacesBeforeItem + subHeading.value}
-								</a>
-							</motion.li>
-						);
-					})}
+					{organizedHeading.subHeadings.map((subHeading, subHeadingIndex) => (
+						<motion.li
+							key={`subHeadingIndex:${subHeadingIndex}`}
+							whileTap={{ scale: 0.9 }}
+							whileHover={{ scale: 1.05 }}
+							className={cx(
+								'mr-2 p-2 tracking-wide d-flex flex-col justify-around text-sm cursor-pointer uppercase rounded text-rose-950 bg-transparent dark:text-emerald-500 list-disc',
+								`ml-${
+									(subHeading.depth - organizedHeading.parentHeading.depth) * 4
+								}`
+							)}
+						>
+							<a onClick={() => onHeadingClicked(subHeading.id)}>
+								{subHeading.value}
+							</a>
+						</motion.li>
+					))}
 				</div>
 			</div>
 		</motion.div>
