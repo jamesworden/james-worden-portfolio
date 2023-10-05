@@ -8,6 +8,38 @@ module.exports = {
 			zIndex: {
 				'-1': '-1',
 			},
+			typography: ({ theme }) => ({
+				DEFAULT: {
+					css: {
+						code: {
+							backgroundColor: '#d1d5db',
+							paddingLeft: '0.5rem',
+							paddingRight: '0.5rem',
+							marginLeft: '0.125rem',
+							marginRight: '0.125rem',
+							borderRadius: '0.15rem',
+						},
+						pre: {
+							marginBottom: '0 !important',
+						},
+						'p:has(sub)': {
+							marginTop: '0 !important',
+						},
+					},
+				},
+				dark: {
+					css: {
+						':not(pre) > code': {
+							backgroundColor: '#374151',
+							paddingLeft: '0.5rem',
+							paddingRight: '0.5rem',
+							marginLeft: '0.125rem',
+							marginRight: '0.125rem',
+							borderRadius: '0.15rem',
+						},
+					},
+				},
+			}),
 		},
 		screens: {
 			xs: '348px',
