@@ -26,7 +26,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data }) => {
 						{frontmatter.date}
 					</div>
 
-					<h1 className='text-5xl my-8'>{frontmatter.title}</h1>
+					<h1 className='text-5xl mt-6 mb-8'>{frontmatter.title}</h1>
 
 					<div
 						className={cx(
