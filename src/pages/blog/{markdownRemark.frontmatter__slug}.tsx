@@ -58,7 +58,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data }) => {
 			<div className='flex flex-row gap-x-24 mb-8'>
 				<article
 					ref={articleRef}
-					className='prose prose-zinc lg:prose-lg dark:prose-invert dark:prose-dark mr-0 prose-code:before:content-none prose-code:after:content-none'
+					className='prose prose-zinc lg:prose-lg dark:prose-invert dark:prose-dark mr-0 prose-code:before:content-none prose-code:after:content-none grid'
 					dangerouslySetInnerHTML={{ __html: html }}
 				></article>
 
