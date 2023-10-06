@@ -55,3 +55,18 @@ export function getOrganizedHeadings(headings: MarkdownRemarkHeading[], parentHe
 
 	return organizedHeadings;
 }
+
+export function wrapTablesInContainers(parentElement: HTMLElement, containerClassName: string) {
+	const tables = parentElement.querySelectorAll('table');
+
+	tables.forEach((table) => {
+		const container = document.createElement('div');
+		container.className = containerClassName;
+		const alreadyWrapped = table.parentElement?.classList.contains(containerClassName);
+
+		if (table.parentNode && !alreadyWrapped) {
+			table.parentNode.insertBefore(container, table);
+			container.appendChild(table);
+		}
+	});
+}

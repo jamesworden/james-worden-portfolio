@@ -34,3 +34,13 @@ p {
 		padding-left: max(16px, env(safe-area-inset-left));
 	}
 }
+
+.markdown-table-container {
+	max-height: 50vh;
+	overflow: scroll;
+	text-wrap: nowrap;
+
+	table {
+		margin-bottom: 0;
+	}
+}

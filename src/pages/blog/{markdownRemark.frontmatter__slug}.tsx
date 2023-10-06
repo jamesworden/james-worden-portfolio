@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { graphql, PageProps } from 'gatsby';
 import { MarkdownRemarkQueryResult } from '../../graphql-types';
 import { PageContent } from '../../components/page-content';
 import { scrollTo } from '../../util/scroll-to';
-import { getOrganizedHeadings } from '../../util/blog/blog-utils';
+import { getOrganizedHeadings, wrapTablesInContainers } from '../../util/blog/blog-utils';
 import { TableOfContents } from '../../components/table-of-contents/table-of-contents';
 import { Biography } from '../../components/biography';
 import { useHamburgerMenu } from '../../contexts/hamburger-menu-context';
@@ -17,6 +17,15 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data }) => {
 	const { frontmatter, html, headings } = data.markdownRemark;
 	const organizedHeadings = getOrganizedHeadings(headings);
 	const hamburgerMenu = useHamburgerMenu();
+	const articleRef = useRef(null);
+
+	useEffect(() => {
+		const articleElement = articleRef.current;
+
+		if (articleElement) {
+			wrapTablesInContainers(articleElement, 'markdown-table-container');
+		}
+	}, []);
 
 	return (
 		<PageContent>
@@ -48,6 +57,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data }) => {
 
 			<div className='flex flex-row gap-x-24 mb-8'>
 				<article
+					ref={articleRef}
 					className='prose prose-zinc lg:prose-lg dark:prose-invert dark:prose-dark mr-0 prose-code:before:content-none prose-code:after:content-none'
 					dangerouslySetInnerHTML={{ __html: html }}
 				></article>
