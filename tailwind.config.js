@@ -8,6 +8,9 @@ module.exports = {
 			zIndex: {
 				'-1': '-1',
 			},
+			maxWidth: {
+				'2xs': '16rem',
+			},
 			typography: ({ theme }) => ({
 				DEFAULT: {
 					css: {
