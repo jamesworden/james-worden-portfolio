@@ -39,8 +39,6 @@ export const OrganizedHeadingItem: React.FC<OrganizedHeadingItemProps> = ({
 				},
 			}}
 		>
-			<div className='w-full bg-rose-900 dark:bg-emerald-500 h-px'></div>
-
 			<div className='w-full flex gap-x-12'>
 				<motion.h5
 					initial={{ scale: 0, rotate: 180 }}
@@ -56,7 +54,7 @@ export const OrganizedHeadingItem: React.FC<OrganizedHeadingItemProps> = ({
 					{displayIndex}
 				</motion.h5>
 
-				<div className='flex flex-col py-4 pr-4'>
+				<div className='flex flex-col py-1 pr-4'>
 					<motion.li
 						whileTap={{ scale: 0.9 }}
 						whileHover={{ scale: 1.05 }}
