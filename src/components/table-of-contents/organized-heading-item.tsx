@@ -49,7 +49,7 @@ export const OrganizedHeadingItem: React.FC<OrganizedHeadingItemProps> = ({
 						stiffness: 260,
 						damping: 20,
 					}}
-					className='text-2xl text-rose-900 dark:text-emerald-500 underline mt-1'
+					className='text-2xl underline mt-1'
 				>
 					{displayIndex}
 				</motion.h5>
@@ -58,7 +58,7 @@ export const OrganizedHeadingItem: React.FC<OrganizedHeadingItemProps> = ({
 					<motion.li
 						whileTap={{ scale: 0.9 }}
 						whileHover={{ scale: 1.05 }}
-						className='tracking-wide d-flex flex-col justify-around list-none text-sm leading-loose cursor-pointer font-bold uppercase text-rose-900 dark:text-emerald-500'
+						className='tracking-wide d-flex flex-col justify-around list-none text-sm leading-loose cursor-pointer font-semibold uppercase'
 					>
 						<a onClick={() => onHeadingClicked(organizedHeading.parentHeading.id)}>
 							{organizedHeading.parentHeading.value}
@@ -71,7 +71,7 @@ export const OrganizedHeadingItem: React.FC<OrganizedHeadingItemProps> = ({
 							whileTap={{ scale: 0.9 }}
 							whileHover={{ scale: 1.05 }}
 							className={cx(
-								'mr-2 p-2 tracking-wide d-flex flex-col justify-around text-sm cursor-pointer uppercase rounded text-rose-950 bg-transparent dark:text-emerald-500 list-disc',
+								'mr-2 p-2 tracking-wide d-flex flex-col justify-around text-sm cursor-pointer uppercase rounded bg-transparent list-disc',
 								`ml-${
 									(subHeading.depth - organizedHeading.parentHeading.depth) * 4
 								}`
