@@ -14,7 +14,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({
 }) => {
 	return (
 		<AnimatePresence>
-			<div className='prose lg:prose-lg mb-6'>
+			<div className='prose lg:prose-lg mb-6 dark:prose-invert'>
 				<h3>Table of Contents</h3>
 			</div>
 
