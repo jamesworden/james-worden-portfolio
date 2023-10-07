@@ -4,6 +4,9 @@ import { Layout } from './src/components/layout';
 import { ThemeProvider } from './src/contexts/theme-context';
 import { HamburgerMenuProvider } from './src/contexts/hamburger-menu-context';
 
+// Import prismJs styles for codeblock highlighting
+import 'prismjs/themes/prism-okaidia.css';
+
 export const wrapPageElement = ({ element, props }) => {
 	return (
 		<Layout currentPath={props.path}>

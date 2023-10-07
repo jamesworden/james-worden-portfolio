@@ -43,7 +43,11 @@ const config: GatsbyConfig = {
 		{
 			resolve: `gatsby-transformer-remark`,
 			options: {
-				plugins: [`gatsby-remark-autolink-headers`, `gatsby-remark-images`],
+				plugins: [
+					`gatsby-remark-autolink-headers`,
+					`gatsby-remark-images`,
+					`gatsby-remark-prismjs`,
+				],
 			},
 		},
 	],
