@@ -14,13 +14,15 @@ module.exports = {
 			typography: ({ theme }) => ({
 				DEFAULT: {
 					css: {
-						code: {
-							backgroundColor: '#d1d5db',
-							paddingLeft: '0.5rem',
-							paddingRight: '0.5rem',
-							marginLeft: '0.125rem',
-							marginRight: '0.125rem',
-							borderRadius: '0.15rem',
+						':not(pre) > code': {
+							background: '#d1d5db !important',
+							paddingLeft: '0.5rem !important',
+							paddingRight: '0.5rem !important',
+							marginLeft: '0.125rem !important',
+							marginRight: '0.125rem !important',
+							borderRadius: '0.15rem !important',
+							color: 'black !important',
+							textShadow: 'none !important',
 						},
 						pre: {
 							marginBottom: '0 !important',
@@ -33,12 +35,14 @@ module.exports = {
 				dark: {
 					css: {
 						':not(pre) > code': {
-							backgroundColor: '#374151',
-							paddingLeft: '0.5rem',
-							paddingRight: '0.5rem',
-							marginLeft: '0.125rem',
-							marginRight: '0.125rem',
-							borderRadius: '0.15rem',
+							backgroundColor: '#374151 !important',
+							paddingLeft: '0.5rem !important',
+							paddingRight: '0.5rem !important',
+							marginLeft: '0.125rem !important',
+							marginRight: '0.125rem !important',
+							borderRadius: '0.15rem !important',
+							color: 'white !important',
+							textShadow: 'none !important',
 						},
 					},
 				},
