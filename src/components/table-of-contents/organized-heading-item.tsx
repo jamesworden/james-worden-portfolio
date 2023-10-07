@@ -19,24 +19,11 @@ export const OrganizedHeadingItem: React.FC<OrganizedHeadingItemProps> = ({
 
 	return (
 		<motion.div
-			initial='offscreen'
-			whileInView='onscreen'
-			viewport={{ once: true, amount: 0.8 }}
-			variants={{
-				offscreen: {
-					y: 50,
-					opacity: 0,
-				},
-				onscreen: {
-					y: 0,
-					opacity: 1,
-					transition: {
-						delay: index * 0.25,
-						type: 'spring',
-						bounce: 0.4,
-						duration: 0.8,
-					},
-				},
+			initial={{ y: 50, opacity: 0 }}
+			animate={{
+				y: 0,
+				opacity: 1,
+				transition: { delay: index * 0.25, type: 'spring', bounce: 0.4, duration: 0.8 },
 			}}
 		>
 			<div className='w-full flex gap-x-12'>
