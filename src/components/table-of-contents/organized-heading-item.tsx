@@ -53,7 +53,7 @@ export const OrganizedHeadingItem: React.FC<OrganizedHeadingItemProps> = ({
 					</motion.li>
 
 					{organizedHeading.subHeadings.map((subHeading, subHeadingIndex) => (
-						<motion.li
+						<motion.div
 							key={`subHeadingIndex:${subHeadingIndex}`}
 							whileTap={{ scale: 0.9 }}
 							whileHover={{ scale: 1.05 }}
@@ -64,10 +64,12 @@ export const OrganizedHeadingItem: React.FC<OrganizedHeadingItemProps> = ({
 								}`
 							)}
 						>
-							<a onClick={() => onHeadingClicked(subHeading.id)}>
-								{subHeading.value}
-							</a>
-						</motion.li>
+							<li>
+								<a onClick={() => onHeadingClicked(subHeading.id)}>
+									{subHeading.value}
+								</a>
+							</li>
+						</motion.div>
 					))}
 				</div>
 			</div>
