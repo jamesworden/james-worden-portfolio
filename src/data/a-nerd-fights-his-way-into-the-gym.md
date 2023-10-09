@@ -23,7 +23,7 @@ On January 18th, 2022, St. John's University Campus Recreation posted an [announ
 >
 > We appreciate your continued effort to keep our campus safe!
 
-As a student who frequented the gym, this policy made it difficult to find a time slot that fit in my busy schedule; it was a race to reserve spots when registration opened every morning. This was a problem because I had to remember to sign up each morning, preventing me from sleeping in on days when classes began in the afternoon. For the time being, however, there was no other option.
+As a student who frequented the gym, this policy made it difficult to find a time slot that fit in my busy schedule; it was a race to reserve spots when registration opened at 8:00 AM. This was a problem because I had to remember to sign up each morning, preventing me from sleeping in on days when classes began in the afternoon. For the time being, however, there was no other option.
 
 ## How students signed up
 
