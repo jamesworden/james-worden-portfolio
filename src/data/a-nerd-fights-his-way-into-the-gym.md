@@ -1,9 +1,9 @@
 ---
-slug: 'a-nerd-and-his-friends-versus-maximum-gym-capacity'
+slug: 'a-nerd-fights-his-way-into-the-gym'
 date: '2023-10-04'
-title: 'A nerd and his friends versus maximum gym capacity'
-subtitle: "Four students at St. John's University face a new maximum capacity at their fitness center because of COVID-19 transmissions. How will they deal with this?"
-description: "Four students at St. John's University face a new maximum capacity at their fitness center because of COVID-19 transmissions. How will they deal with this?"
+title: 'A Nerd Fights His Way Into the Gym'
+subtitle: "Students at St. John's University face a new maximum capacity at their fitness center because of COVID-19 transmissions. How will they deal with this?"
+description: "Students at St. John's University face a new maximum capacity at their fitness center because of COVID-19 transmissions. How will they deal with this?"
 thumbnailId: 'gym-register-thumbnail-id'
 githubUrl: 'https://github.com/jamesworden/gym-registration-automation'
 category: 'Automation'
