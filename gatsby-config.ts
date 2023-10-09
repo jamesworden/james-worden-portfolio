@@ -44,7 +44,14 @@ const config: GatsbyConfig = {
 			resolve: `gatsby-transformer-remark`,
 			options: {
 				plugins: [
-					`gatsby-remark-autolink-headers`,
+					{
+						resolve: 'gatsby-remark-autolink-headers',
+						options: {
+							maintainCase: true,
+							isIconAfterHeader: true,
+							className: 'fill-black dark:fill-white absolute ml-2',
+						},
+					},
 					`gatsby-remark-images`,
 					`gatsby-remark-prismjs`,
 				],

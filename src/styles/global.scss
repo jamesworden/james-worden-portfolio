@@ -82,3 +82,14 @@ textarea:focus {
 	--tw-bg-opacity: 1;
 	background-color: rgba(236, 236, 241, var(--tw-bg-opacity));
 }
+
+article {
+	h1[id],
+	h2[id],
+	h3[id],
+	h4[id],
+	h5[id],
+	h6[id] {
+		scroll-margin-top: 8.5rem;
+	}
+}
