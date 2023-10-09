@@ -45,7 +45,7 @@ export const navbarLinks: NavbarLink[] = [
 
 			if (currentPath !== '/') {
 				navigate('/');
-				timeoutDuration += TRANSITION_DURATION_MS * 1.2;
+				timeoutDuration += TRANSITION_DURATION_MS * 1.5;
 			}
 
 			setTimeout(() => {
