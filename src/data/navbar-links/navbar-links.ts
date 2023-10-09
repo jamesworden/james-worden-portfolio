@@ -2,9 +2,9 @@ import { navigate } from 'gatsby';
 import { scrollTo } from '../../util/scroll-to';
 import { TRANSITION_DURATION_MS } from '../../constants';
 import { HouseSvg } from './house-svg';
-import { SpeechBubbleSvg } from './speech-bubble-svg';
+import { EssaySvg } from './essay-svg';
 import { HammerSvg } from './hammer-svg';
-import { HandshakeSvg } from './handshake-svg';
+import { SpeechBubbleSvg } from './speech-bubble-svg';
 
 export interface NavbarLink {
 	svgElement: JSX.Element;
@@ -25,7 +25,7 @@ export const navbarLinks: NavbarLink[] = [
 		hotdogButtonClass:
 			'text-xs md:text-sm uppercase px-2 md:px-6 py-2 tracking-widest text-white rounded-md tracking-widest transition bg-rose-800 dark:bg-gray-800 hover:bg-rose-700 dark:hover:bg-gray-700',
 		label: 'Blog',
-		svgElement: SpeechBubbleSvg,
+		svgElement: EssaySvg,
 		onClick: () => navigate('/blog'),
 	},
 	{
@@ -39,7 +39,7 @@ export const navbarLinks: NavbarLink[] = [
 		hotdogButtonClass:
 			'text-xs md:text-sm uppercase px-2 md:px-6 py-2 tracking-widest text-white rounded-md tracking-widest transition bg-rose-800 dark:bg-gray-800 hover:bg-rose-700 dark:hover:bg-gray-700',
 		label: 'Contact',
-		svgElement: HandshakeSvg,
+		svgElement: SpeechBubbleSvg,
 		onClick: (currentPath: string) => {
 			let timeoutDuration = 0.5;
 
