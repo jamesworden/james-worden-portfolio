@@ -1,1 +1,2 @@
 export const TRANSITION_DURATION_MS = 600;
+export const MD_BREAKPOINT_IN_PIXELS = 768;

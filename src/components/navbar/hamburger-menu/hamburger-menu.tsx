@@ -6,8 +6,7 @@ import { Footer } from '../../footer/footer';
 import { NavbarLink } from '../../../data/navbar-links/navbar-links';
 import { useHamburgerMenu, useHamburgerMenuUpdate } from '../../../contexts/hamburger-menu-context';
 import { Biography } from '../../biography';
-
-const MD_BREAKPOINT_IN_PIXELS = 768;
+import { MD_BREAKPOINT_IN_PIXELS } from '../../../constants';
 
 interface HamburgerMenuProps {
 	currentPath: string;
