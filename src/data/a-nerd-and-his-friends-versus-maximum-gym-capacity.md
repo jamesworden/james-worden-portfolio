@@ -751,7 +751,6 @@ From my understanding, there were two rules associated with the gym capacity pol
 It is unethical to break these rules for these reasons:
 
 -   As the number of people in the gym increase, the likelihood that gymgoers and employees may be exposed to COVID-19 increases as well. The very reason this policy was implemented was to reduce its transmission.
--   Given that there are few enough people at the gym to guarantee no transmission of any sickness, it remains unfair that some students had to go out of their way to register for a time slot and others did not.
 -   Registering for the gym but not going robs a different student of their ability to have gone to the gym.
 
 I would argue that me and my three friends _indirectly_ registered for the gym. We augmented the ability to send registration API requests, no different than how a pair of glasses augments one's ability to see. However, there are two trivial ethical transgressions that I know my system has committed:
@@ -759,14 +758,14 @@ I would argue that me and my three friends _indirectly_ registered for the gym. 
 -   There is a chance that my program partially fails such that it might have registered one of us and failed to have informed them about it. In this case, I have robbed someone else of their ability to attend the gym that day.
 -   There is also a chance that my program successfully registers and informs one of us, yet they may forget to cancel their appointment if they no longer can attend. I would argue it is more likely that those who _actively_ had to register for the gym would be more attentive towards canceling their appointment, thus making my system ever-so-slightly more unethical than if I had just let things be.
 
-Furthermore, I wanted to monetize this system, but I was concerned that profiting from it could be unethical: Suppose my program became incredibly successful and performant, requiring students to use it for a chance at a reservation. Suppose also that I have dramatically increased the price of my service and that students don't have infinite money; There is no longer a _fair_ chance at being able to attend the gym, which I am sure was the initial intention of St. John's University. This paywall would no longer provide value, but take it.
+Furthermore, I wanted to monetize this system, but I was concerned that profiting from it could be unethical: Suppose my program became incredibly successful and performant, requiring students to use it for a chance at a reservation. Suppose also that I have dramatically increased the price of my service and that students don't have infinite money; there is no longer a _fair_ chance at being able to attend the gym, which I am sure was the initial intention of St. John's University. This paywall would no longer provide value but take it.
 
 ## Conclusion
 
-My plans to restore my wallet of the 30 dollars I spent on compute time never did come to fruition. Two weeks after the inception of my program, Campus posted [this announcement](https://www.instagram.com/p/CZkyvwJO61M/) on their Instagram account:
+My plans to restore my wallet of the ~5 dollars I spent on AWS services never did come to fruition. Two weeks after the inception of my program, Campus Recreation posted [this announcement](https://www.instagram.com/p/CZkyvwJO61M/) on their Instagram account:
 
 > Sign-ups are no longer required to enter the Fitness Center or Taffner Field House. Your time spent in the facilities will no longer be limited to one or two hours!
 
 It was a good run.
 
-Towards the latter end of college, I would tell my peers who were aspiring software engineers to "go build something", which is always easier said than done, of course. Projects like this often teach more than a course one could purchase. Who knows, your next big project might turn into a billion dollar startup like this one almost did.
+Expending a lot of time on such short lived project was worth it because of how much I learned. Be careful with others' data, create tests, and record outputs for posterity; they might end up in your future blog post.
