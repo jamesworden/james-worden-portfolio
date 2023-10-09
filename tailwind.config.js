@@ -30,6 +30,13 @@ module.exports = {
 						'p:has(sub)': {
 							marginTop: '0 !important',
 						},
+						ul: {
+							margin: '0 !important',
+						},
+						'p:has(+ ul), p:has(+ h1), p:has(+ h2), p:has(+ h3), p:has(+ h4), p:has(+ h5), p:has(+ h6)':
+							{
+								marginBottom: '0 !important',
+							},
 					},
 				},
 				dark: {
