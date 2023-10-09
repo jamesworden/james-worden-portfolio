@@ -407,7 +407,7 @@ await sendText(member.phone, message);
 
 <sub>sign-up-member.ts</sub>
 
-I had my friends text me AWS Pinpoint verification codes to register their phone numbers as viable recipients. Sending verification codes to other people was a bad idea. There must have been a more simple and secure approach to setting up automated texts than this.
+I had my friends text me AWS Pinpoint verification codes to register their phone numbers as viable recipients. Sending verification codes to other people was a bad idea. There must have been a more simple and secure approach to setting up automated texts.
 
 ![Phone Number Verification Codes](./blog-images/a-nerd-and-his-friend-versus-maximum-gym-capacity/phone-number-verification-codes.jpg)
 
