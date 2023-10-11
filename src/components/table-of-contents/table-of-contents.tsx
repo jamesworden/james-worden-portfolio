@@ -14,10 +14,11 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({
 }) => {
 	return (
 		<AnimatePresence>
-			<div className='mb-6'>
-				<span className='text-xs font-semibold uppercase text-rose-900 dark:text-emerald-500'>
-					Table of Contents
-				</span>
+			<div
+				key='table-of-contents-header'
+				className='prose lg:prose-lg mb-6 dark:prose-invert'
+			>
+				<h3>Table of Contents</h3>
 			</div>
 
 			<ul>

@@ -27,7 +27,10 @@ export const BlogPostCard: React.FC<BlogCardProps> = ({ blogPostCard }) => {
 				to={`/blog/${blogPostCard.slug}`}
 				className='w-[320px] h-[213.3px] md:-ml-16 -mt-16 md:mt-0 z-2 h-[213px]'
 			>
-				<img src={image} className='rounded-lg shadow-xl hover:scale-105 transition' />
+				<img
+					src={image}
+					className='rounded-lg shadow-xl hover:scale-105 transition max-w-2xs xs:max-w-xs'
+				/>
 			</Link>
 
 			<div className='px-2'>

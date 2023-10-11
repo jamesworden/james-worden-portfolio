@@ -1,9 +1,9 @@
-import bobWordenThumbnail from '../images/bob-worden-thumbnail.png';
+import gymRegisterThumbnail from './blog-images/a-nerd-and-his-friend-versus-maximum-gym-capacity/gym-register-thumbnail.png';
 
 interface BlogPostThumbnails {
 	[thumbnailId: string]: any;
 }
 
 export const blogPostThumbnails: BlogPostThumbnails = {
-	'bob-worden-thumbnail-id': bobWordenThumbnail,
+	'gym-register-thumbnail-id': gymRegisterThumbnail,
 };
