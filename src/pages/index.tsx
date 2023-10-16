@@ -13,12 +13,35 @@ import { motion } from 'framer-motion';
 
 import '../styles/global.scss';
 import { StopSvg } from '../components/stop-svg';
-import { RefreshSvg } from '../components/refresh-svg';
+import { PlaySvg } from '../components/play-svg';
 export { GlobalHead as Head } from '../components/global-head';
 
 const IndexPage: React.FC<PageProps> = ({}) => {
 	const [layoutAnimationCompleted, setLayoutAnimationCompleted] = useState(false);
 	const [expandSkillCubeSection, setExpandSkillCubeSection] = useState(true);
+
+	const variants = {
+		open: {
+			rotate: 0,
+			scale: 1,
+			transition: {
+				type: 'spring',
+				stiffness: 500,
+				damping: 30,
+			},
+		},
+		closed: {
+			rotate: 360,
+			transition: {
+				type: 'spring',
+				stiffness: 500,
+				damping: 30,
+			},
+		},
+		hover: {
+			scale: 1.15,
+		},
+	};
 
 	return (
 		<PageContent onAnimationComplete={() => setLayoutAnimationCompleted(true)}>
@@ -131,12 +154,19 @@ const IndexPage: React.FC<PageProps> = ({}) => {
 					</div>
 				</div>
 
-				<button
+				<motion.button
 					className='absolute z-10 right-0 bottom-0 p-4 shadow-lg ring-1 ring-slate-700/10 dark:bg-gray-700 rounded bg-gray-200 dark:bg-slate-700'
 					onClick={() => setExpandSkillCubeSection(!expandSkillCubeSection)}
 				>
-					{expandSkillCubeSection ? <StopSvg /> : <RefreshSvg />}
-				</button>
+					<motion.div
+						initial={false}
+						animate={expandSkillCubeSection ? 'open' : 'closed'}
+						variants={variants}
+						whileHover='hover' // Apply hover effect
+					>
+						{expandSkillCubeSection ? <StopSvg /> : <PlaySvg />}
+					</motion.div>
+				</motion.button>
 
 				<SkillsCubes
 					skillCubes={skillCubes}
