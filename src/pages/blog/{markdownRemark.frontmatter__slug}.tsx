@@ -55,7 +55,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data }) => {
 				</h3>
 			</header>
 
-			<div className='flex flex-row gap-x-4 justify-between mb-8'>
+			<section className='flex flex-row gap-x-4 justify-between mb-8'>
 				<article
 					ref={articleRef}
 					className='prose prose-zinc lg:prose-lg dark:prose-invert dark:prose-dark mr-0 prose-code:before:content-none prose-code:after:content-none grid'
@@ -70,7 +70,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data }) => {
 						onHeadingClicked={(headingId) => scrollTo(headingId)}
 					></TableOfContents>
 				</div>
-			</div>
+			</section>
 		</PageContent>
 	);
 };
