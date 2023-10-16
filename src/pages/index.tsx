@@ -9,7 +9,7 @@ import { SkillsCubes } from '../components/skill-cubes/skills-cubes';
 import { skillCubes } from '../data/skill-cubes';
 import { ContactForm } from '../components/contact-form';
 import { PageContent } from '../components/page-content';
-import { motion } from 'framer-motion';
+import { motion, TargetAndTransition, Variants } from 'framer-motion';
 
 import '../styles/global.scss';
 import { StopSvg } from '../components/stop-svg';
@@ -20,7 +20,7 @@ const IndexPage: React.FC<PageProps> = ({}) => {
 	const [layoutAnimationCompleted, setLayoutAnimationCompleted] = useState(false);
 	const [expandSkillCubeSection, setExpandSkillCubeSection] = useState(true);
 
-	const variants = {
+	const skillCubesButtonVariants: Variants = {
 		open: {
 			rotate: 0,
 			scale: 1,
@@ -42,6 +42,20 @@ const IndexPage: React.FC<PageProps> = ({}) => {
 			scale: 1.15,
 		},
 	};
+
+	const skillCubesSectionAnimation: TargetAndTransition = expandSkillCubeSection
+		? {
+				height: '24rem',
+				transition: {
+					type: 'tween',
+				},
+		  }
+		: {
+				height: 'auto',
+				transition: {
+					type: 'tween',
+				},
+		  };
 
 	return (
 		<PageContent onAnimationComplete={() => setLayoutAnimationCompleted(true)}>
@@ -115,21 +129,7 @@ const IndexPage: React.FC<PageProps> = ({}) => {
 
 			<motion.section
 				initial={{ height: 0 }}
-				animate={
-					expandSkillCubeSection
-						? {
-								height: '24rem',
-								transition: {
-									type: 'tween',
-								},
-						  }
-						: {
-								height: 'auto',
-								transition: {
-									type: 'tween',
-								},
-						  }
-				}
+				animate={skillCubesSectionAnimation}
 				exit={{ height: 0 }}
 				transition={{ duration: 0.15, delay: 0 }}
 				className='flex flex-col mt-16 mb-4 relative'
@@ -161,8 +161,8 @@ const IndexPage: React.FC<PageProps> = ({}) => {
 					<motion.div
 						initial={false}
 						animate={expandSkillCubeSection ? 'open' : 'closed'}
-						variants={variants}
-						whileHover='hover' // Apply hover effect
+						variants={skillCubesButtonVariants}
+						whileHover='hover'
 					>
 						{expandSkillCubeSection ? <StopSvg /> : <PlaySvg />}
 					</motion.div>
