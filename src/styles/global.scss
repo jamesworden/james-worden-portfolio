@@ -97,3 +97,12 @@ article {
 		scroll-margin-top: 8.5rem;
 	}
 }
+
+/* Remove Safari autofill styles */
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+	background-color: transparent !important;
+	background-image: none !important;
+	color: inherit !important;
+	transition: background-color 5000s ease-in-out 0s !important; /* Adjust as needed */
+}
