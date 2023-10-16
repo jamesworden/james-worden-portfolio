@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Variants, motion } from 'framer-motion';
 import { useDimensions } from '../../../hooks/use-dimensions';
 import { HamburgerToggleButton } from './hamburger-toggle-button';
@@ -43,6 +43,28 @@ export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ currentPath, navba
 	const { isOpen } = useHamburgerMenu();
 	const toggleHamburgerMenu = useHamburgerMenuUpdate();
 	const dimensions = useDimensions();
+	const [latestScrollY, setLatestScrollY] = useState(0);
+
+	const eventHandler = () => {
+		if (isOpen) {
+			window.scrollTo({
+				top: latestScrollY,
+			});
+		}
+	};
+
+	useEffect(() => {
+		if (isOpen) {
+			setLatestScrollY(window.scrollY);
+			window.addEventListener('scroll', eventHandler);
+		} else {
+			window.removeEventListener('scroll', eventHandler);
+		}
+
+		return () => {
+			window.removeEventListener('scroll', eventHandler);
+		};
+	}, [isOpen]);
 
 	if (dimensions.width > MD_BREAKPOINT_IN_PIXELS && isOpen) {
 		toggleHamburgerMenu();
