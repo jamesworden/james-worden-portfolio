@@ -6,10 +6,11 @@ import { useState, useEffect } from 'react';
 import { Mesh } from 'three';
 
 export const Floor = () => {
+	const [initialScrollY] = useState(window.scrollY);
 	const [scrollY, setScrollY] = useState(window.scrollY);
 
 	const initialRotationX = -Math.PI / 2;
-	const initialRotationY = -scrollY / 1000 + 0.075;
+	const initialRotationY = -(scrollY - initialScrollY) / 1000 + 0.075;
 
 	const [ref, api] = usePlane<Mesh>(() => ({
 		rotation: [initialRotationX, initialRotationY, 0],

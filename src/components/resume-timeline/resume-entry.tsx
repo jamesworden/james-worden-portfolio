@@ -88,7 +88,7 @@ export const ResumeEntry: React.FC<ResumeEntryProps> = ({ resumeEntry }) => {
 
 			<div className='flex-1'></div>
 
-			<div className='flex-[4] xs:px-4 xs:py-8 p-8 mt-4 mb-8 shadow-xl bg-white shadow-3xl shadow-black/5 ring-1 ring-slate-700/10 dark:bg-gray-700 rounded'>
+			<div className='flex-[4] xs:px-4 xs:py-8 p-8 mt-4 mb-8 shadow-xl bg-gray-200 shadow-3xl shadow-black/5 ring-1 ring-slate-700/10 dark:bg-gray-700 rounded'>
 				<div className='flex flex-col justify-between'>
 					<div className='flex justify-between pb-4'>
 						<div className='flex flex-col'>
