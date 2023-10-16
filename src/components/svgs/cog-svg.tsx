@@ -1,4 +1,5 @@
 import React from 'react';
+
 export const CogSvg = () => (
 	<svg
 		className='h-8 w-8 cursor-pointer'
