@@ -12,7 +12,7 @@ export const Overlay = () => {
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 0.5 }}
 					exit={{ opacity: 0 }}
-					className='fixed top-0 left-0 right-0 bottom-0 bg-gray-950 z-10'
+					className='fixed top-0 left-0 right-0 bottom-0 bg-gray-950 z-20'
 				></motion.div>
 			)}
 		</AnimatePresence>
