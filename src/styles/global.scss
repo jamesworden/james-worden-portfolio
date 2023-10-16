@@ -38,10 +38,14 @@ p {
 .markdown-table-container {
 	max-height: 50vh;
 	overflow: scroll;
-	text-wrap: nowrap;
 
 	table {
 		margin-bottom: 0;
+
+		td,
+		th {
+			white-space: nowrap;
+		}
 	}
 }
 
