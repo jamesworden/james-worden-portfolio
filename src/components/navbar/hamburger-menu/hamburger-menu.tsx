@@ -7,6 +7,7 @@ import { NavbarLink } from '../../../data/navbar-links/navbar-links';
 import { useHamburgerMenu, useHamburgerMenuUpdate } from '../../../contexts/hamburger-menu-context';
 import { Biography } from '../../biography';
 import { MD_BREAKPOINT_IN_PIXELS } from '../../../constants';
+import cx from 'classnames';
 
 interface HamburgerMenuProps {
 	currentPath: string;
@@ -54,7 +55,10 @@ export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ currentPath, navba
 			animate={isOpen ? 'open' : 'closed'}
 		>
 			<motion.div
-				className='transition top-12 right-0 bottom-0 absolute bg-rose-950 dark:bg-gray-950 w-full h-[calc(100vh-3rem)] max-w-xs flex justify-between flex-col'
+				className={cx(
+					'transition top-12 right-0 bottom-0 bg-rose-950 dark:bg-gray-950 w-full h-[calc(100vh-3rem)] max-w-xs flex justify-between flex-col',
+					isOpen ? 'absolute' : 'hidden'
+				)}
 				custom={dimensions}
 				variants={sidebarVariants}
 			>
