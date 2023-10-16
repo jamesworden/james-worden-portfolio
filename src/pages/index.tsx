@@ -12,8 +12,8 @@ import { PageContent } from '../components/page-content';
 import { motion, TargetAndTransition, Variants } from 'framer-motion';
 
 import '../styles/global.scss';
-import { StopSvg } from '../components/stop-svg';
-import { PlaySvg } from '../components/play-svg';
+import { StopSvg } from '../components/svgs/stop-svg';
+import { PlaySvg } from '../components/svgs/play-svg';
 export { GlobalHead as Head } from '../components/global-head';
 
 const IndexPage: React.FC<PageProps> = ({}) => {

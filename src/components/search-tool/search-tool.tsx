@@ -5,7 +5,7 @@ import { SortableCheckboxList } from '../inputs/sortable-checkbox-list';
 import { SearchSettings } from '../models/search-settings';
 import { SortByOption } from '../models/sort-by-option';
 import { AnimatePresence, motion } from 'framer-motion';
-import { CogSvg } from './cog-svg';
+import { CogSvg } from '../svgs/cog-svg';
 
 interface SearchToolProps<T> {
 	settings: SearchSettings<T>;

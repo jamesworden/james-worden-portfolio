@@ -2,7 +2,7 @@ import React from 'react';
 import { ReactElement } from 'react';
 import { Navbar } from './navbar/navbar';
 import { PageContentProps } from './page-content';
-import { navbarLinks } from '../data/navbar-links/navbar-links';
+import { navbarLinks } from '../data/navbar-links';
 import { Overlay } from './overlay';
 
 export interface LayoutProps {

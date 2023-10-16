@@ -1,5 +1,5 @@
 import React from 'react';
-import { MagnifyingGlassSvg } from './magnifying-glass-svg';
+import { MagnifyingGlassSvg } from '../svgs/magnifying-glass-svg';
 
 interface SearchBarProps {
 	value: string;
