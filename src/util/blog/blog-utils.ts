@@ -1,4 +1,5 @@
 import { IBlogPostCard } from '../../components/blog-post-card';
+import { NAVBAR_OFFSET_Y_PX } from '../../constants';
 import { MarkdownRemarkHeading, MarkdownRemarkNode } from '../../graphql-types';
 
 export function getBlogPostCardsFromEdges(edges: MarkdownRemarkNode[]): IBlogPostCard[] {
@@ -69,4 +70,42 @@ export function wrapTablesInContainers(parentElement: HTMLElement, containerClas
 			container.appendChild(table);
 		}
 	});
+}
+
+export function getActiveHeaderElement(): Element | null {
+	const headerElements = document.querySelectorAll(
+		'h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]'
+	);
+
+	if (hasScrolledToBottomOfPage()) {
+		return headerElements[headerElements.length - 1];
+	}
+
+	let closestDistance = Infinity;
+	let headerIndex = 0;
+
+	headerElements.forEach((header, i) => {
+		const headerOffset = header.getBoundingClientRect().top;
+
+		if (headerOffset > NAVBAR_OFFSET_Y_PX && headerOffset < closestDistance) {
+			closestDistance = headerOffset;
+			headerIndex = i - 1;
+		}
+	});
+
+	return headerElements[headerIndex] ?? null;
+}
+
+function hasScrolledToBottomOfPage() {
+	const scrollY = window.scrollY || window.pageYOffset;
+	const windowHeight = window.innerHeight;
+	const documentHeight = Math.max(
+		document.body.scrollHeight,
+		document.body.offsetHeight,
+		document.documentElement.clientHeight,
+		document.documentElement.scrollHeight,
+		document.documentElement.offsetHeight
+	);
+
+	return scrollY + windowHeight >= documentHeight;
 }
