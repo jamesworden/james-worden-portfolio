@@ -5,7 +5,7 @@ import { ThemeProvider } from './src/contexts/theme-context';
 import { HamburgerMenuProvider } from './src/contexts/hamburger-menu-context';
 
 // Import prismJs styles for codeblock highlighting
-import 'prismjs/themes/prism-okaidia.css';
+import 'prismjs/themes/prism-tomorrow.css';
 
 export const wrapPageElement = ({ element, props }) => {
 	return (
