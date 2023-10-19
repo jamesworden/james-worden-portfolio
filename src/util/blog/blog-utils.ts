@@ -110,79 +110,46 @@ function hasScrolledToBottomOfPage() {
 	return scrollY + windowHeight >= documentHeight;
 }
 
-function showCodeBlockCopyButton(_: HTMLElement, event: MouseEvent) {
-	const codeBlock = (event.target as HTMLElement).closest('pre:has(code)') as HTMLElement;
-
-	if (!codeBlock) {
-		return;
-	}
-
-	const copyButton = codeBlock.getElementsByClassName('markdown-copy-button')[0];
-
-	if (!copyButton) {
-		return;
-	}
-
-	copyButton.classList.add('opacity-80');
-}
-
-function hideCodeBlockCopyButton(_: HTMLElement, event: MouseEvent) {
-	const copyButton = document.getElementById('markdown-copy-button');
-
-	if (!copyButton) {
-		return;
-	}
-
-	const { left, top, right, bottom } = copyButton.getBoundingClientRect();
-	const insideBoundsX = event.clientX >= left && event.clientX <= right;
-	const insideBoundsY = event.clientY >= top && event.clientY <= bottom;
-
-	if (insideBoundsX || insideBoundsY) {
-		return;
-	}
-
-	const parent = copyButton.parentNode;
-
-	if (parent) {
-		copyButton.classList.remove('opacity-80');
-	}
-}
-
 export function attatchCopyButtonsToCodeBlocks(parentElement: HTMLElement) {
 	parentElement.querySelectorAll('pre:has(code)').forEach((codeBlock) => {
-		if (codeBlock.getElementsByClassName('markdown-copy-button').length <= 0) {
-			(codeBlock as HTMLPreElement).style.position = 'relative';
-			(codeBlock as HTMLPreElement).className = 'group';
+		const codeBlockContainer = codeBlock.parentElement as HTMLElement;
+		const copyButtons = codeBlockContainer.getElementsByClassName('markdown-copy-button');
 
-			const copyButton = document.createElement('button');
-			copyButton.textContent = 'Copy 📋';
-			copyButton.classList.add(
-				'transition',
-				'markdown-copy-button',
-				'opacity-0',
-				'group-hover:opacity-80',
-				'dark:bg-slate-800',
-				'bg-gray-600'
-			);
-
-			copyButton.addEventListener('click', () => {
-				const codeToCopy = codeBlock.textContent;
-
-				if (codeToCopy) {
-					navigator.clipboard.writeText(codeToCopy);
-					copyButton.textContent = 'Copied ✓';
-				} else {
-					copyButton.textContent = 'Nothing to copy ✘';
-				}
-			});
-
-			codeBlock.addEventListener('mouseenter', () => {
-				codeBlock.querySelectorAll('.markdown-copy-button').forEach((copyButton) => {
-					copyButton.textContent = 'Copy 📋';
-				});
-			});
-
-			(codeBlock as HTMLPreElement).appendChild(copyButton);
+		if (copyButtons.length > 0) {
+			return;
 		}
+
+		(codeBlockContainer as HTMLPreElement).style.position = 'relative';
+		(codeBlockContainer as HTMLPreElement).classList.add('group');
+
+		const copyButton = document.createElement('button');
+		copyButton.textContent = 'Copy 📋';
+		copyButton.classList.add(
+			'transition',
+			'markdown-copy-button',
+			'opacity-0',
+			'group-hover:opacity-80',
+			'dark:bg-slate-800',
+			'bg-gray-600'
+		);
+
+		copyButton.addEventListener('click', () => {
+			const codeToCopy = codeBlock.textContent;
+
+			if (codeToCopy) {
+				navigator.clipboard.writeText(codeToCopy);
+				copyButton.textContent = 'Copied ✓';
+			} else {
+				copyButton.textContent = 'Nothing to copy ✘';
+			}
+		});
+
+		codeBlock.addEventListener('mouseenter', () => {
+			codeBlockContainer.querySelectorAll('.markdown-copy-button').forEach((copyButton) => {
+				copyButton.textContent = 'Copy 📋';
+			});
+		});
+
+		codeBlockContainer.appendChild(copyButton);
 	});
 }
