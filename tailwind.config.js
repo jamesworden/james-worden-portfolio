@@ -80,6 +80,5 @@ module.exports = {
 		'opacity-80',
 		'group-hover:opacity-80',
 		'bg-gray-600',
-		'dark:bg-slate-800',
 	],
 };

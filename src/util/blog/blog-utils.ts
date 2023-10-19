@@ -129,7 +129,6 @@ export function attatchCopyButtonsToCodeBlocks(parentElement: HTMLElement) {
 			'markdown-copy-button',
 			'opacity-0',
 			'group-hover:opacity-80',
-			'dark:bg-slate-800',
 			'bg-gray-600'
 		);
 
