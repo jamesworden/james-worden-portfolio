@@ -3,9 +3,7 @@ import { AnimatePresence } from 'framer-motion';
 import { Layout } from './src/components/layout';
 import { ThemeProvider } from './src/contexts/theme-context';
 import { HamburgerMenuProvider } from './src/contexts/hamburger-menu-context';
-
-// Import prismJs styles for codeblock highlighting
-import 'prismjs/themes/prism-tomorrow.css';
+import { CodeHighlightProvider } from './src/contexts/code-highlight-context';
 
 export const wrapPageElement = ({ element, props }) => {
 	return (
@@ -27,7 +25,9 @@ export const wrapPageElement = ({ element, props }) => {
 
 export const wrapRootElement = ({ element }) => (
 	<ThemeProvider>
-		<HamburgerMenuProvider>{element}</HamburgerMenuProvider>
+		<HamburgerMenuProvider>
+			<CodeHighlightProvider>{element}</CodeHighlightProvider>
+		</HamburgerMenuProvider>
 	</ThemeProvider>
 );
 
