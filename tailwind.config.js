@@ -23,6 +23,7 @@ module.exports = {
 							borderRadius: '0.15rem !important',
 							color: 'black !important',
 							textShadow: 'none !important',
+							fontWeight: 'semibold !important',
 						},
 						pre: {
 							marginBottom: '0 !important',
@@ -50,6 +51,7 @@ module.exports = {
 							borderRadius: '0.15rem !important',
 							color: 'white !important',
 							textShadow: 'none !important',
+							fontWeight: 'semibold !important',
 						},
 					},
 				},
