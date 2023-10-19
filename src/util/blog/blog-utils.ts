@@ -155,12 +155,14 @@ export function attatchCopyButtonsToCodeBlocks(parentElement: HTMLElement) {
 			(codeBlock as HTMLPreElement).className = 'group';
 
 			const copyButton = document.createElement('button');
-			copyButton.textContent = 'Copy';
+			copyButton.textContent = 'Copy 📋';
 			copyButton.classList.add(
 				'transition',
 				'markdown-copy-button',
 				'opacity-0',
-				'group-hover:opacity-80'
+				'group-hover:opacity-80',
+				'dark:bg-slate-800',
+				'bg-gray-600'
 			);
 
 			copyButton.addEventListener('click', () => {
@@ -176,7 +178,7 @@ export function attatchCopyButtonsToCodeBlocks(parentElement: HTMLElement) {
 
 			codeBlock.addEventListener('mouseenter', () => {
 				codeBlock.querySelectorAll('.markdown-copy-button').forEach((copyButton) => {
-					copyButton.textContent = 'Copy';
+					copyButton.textContent = 'Copy 📋';
 				});
 			});
 

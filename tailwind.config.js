@@ -20,7 +20,7 @@ module.exports = {
 							paddingRight: '0.5rem !important',
 							marginLeft: '0.125rem !important',
 							marginRight: '0.125rem !important',
-							borderRadius: '0.15rem !important',
+							borderRadius: '0.45rem !important',
 							color: 'black !important',
 							textShadow: 'none !important',
 							fontWeight: 'semibold !important',
@@ -79,5 +79,7 @@ module.exports = {
 		'opacity-0',
 		'opacity-80',
 		'group-hover:opacity-80',
+		'bg-gray-600',
+		'dark:bg-slate-800',
 	],
 };
