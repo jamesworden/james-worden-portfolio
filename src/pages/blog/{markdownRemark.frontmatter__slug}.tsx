@@ -69,7 +69,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data }) => {
 
 				<div className='min-h-full w-px bg-rose-900 dark:bg-emerald-500 hidden lg:block'></div>
 
-				<div className='hidden lg:block lg:sticky top-32 max-w-sm w-full overflow-y-auto max-h-[calc(100vh-12rem)] mb-12 shadow-xl ring-1 ring-slate-700/10 p-6 bg-gray-200 rounded-lg dark:bg-gray-800 transition dark:ring-slate-200/10'>
+				<div className='hidden lg:block'>
 					<TableOfContents
 						organizedHeadings={organizedHeadings}
 						onHeadingClicked={(headingId) => scrollTo(headingId)}
