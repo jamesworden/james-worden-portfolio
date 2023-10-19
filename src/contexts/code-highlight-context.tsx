@@ -1,15 +1,9 @@
 import React, { useState, createContext, ReactNode, useContext, useEffect } from 'react';
+import { CodeHighlightTheme, codeHighlightThemes } from '../data/code-highlight-themes';
+import { ACTIVE_PRISM_JS_STYLESHEET_ID } from '../constants';
 
-export interface CodeHighlightDetails {
-	theme: string;
-}
-
-export const defaultCodeHighlightDetails: CodeHighlightDetails = {
-	theme: 'prism-tomorrow',
-};
-
-const CodeHighlightContext = createContext(defaultCodeHighlightDetails);
-const CodeHighlightUpdateContext = createContext((theme: string) => {});
+const CodeHighlightContext = createContext(codeHighlightThemes.prismTomorrowTheme);
+const CodeHighlightUpdateContext = createContext((_: CodeHighlightTheme) => {});
 
 export function useCodeHighlight() {
 	return useContext(CodeHighlightContext);
@@ -24,12 +18,11 @@ interface CodeHighlightProviderProps {
 }
 
 export const CodeHighlightProvider: React.FC<CodeHighlightProviderProps> = ({ children }) => {
-	const [codeHighlight, setCodeHighlight] = useState(defaultCodeHighlightDetails);
+	const [codeHighlight, setCodeHighlight] = useState(codeHighlightThemes.prismTomorrowTheme);
 
 	useEffect(() => {
-		const themePath = `/prismjs-themes/${codeHighlight.theme}.css`;
-
-		const existingPrismStylesheetLink = document.getElementById('prism-js-stylesheet');
+		const themePath = `/prismjs-themes/${codeHighlight.fileName}`;
+		const existingPrismStylesheetLink = document.getElementById(ACTIVE_PRISM_JS_STYLESHEET_ID);
 
 		if (existingPrismStylesheetLink) {
 			document.head.removeChild(existingPrismStylesheetLink);
@@ -38,13 +31,13 @@ export const CodeHighlightProvider: React.FC<CodeHighlightProviderProps> = ({ ch
 		const link = document.createElement('link');
 		link.rel = 'stylesheet';
 		link.href = themePath;
-		link.id = 'prism-js-stylesheet';
+		link.id = ACTIVE_PRISM_JS_STYLESHEET_ID;
 
 		document.head.appendChild(link);
 	});
 
-	function setTheme(theme: string) {
-		setCodeHighlight({ ...codeHighlight, theme });
+	function setTheme(theme: CodeHighlightTheme) {
+		setCodeHighlight({ ...theme });
 	}
 
 	return (
