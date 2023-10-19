@@ -143,7 +143,7 @@ export function attatchCopyButtonsToCodeBlocks(parentElement: HTMLElement) {
 			}
 		});
 
-		codeBlock.addEventListener('mouseenter', () => {
+		codeBlockContainer.addEventListener('mouseenter', () => {
 			codeBlockContainer.querySelectorAll('.markdown-copy-button').forEach((copyButton) => {
 				copyButton.textContent = 'Copy 📋';
 			});
