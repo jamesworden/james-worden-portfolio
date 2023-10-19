@@ -3,7 +3,11 @@ import { graphql, PageProps } from 'gatsby';
 import { MarkdownRemarkQueryResult } from '../../graphql-types';
 import { PageContent } from '../../components/page-content';
 import { scrollTo } from '../../util/scroll-to';
-import { getOrganizedHeadings, wrapTablesInContainers } from '../../util/blog/blog-utils';
+import {
+	attatchCopyButtonsToCodeBlocks,
+	getOrganizedHeadings,
+	wrapTablesInContainers,
+} from '../../util/blog/blog-utils';
 import { TableOfContents } from '../../components/table-of-contents/table-of-contents';
 import { Biography } from '../../components/biography';
 import { useHamburgerMenu } from '../../contexts/hamburger-menu-context';
@@ -24,6 +28,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data }) => {
 
 		if (articleElement) {
 			wrapTablesInContainers(articleElement, 'markdown-table-container');
+			attatchCopyButtonsToCodeBlocks(articleElement);
 		}
 	}, []);
 

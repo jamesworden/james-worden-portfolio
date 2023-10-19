@@ -76,5 +76,8 @@ module.exports = {
 		'text-gray-400',
 		'text-lg',
 		'text-xs',
+		'opacity-0',
+		'opacity-80',
+		'group-hover:opacity-80',
 	],
 };
