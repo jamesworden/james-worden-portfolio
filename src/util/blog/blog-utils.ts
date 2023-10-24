@@ -1,5 +1,5 @@
 import { IBlogPostCard } from '../../components/blog-post-card';
-import { NAVBAR_OFFSET_Y_PX } from '../../constants';
+import { ACTIVE_HEADER_LEEWAY_PX, NAVBAR_OFFSET_Y_PX } from '../../constants';
 import { MarkdownRemarkHeading, MarkdownRemarkNode } from '../../graphql-types';
 
 export function getBlogPostCardsFromEdges(edges: MarkdownRemarkNode[]): IBlogPostCard[] {
@@ -87,7 +87,10 @@ export function getActiveHeaderElement(): Element | null {
 	headerElements.forEach((header, i) => {
 		const headerOffset = header.getBoundingClientRect().top;
 
-		if (headerOffset > NAVBAR_OFFSET_Y_PX && headerOffset < closestDistance) {
+		if (
+			headerOffset > NAVBAR_OFFSET_Y_PX + ACTIVE_HEADER_LEEWAY_PX &&
+			headerOffset < closestDistance
+		) {
 			closestDistance = headerOffset;
 			headerIndex = i - 1;
 		}
