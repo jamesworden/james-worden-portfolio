@@ -34,7 +34,7 @@ const projectsPage: React.FC<{}> = () => {
 					</div>
 				</div>
 
-				<div className='min-h-full w-px bg-rose-900 dark:bg-emerald-900 hidden lg:block'></div>
+				<div className='min-h-full w-px bg-gray-400 dark:bg-slate-600 hidden lg:block transition'></div>
 
 				<div className='lg:sticky lg:top-48 lg:max-h-16 lg:overflow-y-visible'>
 					<SearchTool

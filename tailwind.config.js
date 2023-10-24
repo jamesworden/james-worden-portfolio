@@ -30,6 +30,7 @@ module.exports = {
 						},
 						'p:has(sub)': {
 							marginTop: '0 !important',
+							textAlign: 'center',
 						},
 						ul: {
 							margin: '0 !important',

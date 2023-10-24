@@ -67,7 +67,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data }) => {
 					dangerouslySetInnerHTML={{ __html: html }}
 				></article>
 
-				<div className='min-h-full w-px bg-rose-900 dark:bg-emerald-500 hidden lg:block'></div>
+				<div className='min-h-full w-px bg-gray-200 dark:bg-slate-800 hidden lg:block transition'></div>
 
 				<div className='hidden lg:block'>
 					<div className='max-w-sm w-full lg:sticky top-32 overflow-y-auto rounded-lg px-4 flex'>
