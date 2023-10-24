@@ -149,7 +149,7 @@ const IndexPage: React.FC<PageProps> = ({}) => {
 				</div>
 
 				<motion.button
-					className='absolute z-10 right-0 bottom-0 p-4 shadow-lg ring-1 ring-slate-700/10 dark:bg-gray-700 rounded bg-gray-200 dark:bg-slate-700'
+					className='absolute z-10 right-0 bottom-0 p-4 shadow-lg ring-1 ring-slate-700/10 dark:bg-gray-700 rounded bg-gray-200 dark:bg-slate-700 transition'
 					onClick={() => setExpandSkillCubeSection(!expandSkillCubeSection)}
 				>
 					<motion.div
