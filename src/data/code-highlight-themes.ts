@@ -12,16 +12,19 @@ export enum PrismJsFileNames {
 export interface CodeHighlightTheme {
 	displayName: string;
 	fileName: PrismJsFileNames;
+	svgPathClassName?: string;
 }
 
 const prismCoyTheme: CodeHighlightTheme = {
 	displayName: 'Prism Coy',
 	fileName: PrismJsFileNames.PrismCoy,
+	svgPathClassName: 'bg-rose-950',
 };
 
 const prismDarkTheme: CodeHighlightTheme = {
 	displayName: 'Prism Dark',
 	fileName: PrismJsFileNames.PrismDark,
+	svgPathClassName: 'bg-rose-800',
 };
 
 const prismFunkyTheme: CodeHighlightTheme = {
@@ -42,6 +45,7 @@ const prismSolarizedLightTheme: CodeHighlightTheme = {
 const prismTomorrowTheme: CodeHighlightTheme = {
 	displayName: 'Prism Tomorrow',
 	fileName: PrismJsFileNames.PrismTomorrow,
+	svgPathClassName: 'bg-rose-800',
 };
 
 const prismTwilightTheme: CodeHighlightTheme = {

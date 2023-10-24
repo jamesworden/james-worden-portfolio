@@ -60,20 +60,22 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data }) => {
 				</h3>
 			</header>
 
-			<section className='flex flex-row gap-x-4 justify-between mb-8'>
+			<section className='flex flex-row justify-between mb-8'>
 				<article
 					ref={articleRef}
-					className='prose prose-zinc lg:prose-lg dark:prose-invert dark:prose-dark mr-0 prose-code:before:content-none prose-code:after:content-none grid'
+					className='prose prose-zinc lg:prose-lg dark:prose-invert dark:prose-dark mr-0 prose-code:before:content-none prose-code:after:content-none grid lg:pr-4'
 					dangerouslySetInnerHTML={{ __html: html }}
 				></article>
 
 				<div className='min-h-full w-px bg-rose-900 dark:bg-emerald-500 hidden lg:block'></div>
 
 				<div className='hidden lg:block'>
-					<TableOfContents
-						organizedHeadings={organizedHeadings}
-						onHeadingClicked={(headingId) => scrollTo(headingId)}
-					></TableOfContents>
+					<div className='max-w-sm w-full lg:sticky top-32 overflow-y-auto rounded-lg px-4 flex'>
+						<TableOfContents
+							organizedHeadings={organizedHeadings}
+							onHeadingClicked={(headingId) => scrollTo(headingId)}
+						/>
+					</div>
 				</div>
 			</section>
 		</PageContent>
