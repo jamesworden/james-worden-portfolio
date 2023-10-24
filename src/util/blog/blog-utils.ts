@@ -155,3 +155,13 @@ export function attatchCopyButtonsToCodeBlocks(parentElement: HTMLElement) {
 		codeBlockContainer.appendChild(copyButton);
 	});
 }
+
+export function applyClassToHeaders(parentElement: HTMLElement, className: string) {
+	const headerElements = parentElement.querySelectorAll(
+		'h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]'
+	);
+
+	headerElements.forEach((headerElement) => {
+		headerElement.classList.add(className);
+	});
+}

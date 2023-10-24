@@ -4,6 +4,7 @@ import { MarkdownRemarkQueryResult } from '../../graphql-types';
 import { PageContent } from '../../components/page-content';
 import { scrollTo } from '../../util/scroll-to';
 import {
+	applyClassToHeaders,
 	attatchCopyButtonsToCodeBlocks,
 	getOrganizedHeadings,
 	wrapTablesInContainers,
@@ -29,6 +30,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data }) => {
 		if (articleElement) {
 			wrapTablesInContainers(articleElement, 'markdown-table-container');
 			attatchCopyButtonsToCodeBlocks(articleElement);
+			applyClassToHeaders(articleElement, 'group');
 		}
 	}, []);
 
