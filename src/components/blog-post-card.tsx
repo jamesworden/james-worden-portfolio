@@ -22,7 +22,7 @@ export const BlogPostCard: React.FC<BlogCardProps> = ({ blogPostCard }) => {
 	const image = blogPostThumbnails[blogPostCard.thumbnailId];
 
 	return (
-		<div className='rounded-lg shadow-xl md:ml-16 mt-16 md:mt-0 bg-gray-200 flex gap-8 py-6 dark:bg-slate-800 transition flex-col md:flex-row px-4 md:px-0 max-w-sm md:max-w-none'>
+		<div className='rounded-lg ring-1 ring-slate-700/10 dark:bg-gray-700 shadow-xl md:ml-16 mt-16 md:mt-0 bg-gray-200 flex gap-8 py-6 dark:bg-slate-800 transition flex-col md:flex-row px-4 md:px-0 max-w-sm md:max-w-none'>
 			<Link
 				to={`/blog/${blogPostCard.slug}`}
 				className='w-[320px] h-[213.3px] md:-ml-16 -mt-16 md:mt-0 z-2 h-[213px]'
