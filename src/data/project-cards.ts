@@ -3,6 +3,7 @@ import jamesWordenResearchThumbnail from '../images/james-worden-research-thumbn
 import harvardOfQueensThumbnail from '../images/harvard-of-queens-thumbnail.png';
 import chessOfCardsThumbnail from '../images/chess-of-cards-thumbnail.png';
 import jamesWordenPortfolioThumbnail from '../images/james-worden-portfolio-thumbnail.png';
+import oldPortfolioThumbnail from '../images/old-portfolio-thumbnail.png';
 
 enum Technology {
 	GoogleCloudVision = 'Google Cloud Vision',
@@ -175,5 +176,21 @@ export const projectCards: IProjectCard[] = [
 		buttons: [],
 		imageUrl: 'https://www.jamesworden.com/',
 		githubUrl: 'https://github.com/jamesworden/james-worden-portfolio',
+	},
+	{
+		imageUrl: 'https://old.jamesworden.com/',
+		technologyBadges: [Technology.AWSS3, Technology.Gatsby, Technology.React],
+		buttons: [
+			{
+				displayText: 'Show Me',
+				buttonClassName:
+					'bg-rose-900 hover:bg-rose-800 text-white dark:bg-emerald-900 dark:hover:bg-emerald-800',
+				websiteUrl: 'https://old.jamesworden.com/',
+			},
+		],
+		description: 'My old portfolio website.',
+		displayDate: 'January 2021',
+		displayWebsiteUrl: 'old.jamesworden.com',
+		image: oldPortfolioThumbnail,
 	},
 ];
