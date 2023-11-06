@@ -1,0 +1,17 @@
+name: Deploy Dev to Prod
+
+on:
+    workflow_dispatch:
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Invoke s3 content replacement lambda function
+              uses: gagoar/invoke-aws-lambda@master
+              with:
+                  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+                  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+                  FunctionName: replace-s3-contents-with-other-s3-contents
+                  Payload: '{ "sourceBucketName": "dev.jamesworden.com", "targetBucketName": "www.jamesworden.com" }'
