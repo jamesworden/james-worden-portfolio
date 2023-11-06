@@ -30,6 +30,7 @@ enum Technology {
 	ReactThreeFiber = 'React Three Fiber',
 	AWSEC2 = 'AWS EC2',
 	StyledComponents = 'Styled Components',
+	GitHubActions = 'GitHub Actions',
 }
 
 interface ProjectCardButton {
@@ -172,6 +173,7 @@ export const projectCards: IProjectCard[] = [
 			Technology.TailwindCSS,
 			Technology.AWSS3,
 			Technology.ReactThreeFiber,
+			Technology.GitHubActions,
 		],
 		buttons: [],
 		imageUrl: 'https://www.jamesworden.com/',
