@@ -129,7 +129,9 @@ export const signUpMember = async function (member: Member, isTestRun: boolean =
 	const browser = await getNewBrowser();
 	const page = await browser.newPage();
 
-	console.log(`Begin signup for ${member.firstName + ' ' + member.lastName}`); // CRITICAL
+	console.log(`Begin signup for ${member.firstName + ' ' + member.lastName}`);
+
+	// CRITICAL
 	const signUpType = isTestRun ? 'taffner' : 'fitness';
 	member.email = isTestRun ? 'invalid.email' : member.email;
 
@@ -180,8 +182,9 @@ export const signUpMember = async function (member: Member, isTestRun: boolean =
 	} else {
 		console.log(`No weekday found in title of signup form for ${pageTitle}`);
 		return;
-	} // Taffner test times.
+	}
 
+	// Taffner test times.
 	const isWeekend = day == 'Saturday' || day == 'Sunday';
 
 	if (isTestRun && isWeekend) {
@@ -197,8 +200,9 @@ export const signUpMember = async function (member: Member, isTestRun: boolean =
 			message: `${member.firstName} has not specified a timeslot for this ${day}`,
 			timeslot: 'None',
 		};
-	} // Increase table visibility to check checkboxes
+	}
 
+	// Increase table visibility to check checkboxes
 	await tomorrowTabPage.scrollToTable();
 	await page.setViewport({
 		width: 500,
