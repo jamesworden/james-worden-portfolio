@@ -751,7 +751,7 @@ From my understanding, there were two rules associated with the gym capacity pol
 It is unethical to break these rules for these reasons:
 
 -   As the number of people in the gym increase, the likelihood that gymgoers and employees may be exposed to COVID-19 increases as well. The very reason this policy was implemented was to reduce its transmission.
--   Registering for the gym but not going robs a different student of their ability to have gone to the gym.
+-   Registering for the gym, but not going, robs a different student of their ability to have gone to the gym.
 
 I would argue that my three friends and I _indirectly_ registered for the gym. I augmented the ability to send registration API requests, no different than how a pair of glasses augments one's ability to see. However, there are two trivial ethical transgressions that I know my system has committed:
 

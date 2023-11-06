@@ -14,7 +14,7 @@ export const StartMonthAndYear: React.FC<StartMonthAndYearProps> = ({
 	return (
 		<span
 			className={cx(
-				'text-rose-900 dark:text-gray-100 font-bold absolute md:top-0 left-0 -top-4',
+				'absolute md:top-0 left-0 -top-4',
 				resumeEntryPlacement === ResumeEntryPlacement.Right ? 'md:right-0' : 'md:left-0'
 			)}
 		>

@@ -18,7 +18,7 @@ export const ResumeTimeline: React.FC<ResumeTimelineProps> = ({ resumeEntries })
 			</div>
 
 			<div className='absolute flex justify-around h-full top-0 md:left-1/2 left-0 w-px'>
-				<div className='w-px h-full bg-rose-900 dark:bg-gray-100'></div>
+				<div className='w-px h-full bg-gray-400 dark:bg-gray-600'></div>
 			</div>
 		</div>
 	);

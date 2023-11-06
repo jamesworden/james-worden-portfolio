@@ -47,9 +47,11 @@ const config: GatsbyConfig = {
 					{
 						resolve: 'gatsby-remark-autolink-headers',
 						options: {
+							icon: '#',
 							maintainCase: true,
-							isIconAfterHeader: true,
-							className: 'fill-black dark:fill-white absolute ml-2',
+							isIconAfterHeader: false,
+							className:
+								'fill-black dark:fill-white absolute opacity-0 group-hover:opacity-100 transition -left-6 no-underline not-italic',
 						},
 					},
 					`gatsby-remark-images`,

@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Variants, motion } from 'framer-motion';
 import { useDimensions } from '../../../hooks/use-dimensions';
 import { HamburgerToggleButton } from './hamburger-toggle-button';
-import { Footer } from '../../footer/footer';
-import { NavbarLink } from '../../../data/navbar-links/navbar-links';
+import { Footer } from '../../footer';
+import { NavbarLink } from '../../../data/navbar-links';
 import { useHamburgerMenu, useHamburgerMenuUpdate } from '../../../contexts/hamburger-menu-context';
 import { Biography } from '../../biography';
 import { MD_BREAKPOINT_IN_PIXELS } from '../../../constants';
+import cx from 'classnames';
 
 interface HamburgerMenuProps {
 	currentPath: string;
@@ -42,6 +43,28 @@ export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ currentPath, navba
 	const { isOpen } = useHamburgerMenu();
 	const toggleHamburgerMenu = useHamburgerMenuUpdate();
 	const dimensions = useDimensions();
+	const [latestScrollY, setLatestScrollY] = useState(0);
+
+	const eventHandler = () => {
+		if (isOpen) {
+			window.scrollTo({
+				top: latestScrollY,
+			});
+		}
+	};
+
+	useEffect(() => {
+		if (isOpen) {
+			setLatestScrollY(window.scrollY);
+			window.addEventListener('scroll', eventHandler);
+		} else {
+			window.removeEventListener('scroll', eventHandler);
+		}
+
+		return () => {
+			window.removeEventListener('scroll', eventHandler);
+		};
+	}, [isOpen]);
 
 	if (dimensions.width > MD_BREAKPOINT_IN_PIXELS && isOpen) {
 		toggleHamburgerMenu();
@@ -54,7 +77,10 @@ export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ currentPath, navba
 			animate={isOpen ? 'open' : 'closed'}
 		>
 			<motion.div
-				className='transition top-12 right-0 bottom-0 absolute bg-rose-950 dark:bg-gray-950 w-full h-[calc(100vh-3rem)] max-w-xs flex justify-between flex-col'
+				className={cx(
+					'transition top-12 right-0 bottom-0 bg-rose-950 dark:bg-gray-950 w-full h-[calc(100vh-3rem)] max-w-xs flex justify-between flex-col',
+					isOpen ? 'absolute' : 'hidden'
+				)}
 				custom={dimensions}
 				variants={sidebarVariants}
 			>

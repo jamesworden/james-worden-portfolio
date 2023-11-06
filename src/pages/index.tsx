@@ -9,12 +9,53 @@ import { SkillsCubes } from '../components/skill-cubes/skills-cubes';
 import { skillCubes } from '../data/skill-cubes';
 import { ContactForm } from '../components/contact-form';
 import { PageContent } from '../components/page-content';
+import { motion, TargetAndTransition, Variants } from 'framer-motion';
 
 import '../styles/global.scss';
+import { StopSvg } from '../components/svgs/stop-svg';
+import { PlaySvg } from '../components/svgs/play-svg';
 export { GlobalHead as Head } from '../components/global-head';
 
 const IndexPage: React.FC<PageProps> = ({}) => {
 	const [layoutAnimationCompleted, setLayoutAnimationCompleted] = useState(false);
+	const [expandSkillCubeSection, setExpandSkillCubeSection] = useState(true);
+
+	const skillCubesButtonVariants: Variants = {
+		open: {
+			rotate: 0,
+			scale: 1,
+			transition: {
+				type: 'spring',
+				stiffness: 500,
+				damping: 30,
+			},
+		},
+		closed: {
+			rotate: 360,
+			transition: {
+				type: 'spring',
+				stiffness: 500,
+				damping: 30,
+			},
+		},
+		hover: {
+			scale: 1.15,
+		},
+	};
+
+	const skillCubesSectionAnimation: TargetAndTransition = expandSkillCubeSection
+		? {
+				height: '24rem',
+				transition: {
+					type: 'tween',
+				},
+		  }
+		: {
+				height: 'auto',
+				transition: {
+					type: 'tween',
+				},
+		  };
 
 	return (
 		<PageContent onAnimationComplete={() => setLayoutAnimationCompleted(true)}>
@@ -23,18 +64,12 @@ const IndexPage: React.FC<PageProps> = ({}) => {
 					<section className='flex justify-between my-8 md:mt-36 mb-40 flex-col flex'>
 						<div className='flex flex-col gap-8 mb-20 z-20'>
 							<div className=' mt-12 md:mt-0 lg:mb-6'>
-								<h1 className='text-6xl md:text-7xl'>
-									<span className='text-3xl xs:text-5xl md:text-6xl serif text-black dark:text-white'>
-										I'm
-									</span>{' '}
-									James Worden.
-								</h1>
+								<h1 className='text-6xl md:text-7xl'>I'm James Worden,</h1>
 
-								<div className='mt-6'>
-									<span>I strive to build simple and</span>
-									<br />
-									<span>intuitive software.</span>
-								</div>
+								<p className='max-w-sm text-gray-700 dark:text-slate-300 transition text-lg mt-6'>
+									a software engineer based out of Queens, New York. I strive to
+									build intuitive software.
+								</p>
 							</div>
 
 							<div>
@@ -86,8 +121,14 @@ const IndexPage: React.FC<PageProps> = ({}) => {
 
 			<SectionDivider displayName='Skills' displayNumber='01'></SectionDivider>
 
-			<section className='flex flex-col mt-16 mb-4'>
-				<div className='flex flex-wrap justify-between absolute'>
+			<motion.section
+				initial={{ height: 0 }}
+				animate={skillCubesSectionAnimation}
+				exit={{ height: 0 }}
+				transition={{ duration: 0.15, delay: 0 }}
+				className='flex flex-col mt-16 mb-4 relative'
+			>
+				<div className='flex flex-wrap justify-between mb-12'>
 					<div className='max-w-xs p-2 prose lg-prose:lg dark:prose-invert'>
 						<h3 className='text-xl mb-2 border-b'>Frontend</h3>
 						<p>
@@ -107,11 +148,25 @@ const IndexPage: React.FC<PageProps> = ({}) => {
 					</div>
 				</div>
 
+				<motion.button
+					className='absolute z-10 right-0 bottom-0 p-4 shadow-lg ring-1 ring-slate-700/10 dark:bg-gray-700 rounded bg-gray-200 dark:bg-slate-700 transition'
+					onClick={() => setExpandSkillCubeSection(!expandSkillCubeSection)}
+				>
+					<motion.div
+						initial={false}
+						animate={expandSkillCubeSection ? 'open' : 'closed'}
+						variants={skillCubesButtonVariants}
+						whileHover='hover'
+					>
+						{expandSkillCubeSection ? <StopSvg /> : <PlaySvg />}
+					</motion.div>
+				</motion.button>
+
 				<SkillsCubes
 					skillCubes={skillCubes}
-					renderCanvas={layoutAnimationCompleted}
+					renderCanvas={layoutAnimationCompleted && expandSkillCubeSection}
 				></SkillsCubes>
-			</section>
+			</motion.section>
 
 			<SectionDivider displayName='Resume' displayNumber='02'></SectionDivider>
 

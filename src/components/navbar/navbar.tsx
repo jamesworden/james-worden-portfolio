@@ -1,9 +1,9 @@
 import React from 'react';
 import { ToggleSwitch } from '../inputs/toggle-switch';
-import { WavyNavbarSvg } from './wavy-navbar-svg';
+import { WavyNavbarSvg } from '../svgs/wavy-navbar-svg';
 import { DarkTheme, useTheme, useThemeUpdate } from '../../contexts/theme-context';
 import { HamburgerMenu } from './hamburger-menu/hamburger-menu';
-import { NavbarLink } from '../../data/navbar-links/navbar-links';
+import { NavbarLink } from '../../data/navbar-links';
 
 export interface NavbarProps {
 	currentPath: string;

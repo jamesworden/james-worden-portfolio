@@ -8,12 +8,14 @@ interface OrganizedHeadingItemProps {
 	organizedHeading: OrganizedHeading;
 	index: number;
 	onHeadingClicked: (headingId: string) => void;
+	highlightedHeaderId: string | null;
 }
 
 export const OrganizedHeadingItem: React.FC<OrganizedHeadingItemProps> = ({
 	organizedHeading,
 	index,
 	onHeadingClicked,
+	highlightedHeaderId,
 }) => {
 	const displayIndex = getDisplayIndex(index);
 
@@ -27,25 +29,33 @@ export const OrganizedHeadingItem: React.FC<OrganizedHeadingItemProps> = ({
 			}}
 		>
 			<div className='w-full flex gap-x-12'>
-				<motion.h5
-					initial={{ scale: 0, rotate: 180 }}
-					animate={{ scale: 1, rotate: 0 }}
-					transition={{
-						delay: index * 0.25,
-						type: 'spring',
-						stiffness: 260,
-						damping: 20,
-					}}
-					className='text-2xl underline mt-1'
-				>
-					{displayIndex}
-				</motion.h5>
+				<div className='flex flex-col justify-around'>
+					<motion.h5
+						initial={{ scale: 0, rotate: 180 }}
+						animate={{ scale: 1, rotate: 0 }}
+						transition={{
+							delay: index * 0.25,
+							type: 'spring',
+							stiffness: 260,
+							damping: 20,
+						}}
+						className='text-md'
+					>
+						{displayIndex}
+					</motion.h5>
+				</div>
 
-				<div className='flex flex-col py-1 pr-4'>
+				<div className='flex flex-col'>
 					<motion.li
 						whileTap={{ scale: 0.9 }}
 						whileHover={{ scale: 1.05 }}
-						className='tracking-wide d-flex flex-col justify-around list-none text-sm leading-loose cursor-pointer font-semibold uppercase'
+						className={cx(
+							'tracking-wide d-flex flex-col justify-around list-none leading-loose cursor-pointer font-semibold text-md transition',
+							highlightedHeaderId &&
+								highlightedHeaderId === organizedHeading.parentHeading.id
+								? 'underline text-rose-700 dark:text-emerald-400'
+								: ''
+						)}
 					>
 						<a onClick={() => onHeadingClicked(organizedHeading.parentHeading.id)}>
 							{organizedHeading.parentHeading.value}
@@ -58,10 +68,13 @@ export const OrganizedHeadingItem: React.FC<OrganizedHeadingItemProps> = ({
 							whileTap={{ scale: 0.9 }}
 							whileHover={{ scale: 1.05 }}
 							className={cx(
-								'mr-2 p-2 tracking-wide d-flex flex-col justify-around text-sm cursor-pointer uppercase rounded bg-transparent list-disc',
+								'p-1 tracking-wide d-flex flex-col justify-around cursor-pointer rounded bg-transparent list-disc text-md transition',
 								`ml-${
 									(subHeading.depth - organizedHeading.parentHeading.depth) * 4
-								}`
+								}`,
+								highlightedHeaderId && highlightedHeaderId === subHeading.id
+									? 'underline text-rose-700 dark:text-emerald-400'
+									: ''
 							)}
 						>
 							<li>

@@ -1,10 +1,10 @@
 import { navigate } from 'gatsby';
-import { scrollTo } from '../../util/scroll-to';
-import { TRANSITION_DURATION_MS } from '../../constants';
-import { HouseSvg } from './house-svg';
-import { EssaySvg } from './essay-svg';
-import { HammerSvg } from './hammer-svg';
-import { SpeechBubbleSvg } from './speech-bubble-svg';
+import { scrollTo } from '../util/scroll-to';
+import { TRANSITION_DURATION_MS } from '../constants';
+import { HouseSvg } from '../components/svgs/house-svg';
+import { EssaySvg } from '../components/svgs/essay-svg';
+import { HammerSvg } from '../components/svgs/hammer-svg';
+import { SpeechBubbleSvg } from '../components/svgs/speech-bubble-svg';
 
 export interface NavbarLink {
 	svgElement: JSX.Element;

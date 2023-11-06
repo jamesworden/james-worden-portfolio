@@ -1,4 +1,5 @@
 import { IBlogPostCard } from '../../components/blog-post-card';
+import { ACTIVE_HEADER_LEEWAY_PX, NAVBAR_OFFSET_Y_PX } from '../../constants';
 import { MarkdownRemarkHeading, MarkdownRemarkNode } from '../../graphql-types';
 
 export function getBlogPostCardsFromEdges(edges: MarkdownRemarkNode[]): IBlogPostCard[] {
@@ -68,5 +69,99 @@ export function wrapTablesInContainers(parentElement: HTMLElement, containerClas
 			table.parentNode.insertBefore(container, table);
 			container.appendChild(table);
 		}
+	});
+}
+
+export function getActiveHeaderElement(): Element | null {
+	const headerElements = document.querySelectorAll(
+		'h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]'
+	);
+
+	if (hasScrolledToBottomOfPage()) {
+		return headerElements[headerElements.length - 1];
+	}
+
+	let closestDistance = Infinity;
+	let headerIndex = 0;
+
+	headerElements.forEach((header, i) => {
+		const headerOffset = header.getBoundingClientRect().top;
+
+		if (
+			headerOffset > NAVBAR_OFFSET_Y_PX + ACTIVE_HEADER_LEEWAY_PX &&
+			headerOffset < closestDistance
+		) {
+			closestDistance = headerOffset;
+			headerIndex = i - 1;
+		}
+	});
+
+	return headerElements[headerIndex] ?? null;
+}
+
+function hasScrolledToBottomOfPage() {
+	const scrollY = window.scrollY || window.pageYOffset;
+	const windowHeight = window.innerHeight;
+	const documentHeight = Math.max(
+		document.body.scrollHeight,
+		document.body.offsetHeight,
+		document.documentElement.clientHeight,
+		document.documentElement.scrollHeight,
+		document.documentElement.offsetHeight
+	);
+
+	return scrollY + windowHeight >= documentHeight;
+}
+
+export function attatchCopyButtonsToCodeBlocks(parentElement: HTMLElement) {
+	parentElement.querySelectorAll('pre:has(code)').forEach((codeBlock) => {
+		const codeBlockContainer = codeBlock.parentElement as HTMLElement;
+		const copyButtons = codeBlockContainer.getElementsByClassName('markdown-copy-button');
+
+		if (copyButtons.length > 0) {
+			return;
+		}
+
+		(codeBlockContainer as HTMLPreElement).style.position = 'relative';
+		(codeBlockContainer as HTMLPreElement).classList.add('group');
+
+		const copyButton = document.createElement('button');
+		copyButton.textContent = 'Copy 📋';
+		copyButton.classList.add(
+			'transition',
+			'markdown-copy-button',
+			'opacity-0',
+			'group-hover:opacity-80',
+			'bg-gray-600'
+		);
+
+		copyButton.addEventListener('click', () => {
+			const codeToCopy = codeBlock.textContent;
+
+			if (codeToCopy) {
+				navigator.clipboard.writeText(codeToCopy);
+				copyButton.textContent = 'Copied ✓';
+			} else {
+				copyButton.textContent = 'Nothing to copy ✘';
+			}
+		});
+
+		codeBlockContainer.addEventListener('mouseenter', () => {
+			codeBlockContainer.querySelectorAll('.markdown-copy-button').forEach((copyButton) => {
+				copyButton.textContent = 'Copy 📋';
+			});
+		});
+
+		codeBlockContainer.appendChild(copyButton);
+	});
+}
+
+export function applyClassToHeaders(parentElement: HTMLElement, className: string) {
+	const headerElements = parentElement.querySelectorAll(
+		'h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]'
+	);
+
+	headerElements.forEach((headerElement) => {
+		headerElement.classList.add(className);
 	});
 }

@@ -35,13 +35,28 @@ p {
 	}
 }
 
+.markdown-copy-button {
+	position: absolute;
+	right: 12px;
+	top: 18px;
+	font-size: 11px;
+	z-index: 10;
+	color: white;
+	padding: 0px 8px;
+	border-radius: 6px;
+}
+
 .markdown-table-container {
 	max-height: 50vh;
 	overflow: scroll;
-	text-wrap: nowrap;
 
 	table {
 		margin-bottom: 0;
+
+		td,
+		th {
+			white-space: nowrap;
+		}
 	}
 }
 
@@ -84,8 +99,6 @@ textarea:focus {
 }
 
 article {
-	text-align: justify;
-
 	h1[id],
 	h2[id],
 	h3[id],
@@ -94,4 +107,25 @@ article {
 	h6[id] {
 		scroll-margin-top: 8.5rem;
 	}
+
+	pre {
+		padding: 36px 24px !important;
+		font-size: 13px !important;
+		border-radius: 18px !important;
+	}
+
+	@media (min-width: 768px) {
+		pre {
+			font-size: 14px !important;
+		}
+	}
+}
+
+/* Remove Safari autofill styles */
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+	background-color: transparent !important;
+	background-image: none !important;
+	color: inherit !important;
+	transition: background-color 5000s ease-in-out 0s !important; /* Adjust as needed */
 }

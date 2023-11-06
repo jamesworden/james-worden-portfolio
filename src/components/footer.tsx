@@ -1,7 +1,7 @@
 import React from 'react';
-import { LinkedInSvg } from './linkedin-svg';
-import { GithubSvg } from './github-svg';
-import { EnvelopeSvg } from './envelope-svg';
+import { LinkedInSvg } from './svgs/linkedin-svg';
+import { GithubSvg } from './svgs/github-svg';
+import { EnvelopeSvg } from './svgs/envelope-svg';
 import cx from 'classnames';
 
 interface FooterProps {

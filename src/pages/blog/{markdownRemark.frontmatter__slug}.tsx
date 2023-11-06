@@ -3,7 +3,12 @@ import { graphql, PageProps } from 'gatsby';
 import { MarkdownRemarkQueryResult } from '../../graphql-types';
 import { PageContent } from '../../components/page-content';
 import { scrollTo } from '../../util/scroll-to';
-import { getOrganizedHeadings, wrapTablesInContainers } from '../../util/blog/blog-utils';
+import {
+	applyClassToHeaders,
+	attatchCopyButtonsToCodeBlocks,
+	getOrganizedHeadings,
+	wrapTablesInContainers,
+} from '../../util/blog/blog-utils';
 import { TableOfContents } from '../../components/table-of-contents/table-of-contents';
 import { Biography } from '../../components/biography';
 import { useHamburgerMenu } from '../../contexts/hamburger-menu-context';
@@ -24,6 +29,8 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data }) => {
 
 		if (articleElement) {
 			wrapTablesInContainers(articleElement, 'markdown-table-container');
+			attatchCopyButtonsToCodeBlocks(articleElement);
+			applyClassToHeaders(articleElement, 'group');
 		}
 	}, []);
 
@@ -55,22 +62,24 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data }) => {
 				</h3>
 			</header>
 
-			<div className='flex flex-row gap-x-4 justify-between mb-8'>
+			<section className='flex flex-row justify-between mb-8'>
 				<article
 					ref={articleRef}
-					className='prose prose-zinc lg:prose-lg dark:prose-invert dark:prose-dark mr-0 prose-code:before:content-none prose-code:after:content-none grid'
+					className='prose prose-zinc lg:prose-lg dark:prose-invert dark:prose-dark mr-0 prose-code:before:content-none prose-code:after:content-none grid lg:pr-4'
 					dangerouslySetInnerHTML={{ __html: html }}
 				></article>
 
-				<div className='min-h-full w-px bg-rose-900 dark:bg-emerald-500 hidden lg:block'></div>
+				<div className='min-h-full w-px bg-gray-400 dark:bg-slate-600 hidden lg:block transition'></div>
 
-				<div className='hidden lg:block lg:sticky top-32 max-w-sm w-full overflow-y-auto max-h-[calc(100vh-12rem)] mb-12 shadow-xl ring-1 ring-slate-700/10 p-6 bg-gray-200 rounded-lg dark:bg-gray-800 transition dark:ring-slate-200/10'>
-					<TableOfContents
-						organizedHeadings={organizedHeadings}
-						onHeadingClicked={(headingId) => scrollTo(headingId)}
-					></TableOfContents>
+				<div className='hidden lg:block'>
+					<div className='max-w-sm w-full lg:sticky top-32 overflow-y-auto rounded-lg px-4 flex'>
+						<TableOfContents
+							organizedHeadings={organizedHeadings}
+							onHeadingClicked={(headingId) => scrollTo(headingId)}
+						/>
+					</div>
 				</div>
-			</div>
+			</section>
 		</PageContent>
 	);
 };
