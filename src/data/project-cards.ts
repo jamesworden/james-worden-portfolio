@@ -50,6 +50,7 @@ export interface IProjectCard {
 	buttons: ProjectCardButton[];
 	githubUrl?: string;
 	imageUrl?: string;
+	outdated?: boolean;
 }
 
 export const projectCards: IProjectCard[] = [
@@ -67,16 +68,17 @@ export const projectCards: IProjectCard[] = [
 		],
 		buttons: [
 			{
-				websiteUrl: 'https://www.bobworden.com/',
+				websiteUrl: 'https://bobworden.com/',
 				buttonClassName:
 					'bg-rose-900 hover:bg-rose-800 text-white dark:bg-emerald-900 dark:hover:bg-emerald-800',
 				displayText: 'Show Me',
 			},
 		],
-		githubUrl: 'https://github.com/jamesworden/bob-worden',
-		imageUrl: 'https://www.bobworden.com/',
+		githubUrl: 'https://github.com/jamesworden/BobWordenAuthor',
+		imageUrl: 'https://bobworden.com/',
 	},
 	{
+		outdated: true,
 		description:
 			"A website I created for my father who is an attorney; I made use of gatsby's dynamic page rendering to output blog posts using data from an external wordpress instance.",
 		displayDate: 'December 2020',
@@ -205,6 +207,7 @@ export const projectCards: IProjectCard[] = [
 		githubUrl: 'https://github.com/jamesworden/james-worden-portfolio',
 	},
 	{
+		outdated: true,
 		imageUrl: 'https://old.jamesworden.com/',
 		technologyBadges: [Technology.AWSS3, Technology.Gatsby, Technology.React],
 		buttons: [
