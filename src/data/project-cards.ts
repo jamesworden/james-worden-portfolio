@@ -4,6 +4,7 @@ import harvardOfQueensThumbnail from '../images/harvard-of-queens-thumbnail.png'
 import chessOfCardsThumbnail from '../images/chess-of-cards-thumbnail.png';
 import jamesWordenPortfolioThumbnail from '../images/james-worden-portfolio-thumbnail.png';
 import oldPortfolioThumbnail from '../images/old-portfolio-thumbnail.png';
+import bobWordenAuthorThumbnail from '../images/bob-worden-author-thumbnail.png';
 
 enum Technology {
 	GoogleCloudVision = 'Google Cloud Vision',
@@ -31,6 +32,7 @@ enum Technology {
 	AWSEC2 = 'AWS EC2',
 	StyledComponents = 'Styled Components',
 	GitHubActions = 'GitHub Actions',
+	Svelte = 'Svelte',
 }
 
 interface ProjectCardButton {
@@ -53,9 +55,32 @@ export interface IProjectCard {
 export const projectCards: IProjectCard[] = [
 	{
 		description:
+			"A redesign of my original bobworden.com site as an advertisement for Bob's new book. The redesign took into account the fact that he didn't want to have to manually update anything on it with a CMS.",
+		displayDate: 'March 2024',
+		displayWebsiteUrl: 'bobworden.com',
+		image: bobWordenAuthorThumbnail,
+		technologyBadges: [
+			Technology.Svelte,
+			Technology.TypeScript,
+			Technology.TailwindCSS,
+			Technology.Netlify,
+		],
+		buttons: [
+			{
+				websiteUrl: 'https://www.bobworden.com/',
+				buttonClassName:
+					'bg-rose-900 hover:bg-rose-800 text-white dark:bg-emerald-900 dark:hover:bg-emerald-800',
+				displayText: 'Show Me',
+			},
+		],
+		githubUrl: 'https://github.com/jamesworden/bob-worden',
+		imageUrl: 'https://www.bobworden.com/',
+	},
+	{
+		description:
 			"A website I created for my father who is an attorney; I made use of gatsby's dynamic page rendering to output blog posts using data from an external wordpress instance.",
 		displayDate: 'December 2020',
-		displayWebsiteUrl: 'bobworden.com',
+		displayWebsiteUrl: 'old.bobworden.com',
 		image: bobWordenThumbnail,
 		technologyBadges: [
 			Technology.React,
@@ -69,14 +94,14 @@ export const projectCards: IProjectCard[] = [
 		],
 		buttons: [
 			{
-				websiteUrl: 'https://www.bobworden.com/',
+				websiteUrl: 'https://old.bobworden.com/',
 				buttonClassName:
 					'bg-rose-900 hover:bg-rose-800 text-white dark:bg-emerald-900 dark:hover:bg-emerald-800',
 				displayText: 'Show Me',
 			},
 		],
 		githubUrl: 'https://github.com/jamesworden/bob-worden',
-		imageUrl: 'https://www.bobworden.com/',
+		imageUrl: 'https://old.bobworden.com/',
 	},
 	{
 		description:
