@@ -42,7 +42,15 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ projectCard, index }) 
 
 					<div className='flex flex-col max-w-md'>
 						<div className='mb-4'>
-							<h3 className='font-bold'>{projectCard.displayWebsiteUrl}</h3>
+							<div className='flex gap-x-2'>
+								{projectCard.outdated && (
+									<div className='text-xs text-gray-700 bg-yellow-300 font-semibold rounded-lg shadow uppercase flex justify-around flex-col px-2'>
+										<span>Outdated</span>
+									</div>
+								)}
+
+								<h3 className='font-bold'>{projectCard.displayWebsiteUrl}</h3>
+							</div>
 							<h6 className='italic'>{projectCard.displayDate}</h6>
 						</div>
 
